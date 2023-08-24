@@ -1,7 +1,45 @@
-[gd_scene load_steps=3 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=7 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
+[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="2_d3viv"]
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="2_m3gy8"]
+
+[sub_resource type="Animation" id="Animation_48y8k"]
+resource_name = "Moving"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i2dpj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_my2ed"]
+_data = {
+"Moving": SubResource("Animation_48y8k"),
+"RESET": SubResource("Animation_i2dpj")
+}
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,5 +51,18 @@ position = Vector2(131, 0)
 [node name="Directional3" parent="." instance=ExtResource("1_ockic")]
 position = Vector2(261, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(153, 80)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(153, 80)
 script = ExtResource("2_m3gy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("2_d3viv")
+flip_v = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_my2ed")
+}
