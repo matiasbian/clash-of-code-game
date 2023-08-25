@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=8 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
 [ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="2_d3viv"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_kdv4l"]
 [ext_resource type="Script" path="res://Scripts/Character/Character.gd" id="2_tg1ph"]
 
 [sub_resource type="Animation" id="Animation_48y8k"]
@@ -51,6 +52,10 @@ position = Vector2(131, 0)
 [node name="Directional3" parent="." instance=ExtResource("1_ockic")]
 position = Vector2(261, 0)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(153, 80)
+script = ExtResource("2_kdv4l")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(153, 80)
 script = ExtResource("2_tg1ph")
@@ -63,6 +68,3 @@ flip_v = true
 libraries = {
 "": SubResource("AnimationLibrary_my2ed")
 }
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
-position_smoothing_enabled = true
