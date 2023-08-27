@@ -1,13 +1,18 @@
 extends CharacterBody2D
 
-@export var speed = 400
+@export var speed = 150
+
+#consts
+const MOVE_ANIM = "Moving"
+const IDLE_ANIM = "Idle"
 
 #components
 var anim
 
-var target = Vector2(500,0)
+var target = Vector2(0,0)
 
 func _ready():
+	target = position
 	anim = get_node("AnimationPlayer")
 	
 func _input(event):
@@ -24,9 +29,10 @@ func _handlePlayerMovement():
 	if position.distance_to(target) > 5:
 		move_and_slide()
 	else:
-		anim.stop()
+		anim.play(IDLE_ANIM)
 		
 func movePlayerToPos(pos):
+	anim.stop()	
 	anim.play("Moving")
 	target = pos
 

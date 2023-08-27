@@ -1,25 +1,36 @@
-[gd_scene load_steps=9 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=20 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
-[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="2_d3viv"]
+[ext_resource type="PackedScene" uid="uid://cpmw24xdmg47p" path="res://Prefabs/Blocks/Start.tscn" id="3_mgr7x"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/Character/Character.gd" id="3_wnj35"]
+[ext_resource type="Texture2D" uid="uid://buowtpk7bhudl" path="res://Art/Sprites/skeleton/idle_right (1).png" id="4_55h5m"]
+[ext_resource type="PackedScene" uid="uid://c7ghwelayejsg" path="res://Prefabs/Blocks/Finish.tscn" id="4_kvv7v"]
+[ext_resource type="Texture2D" uid="uid://op1lrn4qis7p" path="res://Art/Sprites/skeleton/walk_right (1).png" id="5_4i1pl"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_lc7op"]
+[ext_resource type="Texture2D" uid="uid://qda5no1crp6x" path="res://Art/Sprites/skeleton/walk_right (2).png" id="6_uqvkh"]
+[ext_resource type="Texture2D" uid="uid://uelgl1tgjv3r" path="res://Art/Sprites/skeleton/walk_right (3).png" id="7_4662c"]
+[ext_resource type="Texture2D" uid="uid://bdvor6novyycr" path="res://Art/Sprites/skeleton/walk_right (4).png" id="8_xdpwu"]
+[ext_resource type="Texture2D" uid="uid://mrwjt2fitmhf" path="res://Art/Sprites/skeleton/idle_right (2).png" id="9_lpn2f"]
+[ext_resource type="Texture2D" uid="uid://bqoer6wdg1d57" path="res://Art/Sprites/skeleton/idle_right (3).png" id="10_d7i7p"]
+[ext_resource type="Texture2D" uid="uid://cblq7v1esaukt" path="res://Art/Sprites/skeleton/idle_right (4).png" id="11_ygk4g"]
+[ext_resource type="PackedScene" uid="uid://dyqjvi6wj0c75" path="res://Prefabs/UI/UI.tscn" id="15_k82cg"]
 
 [sub_resource type="Animation" id="Animation_48y8k"]
 resource_name = "Moving"
 loop_mode = 1
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_4i1pl"), ExtResource("6_uqvkh"), ExtResource("7_4662c"), ExtResource("8_xdpwu")]
 }
 
 [sub_resource type="Animation" id="Animation_i2dpj"]
@@ -27,18 +38,36 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [ExtResource("4_55h5m")]
+}
+
+[sub_resource type="Animation" id="Animation_oanx0"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_55h5m"), ExtResource("9_lpn2f"), ExtResource("10_d7i7p"), ExtResource("11_ygk4g")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_my2ed"]
 _data = {
+"Idle": SubResource("Animation_oanx0"),
 "Moving": SubResource("Animation_48y8k"),
 "RESET": SubResource("Animation_i2dpj")
 }
@@ -47,7 +76,9 @@ _data = {
 
 [node name="Blocks" type="Node2D" parent="." node_paths=PackedStringArray("httpReq")]
 script = ExtResource("1_oadcw")
-prefab = ExtResource("1_ockic")
+dirPrefab = ExtResource("1_ockic")
+startPrefab = ExtResource("3_mgr7x")
+finishPrefab = ExtResource("4_kvv7v")
 httpReq = NodePath("../HttpRequests")
 
 [node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]
@@ -57,17 +88,20 @@ visible = false
 visible = false
 position = Vector2(131, 0)
 
+[node name="Directional4" parent="Blocks" instance=ExtResource("1_ockic")]
+visible = false
+position = Vector2(131, 0)
+
 [node name="Directional3" parent="Blocks" instance=ExtResource("1_ockic")]
 visible = false
 position = Vector2(261, 0)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(153, 80)
 script = ExtResource("3_wnj35")
 
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("2_d3viv")
-flip_v = true
+scale = Vector2(4.875, 4.875)
+texture = ExtResource("4_55h5m")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {
@@ -79,3 +113,5 @@ position_smoothing_enabled = true
 
 [node name="HttpRequests" type="Node2D" parent="."]
 script = ExtResource("5_lc7op")
+
+[node name="UI" parent="." instance=ExtResource("15_k82cg")]

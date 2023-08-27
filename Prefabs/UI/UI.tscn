@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dyqjvi6wj0c75"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectedCommands" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.136
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
+layout_mode = 2
+color = Color(0.894118, 0.819608, 0.568627, 1)
+
+[node name="AvailableCommands" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93
+anchor_top = 0.22
+anchor_right = 1.0
+anchor_bottom = 0.88
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
+layout_mode = 2
+color = Color(0.564706, 0.831373, 0.909804, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3

@@ -1,6 +1,8 @@
 class_name Spawner extends Node2D
 
-@export var prefab = Resource.new()
+@export var dirPrefab = Resource.new()
+@export var startPrefab = Resource.new()
+@export var finishPrefab = Resource.new()
 @export var httpReq = HTTP_REQUESTS.new()
 
 var level:LevelStructure
@@ -11,16 +13,24 @@ func _ready():
 	
 		
 func instantiateLevel(data):
+	print("Data retrieved")
+	print(data)
 	level = LevelStructure.new(data) 
 	
 	var i = 0
 	for step in level.stepsList.steps:
-		if (step.dir == MovementBlock.Directions.Right):
-			InstantiateDirBlock(i)
+		#TODO: Replace this with real blocks selection
+		if (step is MovementBlock && step.dir == MovementBlock.Directions.Right):
+			_instantiateBlock(i, dirPrefab)
+		elif step is StartBlock:
+			_instantiateBlock(i, startPrefab)
+		elif step is FinishBlock:
+			_instantiateBlock(i, finishPrefab)
 		i += 1
 
-func InstantiateDirBlock (multiplier):
-	var inst = prefab.instantiate()
+	
+func _instantiateBlock (multiplier, block):
+	var inst = block.instantiate()
 	add_child(inst)
 	inst.position = Vector2(multiplier * 131, 0)
 
