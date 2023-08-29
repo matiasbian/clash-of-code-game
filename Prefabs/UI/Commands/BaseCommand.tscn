@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=5 format=3 uid="uid://ca051sex452gn"]
 
-[node name="BaseCommand" type="CanvasLayer"]
+[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="1_y5rew"]
+[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2biro"]
+font = ExtResource("2_32fnx")
+font_size = 21
+font_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="ColorRect" type="ColorRect"]
+custom_minimum_size = Vector2(80, 80)
+size_flags_vertical = 6
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_y5rew")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00185, 1.00594)
+text = "->"
+label_settings = SubResource("LabelSettings_2biro")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+script = ExtResource("3_h25lq")
+isSideMenu = true

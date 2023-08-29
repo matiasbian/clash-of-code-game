@@ -7,8 +7,6 @@ func _init(dataToParse):
 		steps.push_front(val)
 		
 func get_element(elem):
-	print("elem")
-	print(elem)
 	var key = elem.keys()[0]
 	if key == "movement":
 		return MovementBlock.new(elem[key])

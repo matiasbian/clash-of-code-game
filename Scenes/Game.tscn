@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=21 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
@@ -15,6 +15,24 @@
 [ext_resource type="Texture2D" uid="uid://bqoer6wdg1d57" path="res://Art/Sprites/skeleton/idle_right (3).png" id="10_d7i7p"]
 [ext_resource type="Texture2D" uid="uid://cblq7v1esaukt" path="res://Art/Sprites/skeleton/idle_right (4).png" id="11_ygk4g"]
 [ext_resource type="PackedScene" uid="uid://dyqjvi6wj0c75" path="res://Prefabs/UI/UI.tscn" id="15_k82cg"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameManager.gd" id="16_kxjg7"]
+
+[sub_resource type="Animation" id="Animation_oanx0"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_55h5m"), ExtResource("9_lpn2f"), ExtResource("10_d7i7p"), ExtResource("11_ygk4g")]
+}
 
 [sub_resource type="Animation" id="Animation_48y8k"]
 resource_name = "Moving"
@@ -48,23 +66,6 @@ tracks/0/keys = {
 "values": [ExtResource("4_55h5m")]
 }
 
-[sub_resource type="Animation" id="Animation_oanx0"]
-resource_name = "Idle"
-loop_mode = 1
-step = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("4_55h5m"), ExtResource("9_lpn2f"), ExtResource("10_d7i7p"), ExtResource("11_ygk4g")]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_my2ed"]
 _data = {
 "Idle": SubResource("Animation_oanx0"),
@@ -79,7 +80,7 @@ script = ExtResource("1_oadcw")
 dirPrefab = ExtResource("1_ockic")
 startPrefab = ExtResource("3_mgr7x")
 finishPrefab = ExtResource("4_kvv7v")
-httpReq = NodePath("../HttpRequests")
+httpReq = NodePath("../Systems/HttpRequests")
 
 [node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]
 visible = false
@@ -111,7 +112,13 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position_smoothing_enabled = true
 
-[node name="HttpRequests" type="Node2D" parent="."]
+[node name="UI" parent="." instance=ExtResource("15_k82cg")]
+
+[node name="Systems" type="Node2D" parent="."]
+
+[node name="HttpRequests" type="Node2D" parent="Systems"]
 script = ExtResource("5_lc7op")
 
-[node name="UI" parent="." instance=ExtResource("15_k82cg")]
+[node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player")]
+script = ExtResource("16_kxjg7")
+player = NodePath("../../CharacterBody2D")

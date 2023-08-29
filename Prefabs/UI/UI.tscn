@@ -1,4 +1,8 @@
-[gd_scene format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=4 format=3 uid="uid://dyqjvi6wj0c75"]
+
+[ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
+[ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
+[ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/UIPlayCommands.gd" id="3_txxca"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -10,17 +14,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectedCommands" type="MarginContainer" parent="Panel"]
+[node name="SelectedCommands" type="MarginContainer" parent="Panel" node_paths=PackedStringArray("container")]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
+anchor_right = 0.9
 anchor_bottom = 0.136
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_db8n0")
+commandPrefab = ExtResource("1_esfrg")
+container = NodePath("ColorRect/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
 layout_mode = 2
 color = Color(0.894118, 0.819608, 0.568627, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
+layout_mode = 2
+
+[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
+layout_mode = 2
 
 [node name="AvailableCommands" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -45,18 +76,47 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+[node name="Right" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="ColorRect2" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="2"]
+dir = 0
 
-[node name="ColorRect3" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+[node name="ColorRect2" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="ColorRect4" type="ColorRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer"]
+[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2" index="1"]
+text = "<-"
+
+[node name="ColorRect3" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
-size_flags_vertical = 3
+color = Color(0.435294, 0.435294, 0.435294, 1)
+
+[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="1"]
+text = "?"
+
+[node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+color = Color(0.427451, 0.427451, 0.427451, 1)
+
+[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="1"]
+text = "?"
+
+[node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_right = 1.0
+anchor_bottom = 0.136
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
+layout_mode = 2
+text = "PLAY"
+script = ExtResource("3_txxca")
+
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Right"]
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2"]
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3"]
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4"]
