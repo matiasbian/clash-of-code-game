@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=7 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/UIPlayCommands.gd" id="3_txxca"]
+[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_5tr4s"]
+[ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
+
+[sub_resource type="Theme" id="Theme_1v5bc"]
+default_font = ExtResource("4_5tr4s")
+default_font_size = 46
 
 [node name="UI" type="CanvasLayer"]
 
@@ -115,6 +121,111 @@ grow_vertical = 2
 layout_mode = 2
 text = "PLAY"
 script = ExtResource("3_txxca")
+
+[node name="PopUps" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_7jtma")
+
+[node name="Victory" type="MarginContainer" parent="Panel/PopUps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Victory"]
+layout_mode = 2
+color = Color(0.223529, 0.294118, 0.486275, 1)
+
+[node name="Label" type="Label" parent="Panel/PopUps/Victory/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -64.0
+offset_right = 181.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1v5bc")
+text = "¡Ganaste!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/PopUps/Victory/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.878
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -89.944
+offset_right = 80.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Aceptar"
+
+[node name="Defeat" type="MarginContainer" parent="Panel/PopUps"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Defeat"]
+layout_mode = 2
+color = Color(0.231373, 0.0901961, 0.0941176, 1)
+
+[node name="Label" type="Label" parent="Panel/PopUps/Defeat/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -179.0
+offset_top = -64.0
+offset_right = 181.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1v5bc")
+text = "¡Perdiste!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/PopUps/Defeat/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.878
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -89.944
+offset_right = 80.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+text = "Reintentar
+"
 
 [editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Right"]
 [editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2"]

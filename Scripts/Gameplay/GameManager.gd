@@ -2,6 +2,8 @@ extends Node
 
 signal action_added(action)
 signal action_removed(index)
+signal on_victory()
+signal on_defeat(index)
 
 @export var player = CharacterBody2D.new()
 
@@ -44,7 +46,7 @@ func _checkNewBlock(playerPos):
 	print("block number " + str(blockNumber))
 	
 	if (playerPos.x < 0 || blockNumber > blocks.size() -1):
-		print("Perdiste")
+		defeat()
 	else:
 		var block = blocks[blockNumber]
 		
@@ -57,9 +59,14 @@ func _play(pos):
 func _getActionsList():
 	return selectedActions.list
 	
-func _checkIfWon():
+func _checkIfWon(pos):
 	if (win):
-		print("Ganaste!!")
+		emit_signal("on_victory")
+	elif (pos != Vector2.ZERO):
+		emit_signal("on_defeat")
+		
+func defeat():
+	emit_signal("on_defeat")
 
 #event callbacks-------
 func playerReachedPos(pos):
@@ -70,7 +77,7 @@ func playerReachedPos(pos):
 	if (playQueue.size() > 0):
 		_play(playQueue.pop_front())
 	else:
-		_checkIfWon()
+		_checkIfWon(pos)
 
 
 
