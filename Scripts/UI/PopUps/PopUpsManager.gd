@@ -3,6 +3,7 @@ extends Node
 @onready var victory = get_node("Victory")
 @onready var defeat = get_node("Defeat")
 @onready var game_manager = get_node("/root/Node2D/Systems/GameManager")
+@onready var http_req:HTTP_REQUESTS = get_node("/root/Node2D/Systems/HttpRequests")
 
 @onready var victory_button:Button = get_node("Victory/ColorRect/Button")
 @onready var defeat_button:Button = get_node("Defeat/ColorRect/Button")
@@ -13,6 +14,7 @@ func _ready():
 	game_manager.on_defeat.connect(on_defeat)
 	victory_button.button_up.connect(send_score)
 	defeat_button.button_up.connect(restart_level)
+	http_req.data_sent.connect(level_ended)
 
 
 func on_defeat():
@@ -24,6 +26,13 @@ func on_win():
 func restart_level():
 	get_tree().reload_current_scene()
 	
-func send_score():
-	print("TODO: implement start level feature")
+func level_ended(response):
 	restart_level()
+	
+func send_score():
+	var body = {
+		"userID": 5,
+		"levelNumber": 3,
+		"movements": 3
+	}
+	http_req.HTTPPost(http_req.URL_POST, body)

@@ -1,8 +1,10 @@
 class_name HTTP_REQUESTS extends Node2D
 
 @export var URL = "http://localhost:3000/api/levels?level=1"
+@export var URL_POST = "http://localhost:3000/api/progress"
 
 signal data_retrieved(response)
+signal data_sent(response)
 
 func _ready():
 	# Create an HTTP request node and connect its completion signal.
@@ -25,6 +27,24 @@ func HTTPget(url):
 	var error = http_request.request(url)
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
+		
+func HTTPPost(url, body):
+	# Convert data to json string:
+	var query = JSON.stringify(body)
+	print("query: " + str(query) + " url " + url)
+	# Add 'Content-Type' header:
+	var headers = ["Content-Type: application/json"]
+	
+	
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request(url, headers, HTTPClient.METHOD_POST, query)
+
+	http_request.request_completed.connect(data_sent_f)
+	
+func data_sent_f(result, response_code, headers, body):
+	print("Response " + str(response_code))
+	emit_signal("data_sent", result)
 
 # Called when the HTTP request is completed.
 func _http_request_completed(result, response_code, headers, body):
