@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfgpcsq25pvlv"]
+
+[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="1_1ct40"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
+[ext_resource type="PackedScene" uid="uid://btcu4smhl2uyx" path="res://Prefabs/UI/MainMenu/nivel_thubnail.tscn" id="2_ot65x"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
+[ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_wcmn7"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.667
+anchor_right = 0.5
+anchor_bottom = 0.667
+offset_left = -94.0
+offset_top = -30.216
+offset_right = 94.0
+offset_bottom = 29.784
+grow_horizontal = 2
+grow_vertical = 2
+text = "Jugar"
+script = ExtResource("1_ve7o6")
+
+[node name="TextureRect" type="TextureRect" parent="UI/MainMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.327
+anchor_right = 0.5
+anchor_bottom = 0.327
+offset_left = -108.0
+offset_top = -107.896
+offset_right = 108.0
+offset_bottom = 108.104
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_1ct40")
+stretch_mode = 4
+
+[node name="Levels" type="MarginContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Levels"]
+layout_mode = 2
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="GridContainer" type="GridContainer" parent="UI/Levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+script = ExtResource("2_w5kg7")
+
+[node name="NivelThubnail" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+
+[node name="NivelThubnail2" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="NivelThubnail3" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="NivelThubnail4" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="HtppNode" type="Node2D" parent="."]
+script = ExtResource("5_wcmn7")
+URL = "http://localhost:3000/api/progress?userID=5"

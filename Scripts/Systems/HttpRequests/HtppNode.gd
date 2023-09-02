@@ -9,14 +9,6 @@ signal data_sent(response)
 func _ready():
 	# Create an HTTP request node and connect its completion signal.
 	HTTPget(URL)
-
-	# Perform a POST request. The URL below returns JSON as of writing.
-	# Note: Don't make simultaneous requests using a single HTTPRequest node.
-	# The snippet below is provided for reference only.
-	#var body = JSON.new().stringify({"name": "Godette"})
-	#error = http_request.request("https://httpbin.org/post", [], HTTPClient.METHOD_POST, body)
-	#if error != OK:
-	#	push_error("An error occurred in the HTTP request.")
 	
 func HTTPget(url):
 	var http_request = HTTPRequest.new()

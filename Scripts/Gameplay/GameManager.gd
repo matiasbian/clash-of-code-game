@@ -1,4 +1,4 @@
-extends Node
+class_name Game_Manager extends Node
 
 signal action_added(action)
 signal action_removed(index)
@@ -43,7 +43,7 @@ func _checkNewBlock(playerPos):
 	var blockNumber = playerPos.x / player.MOVEMENT_OFFSET_X
 	blockNumber = round(blockNumber)
 	
-	print("block number " + str(blockNumber))
+	movementsExecuted += 1
 	
 	if (playerPos.x < 0 || blockNumber > blocks.size() -1):
 		defeat()

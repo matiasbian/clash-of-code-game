@@ -2,7 +2,7 @@ extends Node
 
 @onready var victory = get_node("Victory")
 @onready var defeat = get_node("Defeat")
-@onready var game_manager = get_node("/root/Node2D/Systems/GameManager")
+@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 @onready var http_req:HTTP_REQUESTS = get_node("/root/Node2D/Systems/HttpRequests")
 
 @onready var victory_button:Button = get_node("Victory/ColorRect/Button")
@@ -24,7 +24,7 @@ func on_win():
 	victory.visible = true
 	
 func restart_level():
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
 func level_ended(response):
 	restart_level()
@@ -33,6 +33,6 @@ func send_score():
 	var body = {
 		"userID": 5,
 		"levelNumber": 3,
-		"movements": 3
+		"movements": game_manager.movementsExecuted
 	}
 	http_req.HTTPPost(http_req.URL_POST, body)
