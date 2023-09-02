@@ -32,7 +32,7 @@ func level_ended(response):
 func send_score():
 	var body = {
 		"userID": 5,
-		"levelNumber": 3,
+		"levelNumber": 1,
 		"movements": game_manager.movementsExecuted
 	}
 	http_req.HTTPPost(http_req.URL_POST, body)

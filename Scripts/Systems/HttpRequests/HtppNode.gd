@@ -23,7 +23,6 @@ func HTTPget(url):
 func HTTPPost(url, body):
 	# Convert data to json string:
 	var query = JSON.stringify(body)
-	print("query: " + str(query) + " url " + url)
 	# Add 'Content-Type' header:
 	var headers = ["Content-Type: application/json"]
 	
