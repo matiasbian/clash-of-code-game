@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=8 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="3_hlaxj"]
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/UIPlayCommands.gd" id="3_txxca"]
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_5tr4s"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
@@ -33,7 +34,7 @@ container = NodePath("ColorRect/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
 layout_mode = 2
-color = Color(0.894118, 0.819608, 0.568627, 1)
+color = Color(0.286275, 0.572549, 0.74902, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect"]
 layout_mode = 1
@@ -71,13 +72,14 @@ grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
 layout_mode = 2
-color = Color(0.564706, 0.831373, 0.909804, 1)
+color = Color(0.564706, 0.831373, 0.909804, 0.435294)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -94,6 +96,9 @@ layout_mode = 2
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2" index="1"]
 text = "<-"
 
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2" index="2"]
+dir = null
+
 [node name="ColorRect3" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 color = Color(0.435294, 0.435294, 0.435294, 1)
@@ -101,12 +106,30 @@ color = Color(0.435294, 0.435294, 0.435294, 1)
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="1"]
 text = "?"
 
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="2"]
+dir = null
+
 [node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 color = Color(0.427451, 0.427451, 0.427451, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="1"]
 text = "?"
+
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="2"]
+dir = null
+
+[node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 21.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Panel/AvailableCommands/ColorRect/AccionesCont"]
+layout_mode = 2
+text = "Acciones"
+horizontal_alignment = 1
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -116,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 0.136
 grow_horizontal = 0
 grow_vertical = 2
+theme = ExtResource("3_hlaxj")
 
 [node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
 layout_mode = 2

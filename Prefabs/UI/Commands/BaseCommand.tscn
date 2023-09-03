@@ -7,12 +7,14 @@
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
 font_size = 21
-font_color = Color(0, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(80, 80)
 size_flags_vertical = 6
+color = Color(0.780392, 0.533333, 0.376471, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 visible = false
@@ -48,4 +50,5 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 script = ExtResource("3_h25lq")
+dir = null
 isSideMenu = true

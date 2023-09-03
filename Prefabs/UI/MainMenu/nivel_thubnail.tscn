@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://btcu4smhl2uyx"]
+[gd_scene load_steps=3 format=3 uid="uid://btcu4smhl2uyx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelThumbnail.gd" id="1_0q5oo"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="1_82217"]
 
 [node name="NivelThubnail" type="Button"]
 custom_minimum_size = Vector2(150, 150)
 size_flags_stretch_ratio = 0.85
+theme = ExtResource("1_82217")
 script = ExtResource("1_0q5oo")
 
 [node name="Nivel" type="Label" parent="."]

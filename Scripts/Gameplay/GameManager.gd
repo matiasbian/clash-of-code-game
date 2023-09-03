@@ -21,6 +21,8 @@ func _ready():
 
 #public------
 func PlayCommands():
+	
+	
 	for action in _getActionsList():
 		playQueue.push_back(action.get_node("Button").dir)
 	playerReachedPos(Vector2.ZERO)
@@ -54,6 +56,7 @@ func _checkNewBlock(playerPos):
 	
 	
 func _play(pos):
+	focusCurrentAction()
 	player.movePlayerToDir(pos)
 
 func _getActionsList():
@@ -67,6 +70,12 @@ func _checkIfWon(pos):
 		
 func defeat():
 	emit_signal("on_defeat")
+	
+func focusCurrentAction():
+	if (movementsExecuted > 0): #unfocus previous node
+		_getActionsList()[movementsExecuted -1].get_node("Button")._elemUnfocused()	
+	#focus current node
+	_getActionsList()[movementsExecuted].get_node("Button")._elemFocused()
 
 #event callbacks-------
 func playerReachedPos(pos):

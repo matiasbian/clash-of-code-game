@@ -3,6 +3,7 @@ class_name ActionButton extends Button
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 
 @export var isSideMenu:bool
+@onready var baseColor:Color = get_parent().color
 
 var game_manager
 var index
@@ -21,4 +22,11 @@ func SetIndex(i):
 
 func _get_command_type():
 	return null
+
+func _elemFocused():
+	get_parent().color = Color.AQUAMARINE
+	
+func _elemUnfocused():
+	get_parent().color = baseColor
+
 	
