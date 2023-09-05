@@ -38,4 +38,5 @@ func _action_removed(index):
 		i+=1
 	popped.queue_free()
 	
+	
 

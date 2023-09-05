@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 150
+@onready var game_manager = get_node("/root/Node2D/Systems/GameManager")
 signal movement_finished(pos)
 
 #consts
@@ -13,15 +14,14 @@ var anim
 
 var target = Vector2(0,0)
 var reachedPos = false
+var die = false
 
 func _ready():
 	target = position
 	anim = get_node("AnimationPlayer")
-	
-func _input(event):
-	#if event.is_action_pressed("clicked"):
-	#	movePlayerToPos(get_global_mouse_position())
-	pass
+	game_manager.on_defeat.connect(on_defeat)
+	game_manager.on_defeat_delay_needed.connect(on_defeat)
+
 		
 func _physics_process(delta):
 	velocity = position.direction_to(target) * speed
@@ -35,8 +35,8 @@ func _handlePlayerMovement():
 		if reachedPos == false:
 			reachedPos = true
 			triggerMovementFinished()
-
-		anim.play(IDLE_ANIM)
+		if !die:
+			anim.play(IDLE_ANIM)
 		
 func movePlayerToPos(pos):
 	anim.stop()	
@@ -51,6 +51,12 @@ func movePlayerToDir(dir):
 	
 func triggerMovementFinished():
 	emit_signal("movement_finished", target)
+	
+#events
+
+func on_defeat():
+	die = true
+	anim.play("Die")
 	
 
 

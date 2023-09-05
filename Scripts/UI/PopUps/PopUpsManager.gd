@@ -12,12 +12,17 @@ extends Node
 func _ready():
 	game_manager.on_victory.connect(on_win)
 	game_manager.on_defeat.connect(on_defeat)
+	game_manager.on_defeat_delay_needed.connect(on_defeat_delay)
 	victory_button.button_up.connect(send_score)
 	defeat_button.button_up.connect(restart_level)
 	http_req.data_sent.connect(level_ended)
 
 
 func on_defeat():
+	defeat.visible = true
+	
+func on_defeat_delay():
+	await get_tree().create_timer(2.0).timeout
 	defeat.visible = true
 	
 func on_win():

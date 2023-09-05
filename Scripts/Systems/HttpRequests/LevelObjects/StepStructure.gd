@@ -4,7 +4,7 @@ var steps = []
 func _init(dataToParse):
 	for elem in dataToParse.elements:
 		var val = get_element(elem)
-		steps.push_front(val)
+		steps.push_back(val)
 		
 func get_element(elem):
 	var key = elem.keys()[0]

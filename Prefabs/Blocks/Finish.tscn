@@ -1,10 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7ghwelayejsg"]
+[gd_scene load_steps=4 format=3 uid="uid://c7ghwelayejsg"]
 
-[ext_resource type="Texture2D" uid="uid://cj3bc7iclvokb" path="res://Art/Sprites/SPM_Brick.svg" id="1_317k7"]
+[ext_resource type="Texture2D" uid="uid://cqjltxtb7mcp" path="res://Art/Sprites/map/tileset/tile006.png" id="1_usea6"]
+[ext_resource type="Texture2D" uid="uid://dob4aihhvyor3" path="res://Art/Sprites/map/tileset/tile080.png" id="2_6q4tq"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_cvl6g"]
 
 [node name="Directional" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.00392157, 0, 1)
-scale = Vector2(2, 2)
-texture = ExtResource("1_317k7")
+[node name="border" type="Sprite2D" parent="."]
+scale = Vector2(136, 136)
+texture = SubResource("CanvasTexture_cvl6g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("1_usea6")
+
+[node name="Prize" type="Sprite2D" parent="."]
+scale = Vector2(4.875, 4.875)
+texture = ExtResource("2_6q4tq")

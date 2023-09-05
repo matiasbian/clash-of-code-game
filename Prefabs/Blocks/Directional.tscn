@@ -1,9 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyxcy3y3y1m24"]
+[gd_scene load_steps=3 format=3 uid="uid://cyxcy3y3y1m24"]
 
-[ext_resource type="Texture2D" uid="uid://cj3bc7iclvokb" path="res://Art/Sprites/SPM_Brick.svg" id="1_o6qmh"]
+[ext_resource type="Texture2D" uid="uid://b3uf6kjjk8h8w" path="res://Art/Sprites/map/tileset/tile070.png" id="1_16ej0"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_afkn6"]
 
 [node name="Directional" type="Node2D"]
 
+[node name="border" type="Sprite2D" parent="."]
+visibility_layer = 3
+scale = Vector2(136, 136)
+texture = SubResource("CanvasTexture_afkn6")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
-texture = ExtResource("1_o6qmh")
+scale = Vector2(8, 8)
+texture = ExtResource("1_16ej0")

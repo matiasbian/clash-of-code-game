@@ -10,6 +10,7 @@ var index
 
 func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
+	game_manager.startedPlay.connect(_on_play)
 	
 func _pressed():
 	if (isSideMenu):
@@ -28,5 +29,13 @@ func _elemFocused():
 	
 func _elemUnfocused():
 	get_parent().color = baseColor
+	
+func _on_play():
+	disabled = true
+	
+	if (!isSideMenu):
+		return
+
+	get_parent().color = Color.GRAY
 
 	
