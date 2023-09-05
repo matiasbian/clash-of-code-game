@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpmw24xdmg47p"]
 
-[ext_resource type="Texture2D" uid="uid://cqjltxtb7mcp" path="res://Art/Sprites/map/tileset/tile006.png" id="1_3sxl2"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_7na08"]
+[ext_resource type="Texture2D" uid="uid://bbxckrjea7med" path="res://Art/Sprites/map/tileset/tile069.png" id="2_23ijg"]
 
 [node name="Directional" type="Node2D"]
 
@@ -13,4 +13,4 @@ texture = ExtResource("1_7na08")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
-texture = ExtResource("1_3sxl2")
+texture = ExtResource("2_23ijg")
