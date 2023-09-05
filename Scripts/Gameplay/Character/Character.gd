@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @export var speed = 150
 @onready var game_manager = get_node("/root/Node2D/Systems/GameManager")
@@ -19,8 +19,13 @@ var die = false
 func _ready():
 	target = position
 	anim = get_node("AnimationPlayer")
-	game_manager.on_defeat.connect(on_defeat)
-	game_manager.on_defeat_delay_needed.connect(on_defeat)
+	
+	if (game_manager):
+		game_manager.on_defeat.connect(on_defeat)
+		game_manager.startedPlay.connect(_on_play)
+		game_manager.on_defeat_delay_needed.connect(on_defeat)
+	else:
+		print("ERROR: Game manager not found in Player script")
 
 		
 func _physics_process(delta):
@@ -57,6 +62,9 @@ func triggerMovementFinished():
 func on_defeat():
 	die = true
 	anim.play("Die")
+	
+func _on_play():
+	get_node("Arrow").visible = false
 	
 
 

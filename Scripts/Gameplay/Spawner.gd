@@ -40,6 +40,7 @@ func instantiateLevel(data):
 	_instantiateBlock(i, spikePrefab)	
 	
 	game_manager.SetBlocks(blocks)
+	return blocks
 
 	
 func _instantiateBlock (multiplier, block):

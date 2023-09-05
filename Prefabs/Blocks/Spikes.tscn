@@ -48,4 +48,4 @@ texture = ExtResource("1_476ct")
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_yxood")
 autoplay = "default"
-frame_progress = 0.583782
+frame_progress = 0.680837
