@@ -1,15 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7ghwelayejsg"]
 
+[ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_3xiay"]
 [ext_resource type="Texture2D" uid="uid://cqjltxtb7mcp" path="res://Art/Sprites/map/tileset/tile006.png" id="1_usea6"]
 [ext_resource type="Texture2D" uid="uid://dob4aihhvyor3" path="res://Art/Sprites/map/tileset/tile080.png" id="2_6q4tq"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_cvl6g"]
 
 [node name="Directional" type="Node2D"]
 
 [node name="border" type="Sprite2D" parent="."]
-scale = Vector2(136, 136)
-texture = SubResource("CanvasTexture_cvl6g")
+modulate = Color(1, 0.756863, 0.639216, 1)
+visibility_layer = 3
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("1_3xiay")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
