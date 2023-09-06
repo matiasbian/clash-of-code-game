@@ -103,12 +103,18 @@ color = Color(0.435294, 0.435294, 0.435294, 1)
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="1"]
 text = "?"
 
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="2"]
+disabled = true
+
 [node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 color = Color(0.427451, 0.427451, 0.427451, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="1"]
 text = "?"
+
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="2"]
+disabled = true
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands/ColorRect"]
 layout_mode = 1
