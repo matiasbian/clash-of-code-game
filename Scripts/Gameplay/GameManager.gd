@@ -17,7 +17,7 @@ var perfect_steps:float = 0
 
 #rules var
 var movementsExecuted:int = 0
-var blocks = []
+var blocks:Dictionary
 var win = false
 var stopChecking = false
 
@@ -38,6 +38,7 @@ func PlayCommands():
 func SetBlocks(blocklist):
 	print("block list setted")
 	blocks = blocklist
+	print(blocks.keys())
 	
 func AddCommand(action):
 	emit_signal("action_added", action)
@@ -51,15 +52,18 @@ func SetSelectedActionsReference(sel):
 #private-------
 func _checkNewBlock(playerPos):
 	var blockNumber = playerPos.x / player.MOVEMENT_OFFSET_X
+	print("PLAYER POS " + str(playerPos))
 	blockNumber = round(blockNumber)
 	
 	movementsExecuted += 1
 	
-	if (playerPos.x < 0 || blockNumber > blocks.size() -1):
+	var stringedPos = str(Vector2(round(playerPos.x), round(playerPos.y)))
+	if (playerPos.x < 0 || !blocks.has(stringedPos)):
 		defeat_delay()
+		print("PERDI POR ACA fst cond " + str(playerPos.x < 0) + " snd cond " + str(!blocks.has(playerPos)))
 		return true
 	else:
-		var block = blocks[blockNumber]
+		var block = blocks[stringedPos]
 		
 		win = block is FinishBlock
 		return false

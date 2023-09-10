@@ -1,6 +1,6 @@
 class_name MovementBlock extends Node
 
-enum Directions {Right, Left}
+enum Directions {Right, Left, Top, Bottom}
 var dir:Directions
 
 func _init(block):
@@ -10,6 +10,10 @@ func _init(block):
 			dir = Directions.Right
 		"Back":
 			dir = Directions.Left
+		"Top":
+			dir = Directions.Top
+		"Bottom":
+			dir = Directions.Bottom
 		_:
 			dir = Directions.Left
 

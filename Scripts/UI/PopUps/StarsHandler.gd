@@ -7,7 +7,7 @@ extends Control
 func setPerfectValues(percentage):
 	print(percentage)
 	var val = 0
-	if percentage == 100:
+	if percentage >= 100:
 		val = 3
 	elif percentage >= 60:
 		val = 2

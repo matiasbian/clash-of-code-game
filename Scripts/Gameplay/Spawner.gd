@@ -22,29 +22,43 @@ func instantiateLevel(data):
 	level = LevelStructure.new(data) 
 	
 	var i = 0
-	var blocks = []
+	var blocks:Dictionary
+	var lastVector:Vector2 = Vector2(-BLOCKS_OFFSET * 2,0)
+	
 	#start die block
-	_instantiateBlock(-1, spikePrefab)	
+	lastVector = _instantiateBlock(lastVector, spikePrefab, MovementBlock.Directions.Right)	
 	
 	for step in level.stepsList.steps:
-		blocks.push_back(step)
 		#TODO: Replace this with real blocks selection
-		if (step is MovementBlock && step.dir == MovementBlock.Directions.Right):
-			_instantiateBlock(i, dirPrefab)
+		if (step is MovementBlock):
+			lastVector = _instantiateBlock(lastVector, dirPrefab, step.dir)
 		elif step is StartBlock:
-			_instantiateBlock(i, startPrefab)
+			lastVector = _instantiateBlock(lastVector, startPrefab, MovementBlock.Directions.Right)
 		elif step is FinishBlock:
-			_instantiateBlock(i, finishPrefab)
+			lastVector = _instantiateBlock(lastVector, finishPrefab, step.dir)
+		blocks[str(lastVector)] = step	
 		i += 1
 	#end die block
-	_instantiateBlock(i, spikePrefab)	
+	lastVector = _instantiateBlock(lastVector, spikePrefab, MovementBlock.Directions.Right)	
 	
 	game_manager.SetBlocks(blocks)
 	return blocks
 
 	
-func _instantiateBlock (multiplier, block):
+func _instantiateBlock (lastPos, block, dir):
 	var inst = block.instantiate()
 	add_child(inst)
-	inst.position = Vector2(multiplier * BLOCKS_OFFSET, 0)
+	print("direction", dir)
+	inst.position = get_next_block_dir(dir, lastPos)
+	return inst.position
+	
+func get_next_block_dir(dir, lastPos):
+	if (dir == MovementBlock.Directions.Right):
+		return lastPos + (Vector2.RIGHT * BLOCKS_OFFSET)
+	elif  (dir == MovementBlock.Directions.Left):
+		return lastPos + (Vector2.LEFT * BLOCKS_OFFSET)
+	elif  (dir == MovementBlock.Directions.Top):
+		return lastPos + (Vector2.UP * BLOCKS_OFFSET)
+	elif  (dir == MovementBlock.Directions.Bottom):
+		return lastPos + (Vector2.DOWN * BLOCKS_OFFSET)
 	

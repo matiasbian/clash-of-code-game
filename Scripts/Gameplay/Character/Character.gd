@@ -52,12 +52,23 @@ func movePlayerToPos(pos):
 	target = pos
 	
 func movePlayerToDir(dir):
-	var offset = Vector2(MOVEMENT_OFFSET_X,0) if dir == 0 else Vector2(-MOVEMENT_OFFSET_X,0)
+
+	var offset = _get_movement_vector(dir)
 	var targetPos = position + offset
 	movePlayerToPos(targetPos)
 	
 func triggerMovementFinished():
 	emit_signal("movement_finished", target)
+	
+func _get_movement_vector(dir):
+	if (dir == MovementBlock.Directions.Right):
+		return Vector2(MOVEMENT_OFFSET_X,0)
+	elif (dir == MovementBlock.Directions.Left):
+		return Vector2(-MOVEMENT_OFFSET_X,0)
+	elif (dir == MovementBlock.Directions.Top):
+		return Vector2(0, -MOVEMENT_OFFSET_X)
+	elif (dir == MovementBlock.Directions.Bottom):
+		return Vector2(0, MOVEMENT_OFFSET_X)
 	
 #events
 

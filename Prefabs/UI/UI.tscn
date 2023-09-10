@@ -94,31 +94,34 @@ layout_mode = 2
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="2"]
 dir = 0
 
-[node name="ColorRect2" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="Left" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2" index="1"]
+[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="1"]
 text = "<-"
 
-[node name="ColorRect3" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="2"]
+dir = 1
+
+[node name="Top" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
-color = Color(0.435294, 0.435294, 0.435294, 1)
+color = Color(0.777344, 0.53125, 0.375, 1)
 
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="1"]
-text = "?"
+[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="1"]
+text = "TOP"
 
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3" index="2"]
-disabled = true
+[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="2"]
+dir = 2
 
 [node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
-color = Color(0.427451, 0.427451, 0.427451, 1)
+color = Color(0.773438, 0.527344, 0.375, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="1"]
-text = "?"
+text = "BOT"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="2"]
-disabled = true
+dir = 3
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands/ColorRect"]
 layout_mode = 1
@@ -280,6 +283,6 @@ text = "Reintentar
 "
 
 [editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Right"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect2"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect3"]
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Left"]
+[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Top"]
 [editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4"]
