@@ -258,6 +258,7 @@ libraries = {
 [node name="HttpRequests" type="Node2D" parent="Systems"]
 script = ExtResource("5_lc7op")
 
-[node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player")]
+[node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player", "httpReq")]
 script = ExtResource("16_kxjg7")
 player = NodePath("../../CharacterBody2D")
+httpReq = NodePath("../HttpRequests")

@@ -25,8 +25,9 @@ func on_defeat_delay():
 	await get_tree().create_timer(2.0).timeout
 	defeat.visible = true
 	
-func on_win():
+func on_win(percentage):
 	victory.visible = true
+	get_node("Victory/ColorRect/StarsContainer").setPerfectValues(percentage)
 	
 func restart_level():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

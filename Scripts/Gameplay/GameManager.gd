@@ -2,15 +2,18 @@ class_name Game_Manager extends Node
 
 signal action_added(action)
 signal action_removed(index)
-signal on_victory()
+signal on_victory(perfectPercentage)
 signal on_defeat(index)
 signal on_defeat_delay_needed(index)
 signal startedPlay()
 
 @export var player = CharacterBody2D.new()
+@export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
 
 var selectedActions
 var playQueue = []
+
+var perfect_steps:float = 0
 
 #rules var
 var movementsExecuted:int = 0
@@ -21,6 +24,7 @@ var stopChecking = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.movement_finished.connect(playerReachedPos)
+	httpReq.data_retrieved.connect(set_perfect_steps)
 
 #public------
 func PlayCommands():
@@ -70,7 +74,7 @@ func _getActionsList():
 	
 func _checkIfWon(pos):
 	if (win):
-		emit_signal("on_victory")
+		emit_signal("on_victory", (perfect_steps / movementsExecuted) * 100)
 	elif (pos != Vector2.ZERO):
 		defeat()
 		
@@ -99,6 +103,10 @@ func playerReachedPos(pos):
 		_play(playQueue.pop_front())
 	else:
 		_checkIfWon(pos)
+		
+func set_perfect_steps(data):
+	var level:LevelStructure = LevelStructure.new(data)
+	perfect_steps = level.perfect_steps
 
 
 
