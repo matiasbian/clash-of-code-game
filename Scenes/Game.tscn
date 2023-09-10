@@ -1,0 +1,264 @@
+[gd_scene load_steps=37 format=3 uid="uid://d42e7kapykg3"]
+
+[ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
+[ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
+[ext_resource type="PackedScene" uid="uid://b7ekxcyfycani" path="res://Prefabs/Blocks/Spikes.tscn" id="3_cta0h"]
+[ext_resource type="PackedScene" uid="uid://cpmw24xdmg47p" path="res://Prefabs/Blocks/Start.tscn" id="3_mgr7x"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/Character/Character.gd" id="3_wnj35"]
+[ext_resource type="Texture2D" uid="uid://buowtpk7bhudl" path="res://Art/Sprites/skeleton/idle_right (1).png" id="4_55h5m"]
+[ext_resource type="PackedScene" uid="uid://c7ghwelayejsg" path="res://Prefabs/Blocks/Finish.tscn" id="4_kvv7v"]
+[ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_lc7op"]
+[ext_resource type="Texture2D" uid="uid://c54il3pa21q8v" path="res://Art/Sprites/robot/robot_idle (3).png" id="7_t418s"]
+[ext_resource type="Texture2D" uid="uid://dt1dtq6ainecn" path="res://Art/Sprites/robot/robot_idle (2).png" id="8_md5tp"]
+[ext_resource type="Texture2D" uid="uid://gixkpm0defp7" path="res://Art/Sprites/robot/robot_idle (1).png" id="9_478tv"]
+[ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="10_akmb6"]
+[ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="11_06wxl"]
+[ext_resource type="Texture2D" uid="uid://qq0008afs70s" path="res://Art/Sprites/robot/robot_walk (2).png" id="12_fbmuf"]
+[ext_resource type="Texture2D" uid="uid://d1eojil4dd6ye" path="res://Art/Sprites/robot/robot_walk (1).png" id="13_2wltb"]
+[ext_resource type="Texture2D" uid="uid://cu8npk0ea2pa5" path="res://Art/Sprites/robot/robot_dead (2).png" id="14_mv2gn"]
+[ext_resource type="Texture2D" uid="uid://fewn8xymikmt" path="res://Art/Sprites/robot/robot_dead (3).png" id="15_2qssp"]
+[ext_resource type="PackedScene" uid="uid://dyqjvi6wj0c75" path="res://Prefabs/UI/UI.tscn" id="15_k82cg"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/GameManager.gd" id="16_kxjg7"]
+[ext_resource type="Texture2D" uid="uid://b3w3hq5wpj2y5" path="res://Art/Sprites/robot/robot_dead (4).png" id="16_ylos6"]
+[ext_resource type="Texture2D" uid="uid://dhhm5cukg05v4" path="res://Art/Sprites/robot/robot_dead (5).png" id="17_16kmj"]
+[ext_resource type="Texture2D" uid="uid://ki0o7thkxbmc" path="res://Art/Sprites/robot/robot_dead (6).png" id="18_5j8bx"]
+[ext_resource type="Texture2D" uid="uid://dpr132mg7klgv" path="res://Art/Sprites/robot/robot_dead (7).png" id="19_g8ftq"]
+[ext_resource type="Texture2D" uid="uid://6w64qqb2uvpv" path="res://Art/Sprites/robot/robot_dead (8).png" id="20_8f6ag"]
+[ext_resource type="Texture2D" uid="uid://clnleqcjdpwqh" path="res://Art/Sprites/robot/robot_dead (1).png" id="21_god47"]
+[ext_resource type="Texture2D" uid="uid://gjd23qaunxg8" path="res://Art/Sprites/arrow.png" id="23_3ov3f"]
+
+[sub_resource type="Gradient" id="Gradient_c8dtc"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nc8ou"]
+gradient = SubResource("Gradient_c8dtc")
+fill_from = Vector2(0.978659, 0.109756)
+fill_to = Vector2(1, 0.0304878)
+
+[sub_resource type="Animation" id="Animation_e5w07"]
+resource_name = "Die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_mv2gn"), ExtResource("15_2qssp"), ExtResource("16_ylos6"), ExtResource("17_16kmj"), ExtResource("18_5j8bx"), ExtResource("19_g8ftq"), ExtResource("20_8f6ag"), ExtResource("21_god47"), null]
+}
+
+[sub_resource type="Animation" id="Animation_oanx0"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_t418s"), ExtResource("8_md5tp"), ExtResource("9_478tv"), ExtResource("9_478tv")]
+}
+
+[sub_resource type="Animation" id="Animation_48y8k"]
+resource_name = "Moving"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_akmb6"), ExtResource("11_06wxl"), ExtResource("12_fbmuf"), ExtResource("13_2wltb")]
+}
+
+[sub_resource type="Animation" id="Animation_i2dpj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_55h5m")]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-36, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_my2ed"]
+_data = {
+"Die": SubResource("Animation_e5w07"),
+"Idle": SubResource("Animation_oanx0"),
+"Moving": SubResource("Animation_48y8k"),
+"RESET": SubResource("Animation_i2dpj")
+}
+
+[sub_resource type="Animation" id="Animation_i77jx"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-167, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_cauhv"]
+resource_name = "Start"
+loop_mode = 1
+step = 0.0333333
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-167, -0.25, 0, 0.25, 0, -135, -0.25, 0, 0.25, 0, -167, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxqat"]
+_data = {
+"RESET": SubResource("Animation_i77jx"),
+"Start": SubResource("Animation_cauhv")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Blocks" type="Node2D" parent="." node_paths=PackedStringArray("httpReq")]
+script = ExtResource("1_oadcw")
+dirPrefab = ExtResource("1_ockic")
+spikePrefab = ExtResource("3_cta0h")
+startPrefab = ExtResource("3_mgr7x")
+finishPrefab = ExtResource("4_kvv7v")
+httpReq = NodePath("../Systems/HttpRequests")
+
+[node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]
+visible = false
+
+[node name="Directional2" parent="Blocks" instance=ExtResource("1_ockic")]
+visible = false
+position = Vector2(131, 0)
+
+[node name="Directional4" parent="Blocks" instance=ExtResource("1_ockic")]
+visible = false
+position = Vector2(131, 0)
+
+[node name="Directional3" parent="Blocks" instance=ExtResource("1_ockic")]
+visible = false
+position = Vector2(261, 0)
+
+[node name="Background" type="Node2D" parent="."]
+z_index = -2
+metadata/_edit_lock_ = true
+
+[node name="Black" type="Sprite2D" parent="Background"]
+z_index = 1
+position = Vector2(32.875, 42.875)
+scale = Vector2(1266.25, 802.25)
+texture = SubResource("GradientTexture2D_nc8ou")
+metadata/_edit_lock_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+visibility_layer = 2
+script = ExtResource("3_wnj35")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -36)
+scale = Vector2(1.72376, 1.72376)
+texture = ExtResource("4_55h5m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_my2ed")
+}
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(115, -23)
+position_smoothing_enabled = true
+
+[node name="Arrow" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -167)
+scale = Vector2(0.200003, 0.200003)
+texture = ExtResource("23_3ov3f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D/Arrow"]
+autoplay = "Start"
+libraries = {
+"": SubResource("AnimationLibrary_lxqat")
+}
+
+[node name="UI" parent="." instance=ExtResource("15_k82cg")]
+
+[node name="Systems" type="Node2D" parent="."]
+
+[node name="HttpRequests" type="Node2D" parent="Systems"]
+script = ExtResource("5_lc7op")
+
+[node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player", "httpReq")]
+script = ExtResource("16_kxjg7")
+player = NodePath("../../CharacterBody2D")
+httpReq = NodePath("../HttpRequests")

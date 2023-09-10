@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfgpcsq25pvlv"]
+
+[ext_resource type="Texture2D" uid="uid://bv4tsb3c7qqbq" path="res://Art/Sprites/logo/transparent.png" id="1_ij6ru"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="2_75pmn"]
+[ext_resource type="PackedScene" uid="uid://btcu4smhl2uyx" path="res://Prefabs/UI/MainMenu/nivel_thubnail.tscn" id="2_ot65x"]
+[ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
+[ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_wcmn7"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/MainMenu"]
+layout_mode = 2
+color = Color(0.286275, 0.572549, 0.74902, 1)
+
+[node name="TextureRect" type="TextureRect" parent="UI/MainMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.426
+anchor_right = 0.5
+anchor_bottom = 0.426
+offset_left = -249.0
+offset_top = -247.048
+offset_right = 248.0
+offset_bottom = 246.952
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ij6ru")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="UI/MainMenu/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.767
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -0.0160217
+offset_right = 96.0
+offset_bottom = -61.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_75pmn")
+text = "Jugar"
+script = ExtResource("1_ve7o6")
+
+[node name="Levels" type="MarginContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Levels"]
+layout_mode = 2
+color = Color(0.286275, 0.572549, 0.74902, 1)
+
+[node name="GridContainer" type="GridContainer" parent="UI/Levels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+script = ExtResource("2_w5kg7")
+
+[node name="NivelThubnail" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+
+[node name="NivelThubnail2" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="Nivel" parent="UI/Levels/GridContainer/NivelThubnail2" index="0"]
+text = "Nivel
+2"
+
+[node name="NivelThubnail3" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="Nivel" parent="UI/Levels/GridContainer/NivelThubnail3" index="0"]
+text = "Nivel
+3"
+
+[node name="NivelThubnail4" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+layout_mode = 2
+disabled = true
+
+[node name="Nivel" parent="UI/Levels/GridContainer/NivelThubnail4" index="0"]
+text = "Nivel
+4"
+
+[node name="HtppNode" type="Node2D" parent="."]
+script = ExtResource("5_wcmn7")
+URL = "http://localhost:3000/api/progress?userID=5"
+
+[editable path="UI/Levels/GridContainer/NivelThubnail2"]
+[editable path="UI/Levels/GridContainer/NivelThubnail3"]
+[editable path="UI/Levels/GridContainer/NivelThubnail4"]
