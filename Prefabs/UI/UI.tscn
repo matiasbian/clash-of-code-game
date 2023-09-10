@@ -108,17 +108,14 @@ layout_mode = 2
 color = Color(0.777344, 0.53125, 0.375, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="1"]
-text = "TOP"
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="2"]
-dir = 2
+text = "▲"
 
 [node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 color = Color(0.773438, 0.527344, 0.375, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="1"]
-text = "BOT"
+text = "▼"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="2"]
 dir = 3
