@@ -29,11 +29,16 @@ func _ready():
 #public------
 func PlayCommands():
 	
+	if _getActionsList().size() == 0: 
+		return false
+	
 	emit_signal("startedPlay")
 	
 	for action in _getActionsList():
 		playQueue.push_back(action.get_node("Button").dir)
 	playerReachedPos(Vector2.ZERO)
+	
+	return true
 
 func SetBlocks(blocklist):
 	print("block list setted")

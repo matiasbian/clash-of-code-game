@@ -24,12 +24,14 @@ func HTTPget(url):
 func HTTPPost(url, body):
 	# Convert data to json string:
 	var query = JSON.stringify(body)
+
 	# Add 'Content-Type' header:
 	var headers = ["Content-Type: application/json", "Access-Control-Allow-Origin: *"]
 	
 	
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
+
 	http_request.request(url, headers, HTTPClient.METHOD_POST, query)
 
 	http_request.request_completed.connect(data_sent_f)

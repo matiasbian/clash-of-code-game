@@ -1,0 +1,186 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp2xpy7c0rhst"]
+
+[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_8iaoh"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
+[ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="3_1x5em"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/Loadbutton.gd" id="5_ykxq1"]
+
+[node name="LevelEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LevelN" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/LevelN"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.35
+theme_override_fonts/font = ExtResource("1_8iaoh")
+theme_override_font_sizes/font_size = 24
+text = "Level n°"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/MarginContainer/VBoxContainer/LevelN"]
+layout_mode = 2
+alignment = 1
+update_on_text_changed = true
+
+[node name="Label" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Label"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.35
+theme_override_fonts/font = ExtResource("1_8iaoh")
+theme_override_font_sizes/font_size = 24
+text = "Label"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/MarginContainer/VBoxContainer/Label"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="MinSteps" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MinSteps"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.35
+theme_override_fonts/font = ExtResource("1_8iaoh")
+theme_override_font_sizes/font_size = 24
+text = "Min steps"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/MarginContainer/VBoxContainer/MinSteps"]
+layout_mode = 2
+alignment = 1
+update_on_text_changed = true
+
+[node name="Structure" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.73
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.35
+theme_override_fonts/font = ExtResource("1_8iaoh")
+theme_override_font_sizes/font_size = 24
+text = "Structure"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("dropdown", "itemList", "levelNumber", "level_label", "min_steps", "add_button", "submit_button", "http_req")]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_ct3of")
+dropdown = NodePath("HBoxContainer/OptionButton")
+itemList = NodePath("ItemList")
+levelNumber = NodePath("../../LevelN/SpinBox")
+level_label = NodePath("../../Label/TextEdit")
+min_steps = NodePath("../../MinSteps/SpinBox")
+add_button = NodePath("HBoxContainer/Button")
+submit_button = NodePath("../../Buttons/Button")
+http_req = NodePath("../../Buttons/Node2D")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+layout_mode = 2
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 10
+popup/item_0/text = "Directions"
+popup/item_0/id = 5
+popup/item_0/separator = true
+popup/item_1/text = "Right"
+popup/item_1/id = 0
+popup/item_2/text = "Left"
+popup/item_2/id = 1
+popup/item_3/text = "Top"
+popup/item_3/id = 2
+popup/item_4/text = "Bottom"
+popup/item_4/id = 3
+popup/item_5/text = "Actions"
+popup/item_5/id = 6
+popup/item_5/separator = true
+popup/item_6/text = "Jump"
+popup/item_6/id = 5
+popup/item_7/text = "Mandatory"
+popup/item_7/id = 100
+popup/item_7/separator = true
+popup/item_8/text = "Start"
+popup/item_8/id = 7
+popup/item_9/text = "Finish"
+popup/item_9/id = 8
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+text = "+"
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+text = "Guardar"
+
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("level", "min_steps", "label", "structure")]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+text = "Cancelar"
+script = ExtResource("5_ykxq1")
+level = NodePath("../../LevelN/SpinBox")
+min_steps = NodePath("../../MinSteps/SpinBox")
+label = NodePath("../../Label/TextEdit")
+structure = NodePath("../../Structure/VBoxContainer/ItemList")
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons"]
+script = ExtResource("3_1x5em")

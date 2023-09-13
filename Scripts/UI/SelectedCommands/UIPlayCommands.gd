@@ -8,4 +8,6 @@ func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
 
 func _pressed():
-	game_manager.PlayCommands()
+	var played = game_manager.PlayCommands()
+	disabled = played
+
