@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://inbgdm4ss6s6"]
+
+[ext_resource type="Texture2D" uid="uid://twtw86uvtfi3" path="res://Art/Sprites/UI/success.png" id="1_aec74"]
+[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_cp1ox"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bosrt"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="PanelSuccess" type="Panel"]
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.181
+anchor_right = 0.68
+anchor_bottom = 0.819
+offset_left = 0.359985
+offset_top = -0.28801
+offset_right = -0.359985
+offset_bottom = 0.287964
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bosrt")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 3.69
+theme_override_fonts/font = ExtResource("1_cp1ox")
+theme_override_font_sizes/font_size = 18
+text = "Nivel guardado correctamente"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.56
+texture = ExtResource("1_aec74")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="Container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+size_flags_stretch_ratio = 3.69
+text = "Aceptar"

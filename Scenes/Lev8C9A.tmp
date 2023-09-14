@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp2xpy7c0rhst"]
+[gd_scene load_steps=5 format=3 uid="uid://cp2xpy7c0rhst"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_8iaoh"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="3_1x5em"]
-[ext_resource type="Script" path="res://Art/Sprites/UI/Loadbutton.gd" id="3_jkeep"]
-[ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
-[ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/Loadbutton.gd" id="5_ykxq1"]
 
 [node name="LevelEditor" type="Control"]
 layout_mode = 3
@@ -27,10 +25,6 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-color = Color(0.67451, 0.87451, 1, 0.564706)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
@@ -112,7 +106,7 @@ text = "Structure"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("dropdown", "itemList", "levelNumber", "level_label", "min_steps", "add_button", "submit_button", "success_popup", "failure_popup", "http_req")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("dropdown", "itemList", "levelNumber", "level_label", "min_steps", "add_button", "submit_button", "http_req")]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("2_ct3of")
@@ -123,9 +117,9 @@ level_label = NodePath("../../Label/TextEdit")
 min_steps = NodePath("../../MinSteps/SpinBox")
 add_button = NodePath("HBoxContainer/Button")
 submit_button = NodePath("../../Buttons/Button")
-success_popup = NodePath("../../../../PanelSuccess")
-failure_popup = NodePath("../../../../PanelError")
 http_req = NodePath("../../Buttons/Node2D")
+ok_color = null
+error_color = null
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
 layout_mode = 2
@@ -184,7 +178,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 5
 text = "Cancelar"
-script = ExtResource("3_jkeep")
+script = ExtResource("5_ykxq1")
 level = NodePath("../../LevelN/SpinBox")
 min_steps = NodePath("../../MinSteps/SpinBox")
 label = NodePath("../../Label/TextEdit")
@@ -192,18 +186,3 @@ structure = NodePath("../../Structure/VBoxContainer/ItemList")
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons"]
 script = ExtResource("3_1x5em")
-
-[node name="PanelSuccess" parent="CanvasLayer" instance=ExtResource("5_adnws")]
-visible = false
-
-[node name="PanelError" parent="CanvasLayer" instance=ExtResource("5_adnws")]
-visible = false
-
-[node name="Label" parent="CanvasLayer/PanelError/Container" index="0"]
-text = "Error al guardar el nivel.
-Revise los campos en rojo"
-
-[node name="TextureRect" parent="CanvasLayer/PanelError/Container" index="1"]
-texture = ExtResource("6_egwgf")
-
-[editable path="CanvasLayer/PanelError"]
