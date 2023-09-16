@@ -1,6 +1,6 @@
-class_name MovementBlock extends Node
+class_name MovementBlock extends BaseGameBlock
 
-enum Directions {Right, Left, Top, Bottom}
+enum Directions {NULL, Right, Left, Top, Bottom}
 var dir:Directions
 
 func _init(block):

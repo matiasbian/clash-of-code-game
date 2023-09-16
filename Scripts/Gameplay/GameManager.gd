@@ -35,15 +35,13 @@ func PlayCommands():
 	emit_signal("startedPlay")
 	
 	for action in _getActionsList():
-		playQueue.push_back(action.get_node("Button").dir)
+		playQueue.push_back(action.get_node("Button"))
 	playerReachedPos(Vector2.ZERO)
 	
 	return true
 
 func SetBlocks(blocklist):
-	print("block list setted")
 	blocks = blocklist
-	print(blocks.keys())
 	
 func AddCommand(action):
 	emit_signal("action_added", action)
@@ -57,18 +55,24 @@ func SetSelectedActionsReference(sel):
 #private-------
 func _checkNewBlock(playerPos):
 	var blockNumber = playerPos.x / player.MOVEMENT_OFFSET_X
-	print("PLAYER POS " + str(playerPos))
 	blockNumber = round(blockNumber)
 	
 	movementsExecuted += 1
 	
 	var stringedPos = str(Vector2(round(playerPos.x), round(playerPos.y)))
+	
+	#out of level losing
 	if (playerPos.x < 0 || !blocks.has(stringedPos)):
 		defeat_delay()
-		print("PERDI POR ACA fst cond " + str(playerPos.x < 0) + " snd cond " + str(!blocks.has(playerPos)))
 		return true
 	else:
 		var block = blocks[stringedPos]
+		
+		#Check if this block losing logic
+		if (block.shouldLose(player)):
+			print("Lose by block")
+			defeat_delay()
+			return true
 		
 		win = block is FinishBlock
 		return false

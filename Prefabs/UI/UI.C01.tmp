@@ -94,7 +94,7 @@ alignment = 1
 layout_mode = 2
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="2"]
-isSideMenu = true
+dir = 0
 
 [node name="Left" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -103,8 +103,7 @@ layout_mode = 2
 text = "<-"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="2"]
-dir = 2
-isSideMenu = true
+dir = 1
 
 [node name="Top" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -114,8 +113,7 @@ color = Color(0.777344, 0.53125, 0.375, 1)
 text = "▲"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="2"]
-dir = 3
-isSideMenu = true
+dir = null
 
 [node name="ColorRect4" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -125,19 +123,17 @@ color = Color(0.773438, 0.527344, 0.375, 1)
 text = "▼"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect4" index="2"]
-dir = 4
-isSideMenu = true
+dir = 3
 
 [node name="ColorRect5" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 color = Color(0.773438, 0.527344, 0.375, 1)
 
 [node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5" index="1"]
-text = "Jump"
+text = "JUMP"
 
 [node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5" index="2"]
 script = ExtResource("3_kxmu6")
-isSideMenu = true
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands/ColorRect"]
 visible = false

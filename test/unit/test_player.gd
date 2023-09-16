@@ -15,6 +15,10 @@ func test_assert_eq_mov_pos():
 	var anim = AnimationPlayer.new()
 	anim.name = "AnimationPlayer"
 	player.add_child(anim)
+	
+	var sprite2D = Sprite2D.new()
+	sprite2D.name = "Sprite2D"
+	player.add_child(sprite2D)
 
 	add_child_autofree(player)
 	player.movePlayerToPos(Vector2(5,0))

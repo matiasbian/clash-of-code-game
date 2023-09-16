@@ -1,6 +1,7 @@
 class_name ActionButton extends Button
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
+@export var dir = MovementBlock.Directions.NULL
 
 @export var isSideMenu:bool
 @onready var baseColor:Color = get_parent().color
@@ -38,4 +39,5 @@ func _on_play():
 
 	get_parent().color = Color.GRAY
 
-	
+func do_extras(player):
+	pass

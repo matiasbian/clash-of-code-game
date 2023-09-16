@@ -1,4 +1,4 @@
-class_name StartBlock extends Node
+class_name StartBlock extends BaseGameBlock
 
 
 func _init(data):

@@ -1,7 +1,7 @@
-extends ActionButton
-
-@export var dir:MovementBlock.Directions = MovementBlock.Directions.Top
-	
+class_name DirButton extends ActionButton
+		
 func _get_command_type():
 	return self
-
+	
+func do_extras(player):
+	player.disable_jump()

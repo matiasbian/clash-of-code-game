@@ -15,6 +15,7 @@ var anim
 var target = Vector2(0,0)
 var reachedPos = false
 var die = false
+var jump = false
 
 func _ready():
 	target = position
@@ -45,22 +46,26 @@ func _handlePlayerMovement():
 		if !die:
 			anim.play(IDLE_ANIM)
 		
-func movePlayerToPos(pos):
+func movePlayerToPos(pos, animate):
 	anim.stop()	
-	anim.play("Moving")
+	if (animate): 
+		anim.play("Moving")
 	reachedPos = false
 	target = pos
 	
-func movePlayerToDir(dir):
-
-	var offset = _get_movement_vector(dir)
+func movePlayerToDir(button):
+	print("Button class: " + str(button.dir))
+	var offset = _get_movement_vector(button)
 	var targetPos = position + offset
-	movePlayerToPos(targetPos)
+	var animate = !button is JumpButton
+	movePlayerToPos(targetPos, animate)
+	button.do_extras(self)
 	
 func triggerMovementFinished():
 	emit_signal("movement_finished", target)
 	
-func _get_movement_vector(dir):
+func _get_movement_vector(button):
+	var dir = button.dir
 	if (dir == MovementBlock.Directions.Right):
 		return Vector2(MOVEMENT_OFFSET_X,0)
 	elif (dir == MovementBlock.Directions.Left):
@@ -69,6 +74,17 @@ func _get_movement_vector(dir):
 		return Vector2(0, -MOVEMENT_OFFSET_X)
 	elif (dir == MovementBlock.Directions.Bottom):
 		return Vector2(0, MOVEMENT_OFFSET_X)
+		
+func _jump():
+	anim.stop()
+	jump = true
+	anim.play("Jumping")
+
+func is_jumping():
+	return jump
+
+func disable_jump():
+	jump = false
 	
 #events
 

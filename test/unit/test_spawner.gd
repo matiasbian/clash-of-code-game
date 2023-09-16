@@ -8,7 +8,7 @@ func test_assert_spawner():
 	spawner.spikePrefab = load("res://Prefabs/Blocks/Spikes.tscn")
 	spawner.game_manager = Game_Manager.new()
 	
-	var levelData = "{\n    \"levelNumber\": 1,\n    \"label\": \"LEVEL_1\",\n    \"structure\": {\n        \"elements\": [\n            {\n                \"start\": {}\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Forward\"\n                }\n            },\n            {\n                \"finish\": {\n                    \"dir\": \"Forward\"\n                }\n            }\n        ]\n    }\n}"
+	var levelData = "{\n    \"levelNumber\": 1,\n    \"label\": \"LEVEL_1\",\n    \"structure\": {\n        \"elements\": [\n            {\n                \"start\": {}\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Forward\"\n                }\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Forward\"\n                }\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Top\"\n                }\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Forward\"\n                }\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Forward\"\n                }\n            },\n            {\n                \"movement\": {\n                    \"dir\": \"Bottom\"\n                }\n            },\n            {\n                \"finish\": {\n                    \"dir\": \"Forward\"\n                }\n            }\n        ]\n    },\n    \"perfectSteps\": 7\n}"
 	var parsedData = JSON.parse_string(levelData)
 	var blocks = spawner.instantiateLevel(parsedData)
-	assert_eq(blocks.size(), 3, "true")
+	assert_eq(blocks.size(), 8, "true")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://beb26ifv5wdy"]
+
+[ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_3uno4"]
+[ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="2_yrb7s"]
+[ext_resource type="Texture2D" uid="uid://dut830hr5vflg" path="res://Art/Sprites/map/peaks/peaks_3.png" id="3_me70d"]
+[ext_resource type="Texture2D" uid="uid://5ub0xi87ixkb" path="res://Art/Sprites/map/peaks/peaks_4.png" id="4_tbmtq"]
+[ext_resource type="Texture2D" uid="uid://co5ff4fnm2ocb" path="res://Art/Sprites/map/peaks/peaks_2.png" id="5_16oup"]
+[ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="6_a14l6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxood"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_me70d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tbmtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16oup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a14l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_16oup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tbmtq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Directional" type="Node2D"]
+
+[node name="border" type="Sprite2D" parent="."]
+modulate = Color(1, 0.756863, 0.639216, 1)
+visibility_layer = 3
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("1_3uno4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.298039, 0.129412, 0.235294, 1)
+scale = Vector2(8, 8)
+texture = ExtResource("2_yrb7s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_yxood")
+autoplay = "default"
+frame_progress = 0.39395

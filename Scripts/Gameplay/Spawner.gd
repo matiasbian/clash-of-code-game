@@ -1,6 +1,7 @@
 class_name Spawner extends Node2D
 
 @export var dirPrefab = Resource.new()
+@export var jumpPrefab = Resource.new()
 @export var spikePrefab = Resource.new()
 @export var startPrefab = Resource.new()
 @export var finishPrefab = Resource.new()
@@ -32,6 +33,9 @@ func instantiateLevel(data):
 		#TODO: Replace this with real blocks selection
 		if (step is MovementBlock):
 			lastVector = _instantiateBlock(lastVector, dirPrefab, step.dir)
+		elif (step is JumpBlock):
+			print("Jump dir " + str(step.dir))
+			lastVector = _instantiateBlock(lastVector, jumpPrefab, step.dir)
 		elif step is StartBlock:
 			lastVector = _instantiateBlock(lastVector, startPrefab, MovementBlock.Directions.Right)
 		elif step is FinishBlock:
@@ -48,7 +52,6 @@ func instantiateLevel(data):
 func _instantiateBlock (lastPos, block, dir):
 	var inst = block.instantiate()
 	add_child(inst)
-	print("direction", dir)
 	inst.position = get_next_block_dir(dir, lastPos)
 	return inst.position
 	

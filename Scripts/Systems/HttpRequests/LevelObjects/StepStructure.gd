@@ -12,6 +12,8 @@ func get_element(elem):
 		return MovementBlock.new(elem[key])
 	elif key == "start":
 		return StartBlock.new(elem[key])
+	elif key == "jump":
+		return JumpBlock.new(elem[key])
 	elif key == "finish":
 		return FinishBlock.new(elem[key])
 	

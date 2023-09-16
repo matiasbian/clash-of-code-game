@@ -1,4 +1,4 @@
-class_name FinishBlock extends Node
+class_name FinishBlock extends BaseGameBlock
 
 var dir:MovementBlock.Directions
 

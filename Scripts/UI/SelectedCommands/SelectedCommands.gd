@@ -20,6 +20,7 @@ func _action_added(action):
 	var instance = commandPrefab.instantiate()
 	instance.get_node("Label").text = action.get_parent().get_node("Label").text
 	instance.get_node("Button").index = currentIndex
+	instance.get_node("Button").set_script(action.get_script())
 	instance.get_node("Button").dir = action.dir
 	
 	container.add_child(instance)

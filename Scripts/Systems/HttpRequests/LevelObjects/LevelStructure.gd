@@ -6,6 +6,8 @@ var stepsList
 var perfect_steps:int
 
 func _init(dataToParse):
+	print("DATA TO PARSE")
+	print(dataToParse)
 	self.levelNumber = dataToParse["levelNumber"]
 	self.label = dataToParse["label"]
 	self.stepsList = StepStructure.new(dataToParse["structure"])
