@@ -21,6 +21,6 @@ func test_assert_eq_mov_pos():
 	player.add_child(sprite2D)
 
 	add_child_autofree(player)
-	player.movePlayerToPos(Vector2(5,0))
+	player.movePlayerToPos(Vector2(5,0), false)
 	gut.simulate(player, 20, .1)
 	assert_eq(Vector2(5,0).is_equal_approx(player.position), true , 'Player position should be Vector2(5,0)')
