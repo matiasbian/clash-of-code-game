@@ -98,6 +98,7 @@ func _level_structure():
 	}
 
 func _fill_dic():
+	#movement
 	dic[0] = {
 		"movement": {
 			"dir": "Forward"
@@ -121,6 +122,34 @@ func _fill_dic():
 			"dir": "Bottom"
 		}
 	}
+	
+	# jump
+	
+	dic[5] = {
+		"Jump": {
+			"dir": "Forward"
+		}
+	}
+	
+	dic[10] = {
+		"Jump": {
+			"dir": "Backward"
+		}
+	}
+	
+	dic[11] = {
+		"Jump": {
+			"dir": "Top"
+		}
+	}
+	
+	dic[12] = {
+		"Jump": {
+			"dir": "Bottom"
+		}
+	}
+	
+	# mandatory
 	
 	dic[7] = {
 			"start": {}

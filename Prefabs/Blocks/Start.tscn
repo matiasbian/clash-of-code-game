@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cpmw24xdmg47p"]
+[gd_scene load_steps=4 format=3 uid="uid://cpmw24xdmg47p"]
 
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_7na08"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/GameBlock.gd" id="1_upwkg"]
 [ext_resource type="Texture2D" uid="uid://bbxckrjea7med" path="res://Art/Sprites/map/tileset/tile069.png" id="2_23ijg"]
 
 [node name="Directional" type="Node2D"]
+script = ExtResource("1_upwkg")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)

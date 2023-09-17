@@ -34,7 +34,6 @@ func instantiateLevel(data):
 		if (step is MovementBlock):
 			lastVector = _instantiateBlock(lastVector, dirPrefab, step.dir)
 		elif (step is JumpBlock):
-			print("Jump dir " + str(step.dir))
 			lastVector = _instantiateBlock(lastVector, jumpPrefab, step.dir)
 		elif step is StartBlock:
 			lastVector = _instantiateBlock(lastVector, startPrefab, MovementBlock.Directions.Right)
@@ -51,6 +50,7 @@ func instantiateLevel(data):
 	
 func _instantiateBlock (lastPos, block, dir):
 	var inst = block.instantiate()
+	inst.init(dir)
 	add_child(inst)
 	inst.position = get_next_block_dir(dir, lastPos)
 	return inst.position

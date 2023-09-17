@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://beb26ifv5wdy"]
+[gd_scene load_steps=9 format=3 uid="uid://beb26ifv5wdy"]
 
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_3uno4"]
+[ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/GameJumpBlock.gd" id="1_vgxd4"]
 [ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="2_yrb7s"]
 [ext_resource type="Texture2D" uid="uid://dut830hr5vflg" path="res://Art/Sprites/map/peaks/peaks_3.png" id="3_me70d"]
 [ext_resource type="Texture2D" uid="uid://5ub0xi87ixkb" path="res://Art/Sprites/map/peaks/peaks_4.png" id="4_tbmtq"]
@@ -34,6 +35,7 @@ animations = [{
 }]
 
 [node name="Directional" type="Node2D"]
+script = ExtResource("1_vgxd4")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)
@@ -42,12 +44,38 @@ scale = Vector2(0.52, 0.52)
 texture = ExtResource("1_3uno4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.298039, 0.129412, 0.235294, 1)
 scale = Vector2(8, 8)
 texture = ExtResource("2_yrb7s")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+[node name="Spikes" type="Node2D" parent="."]
+position = Vector2(-33, -1)
+scale = Vector2(3.8, 5.04)
+
+[node name="Left" type="AnimatedSprite2D" parent="Spikes"]
 sprite_frames = SubResource("SpriteFrames_yxood")
 autoplay = "default"
 frame_progress = 0.39395
+
+[node name="Right" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(17.3684, 0)
+sprite_frames = SubResource("SpriteFrames_yxood")
+autoplay = "default"
+frame_progress = 0.39395
+
+[node name="Bottom" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(8.42105, 6.7123)
+scale = Vector2(1, 0.764633)
+sprite_frames = SubResource("SpriteFrames_yxood")
+autoplay = "default"
+frame_progress = 0.39395
+
+[node name="Top" type="AnimatedSprite2D" parent="Spikes"]
+position = Vector2(8.42105, -6.34921)
+scale = Vector2(1, 0.764633)
+sprite_frames = SubResource("SpriteFrames_yxood")
+autoplay = "default"
+frame_progress = 0.39395
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(4.125, 4.625)
+texture = ExtResource("2_yrb7s")

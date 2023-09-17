@@ -6,7 +6,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
-font_size = 21
+font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
@@ -14,27 +14,35 @@ shadow_size = 0
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(80, 80)
 size_flags_vertical = 6
-color = Color(0.780392, 0.533333, 0.376471, 1)
+color = Color(0.733333, 0.572549, 0.533333, 1)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(32, 32)
 texture = ExtResource("1_y5rew")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00185, 1.00594)
+theme_override_fonts/font = ExtResource("2_32fnx")
+theme_override_font_sizes/font_size = 3
 text = "->"
 label_settings = SubResource("LabelSettings_2biro")
 horizontal_alignment = 1
