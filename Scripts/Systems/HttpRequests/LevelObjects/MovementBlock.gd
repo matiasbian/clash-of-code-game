@@ -4,7 +4,7 @@ enum Directions {NULL, Right, Left, Top, Bottom}
 var dir:Directions
 
 func _init(block):
-	var direc:String = block["dir"]
+	var direc:String = block
 	match direc:
 		"Forward":
 			dir = Directions.Right

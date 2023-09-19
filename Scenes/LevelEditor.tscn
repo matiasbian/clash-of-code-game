@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cp2xpy7c0rhst"]
+[gd_scene load_steps=8 format=3 uid="uid://cp2xpy7c0rhst"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_8iaoh"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="3_1x5em"]
+[ext_resource type="PackedScene" uid="uid://dvcnl52c6mb81" path="res://Prefabs/UI/LevelEditor/GridButton.tscn" id="3_ijbu0"]
 [ext_resource type="Script" path="res://Art/Sprites/UI/Loadbutton.gd" id="3_jkeep"]
 [ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
@@ -171,8 +172,93 @@ size_flags_stretch_ratio = 0.05
 text = "+"
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button2" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button3" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button4" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button5" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button6" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button7" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button8" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button9" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button10" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button11" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button12" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button13" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button14" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button15" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button16" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button17" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button18" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button19" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button20" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button21" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button22" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button23" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button24" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
+
+[node name="Button25" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/GridContainer" instance=ExtResource("3_ijbu0")]
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

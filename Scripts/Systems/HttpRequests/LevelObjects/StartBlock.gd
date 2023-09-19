@@ -1,7 +1,7 @@
 class_name StartBlock extends BaseGameBlock
 
 
-func _init(data):
+func _init():
 	pass
 
 # Called when the node enters the scene tree for the first time.

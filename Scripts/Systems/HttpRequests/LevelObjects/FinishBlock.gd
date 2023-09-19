@@ -3,7 +3,7 @@ class_name FinishBlock extends BaseGameBlock
 var dir:MovementBlock.Directions
 
 func _init(block):
-	var direc:String = block["dir"]
+	var direc:String = block
 	match direc:
 		"Forward":
 			dir = MovementBlock.Directions.Right

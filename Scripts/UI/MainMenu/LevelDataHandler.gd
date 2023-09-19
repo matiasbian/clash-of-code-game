@@ -5,8 +5,6 @@ extends Control
 func _ready():
 	var httpNode:HTTP_REQUESTS = get_tree().root.get_node("MainMenu/HtppNode")
 	httpNode.data_retrieved.connect(_fillLevelInfo)
-	print("ready")
 	
 func _fillLevelInfo(data):
 	get_child(0).setData(data)
-	print(data)

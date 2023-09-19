@@ -10,7 +10,6 @@ func _ready():
 	
 	if !isSideMenu:
 		get_parent().get_node("Label").visible = true
-		print(self.name)
 		get_parent().get_node("Label").text = _get_label(dir)
 		return
 		
@@ -23,7 +22,6 @@ func _get_command_type():
 	return self
 	
 func do_extras(player):
-	print("Jumping")
 	player._jump()
 	
 func _pressed():
@@ -34,7 +32,6 @@ func _pressed():
 		game_manager.RemoveCommand(index)
 		
 func _on_accept():
-	print("ACEPTADO")
 	jump_pop_up.visible = false
 	dir = _get_dir(optionButton.get_selected_id())
 	game_manager.AddCommand(_get_command_type())
@@ -50,7 +47,6 @@ func _get_dir(dir):
 		return MovementBlock.Directions.Bottom
 		
 func _get_label(dir):
-	print("DIR es " + str(dir))
 	if dir == 1:
 		return "->"
 	elif dir == 2:

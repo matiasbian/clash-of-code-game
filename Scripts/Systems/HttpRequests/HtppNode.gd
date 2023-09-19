@@ -37,12 +37,10 @@ func HTTPPost(url, body):
 	http_request.request_completed.connect(data_sent_f)
 	
 func data_sent_f(result, response_code, headers, body):
-	print("Response " + str(response_code))
 	emit_signal("data_sent", result)
 
 # Called when the HTTP request is completed.
 func _http_request_completed(result, response_code, headers, body):
-	print("Completed")
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
