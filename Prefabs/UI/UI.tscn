@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
-[ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="3_0sakg"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="3_hlaxj"]
 [ext_resource type="Texture2D" uid="uid://k0aysnl04usm" path="res://Art/Sprites/UI/Icons/man-jumping-up.png" id="3_kf2g7"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/JumpButton.gd" id="3_kxmu6"]
@@ -13,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="8_g7bxv"]
 [ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="8_lx1mp"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="10_02guc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yfl"]
+bg_color = Color(0.560784, 0.560784, 0.560784, 0.427451)
 
 [sub_resource type="Theme" id="Theme_1v5bc"]
 default_font = ExtResource("4_5tr4s")
@@ -33,37 +35,47 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.9
 anchor_bottom = 0.136
+offset_right = 0.200073
+offset_bottom = 9.87199
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 2
 script = ExtResource("1_db8n0")
 commandPrefab = ExtResource("1_esfrg")
-container = NodePath("ColorRect/HBoxContainer")
+container = NodePath("ColorRect/ScrollContainer/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
 layout_mode = 2
 color = Color(0.286275, 0.572549, 0.74902, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
 
-[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
-visible = false
-layout_mode = 2
-
-[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
@@ -79,107 +91,12 @@ offset_top = 0.304001
 offset_bottom = -0.104004
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_right = 7
 
-[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
-layout_mode = 2
-color = Color(0.309804, 0.470588, 0.596078, 1)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = -0.025
-anchor_right = 0.988
-anchor_bottom = 1.0
-offset_top = 44.075
-offset_right = -0.0279999
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Right" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands"]
 layout_mode = 2
 
-[node name="TextureRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="0"]
-rotation = 1.5708
-texture = ExtResource("3_0sakg")
-
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="1"]
-visible = false
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Right" index="2"]
-isSideMenu = true
-
-[node name="Left" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
-layout_mode = 2
-
-[node name="TextureRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="0"]
-rotation = -1.5708
-texture = ExtResource("3_0sakg")
-
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="1"]
-visible = false
-text = "<-"
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Left" index="2"]
-dir = 2
-isSideMenu = true
-
-[node name="Top" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
-layout_mode = 2
-
-[node name="TextureRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="0"]
-texture = ExtResource("3_0sakg")
-
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="1"]
-visible = false
-text = "▲"
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Top" index="2"]
-dir = 3
-isSideMenu = true
-
-[node name="Bot" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
-layout_mode = 2
-
-[node name="TextureRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Bot" index="0"]
-rotation = 3.14159
-texture = ExtResource("3_0sakg")
-
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Bot" index="1"]
-visible = false
-text = "▼"
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/Bot" index="2"]
-dir = 4
-isSideMenu = true
-
-[node name="ColorRect5" parent="Panel/AvailableCommands/ColorRect/VBoxContainer" instance=ExtResource("1_esfrg")]
-layout_mode = 2
-
-[node name="TextureRect" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5" index="0"]
-texture = ExtResource("3_kf2g7")
-
-[node name="Label" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5" index="1"]
-visible = false
-offset_top = 47.0
-theme_override_font_sizes/font_size = 6
-text = "Jump"
-
-[node name="Button" parent="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5" index="2" node_paths=PackedStringArray("jump_pop_up")]
-script = ExtResource("3_kxmu6")
-jump_pop_up = NodePath("../../../../../PopUps/JumpActions")
-isSideMenu = true
-
-[node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.064
-offset_bottom = 0.0879993
-grow_horizontal = 2
-
-[node name="Label" type="Label" parent="Panel/AvailableCommands/ColorRect/AccionesCont"]
+[node name="Label" type="Label" parent="Panel/AvailableCommands/AccionesCont"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_5tr4s")
 theme_override_font_sizes/font_size = 13
@@ -187,18 +104,82 @@ text = "Acciones"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/AvailableCommands"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Right" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right" index="0"]
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button" index="0"]
+rotation = 1.5708
+
+[node name="Left" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left" index="0"]
+dir = 2
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button" index="0"]
+rotation = 4.71239
+
+[node name="Top" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top" index="0"]
+dir = 3
+isSideMenu = true
+
+[node name="Bot" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot" index="0"]
+dir = 4
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot/Button" index="0"]
+rotation = 3.14159
+
+[node name="Jump" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump" index="0" node_paths=PackedStringArray("jump_pop_up")]
+script = ExtResource("3_kxmu6")
+jump_pop_up = NodePath("../../../../../PopUps/JumpActions")
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button" index="0"]
+texture = ExtResource("3_kf2g7")
+
+[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
+visible = false
+layout_mode = 2
+
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.9
 anchor_right = 1.0
 anchor_bottom = 0.136
+offset_left = 0.200073
+offset_bottom = 9.87199
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_hlaxj")
+theme_override_constants/margin_top = 2
 
 [node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
 layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxFlat_i7yfl")
 text = "PLAY"
 script = ExtResource("3_txxca")
 
@@ -422,8 +403,8 @@ popup/item_2/id = 1
 popup/item_3/text = "Right"
 popup/item_3/id = 0
 
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Right"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Left"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Top"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/Bot"]
-[editable path="Panel/AvailableCommands/ColorRect/VBoxContainer/ColorRect5"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump"]

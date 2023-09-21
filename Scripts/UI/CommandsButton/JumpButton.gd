@@ -9,8 +9,8 @@ func _ready():
 	game_manager.startedPlay.connect(_on_play)
 	
 	if !isSideMenu:
-		get_parent().get_node("Label").visible = true
-		get_parent().get_node("Label").text = _get_label(dir)
+		get_parent().get_node("Button/Label").visible = true
+		get_parent().get_node("Button/Label").text = _get_label(dir)
 		return
 		
 	button = jump_pop_up.get_node("ColorRect/Btn")

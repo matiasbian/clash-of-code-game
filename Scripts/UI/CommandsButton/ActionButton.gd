@@ -10,6 +10,7 @@ var game_manager
 var index
 
 func _ready():
+	focus_mode =Control.FOCUS_NONE
 	game_manager = get_node(GAME_MANAGER_PATH)
 	game_manager.startedPlay.connect(_on_play)
 	

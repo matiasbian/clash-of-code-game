@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=8 format=3 uid="uid://ca051sex452gn"]
 
-[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="1_y5rew"]
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
+[ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
+bg_color = Color(0.733333, 0.572549, 0.533333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhdnj"]
+bg_color = Color(0.815686, 0.682353, 0.65098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cqlb"]
+bg_color = Color(0.333333, 0.231373, 0.203922, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
@@ -14,9 +23,22 @@ shadow_size = 0
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(80, 80)
 size_flags_vertical = 6
-color = Color(0.733333, 0.572549, 0.533333, 1)
+color = Color(0.733333, 0.572549, 0.533333, 0)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_86sv2")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mhdnj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1cqlb")
+script = ExtResource("3_h25lq")
+dir = 1
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,11 +50,12 @@ offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
-texture = ExtResource("1_y5rew")
+texture = ExtResource("2_ut8rw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="Button"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -48,14 +71,3 @@ label_settings = SubResource("LabelSettings_2biro")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
-
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-script = ExtResource("3_h25lq")
-dir = 1

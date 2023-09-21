@@ -17,13 +17,13 @@ func _ready():
 	game_manager.SetSelectedActionsReference(self)
 	
 func _action_added(action):
-	var actLabel = action.get_parent().get_node("Label")
-	var actTex = action.get_parent().get_node("TextureRect")
+	var actLabel = action.get_parent().get_node("Button/Label")
+	var actTex = action.get_parent().get_node("Button/TextureRect")
 	
 	var instance = commandPrefab.instantiate()
-	var instanceLabel = instance.get_node("Label")
+	var instanceLabel = instance.get_node("Button/Label")
 	var instanceButton = instance.get_node("Button")
-	var instanceTexture = instance.get_node("TextureRect")
+	var instanceTexture = instance.get_node("Button/TextureRect")
 	
 	instanceLabel.text = actLabel.text
 	instanceLabel.visible = actLabel.visible
