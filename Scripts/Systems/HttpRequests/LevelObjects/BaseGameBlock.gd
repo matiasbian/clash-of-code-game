@@ -1,7 +1,9 @@
 class_name BaseGameBlock extends Node
 
-func _init():
-	print("empty init")
+var pos:Vector2
+
+func _init(block):
+	pos = Vector2(block["positionX"], block["positionY"])
 
 func shouldLose(player):
 	return false

@@ -4,13 +4,20 @@ extends Button
 signal left_click
 signal right_click
 
-var types = ["", "Mov", "Jump", "Start", "Finish"]
-var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO]
+var types = ["", "Start", "Finish", "Mov", "Jump U", "Jump D", "Jump L", "Jump R"]
+var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO, Color.TOMATO, Color.TOMATO, Color.TOMATO]
 var i = 0
+
+var grid_pos
+
+@onready var container = get_parent().get_parent().get_parent()
 
 func _ready():
 # warning-ignore:return_value_discarded
 	connect("gui_input", _on_Button_gui_input)
+	
+func set_pos(pos):
+	grid_pos = pos
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
@@ -35,3 +42,14 @@ func _reset():
 func _update_button():
 	text = types[i]
 	modulate = colors[i]
+	_update_data()
+
+func _update_data():
+	if i == 0:
+		container.remove_if(self)
+	else:
+		container.update_or_add(self)
+		
+func getType():
+	return types[i]
+	

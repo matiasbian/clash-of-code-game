@@ -1,13 +1,13 @@
 class_name UILevelStructure extends Node
 
-@export var dropdown:OptionButton = OptionButton.new()
-@export var itemList:ItemList = ItemList.new()
 @export var levelNumber:SpinBox = SpinBox.new()
 @export var level_label:TextEdit = TextEdit.new()
 @export var min_steps:SpinBox = SpinBox.new()
 
+@export var dropdown:OptionButton = OptionButton.new()
 @export var add_button:Button = Button.new()
 @export var submit_button:Button = Button.new()
+@export var grid:GridButtonSpawner = GridButtonSpawner.new()
 
 @export var success_popup:Panel = Panel.new()
 @export var failure_popup:Panel = Panel.new()
@@ -28,9 +28,11 @@ const URL = "http://localhost:3000/api/levels"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	itemList.item_selected.connect(_delete_item)
 	dropdown.item_selected.connect(_item_selected)
-	add_button.pressed.connect(_item_added)
+	itemSelectedIndex = dropdown.get_item_id(0)	
+	
+	add_button.pressed.connect(_resize_grid)
+	
 	submit_button.pressed.connect(_submit)
 	levelNumber.value_changed.connect(_level_changed)
 	min_steps.value_changed.connect(_min_steps_changed)
@@ -41,24 +43,12 @@ func _ready():
 	failure_popup.get_node("Container/Button").pressed.connect(_close_f)
 	
 	_fill_dic()
-
-func _delete_item(index):
-	print("Deleting item")
-	itemList.remove_item(index)
-	steps.remove_at(index)
-	print(steps)
 	
 func _item_selected(index):
-	print("item selected Index  " + str(index))
-	itemSelectedIndex = index
-	
-func _item_added():
-	print("adding item")
-	var itemAdded = dropdown.get_item_text(itemSelectedIndex)
-	var itemID = dropdown.get_item_id(itemSelectedIndex)
-	itemList.add_item(itemAdded)
-	steps.push_back(dic[itemID])
-	print(steps)
+	itemSelectedIndex = dropdown.get_item_id(index)
+
+func _resize_grid():
+	grid.resize(itemSelectedIndex)
 	
 func _submit():
 	var structure = _level_structure()	
@@ -66,6 +56,7 @@ func _submit():
 	
 	if (!error):
 		print("sending data")
+		print(structure)
 		http_req.HTTPPost(URL, structure)
 	else:
 		failure_popup.visible = true
@@ -99,67 +90,58 @@ func _level_structure():
 
 func _fill_dic():
 	#movement
-	dic[0] = {
-		"movement": {
-			"dir": "Forward"
-		}
+	dic["Mov"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "movement",
 	}
 	
-	dic[1] = {
-		"movement": {
-			"dir": "Backward"
-		}
+	dic["Jump U"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "jump",
+		"direction": "up"
 	}
 	
-	dic[2] = {
-		"movement": {
-			"dir": "Top"
-		}
+	dic["Jump D"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "jump",
+		"direction": "down"
 	}
 	
-	dic[3] = {
-		"movement": {
-			"dir": "Bottom"
-		}
+	dic["Jump L"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "jump",
+		"direction": "left"
 	}
 	
-	# jump
-	
-	dic[5] = {
-		"Jump": {
-			"dir": "Forward"
-		}
+	dic["Jump R"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "jump",
+		"direction": "right"
 	}
 	
-	dic[10] = {
-		"Jump": {
-			"dir": "Backward"
-		}
+	dic["Start"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "start",
 	}
 	
-	dic[11] = {
-		"Jump": {
-			"dir": "Top"
-		}
+	dic["Finish"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "finish",
 	}
 	
-	dic[12] = {
-		"Jump": {
-			"dir": "Bottom"
-		}
-	}
-	
-	# mandatory
-	
-	dic[7] = {
-			"start": {}
-	}
-	
-	dic[8] = {
-		"finish": {
-			"dir": "Forward"
-		}
-	}
+func add_step(type, pos):
+	var step = dic[type]
+	step.positionX = pos.x
+	step.positionY = pos.y
+	steps.push_back(step)
+
 
 func _check_errors(structure):
 	var error = false
@@ -178,6 +160,7 @@ func _check_errors(structure):
 		error = true
 	else:
 		levelNumber.get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)
+		
 	#check steps amount
 	if structure["perfect_steps"] == 0:
 		print("perfect steps cannot be 0")
@@ -186,21 +169,55 @@ func _check_errors(structure):
 	else:
 		min_steps.get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)
 
-	if (steps.size() > 0):
-		# check structure
-		var start_step:Dictionary = steps[0]
-		var end_step:Dictionary = steps[steps.size() -1]
+	#structure
+	var hasStart
+	var hasEnd
+	var localError
+	for s in steps:
+		hasStart = s.type == "start" || hasStart
+		hasEnd = s.type == "finish" || hasEnd
 		
-		
-		if !(start_step.keys()[0] == dic[7].keys()[0] && end_step.keys()[0] == dic[8].keys()[0]):
-			print("Structure format error")
-			error = true
-			itemList.get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
-		else:
-			itemList.get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)			
-	else:
-		print("Structure error: Empty")
-		itemList.get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", error_color)		
+	localError = !hasStart || !hasEnd
+	
+	if (localError):
+		dropdown.get_parent().get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
+	else:
+		dropdown.get_parent().get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)
+		
 	return error
+	
+
+func remove_if(button):
+	var elem = -1
+	for index in range(0, steps.size()):
+		if button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY:
+			elem = index
+	
+	if elem > 0:
+		steps.remove_at(elem)
+		print("removing at " + str(elem))
+		
+func update_or_add(button):
+	var elem = -1
+	
+	for index in range(0, steps.size()):
+		print("comparing: new b X " + str(button.grid_pos.x) + "/" + str(steps[index].positionX) )
+		print("comparing: new b X " + str(button.grid_pos.y) + "/" + str(steps[index].positionY) )
+		print("is equal: " + str(button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY))
+		if button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY:
+			print("replace then")
+			elem = index
+			
+	var toAdd = dic[button.getType()].duplicate()
+	toAdd.positionX = button.grid_pos.x
+	toAdd.positionY = button.grid_pos.y
+	
+	if elem >= 0:
+		steps[elem] = toAdd
+	else:
+		steps.push_back(toAdd)
+	print("added " + str(toAdd))
+	print("Final " + str(steps))
+		
 	

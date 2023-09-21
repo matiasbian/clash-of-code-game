@@ -3,19 +3,20 @@ class_name JumpBlock extends BaseGameBlock
 var dir:MovementBlock.Directions
 
 func _init(block):
-	var direc:String = block
+	var direc:String = block["direction"]
 	match direc:
-		"Forward":
+		"right":
 			dir = MovementBlock.Directions.Right
-		"Back":
+		"left":
 			dir = MovementBlock.Directions.Left
-		"Top":
+		"up":
 			dir = MovementBlock.Directions.Top
-		"Bottom":
+		"down":
 			dir = MovementBlock.Directions.Bottom
 		_:
 			dir = MovementBlock.Directions.Left
-	print("Final dir: " + str(dir))
+	pos = Vector2(block["positionX"], block["positionY"])
+	
 func shouldLose(player):
 	
 	return !player.is_jumping()

@@ -13,7 +13,6 @@ const BLOCKS_OFFSET = 130
 var game_manager
 var level:LevelStructure
 var blocks:Dictionary
-#var lastVector:Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,75 +23,36 @@ func _ready():
 func instantiateLevel(data):
 	level = LevelStructure.new(data) 
 	
-	var i = 0
-	
-	var init = Vector2(-BLOCKS_OFFSET ,0)
-	
-	#start die block
-	#lastVector = _instantiateBlock(lastVector, spikePrefab, MovementBlock.Directions.Right)	
-	
-	iterate_tree_spawn(level.stepsList, MovementBlock.Directions.Right, init)
-	#for step in level.stepsList.steps:
-		#TODO: Replace this with real blocks selection
-	#	if (step is MovementBlock):
-	#		lastVector = _instantiateBlock(lastVector, dirPrefab, step.dir)
-	#	elif (step is JumpBlock):
-	#		lastVector = _instantiateBlock(lastVector, jumpPrefab, step.dir)
-	#	elif step is StartBlock:
-	#		lastVector = _instantiateBlock(lastVector, startPrefab, MovementBlock.Directions.Right)
-	#	elif step is FinishBlock:
-	#		lastVector = _instantiateBlock(lastVector, finishPrefab, step.dir)
-	#	blocks[str(lastVector)] = step	
-	#	i += 1
-	#end die block
-	#lastVector = _instantiateBlock(lastVector, spikePrefab, MovementBlock.Directions.Right)	
+	var init = Vector2(-1 ,0)
+	for step in level.stepsList.steps:
+		_spawn_in_dir(step, step.pos)
 	
 	game_manager.SetBlocks(blocks)
 	return blocks
 
-func iterate_tree_spawn(tree, dir, lastVector):
-	if (tree.node_value == null):
-		return
-		
-	print("----------SPAWNING")
-
-	lastVector = _spawn_in_dir(tree.node_value, dir, lastVector)
-	
-	iterate_tree_spawn(tree.nodeBackward, MovementBlock.Directions.Left, lastVector)
-	iterate_tree_spawn(tree.nodeForward, MovementBlock.Directions.Right, lastVector)
-	iterate_tree_spawn(tree.nodeTop, MovementBlock.Directions.Top, lastVector)
-	iterate_tree_spawn(tree.nodeBottom, MovementBlock.Directions.Bottom, lastVector)
-
-func _spawn_in_dir(step, dir, lastVector):
+func _spawn_in_dir(step, pos):
+	var gamePos
 	if (step is MovementBlock):
-		print("Step is MovementBlock")
-		lastVector = _instantiateBlock(lastVector, dirPrefab, dir)
+		gamePos = _instantiateBlock(step, dirPrefab)
 	elif (step is JumpBlock):
 		print("Step is JumpBlock")
-		lastVector = _instantiateBlock(lastVector, jumpPrefab, dir)
+		gamePos = _instantiateBlock(step, jumpPrefab)
 	elif step is StartBlock:
 		print("Step is StartBlock")
-		lastVector = _instantiateBlock(lastVector, startPrefab, MovementBlock.Directions.Right)
+		gamePos = _instantiateBlock(step, startPrefab)
 	elif step is FinishBlock:
 		print("Step is FinishBlock")
-		lastVector = _instantiateBlock(lastVector, finishPrefab, dir)
-	blocks[str(lastVector)] = step	
-	return lastVector
+		gamePos = _instantiateBlock(step, finishPrefab)
+	blocks[str(gamePos)] = step	
 	
-func _instantiateBlock (lastPos, block, dir):
+func _instantiateBlock (step, block):
 	var inst = block.instantiate()
-	inst.init(dir)
+	inst.init(step)
 	add_child(inst)
-	inst.position = get_next_block_dir(dir, lastPos)
+	inst.position = get_next_block_dir(step.pos)
 	return inst.position
 	
-func get_next_block_dir(dir, lastPos):
-	if (dir == MovementBlock.Directions.Right):
-		return lastPos + (Vector2.RIGHT * BLOCKS_OFFSET)
-	elif  (dir == MovementBlock.Directions.Left):
-		return lastPos + (Vector2.LEFT * BLOCKS_OFFSET)
-	elif  (dir == MovementBlock.Directions.Top):
-		return lastPos + (Vector2.UP * BLOCKS_OFFSET)
-	elif  (dir == MovementBlock.Directions.Bottom):
-		return lastPos + (Vector2.DOWN * BLOCKS_OFFSET)
+func get_next_block_dir(pos):
+	return pos * BLOCKS_OFFSET
+
 	
