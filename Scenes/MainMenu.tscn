@@ -95,11 +95,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
 script = ExtResource("2_w5kg7")
+levelThumbnail = ExtResource("2_ot65x")
 
 [node name="NivelThubnail" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+visible = false
 layout_mode = 2
 
 [node name="NivelThubnail2" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+visible = false
 layout_mode = 2
 disabled = true
 
@@ -108,6 +111,7 @@ text = "Nivel
 2"
 
 [node name="NivelThubnail3" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+visible = false
 layout_mode = 2
 disabled = true
 
@@ -116,6 +120,7 @@ text = "Nivel
 3"
 
 [node name="NivelThubnail4" parent="UI/Levels/GridContainer" instance=ExtResource("2_ot65x")]
+visible = false
 layout_mode = 2
 disabled = true
 
@@ -126,6 +131,7 @@ text = "Nivel
 [node name="HtppNode" type="Node2D" parent="."]
 script = ExtResource("5_wcmn7")
 URL = "http://localhost:3000/api/progress?userID=5"
+use_exported = true
 
 [editable path="UI/Levels/GridContainer/NivelThubnail2"]
 [editable path="UI/Levels/GridContainer/NivelThubnail3"]

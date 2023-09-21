@@ -1,14 +1,22 @@
 class_name HTTP_REQUESTS extends Node2D
 
 @export var URL = "http://localhost:3000/api/levels?level=1"
+var URL_GENERIC = "http://localhost:3000/api/levels?level="
 @export var URL_POST = "http://localhost:3000/api/progress"
+@export var use_exported = false
 
 signal data_retrieved(response)
 signal data_sent(response)
 
 func _ready():
 	# Create an HTTP request node and connect its completion signal.
-	HTTPget(URL)
+	var lvl = get_node("/root/GlobalVar").level
+	var url
+	if use_exported:
+		url = URL
+	else:
+		url = URL_GENERIC + str(lvl)
+	HTTPget(url)
 	
 func HTTPget(url):
 	var http_request = HTTPRequest.new()

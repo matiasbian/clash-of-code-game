@@ -1,5 +1,6 @@
 extends Control
 
+@export var levelThumbnail:Resource = Resource.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -7,4 +8,8 @@ func _ready():
 	httpNode.data_retrieved.connect(_fillLevelInfo)
 	
 func _fillLevelInfo(data):
-	get_child(0).setData(data)
+	for d in data:
+		var inst = levelThumbnail.instantiate()
+		add_child(inst)
+		print(d)
+		inst.setData(d)

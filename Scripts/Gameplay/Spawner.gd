@@ -28,6 +28,7 @@ func instantiateLevel(data):
 		_spawn_in_dir(step, step.pos)
 	
 	game_manager.SetBlocks(blocks)
+	httpReq.data_retrieved.disconnect(instantiateLevel)
 	return blocks
 
 func _spawn_in_dir(step, pos):

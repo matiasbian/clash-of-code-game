@@ -96,41 +96,41 @@ func _fill_dic():
 		"type": "movement",
 	}
 	
-	dic["Jump U"] = {
+	dic["JuU"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "jump",
 		"direction": "up"
 	}
 	
-	dic["Jump D"] = {
+	dic["JuD"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "jump",
 		"direction": "down"
 	}
 	
-	dic["Jump L"] = {
+	dic["JuL"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "jump",
 		"direction": "left"
 	}
 	
-	dic["Jump R"] = {
+	dic["JuR"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "jump",
 		"direction": "right"
 	}
 	
-	dic["Start"] = {
+	dic["Sta"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "start",
 	}
 	
-	dic["Finish"] = {
+	dic["Fin"] = {
 		"positionX": 0,
 		"positionY": 0,
 		"type": "finish",

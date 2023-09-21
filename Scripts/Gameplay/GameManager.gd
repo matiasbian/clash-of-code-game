@@ -120,6 +120,7 @@ func playerReachedPos(pos):
 func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
+	httpReq.data_retrieved.disconnect(set_perfect_steps)
 
 
 
