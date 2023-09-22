@@ -42,40 +42,43 @@ grow_vertical = 2
 theme_override_constants/margin_top = 2
 script = ExtResource("1_db8n0")
 commandPrefab = ExtResource("1_esfrg")
-container = NodePath("ColorRect/ScrollContainer/HBoxContainer")
+container = NodePath("ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
 
 [node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
 layout_mode = 2
 color = Color(0.286275, 0.572549, 0.74902, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/SelectedCommands/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_scroll_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer"]
+layout_mode = 2
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
@@ -98,6 +101,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Panel/AvailableCommands/AccionesCont"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_5tr4s")
 theme_override_font_sizes/font_size = 13
 text = "Acciones"
@@ -105,7 +109,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/AvailableCommands"]
+custom_minimum_size = Vector2(0, 430)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ScrollContainer"]
@@ -192,6 +199,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_7jtma")
+metadata/_edit_lock_ = true
 
 [node name="Victory" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
