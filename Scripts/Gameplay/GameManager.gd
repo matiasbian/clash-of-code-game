@@ -81,7 +81,7 @@ func _checkNewBlock(playerPos):
 func _play(pos):
 	focusCurrentAction()
 	player.movePlayerToDir(pos)
-	get_node("/root/GlobalVar").play_step()
+
 
 func _getActionsList():
 	return selectedActions.list
@@ -90,7 +90,7 @@ func _checkIfWon(pos):
 	if (win):
 		emit_signal("on_victory", (perfect_steps / movementsExecuted) * 100)
 	elif (pos != Vector2.ZERO):
-		defeat()
+		defeat_delay()
 		
 func defeat():
 	emit_signal("on_defeat")
@@ -111,12 +111,15 @@ func playerReachedPos(pos):
 		
 	if stopChecking:
 		return
+		
+	if (playQueue.size() == 0):
+		_checkIfWon(pos)
+		return
 	
 	await get_tree().create_timer(1.0).timeout
 	if (playQueue.size() > 0):
 		_play(playQueue.pop_front())
-	else:
-		_checkIfWon(pos)
+		
 		
 func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)

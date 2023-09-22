@@ -59,6 +59,7 @@ theme_override_constants/margin_left = 5
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer"]
 layout_mode = 2
+follow_focus = true
 vertical_scroll_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer"]

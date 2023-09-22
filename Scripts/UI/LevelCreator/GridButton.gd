@@ -29,6 +29,7 @@ func _on_Button_gui_input(event):
 	
 
 func _change_type():
+	get_node("/root/GlobalVar").play_tap()
 	if (i >= types.size() -1):
 		i = 0
 	else:
@@ -36,6 +37,7 @@ func _change_type():
 	_update_button()
 	
 func _reset():
+	get_node("/root/GlobalVar").play_tap()
 	i = 0
 	_update_button()
 	

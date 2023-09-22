@@ -17,7 +17,6 @@ func _ready():
 func _pressed():
 	if (isSideMenu):
 		game_manager.AddCommand(_get_command_type())
-		get_node("/root/GlobalVar").play_audio_add_button()		
 	else:
 		get_node("/root/GlobalVar").play_audio_remove_button()
 		game_manager.RemoveCommand(index)

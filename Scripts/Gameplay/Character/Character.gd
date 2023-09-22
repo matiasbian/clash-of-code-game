@@ -49,12 +49,12 @@ func _handlePlayerMovement():
 func movePlayerToPos(pos, animate):
 	anim.stop()	
 	if (animate): 
+		get_node("/root/GlobalVar").play_step()
 		anim.play("Moving")
 	reachedPos = false
 	target = pos
 	
 func movePlayerToDir(button):
-	print("Button class: " + str(button.dir))
 	var offset = _get_movement_vector(button)
 	var targetPos = position + offset
 	var animate = !button is JumpButton
@@ -79,6 +79,7 @@ func _jump():
 	anim.stop()
 	jump = true
 	anim.play("Jumping")
+	get_node("/root/GlobalVar").play_jump()	
 
 func is_jumping():
 	return jump

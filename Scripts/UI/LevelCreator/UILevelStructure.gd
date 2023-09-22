@@ -48,6 +48,7 @@ func _item_selected(index):
 	itemSelectedIndex = dropdown.get_item_id(index)
 
 func _resize_grid():
+	get_node("/root/GlobalVar").play_tap()
 	grid.resize(itemSelectedIndex)
 	
 func _submit():
@@ -55,8 +56,7 @@ func _submit():
 	var error = _check_errors(structure)
 	
 	if (!error):
-		print("sending data")
-		print(structure)
+		get_node("/root/GlobalVar").play_tap()
 		http_req.HTTPPost(URL, structure)
 	else:
 		failure_popup.visible = true
@@ -71,10 +71,12 @@ func _min_steps_changed(value):
 	min_steps_value = value
 	
 func _close_s():
+	get_node("/root/GlobalVar").play_tap()
 	success_popup.visible = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
 func _close_f():
+	get_node("/root/GlobalVar").play_tap()
 	failure_popup.visible = false	
 # aux
 

@@ -39,7 +39,7 @@ func _action_added(action):
 	list.push_back(instance)
 	instance.get_node("Button").index = list.size() -1
 	
-	
+	get_node("/root/GlobalVar").play_audio_add_button()		
 	instance.get_node("Button").isSideMenu = false
 
 func _action_removed(index):

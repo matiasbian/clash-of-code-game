@@ -30,6 +30,7 @@ func on_defeat_delay():
 	defeat.visible = true
 	
 func on_win(percentage):
+	await get_tree().create_timer(1.0).timeout
 	victory.visible = true
 	get_node("Victory/ColorRect/StarsContainer").setPerfectValues(percentage)
 	

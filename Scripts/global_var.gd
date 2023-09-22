@@ -6,6 +6,8 @@ var level:int = 1
 @onready var sfx_remove_add =  load("res://Art/Sfx/remove_button.wav")
 @onready var sfx_walk =  load("res://Art/Sfx/walk.wav")
 @onready var sfx_explosion =  load("res://Art/Sfx/explosion.wav")
+@onready var sfx_jump =  load("res://Art/Sfx/jump.wav")
+@onready var sfx_tap =  load("res://Art/Sfx/tap.wav")
 
 @onready var audio_player:AudioStreamPlayer = AudioStreamPlayer.new()
 
@@ -26,4 +28,12 @@ func play_step():
 	
 func play_explosion():
 	audio_player.stream = sfx_explosion
+	audio_player.play()
+
+func play_jump():
+	audio_player.stream = sfx_jump
+	audio_player.play()
+	
+func play_tap():
+	audio_player.stream = sfx_tap
 	audio_player.play()

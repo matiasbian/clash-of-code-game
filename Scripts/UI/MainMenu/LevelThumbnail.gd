@@ -6,6 +6,7 @@ class_name UILevelTh extends Button
 var levelToLoad = 1
 
 func _pressed():
+	get_node("/root/GlobalVar").play_tap()
 	get_node("/root/GlobalVar").level = levelToLoad
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	

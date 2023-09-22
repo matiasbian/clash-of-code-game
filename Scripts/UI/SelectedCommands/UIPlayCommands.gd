@@ -8,6 +8,7 @@ func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
 
 func _pressed():
+	get_node("/root/GlobalVar").play_tap()
 	var played = game_manager.PlayCommands()
 	disabled = played
 
