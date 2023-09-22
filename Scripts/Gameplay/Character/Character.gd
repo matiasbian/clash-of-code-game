@@ -92,6 +92,9 @@ func on_defeat():
 	die = true
 	anim.play("Die")
 	
+	await get_tree().create_timer(0.3).timeout
+	get_node("/root/GlobalVar").play_explosion()
+	
 func _on_play():
 	get_node("Arrow").visible = false
 	

@@ -81,6 +81,7 @@ func _checkNewBlock(playerPos):
 func _play(pos):
 	focusCurrentAction()
 	player.movePlayerToDir(pos)
+	get_node("/root/GlobalVar").play_step()
 
 func _getActionsList():
 	return selectedActions.list
