@@ -23,10 +23,12 @@ func _ready():
 
 
 func on_defeat():
+	get_node("/root/GlobalVar").play_lose()
 	defeat.visible = true
 	
 func on_defeat_delay():
 	await get_tree().create_timer(2.0).timeout
+	get_node("/root/GlobalVar").play_lose()	
 	defeat.visible = true
 	
 func on_win(percentage):
@@ -38,6 +40,7 @@ func on_win(percentage):
 	
 	
 func restart_level():
+	get_node("/root/GlobalVar").play_tap()	
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func restart_game():
@@ -50,6 +53,7 @@ func level_ended(response):
 		restart_game()
 	
 func send_score():
+	get_node("/root/GlobalVar").play_tap()	
 	var body = {
 		"userID": 5,
 		"levelNumber": get_node("/root/GlobalVar").level,

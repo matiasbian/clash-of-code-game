@@ -7,6 +7,8 @@ class_name UILevelStructure extends Node
 @export var dropdown:OptionButton = OptionButton.new()
 @export var add_button:Button = Button.new()
 @export var submit_button:Button = Button.new()
+@export var cancel_button:Button = Button.new()
+
 @export var grid:GridButtonSpawner = GridButtonSpawner.new()
 
 @export var success_popup:Panel = Panel.new()
@@ -34,6 +36,7 @@ func _ready():
 	add_button.pressed.connect(_resize_grid)
 	
 	submit_button.pressed.connect(_submit)
+	cancel_button.pressed.connect(_cancel)
 	levelNumber.value_changed.connect(_level_changed)
 	min_steps.value_changed.connect(_min_steps_changed)
 	
@@ -60,6 +63,9 @@ func _submit():
 		http_req.HTTPPost(URL, structure)
 	else:
 		failure_popup.visible = true
+		
+func _cancel():
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")	
 
 func _open_success_popup(data):
 	success_popup.visible = true

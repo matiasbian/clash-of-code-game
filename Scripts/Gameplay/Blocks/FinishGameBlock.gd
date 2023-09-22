@@ -9,5 +9,6 @@ func _ready():
 	pass # Replace with function body.
 	
 func _win(perc):
+	get_node("/root/GlobalVar").play_win()
 	treasure.play("Picked")
 

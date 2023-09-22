@@ -9,12 +9,7 @@ func _init(dataToParse):
 		
 		
 func get_element(elem):
-	#var key = elem.keys()[0]
-	print("----elem----")
-	print(elem)
-	#new
 	var key = elem["type"]
-	print("Key is " + str(key))
 	if key == "movement":
 		return MovementBlock.new(elem)
 	elif key == "start":

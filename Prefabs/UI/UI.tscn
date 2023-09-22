@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=16 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="8_g7bxv"]
 [ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="8_lx1mp"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="10_02guc"]
+[ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yfl"]
 bg_color = Color(0.560784, 0.560784, 0.560784, 0.427451)
@@ -190,6 +191,23 @@ layout_mode = 2
 theme_override_styles/disabled = SubResource("StyleBoxFlat_i7yfl")
 text = "PLAY"
 script = ExtResource("3_txxca")
+
+[node name="Button" type="Button" parent="Panel"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -50.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Atras"
+script = ExtResource("13_rf1kr")
 
 [node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
