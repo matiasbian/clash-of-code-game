@@ -1,15 +1,29 @@
 extends Control
 
 @export var levelThumbnail:Resource = Resource.new()
-
+var httpNode:HTTP_REQUESTS 
+var tempData
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var httpNode:HTTP_REQUESTS = get_tree().root.get_node("MainMenu/HtppNode")
-	httpNode.data_retrieved.connect(_fillLevelInfo)
+	httpNode = get_tree().root.get_node("MainMenu/HtppNode")
+	httpNode.HTTPgetWithCallback("http://localhost:3000/api/alllevels", _add_levels)	
 	
-func _fillLevelInfo(data):
-	for d in data:
+	httpNode.data_retrieved.connect(saveData)
+	
+func _add_levels(result, response_code, headers, body):
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var res = json.get_data()
+	for d in res:
 		var inst = levelThumbnail.instantiate()
 		add_child(inst)
-		print(d)
-		inst.setData(d)
+		inst.setLevel(d)
+	_fillLevelInfo(tempData)
+	
+
+func saveData(data):
+	tempData = data
+		
+func _fillLevelInfo(data):
+	for d in data:
+		get_child(d.levelNumber -1).setData(d)

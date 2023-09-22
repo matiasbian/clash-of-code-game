@@ -29,6 +29,17 @@ func HTTPget(url):
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 		
+func HTTPgetWithCallback(url, callback):
+	var http_request = HTTPRequest.new()
+	add_child(http_request)
+	http_request.request_completed.connect(callback)
+	
+	var headers = ["Access-Control-Allow-Origin: *"]
+	# Perform a GET request. The URL below returns JSON as of writing.
+	var error = http_request.request(url, headers)
+	if error != OK:
+		push_error("An error occurred in the HTTP request.")
+		
 func HTTPPost(url, body):
 	# Convert data to json string:
 	var query = JSON.stringify(body)
@@ -43,6 +54,8 @@ func HTTPPost(url, body):
 	http_request.request(url, headers, HTTPClient.METHOD_POST, query)
 
 	http_request.request_completed.connect(data_sent_f)
+	
+
 	
 func data_sent_f(result, response_code, headers, body):
 	emit_signal("data_sent", result)
