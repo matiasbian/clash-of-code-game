@@ -35,7 +35,7 @@ func PlayCommands():
 	emit_signal("startedPlay")
 	
 	for action in _getActionsList():
-		playQueue.push_back(action.get_node("Button"))
+		_get_next_queue().push_back(action.get_node("Button"))
 	playerReachedPos(Vector2.ZERO)
 	
 	return true
@@ -112,13 +112,13 @@ func playerReachedPos(pos):
 	if stopChecking:
 		return
 		
-	if (playQueue.size() == 0):
+	if (_get_next_queue().size() == 0):
 		_checkIfWon(pos)
 		return
 	
 	await get_tree().create_timer(1.0).timeout
-	if (playQueue.size() > 0):
-		_play(playQueue.pop_front())
+	if (_get_next_queue().size() > 0):
+		_play(_get_next_queue().pop_front())
 		
 		
 func set_perfect_steps(data):
@@ -126,6 +126,8 @@ func set_perfect_steps(data):
 	perfect_steps = level.perfect_steps
 	httpReq.data_retrieved.disconnect(set_perfect_steps)
 
+func _get_next_queue():
+	return playQueue
 
 
 

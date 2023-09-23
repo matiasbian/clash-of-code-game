@@ -188,10 +188,10 @@ func _check_errors(structure):
 	localError = !hasStart || !hasEnd
 	
 	if (localError):
-		dropdown.get_parent().get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
+		dropdown.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
-		dropdown.get_parent().get_parent().get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)
+		dropdown.get_parent().get_node("Label").add_theme_color_override("font_color", ok_color)
 		
 	return error
 	

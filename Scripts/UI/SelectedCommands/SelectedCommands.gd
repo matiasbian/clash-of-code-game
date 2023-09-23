@@ -1,4 +1,4 @@
-extends Node
+class_name SelectedCommands extends Node
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 
@@ -9,6 +9,7 @@ var game_manager
 var currentIndex = 0
 
 var list = []
+var temp_list = []
 
 func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
@@ -50,6 +51,7 @@ func _action_removed(index):
 		a.get_node("Button").index = i
 		i+=1
 	popped.queue_free()
+	
 	
 	
 

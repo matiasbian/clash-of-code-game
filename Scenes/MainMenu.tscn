@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfgpcsq25pvlv"]
+[gd_scene load_steps=7 format=3 uid="uid://cfgpcsq25pvlv"]
 
 [ext_resource type="Texture2D" uid="uid://bv4tsb3c7qqbq" path="res://Art/Sprites/logo/transparent.png" id="1_ij6ru"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://btcu4smhl2uyx" path="res://Prefabs/UI/MainMenu/nivel_thubnail.tscn" id="2_ot65x"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_wcmn7"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv4xr"]
-bg_color = Color(0.0313726, 0.192157, 0.286275, 1)
 
 [node name="MainMenu" type="Node2D"]
 
@@ -68,13 +65,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -95.0
-offset_top = -34.0
+offset_top = -51.0
 offset_right = 97.0
-offset_bottom = -7.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("2_75pmn")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tv4xr")
 text = "Crear nivel"
 
 [node name="Levels" type="MarginContainer" parent="UI"]

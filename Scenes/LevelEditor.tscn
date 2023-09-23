@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp2xpy7c0rhst"]
+[gd_scene load_steps=10 format=3 uid="uid://cp2xpy7c0rhst"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_8iaoh"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/GridButtonsSpawner.gd" id="3_4wqkr"]
 [ext_resource type="PackedScene" uid="uid://dvcnl52c6mb81" path="res://Prefabs/UI/LevelEditor/GridButton.tscn" id="3_ijbu0"]
 [ext_resource type="Script" path="res://Art/Sprites/UI/Loadbutton.gd" id="3_jkeep"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_1hue4"]
 [ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
 
@@ -19,10 +20,22 @@ grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.286275, 0.572549, 0.74902, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -303.0
+offset_right = 303.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -30,94 +43,80 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer"]
 layout_mode = 2
-color = Color(0.67451, 0.87451, 1, 0.564706)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
-[node name="LevelN" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="LevelN" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/LevelN"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_8iaoh")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Level n°"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/MarginContainer/VBoxContainer/LevelN"]
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
 layout_mode = 2
 alignment = 1
 update_on_text_changed = true
 
-[node name="Label" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Label" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Label"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Label"]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_8iaoh")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Label"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="CanvasLayer/MarginContainer/VBoxContainer/Label"]
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Label"]
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MinSteps" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="MinSteps" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/MinSteps"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/MinSteps"]
 custom_minimum_size = Vector2(175, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_8iaoh")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "Min steps"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="CanvasLayer/MarginContainer/VBoxContainer/MinSteps"]
+[node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/MinSteps"]
 layout_mode = 2
 alignment = 1
 update_on_text_changed = true
 
-[node name="Structure" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Structure" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 5.73
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure"]
-custom_minimum_size = Vector2(175, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_stretch_ratio = 0.35
-theme_override_fonts/font = ExtResource("1_8iaoh")
-theme_override_font_sizes/font_size = 24
-text = "
-Structure"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("levelNumber", "level_label", "min_steps", "dropdown", "add_button", "submit_button", "cancel_button", "grid", "success_popup", "failure_popup", "http_req")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("levelNumber", "level_label", "min_steps", "dropdown", "add_button", "submit_button", "cancel_button", "grid", "success_popup", "failure_popup", "http_req")]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 10
 script = ExtResource("2_ct3of")
 levelNumber = NodePath("../../LevelN/SpinBox")
 level_label = NodePath("../../Label/TextEdit")
@@ -127,14 +126,25 @@ add_button = NodePath("HBoxContainer/Button")
 submit_button = NodePath("../../Buttons/Button")
 cancel_button = NodePath("../../Buttons/Button2")
 grid = NodePath("ColorRect/GridContainer")
-success_popup = NodePath("../../../../PanelSuccess")
-failure_popup = NodePath("../../../../PanelError")
+success_popup = NodePath("../../../../../PanelSuccess")
+failure_popup = NodePath("../../../../../PanelError")
 http_req = NodePath("../../Buttons/Node2D")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(175, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.35
+theme_override_fonts/font = ExtResource("1_8iaoh")
+theme_override_font_sizes/font_size = 20
+text = "Structure"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 3.26
@@ -146,25 +156,26 @@ popup/item_0/id = 5
 popup/item_1/text = "9x9"
 popup/item_1/id = 9
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 text = "+"
 
-[node name="ItemList" type="ItemList" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+[node name="ItemList" type="ItemList" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 3
+size_flags_stretch_ratio = 6.48
 color = Color(0.74902, 0.74902, 0.74902, 0.360784)
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer/MarginContainer/VBoxContainer/Structure/VBoxContainer/ColorRect"]
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/ColorRect"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -180,21 +191,23 @@ columns = 5
 script = ExtResource("3_4wqkr")
 button_prefab = ExtResource("3_ijbu0")
 
-[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons"]
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 5
+theme = ExtResource("5_1hue4")
 text = "Guardar"
 
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("level", "min_steps", "label", "structure")]
+[node name="Button2" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("level", "min_steps", "label", "structure")]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 5
+theme = ExtResource("5_1hue4")
 text = "Cancelar"
 script = ExtResource("3_jkeep")
 level = NodePath("../../LevelN/SpinBox")
@@ -202,7 +215,7 @@ min_steps = NodePath("../../MinSteps/SpinBox")
 label = NodePath("../../Label/TextEdit")
 structure = NodePath("../../Structure/VBoxContainer/ItemList")
 
-[node name="Node2D" type="Node2D" parent="CanvasLayer/MarginContainer/VBoxContainer/Buttons"]
+[node name="Node2D" type="Node2D" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons"]
 script = ExtResource("3_1x5em")
 
 [node name="PanelSuccess" parent="CanvasLayer" instance=ExtResource("5_adnws")]
