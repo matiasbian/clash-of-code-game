@@ -123,6 +123,12 @@ func _fill_dic():
 		"type": "finish",
 	}
 	
+	dic["IF"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "if",
+	}
+	
 func add_step(type, pos):
 	var step = dic[type]
 	step.positionX = pos.x

@@ -71,6 +71,7 @@ func _checkNewBlock(playerPos):
 		var block = blocks[stringedPos]
 		emit_signal("on_block_enter", block)
 		#Check if this block losing logic
+		block.do_extras_when_landed(player)	
 		if (block.shouldLose(player)):
 			print("Lose by block")
 			defeat_delay()
@@ -134,7 +135,10 @@ func _get_next_queue():
 	
 func get_block(pos):
 	var stringedPos = str(Vector2(round(pos.x), round(pos.y)))
-	return blocks[stringedPos]
+	if (blocks.has(stringedPos)):
+		return blocks[stringedPos]
+	else:
+		return null
 
 
 

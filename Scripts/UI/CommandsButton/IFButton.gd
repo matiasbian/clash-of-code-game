@@ -85,11 +85,8 @@ func cancel():
 func set_button_dir(button):
 	button.dir = dir
 	
-func is_spike(button, player):
-	if (!button.get_instance()): # hack --- remove in future commits
-		button.reload_instance(player)
-		
-	return button.get_instance() is JumpBlock
+func is_spike(button, player):		
+	return button.get_subinstance() is JumpBlock
 	
 func get_dir():
 	return dir

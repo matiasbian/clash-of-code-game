@@ -11,7 +11,7 @@ class_name Spawner extends Node2D
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 const BLOCKS_OFFSET = 130
 
-var game_manager
+var game_manager:Game_Manager
 var level:LevelStructure
 var blocks:Dictionary
 
@@ -34,20 +34,29 @@ func instantiateLevel(data):
 
 func _spawn_in_dir(step, pos):
 	var gamePos
+	var pref
 	if (step is MovementBlock):
-		gamePos = _instantiateBlock(step, dirPrefab)
+		pref = _instantiateBlock(step, jumpPrefab)		
+		gamePos = _instantiateBlock(step, dirPrefab).position
 	elif (step is JumpBlock):
 		print("Step is JumpBlock")
-		gamePos = _instantiateBlock(step, jumpPrefab)
+		pref = _instantiateBlock(step, jumpPrefab)
+		gamePos = pref.position
 	elif step is StartBlock:
 		print("Step is StartBlock")
-		gamePos = _instantiateBlock(step, startPrefab)
+		pref = _instantiateBlock(step, startPrefab)
+		gamePos = pref.position
 	elif step is FinishBlock:
 		print("Step is FinishBlock")
-		gamePos = _instantiateBlock(step, finishPrefab)
-	#elif step is IfBlock:
-	#	print("Step is IF")
-	#	gamePos = _instantiateBlock(step, ifPrefab)
+		pref =_instantiateBlock(step, finishPrefab)
+		gamePos = pref.position
+	elif step is IfBlock:
+		print("Step is IF")
+		pref = _instantiateBlock(step, ifPrefab)
+		gamePos = pref.position
+		
+	print("--------- pref " + str(pref))
+	step._inst = pref
 	blocks[str(gamePos)] = step	
 	
 func _instantiateBlock (step, block):
@@ -56,7 +65,7 @@ func _instantiateBlock (step, block):
 	inst.init(step)
 	add_child(inst)
 	inst.position = get_next_block_dir(step.pos)
-	return inst.position
+	return inst
 	
 func get_next_block_dir(pos):
 	return pos * BLOCKS_OFFSET

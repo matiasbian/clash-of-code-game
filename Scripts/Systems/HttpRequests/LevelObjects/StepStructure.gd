@@ -19,6 +19,6 @@ func get_element(elem):
 		return JumpBlock.new(elem)
 	elif key == "finish":
 		return FinishBlock.new(elem)
-	#elif key == "if":
-	#	return IfBlock.new(elem)
+	elif key == "if":
+		return IfBlock.new(elem)
 	

@@ -12,11 +12,11 @@ func _process(delta):
 	
 func init(step):
 	super(step)
-	step_class.before_check.connect(before_check)
 	
-func before_check(inst):
+func landed_actions(player, gameblock):
 	var spikes = get_node("Spikes")
 	for g in spikes.get_children():
 		g.visible = false
+	
 	
 	

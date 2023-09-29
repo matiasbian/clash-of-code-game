@@ -4,8 +4,8 @@ extends Button
 signal left_click
 signal right_click
 
-var types = ["", "Sta", "Fin", "Mov", "Ju"]
-var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO, Color.TOMATO, Color.TOMATO, Color.TOMATO]
+var types = ["", "Sta", "Fin", "Mov", "Ju", "IF"]
+var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD]
 var i = 0
 
 var grid_pos
