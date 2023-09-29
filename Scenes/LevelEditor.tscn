@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cp2xpy7c0rhst"]
+[gd_scene load_steps=10 format=3 uid="uid://bcikunr3u0s7h"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_8iaoh"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvcnl52c6mb81" path="res://Prefabs/UI/LevelEditor/GridButton.tscn" id="3_ijbu0"]
 [ext_resource type="Script" path="res://Art/Sprites/UI/Loadbutton.gd" id="3_jkeep"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_1hue4"]
-[ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
+[ext_resource type="PackedScene" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
 
 [node name="LevelEditor" type="Control"]

@@ -1,6 +1,6 @@
 class_name GameBlock extends Node
 
-
+var step_class
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -11,4 +11,7 @@ func _process(delta):
 	pass
 	
 func init(dir):
+	step_class = dir
+	
+func set_extra_data(step):
 	pass

@@ -18,5 +18,5 @@ func _init(block):
 	pos = Vector2(block["positionX"], block["positionY"])
 	
 func shouldLose(player):
-	
+	emit_signal("before_check", null)
 	return !player.is_jumping()

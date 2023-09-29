@@ -11,7 +11,6 @@ func _pressed():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func setData(progress):
-	print(progress.movements)
 	var data = progress
 	movements.text = "Movimientos: " + str(data.movements)
 	levelNumber.text = "Nivel\n " + str(data.levelNumber)

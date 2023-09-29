@@ -4,7 +4,7 @@ extends Button
 signal left_click
 signal right_click
 
-var types = ["", "Sta", "Fin", "Mov", "JuU", "JuD", "JuL", "JuR"]
+var types = ["", "Sta", "Fin", "Mov", "Ju"]
 var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO, Color.TOMATO, Color.TOMATO, Color.TOMATO]
 var i = 0
 

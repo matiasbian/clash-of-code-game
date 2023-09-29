@@ -11,17 +11,12 @@ func _process(delta):
 	pass
 	
 func init(step):
+	super(step)
+	step_class.before_check.connect(before_check)
+	
+func before_check(inst):
 	var spikes = get_node("Spikes")
 	for g in spikes.get_children():
 		g.visible = false
 	
-	var dir = step.dir
 	
-	if dir == MovementBlock.Directions.Left:
-		spikes.get_node("Left").visible = true
-	elif dir == MovementBlock.Directions.Right:
-		spikes.get_node("Right").visible = true
-	elif dir == MovementBlock.Directions.Top:
-		spikes.get_node("Top").visible = true
-	elif dir == MovementBlock.Directions.Bottom:
-		spikes.get_node("Bottom").visible = true

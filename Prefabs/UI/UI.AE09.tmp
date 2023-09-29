@@ -175,7 +175,6 @@ texture = ExtResource("3_kf2g7")
 layout_mode = 2
 
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down")]
-disabled = true
 script = ExtResource("6_od6bj")
 if_popup = NodePath("../../../../../PopUps/IF")
 move_right = NodePath("../../Right")

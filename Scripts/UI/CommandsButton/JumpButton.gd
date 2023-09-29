@@ -21,7 +21,8 @@ func _ready():
 func _get_command_type():
 	return self
 	
-func do_extras(player):
+func do_extras(player, targetPos):
+	super(player, targetPos)
 	player._jump()
 	
 func _pressed():

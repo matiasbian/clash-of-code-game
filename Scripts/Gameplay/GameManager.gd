@@ -6,6 +6,7 @@ signal on_victory(perfectPercentage)
 signal on_defeat(index)
 signal on_defeat_delay_needed(index)
 signal startedPlay()
+signal on_block_enter(block)
 
 @export var player = CharacterBody2D.new()
 @export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
@@ -20,6 +21,7 @@ var movementsExecuted:int = 0
 var blocks:Dictionary
 var win = false
 var stopChecking = false
+var current_command
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,7 +69,7 @@ func _checkNewBlock(playerPos):
 		return true
 	else:
 		var block = blocks[stringedPos]
-		
+		emit_signal("on_block_enter", block)
 		#Check if this block losing logic
 		if (block.shouldLose(player)):
 			print("Lose by block")
@@ -80,6 +82,7 @@ func _checkNewBlock(playerPos):
 	
 func _play(pos):
 	focusCurrentAction()
+	current_command = pos
 	player.movePlayerToDir(pos)
 
 
@@ -128,6 +131,10 @@ func set_perfect_steps(data):
 
 func _get_next_queue():
 	return playQueue
+	
+func get_block(pos):
+	var stringedPos = str(Vector2(round(pos.x), round(pos.y)))
+	return blocks[stringedPos]
 
 
 

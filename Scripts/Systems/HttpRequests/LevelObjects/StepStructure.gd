@@ -10,6 +10,7 @@ func _init(dataToParse):
 		
 func get_element(elem):
 	var key = elem["type"]
+	print("key " + key)
 	if key == "movement":
 		return MovementBlock.new(elem)
 	elif key == "start":
@@ -18,4 +19,6 @@ func get_element(elem):
 		return JumpBlock.new(elem)
 	elif key == "finish":
 		return FinishBlock.new(elem)
+	#elif key == "if":
+	#	return IfBlock.new(elem)
 	

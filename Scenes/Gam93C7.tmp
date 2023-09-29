@@ -1,20 +1,18 @@
-[gd_scene load_steps=47 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=43 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
 [ext_resource type="PackedScene" uid="uid://b7ekxcyfycani" path="res://Prefabs/Blocks/Spikes.tscn" id="3_cta0h"]
 [ext_resource type="PackedScene" uid="uid://cpmw24xdmg47p" path="res://Prefabs/Blocks/Start.tscn" id="3_mgr7x"]
-[ext_resource type="PackedScene" uid="uid://25smnr0v40i3" path="res://Prefabs/Blocks/Jump.tscn" id="3_ra6xp"]
+[ext_resource type="PackedScene" path="res://Prefabs/Blocks/Jump.tscn" id="3_ra6xp"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/Character/Character.gd" id="3_wnj35"]
 [ext_resource type="Texture2D" uid="uid://buowtpk7bhudl" path="res://Art/Sprites/skeleton/idle_right (1).png" id="4_55h5m"]
 [ext_resource type="PackedScene" uid="uid://c7ghwelayejsg" path="res://Prefabs/Blocks/Finish.tscn" id="4_kvv7v"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_lc7op"]
-[ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="7_mphxy"]
+[ext_resource type="PackedScene" uid="uid://bj8g35vki7fl" path="res://Prefabs/Blocks/IF.tscn" id="7_it78q"]
 [ext_resource type="Texture2D" uid="uid://c54il3pa21q8v" path="res://Art/Sprites/robot/robot_idle (3).png" id="7_t418s"]
-[ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="8_7exgf"]
 [ext_resource type="Texture2D" uid="uid://dt1dtq6ainecn" path="res://Art/Sprites/robot/robot_idle (2).png" id="8_md5tp"]
 [ext_resource type="Texture2D" uid="uid://gixkpm0defp7" path="res://Art/Sprites/robot/robot_idle (1).png" id="9_478tv"]
-[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="9_dhjom"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="10_akmb6"]
 [ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="11_06wxl"]
 [ext_resource type="Texture2D" uid="uid://qq0008afs70s" path="res://Art/Sprites/robot/robot_walk (2).png" id="12_fbmuf"]
@@ -33,48 +31,6 @@
 [ext_resource type="Script" path="res://Scripts/Gameplay/Camera/CameraManager.gd" id="24_dhqxb"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/Audio/AudioManager.gd" id="28_fwism"]
 [ext_resource type="AudioStream" uid="uid://birsu0de43cuw" path="res://Art/Sfx/game_music.mp3" id="28_i5pml"]
-
-[sub_resource type="GDScript" id="GDScript_o0wv1"]
-script/source = "class_name IfGameBlock extends GameBlock
-
-var instance
-var _step
-
-@onready var game_manager:Game_Manager = get_node(\"/root/Node2D/Systems/GameManager\")
-@export var movement_block:Resource = Resource.new()
-@export var spike_block:Resource = Resource.new()
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	game_manager.startedPlay.connect(add_child_on_runtime)
-	step_class.before_check.connect(before_check)
-	
-func set_extra_data(step):
-	_step = step
-	
-func add_child_on_runtime():
-	add_child(instance)
-
-func before_check(inst):
-	if inst is MovementBlock:
-		instance = movement_block.instantiate()
-	else:
-		instance = spike_block.instantiate()
-	add_child_on_runtime()
-"
-
-[sub_resource type="PackedScene" id="PackedScene_2yv5m"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("Directional", "Node2D", "script", "movement_block", "spike_block", "border", "Sprite2D", "modulate", "visibility_layer", "scale", "texture", "Sprite2D", "Sprite2D", "scale", "texture", "Label", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "theme_override_fonts/font", "theme_override_font_sizes/font_size", "text", "horizontal_alignment", "vertical_alignment"),
-"node_count": 4,
-"node_paths": [NodePath("."), NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 3, 2, 0, 3, 1, 4, 2, 0, 1073741824, 0, 6, 5, -1, 4, 7, 3, 8, 4, 9, 5, 10, 6, 0, 1073741825, 0, 12, 11, -1, 2, 13, 7, 14, 8, 0, 1073741826, 0, 16, 15, -1, 9, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 22, 14, 23, 15, 24, 16, 25, 17, 0),
-"variants": [SubResource("GDScript_o0wv1"), ExtResource("1_ockic"), ExtResource("3_ra6xp"), Color(1, 0.756863, 0.639216, 1), 3, Vector2(0.52, 0.52), ExtResource("7_mphxy"), Vector2(8, 8), ExtResource("8_7exgf"), -57.0, -32.0, 59.0, 40.0, ExtResource("9_dhjom"), 38, "?", 1, 1],
-"version": 3
-}
 
 [sub_resource type="Gradient" id="Gradient_c8dtc"]
 
@@ -261,7 +217,7 @@ jumpPrefab = ExtResource("3_ra6xp")
 spikePrefab = ExtResource("3_cta0h")
 startPrefab = ExtResource("3_mgr7x")
 finishPrefab = ExtResource("4_kvv7v")
-ifPrefab = SubResource("PackedScene_2yv5m")
+ifPrefab = ExtResource("7_it78q")
 httpReq = NodePath("../Systems/HttpRequests")
 
 [node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]
@@ -328,7 +284,6 @@ libraries = {
 script = ExtResource("5_lc7op")
 
 [node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player", "httpReq")]
-unique_name_in_owner = true
 script = ExtResource("16_kxjg7")
 player = NodePath("../../CharacterBody2D")
 httpReq = NodePath("../HttpRequests")

@@ -6,13 +6,17 @@ const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 @export var isSideMenu:bool
 @onready var baseColor:Color = get_parent().color
 
-var game_manager
+var game_manager:Game_Manager
 var index
 
 func _ready():
+	__ready()
+	
+func __ready():
 	focus_mode =Control.FOCUS_NONE
 	game_manager = get_node(GAME_MANAGER_PATH)
 	game_manager.startedPlay.connect(_on_play)
+	
 	
 func _pressed():
 	if (isSideMenu):
@@ -42,5 +46,12 @@ func _on_play():
 
 	get_parent().color = Color.GRAY
 
-func do_extras(player):
+func do_extras(player, targetPos):
+	game_manager.get_block(targetPos).going_to_this_block(player)
+	pass
+	
+func get_dir():
+	return dir
+	
+func set_extra_values(original):
 	pass

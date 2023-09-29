@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @export var speed = 150
-@onready var game_manager = get_node("/root/Node2D/Systems/GameManager")
+@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 signal movement_finished(pos)
 
 #consts
@@ -59,13 +59,13 @@ func movePlayerToDir(button):
 	var targetPos = position + offset
 	var animate = !button is JumpButton
 	movePlayerToPos(targetPos, animate)
-	button.do_extras(self)
+	button.do_extras(self, targetPos)
 	
 func triggerMovementFinished():
 	emit_signal("movement_finished", target)
 	
 func _get_movement_vector(button):
-	var dir = button.dir
+	var dir = button.get_dir()
 	if (dir == MovementBlock.Directions.Right):
 		return Vector2(MOVEMENT_OFFSET_X,0)
 	elif (dir == MovementBlock.Directions.Left):
@@ -86,6 +86,9 @@ func is_jumping():
 
 func disable_jump():
 	jump = false
+	
+func _get_current_block():
+	return game_manager.get_block(target)
 	
 #events
 

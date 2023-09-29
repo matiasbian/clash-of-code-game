@@ -1,12 +1,44 @@
-[gd_scene load_steps=5 format=3 uid="uid://bigats62ls1nd"]
+[gd_scene load_steps=7 format=3 uid="uid://0ogqv2y5haxu"]
 
-[ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/GameBlock.gd" id="1_vjlf2"]
+[ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="2_bvjsc"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="2_jw2vo"]
 [ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="3_5svvd"]
+[ext_resource type="PackedScene" uid="uid://25smnr0v40i3" path="res://Prefabs/Blocks/Jump.tscn" id="3_hqpkt"]
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_xcaqp"]
 
+[sub_resource type="GDScript" id="GDScript_o0wv1"]
+script/source = "class_name IfGameBlock extends GameBlock
+
+var instance
+var _step
+
+@onready var game_manager:Game_Manager = get_node(\"/root/Node2D/Systems/GameManager\")
+@export var movement_block:Resource = Resource.new()
+@export var spike_block:Resource = Resource.new()
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	game_manager.startedPlay.connect(add_child_on_runtime)
+	step_class.before_check.connect(before_check)
+	
+func set_extra_data(step):
+	_step = step
+	
+func add_child_on_runtime():
+	add_child(instance)
+
+func before_check(inst):
+	if inst is MovementBlock:
+		instance = movement_block.instantiate()
+	else:
+		instance = spike_block.instantiate()
+	add_child_on_runtime()
+"
+
 [node name="Directional" type="Node2D"]
-script = ExtResource("1_vjlf2")
+script = SubResource("GDScript_o0wv1")
+movement_block = ExtResource("2_bvjsc")
+spike_block = ExtResource("3_hqpkt")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)

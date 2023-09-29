@@ -32,6 +32,7 @@ func _action_added(action):
 	instanceButton.index = currentIndex
 	instanceButton.set_script(action.get_script())
 	instanceButton.dir = action.dir
+	instanceButton.set_extra_values(action)
 	
 	instanceTexture.texture = actTex.texture
 	instanceTexture.rotation = actTex.rotation

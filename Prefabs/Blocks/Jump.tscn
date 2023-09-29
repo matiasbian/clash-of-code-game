@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://beb26ifv5wdy"]
+[gd_scene load_steps=9 format=3 uid="uid://25smnr0v40i3"]
 
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_3uno4"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/GameJumpBlock.gd" id="1_vgxd4"]

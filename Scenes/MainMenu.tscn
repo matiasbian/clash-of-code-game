@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bv4tsb3c7qqbq" path="res://Art/Sprites/logo/transparent.png" id="1_ij6ru"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="2_75pmn"]
-[ext_resource type="PackedScene" uid="uid://btcu4smhl2uyx" path="res://Prefabs/UI/MainMenu/nivel_thubnail.tscn" id="2_ot65x"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
+[ext_resource type="PackedScene" uid="uid://btcu4smhl2uyx" path="res://Prefabs/UI/MainMenu/nivel_thubnail.tscn" id="5_c2pht"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_wcmn7"]
 
 [node name="MainMenu" type="Node2D"]
@@ -91,7 +91,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 4
 script = ExtResource("2_w5kg7")
-levelThumbnail = ExtResource("2_ot65x")
+levelThumbnail = ExtResource("5_c2pht")
 back = NodePath("../Button")
 main_menu = NodePath("../../MainMenu")
 

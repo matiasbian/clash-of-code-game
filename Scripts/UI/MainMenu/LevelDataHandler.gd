@@ -33,9 +33,12 @@ func saveData(data):
 func _fillLevelInfo(data):
 	if (!data):
 		return
-
-	for d in data:
-		get_child(d.levelNumber -1).setData(d)
+	
+	if (data is Array):
+		for d in data:
+			get_child(d.levelNumber -1).setData(d)
+	else:
+		get_child(data.levelNumber -1).setData(data)
 		
 func _back():
 	get_parent().visible = false
