@@ -5,7 +5,6 @@ var subinstance
 func get_subinstance():
 	if !subinstance:
 		var randomN = randi() % 2
-		print("random N " + str(randomN))
 		var block = _block 
 		var curr_command = _inst.game_manager.current_command
 		
@@ -27,4 +26,8 @@ func get_subinstance():
 func do_extras_when_landed(player):
 	super(player)
 	subinstance.do_extras_when_landed(player)
+	
+func shouldLose(player):
+	subinstance.come_from_if()
+	return subinstance.shouldLose(player)
 

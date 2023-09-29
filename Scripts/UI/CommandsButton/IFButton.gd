@@ -54,6 +54,9 @@ func _get_command_type():
 	
 func do_extras(player, targetPos):
 	var targetBlock = game_manager.get_block(targetPos)
+	
+	if !targetBlock is IfBlock:
+		return
 
 	if (cond.call(targetBlock, player)):
 		true_branch.get_node("Button").do_extras(player, targetPos)

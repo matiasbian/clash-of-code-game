@@ -5,6 +5,7 @@ var _block
 
 signal before_check()
 var _inst
+var from_if
 
 func _init(block):
 	init(block)
@@ -14,8 +15,13 @@ func init(block):
 	pos = Vector2(block["positionX"], block["positionY"])
 	
 func shouldLose(player):
-	print("Should lose")
+	var curr_command = player.game_manager.current_command
+	if (curr_command is IFButton && !from_if):
+		return true
 	return false
+	
+func come_from_if():
+	from_if = true
 
 func do_extras_when_landed(player):
 	print("do extras when landed")
