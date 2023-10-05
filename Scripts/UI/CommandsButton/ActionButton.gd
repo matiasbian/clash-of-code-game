@@ -4,7 +4,9 @@ const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 @export var dir = MovementBlock.Directions.NULL
 
 @export var isSideMenu:bool
-@onready var baseColor:Color = get_parent().color
+
+@onready var baseColor:Color = modulate
+
 
 var game_manager:Game_Manager
 var index
@@ -33,10 +35,11 @@ func _get_command_type():
 	return null
 
 func _elemFocused():
-	get_parent().color = Color.AQUAMARINE
+	grab_focus()
+	modulate = Color("00ced0")
 	
 func _elemUnfocused():
-	get_parent().color = baseColor
+	modulate = baseColor
 	
 func _on_play():
 	disabled = true

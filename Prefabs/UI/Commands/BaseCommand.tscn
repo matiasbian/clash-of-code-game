@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=9 format=3 uid="uid://ca051sex452gn"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
 [ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
@@ -6,12 +6,23 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
 bg_color = Color(0.733333, 0.572549, 0.533333, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhdnj"]
 bg_color = Color(0.815686, 0.682353, 0.65098, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cqlb"]
 bg_color = Color(0.333333, 0.231373, 0.203922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ror"]
+bg_color = Color(0.552941, 0.611765, 0.776471, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
@@ -35,6 +46,7 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_86sv2")
 theme_override_styles/hover = SubResource("StyleBoxFlat_mhdnj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1cqlb")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o7ror")
 script = ExtResource("3_h25lq")
 dir = 1
 

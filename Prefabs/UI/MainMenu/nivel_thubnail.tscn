@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://btcu4smhl2uyx"]
+[gd_scene load_steps=4 format=3 uid="uid://btcu4smhl2uyx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelThumbnail.gd" id="1_0q5oo"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="1_82217"]
+[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="3_tnty2"]
 
 [node name="NivelThubnail" type="Button"]
 custom_minimum_size = Vector2(150, 150)
@@ -22,9 +23,11 @@ offset_right = 59.5
 offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_tnty2")
 text = "Nivel
 1"
 horizontal_alignment = 1
+vertical_alignment = 1
 uppercase = true
 
 [node name="Movimientos" type="Label" parent="."]
@@ -37,8 +40,11 @@ anchor_bottom = 1.0
 offset_top = -26.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_tnty2")
+theme_override_font_sizes/font_size = 13
 text = "Movimientos: 3"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Completado" type="Label" parent="."]
 visible = false
@@ -52,5 +58,8 @@ offset_top = -52.0
 offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_tnty2")
+theme_override_font_sizes/font_size = 13
 text = "Completado"
 horizontal_alignment = 1
+vertical_alignment = 1

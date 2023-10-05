@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=21 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -15,6 +15,18 @@
 [ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="8_lx1mp"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="10_02guc"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
+bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8rfb"]
+bg_color = Color(0.6, 0.6, 0.6, 0.352941)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6slhu"]
+bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yfl"]
 bg_color = Color(0.560784, 0.560784, 0.560784, 0.427451)
@@ -42,16 +54,27 @@ offset_right = 0.200073
 offset_bottom = 9.87199
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 1
 script = ExtResource("1_db8n0")
 commandPrefab = ExtResource("1_esfrg")
-container = NodePath("ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
+container = NodePath("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
 
-[node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands"]
+[node name="Panel" type="Panel" parent="Panel/SelectedCommands"]
 layout_mode = 2
-color = Color(0.286275, 0.572549, 0.74902, 1)
+theme = ExtResource("3_hlaxj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6gdtg")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/SelectedCommands/ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="Panel/SelectedCommands/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_hlaxj")
+color = Color(0.286275, 0.572549, 0.74902, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/SelectedCommands/Panel/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,63 +83,91 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 5
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer"]
 layout_mode = 2
 follow_focus = true
 vertical_scroll_mode = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ColorRect" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 size_flags_vertical = 1
 
-[node name="ColorRect2" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect2" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect3" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect3" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="ColorRect4" parent="Panel/SelectedCommands/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
+[node name="ColorRect4" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
 
-[node name="AvailableCommands" type="MarginContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.93
-anchor_top = 0.177
+[node name="AccionesCont" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+anchor_left = 0.921
+anchor_top = 0.151
 anchor_right = 1.0
-anchor_bottom = 0.923
-offset_left = -0.359985
-offset_top = 0.304001
-offset_bottom = -0.104004
+anchor_bottom = 0.193
+offset_left = 0.00793457
+offset_top = 0.151993
+offset_right = -1.0
+offset_bottom = -0.064003
+size_flags_vertical = 0
+theme_override_constants/margin_right = 2
+
+[node name="Panel" type="Panel" parent="Panel/AccionesCont"]
+layout_mode = 2
+theme = ExtResource("3_hlaxj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_y8rfb")
+
+[node name="Label" type="Label" parent="Panel/AccionesCont/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 7
-
-[node name="AccionesCont" type="MarginContainer" parent="Panel/AvailableCommands"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Panel/AvailableCommands/AccionesCont"]
-layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_5tr4s")
 theme_override_font_sizes/font_size = 13
 text = "Acciones"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
+
+[node name="AvailableCommands" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.93
+anchor_top = 0.193
+anchor_right = 0.999
+anchor_bottom = 0.923
+offset_left = -17.36
+offset_top = -0.064003
+offset_right = 1.15186
+offset_bottom = -0.104004
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
+visible = false
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/AvailableCommands"]
 custom_minimum_size = Vector2(0, 430)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 8
+theme = ExtResource("3_hlaxj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_6slhu")
 horizontal_scroll_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/AvailableCommands/ScrollContainer"]
@@ -194,10 +245,6 @@ texture = ExtResource("5_2un37")
 offset_top = 0.0
 text = "IF"
 
-[node name="ColorRect" type="ColorRect" parent="Panel/AvailableCommands"]
-visible = false
-layout_mode = 2
-
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
@@ -209,7 +256,7 @@ offset_bottom = 9.87199
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_hlaxj")
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 1
 
 [node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
 layout_mode = 2
@@ -231,6 +278,7 @@ grow_horizontal = 0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
+theme = ExtResource("3_hlaxj")
 text = "Atras"
 script = ExtResource("13_rf1kr")
 

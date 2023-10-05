@@ -26,7 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.286275, 0.572549, 0.74902, 1)
+color = Color(0.0745098, 0.0392157, 0.160784, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ColorRect"]
 layout_mode = 1
@@ -65,6 +65,7 @@ vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
 layout_mode = 2
+theme = ExtResource("5_1hue4")
 alignment = 1
 update_on_text_changed = true
 
@@ -87,6 +88,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_vertical = 4
+theme = ExtResource("5_1hue4")
 
 [node name="MinSteps" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -105,6 +107,7 @@ vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/MinSteps"]
 layout_mode = 2
+theme = ExtResource("5_1hue4")
 alignment = 1
 update_on_text_changed = true
 
@@ -148,6 +151,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 3.26
+theme = ExtResource("5_1hue4")
 item_count = 2
 selected = 0
 fit_to_longest_item = false
@@ -160,6 +164,7 @@ popup/item_1/id = 9
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
+theme = ExtResource("5_1hue4")
 text = "+"
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
@@ -173,7 +178,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 6.48
-color = Color(0.74902, 0.74902, 0.74902, 0.360784)
+color = Color(0.74902, 0.74902, 0.74902, 0.0823529)
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/ColorRect"]
 custom_minimum_size = Vector2(200, 0)
