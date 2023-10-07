@@ -35,7 +35,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(61, -0.25, 0, 0.25, 0, 129, -0.3, 1, 0.4, 2, 61, -0.2, 11, 0.25, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 60, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.8, 1.5)
 }
 tracks/1/type = "value"
@@ -151,7 +151,7 @@ length = 0.001
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bgs:position:x")
+tracks/0/path = NodePath("AnimContainer/Bgs:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -162,7 +162,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Bgs:position:y")
+tracks/1/path = NodePath("AnimContainer/Bgs:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -178,7 +178,7 @@ loop_mode = 1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Bgs:position:x")
+tracks/0/path = NodePath("AnimContainer/Bgs:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,7 +189,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Bgs:position:y")
+tracks/1/path = NodePath("AnimContainer/Bgs:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -212,6 +212,7 @@ bg_color = Color(0.768627, 0.517647, 0.6, 0.101961)
 [node name="MainMenu" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="MainMenu" type="MarginContainer" parent="UI"]
 anchors_preset = 15
@@ -254,25 +255,38 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0745098, 0.0392157, 0.160784, 1)
 
-[node name="Bgs" type="Control" parent="UI/MainMenu/Panel/Anim"]
+[node name="AnimContainer" type="TextureRect" parent="UI/MainMenu/Panel/Anim"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.252
+anchor_right = 1.0
+anchor_bottom = 0.748
+offset_left = 0.175964
+offset_top = -0.296005
+offset_right = -47.0
+offset_bottom = 0.295959
+grow_horizontal = 0
+grow_vertical = 2
+stretch_mode = 5
+
+[node name="Bgs" type="Control" parent="UI/MainMenu/Panel/Anim/AnimContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 8064.0
-offset_bottom = 4536.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/MainMenu/Panel/Anim/Bgs"]
+[node name="ColorRect" type="ColorRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
 layout_mode = 0
-offset_left = 1178.0
-offset_top = 357.0
-offset_right = 1356.0
-offset_bottom = 535.0
+offset_left = 784.0
+offset_top = 254.0
+offset_right = 962.0
+offset_bottom = 432.0
 color = Color(0.67451, 0.380392, 0.160784, 1)
 
-[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/Bgs/ColorRect"]
+[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -287,15 +301,15 @@ texture = ExtResource("2_i3o6f")
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="ColorRect2" type="ColorRect" parent="UI/MainMenu/Panel/Anim/Bgs"]
+[node name="ColorRect2" type="ColorRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
 layout_mode = 0
-offset_left = 1358.0
-offset_top = 357.0
-offset_right = 1536.0
-offset_bottom = 535.0
+offset_left = 964.0
+offset_top = 254.0
+offset_right = 1142.0
+offset_bottom = 432.0
 color = Color(0.67451, 0.380392, 0.160784, 1)
 
-[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/Bgs/ColorRect2"]
+[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs/ColorRect2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -310,15 +324,15 @@ texture = ExtResource("2_i3o6f")
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="ColorRect3" type="ColorRect" parent="UI/MainMenu/Panel/Anim/Bgs"]
+[node name="ColorRect3" type="ColorRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
 layout_mode = 0
-offset_left = 1536.0
-offset_top = 357.0
-offset_right = 1714.0
-offset_bottom = 535.0
+offset_left = 1142.0
+offset_top = 254.0
+offset_right = 1320.0
+offset_bottom = 432.0
 color = Color(0.67451, 0.380392, 0.160784, 1)
 
-[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/Bgs/ColorRect3"]
+[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs/ColorRect3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,15 +347,15 @@ texture = ExtResource("2_i3o6f")
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="ColorRect4" type="ColorRect" parent="UI/MainMenu/Panel/Anim/Bgs"]
+[node name="ColorRect4" type="ColorRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
 layout_mode = 0
-offset_left = 1714.0
-offset_top = 357.0
-offset_right = 1892.0
-offset_bottom = 535.0
+offset_left = 1320.0
+offset_top = 254.0
+offset_right = 1498.0
+offset_bottom = 432.0
 color = Color(0.67451, 0.380392, 0.160784, 1)
 
-[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/Bgs/ColorRect4"]
+[node name="Background" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs/ColorRect4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -356,40 +370,34 @@ texture = ExtResource("2_i3o6f")
 stretch_mode = 5
 metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="UI/MainMenu/Panel/Anim/Bgs"]
+[node name="TextureRect" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
+visible = false
 layout_mode = 0
-offset_left = 1445.0
+offset_left = 1051.0
 offset_top = 61.0
-offset_right = 1573.0
-offset_bottom = 188.999
+offset_right = 1179.0
+offset_bottom = 188.997
 texture = SubResource("AtlasTexture_bavhp")
 stretch_mode = 5
 flip_h = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MainMenu/Panel/Anim/Bgs/TextureRect"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs/TextureRect"]
 autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_qavwf")
 }
 
-[node name="Character" type="TextureRect" parent="UI/MainMenu/Panel/Anim"]
+[node name="Char" type="TextureRect" parent="UI/MainMenu/Panel/Anim/AnimContainer"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -723.0
-offset_top = -161.0
-offset_right = -47.0
-offset_bottom = 161.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_n43e6")
 stretch_mode = 5
-metadata/_edit_lock_ = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MainMenu/Panel/Anim/Character"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MainMenu/Panel/Anim/AnimContainer/Char"]
 autoplay = "Running"
 libraries = {
 "": SubResource("AnimationLibrary_leuby")
