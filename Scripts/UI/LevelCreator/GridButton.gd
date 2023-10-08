@@ -4,8 +4,15 @@ extends Button
 signal left_click
 signal right_click
 
+@export var mov_icon:Texture = Texture.new()
+@export var start_icon:Texture = Texture.new()
+@export var end_icon:Texture = Texture.new()
+@export var jump_icon:Texture = Texture.new()
+@export var if_icon:Texture = Texture.new()
+
 var types = ["", "Sta", "Fin", "Mov", "Ju", "IF"]
-var colors = [Color.GRAY, Color.BROWN, Color.CORNFLOWER_BLUE, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD]
+@onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon]
+var colors = [Color.GRAY, Color.YELLOW, Color.YELLOW, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD]
 var i = 0
 
 var grid_pos
@@ -42,7 +49,8 @@ func _reset():
 	_update_button()
 	
 func _update_button():
-	text = types[i]
+	#text = types[i]
+	get_node("icon").texture = types_icon[i]
 	modulate = colors[i]
 	_update_data()
 
