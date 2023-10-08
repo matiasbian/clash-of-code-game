@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=23 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="7_g82f2"]
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="8_g7bxv"]
 [ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="8_lx1mp"]
+[ext_resource type="Texture2D" uid="uid://c12ltq2inashw" path="res://Art/Sprites/UI/Icons/repeat_130896.png" id="9_manl2"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ForButton.gd" id="9_t432r"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="10_02guc"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 
@@ -258,6 +260,31 @@ texture = ExtResource("5_2un37")
 [node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="1"]
 offset_top = 0.0
 text = "IF"
+
+[node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For" index="0" node_paths=PackedStringArray("for_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "label")]
+script = ExtResource("9_t432r")
+for_popup = NodePath("../../../../../PopUps/For")
+move_right = NodePath("../../Right")
+move_left = NodePath("../../Left")
+move_up = NodePath("../../Top")
+move_down = NodePath("../../Bot")
+jump_right = NodePath("../../Jump")
+jump_left = NodePath("../../Jump")
+jump_up = NodePath("../../Jump")
+jump_down = NodePath("../../Jump")
+label = NodePath("Label")
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button" index="0"]
+texture = ExtResource("9_manl2")
+
+[node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button" index="1"]
+visible = true
+offset_top = 0.0
+text = ""
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -664,6 +691,128 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Cancelar"
 
+[node name="For" type="MarginContainer" parent="Panel/PopUps"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -112.0
+offset_right = 150.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.3, 1.3)
+pivot_offset = Vector2(150, 150)
+
+[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/For"]
+layout_mode = 2
+color = Color(0.317647, 0.392157, 0.647059, 1)
+
+[node name="Container" type="VBoxContainer" parent="Panel/PopUps/For/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_5tr4s")
+theme_override_font_sizes/font_size = 21
+text = "For"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Direccion" type="Label" parent="Panel/PopUps/For/ColorRect/Container/Dir"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.08
+theme_override_fonts/font = ExtResource("4_5tr4s")
+theme_override_font_sizes/font_size = 13
+text = "Dirección"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/Dir"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.61
+item_count = 4
+selected = 0
+popup/item_0/text = "Right"
+popup/item_0/id = 0
+popup/item_1/text = "Left"
+popup/item_1/id = 1
+popup/item_2/text = "Top"
+popup/item_2/id = 2
+popup/item_3/text = "Down"
+popup/item_3/id = 3
+
+[node name="True" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container/True"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.08
+theme_override_fonts/font = ExtResource("4_5tr4s")
+theme_override_font_sizes/font_size = 13
+text = "Acción"
+vertical_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/True"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.61
+item_count = 2
+selected = 0
+popup/item_0/text = "Mov"
+popup/item_0/id = 0
+popup/item_1/text = "Jump"
+popup/item_1/id = 10
+
+[node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container/Amount"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.08
+theme_override_fonts/font = ExtResource("4_5tr4s")
+theme_override_font_sizes/font_size = 13
+text = "Repeticiones"
+vertical_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="Panel/PopUps/For/ColorRect/Container/Amount"]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Btn" type="Button" parent="Panel/PopUps/For/ColorRect/Container/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Aceptar"
+
+[node name="Btn2" type="Button" parent="Panel/PopUps/For/ColorRect/Container/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Cancelar"
+
 [node name="Panel2" type="Control" parent="."]
 visible = false
 layout_mode = 3
@@ -679,3 +828,4 @@ grow_vertical = 2
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For"]

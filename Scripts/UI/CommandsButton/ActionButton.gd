@@ -6,6 +6,7 @@ const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 @export var isSideMenu:bool
 
 @onready var baseColor:Color = modulate
+var sub_queue = []
 
 
 var game_manager:Game_Manager
@@ -59,3 +60,11 @@ func get_dir():
 	
 func set_extra_values(original):
 	pass
+	
+func _on_pop(val):
+	pass
+	
+func pop_from_subqueue():
+	var val = sub_queue.pop_front()
+	_on_pop(val)
+	return val

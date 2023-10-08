@@ -1,14 +1,14 @@
-class_name IFButton extends ActionButton
+class_name ForButton extends ActionButton
 
-@export var if_popup:Control = Control.new()
+@export var for_popup:Control = Control.new()
 
-@onready var accept_button:Button = if_popup.get_node("ColorRect/Container/Buttons/Btn")
-@onready var cancel_button:Button = if_popup.get_node("ColorRect/Container/Buttons/Btn2")
+@onready var accept_button:Button = for_popup.get_node("ColorRect/Container/Buttons/Btn")
+@onready var cancel_button:Button = for_popup.get_node("ColorRect/Container/Buttons/Btn2")
 
-@onready var dir_drop:OptionButton = if_popup.get_node("ColorRect/Container/Dir/OptionButton")
-@onready var true_drop:OptionButton = if_popup.get_node("ColorRect/Container/True/OptionButton")
-@onready var false_drop:OptionButton = if_popup.get_node("ColorRect/Container/False/OptionButton")
-@onready var cond_drop:OptionButton = if_popup.get_node("ColorRect/Container/Cond/OptionButton")
+@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/Container/Dir/OptionButton")
+@onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/Container/True/OptionButton")
+@onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/Container/Amount/SpinBox")
+
 
 @export var move_right:ColorRect = ColorRect.new()
 @export var move_left:ColorRect = ColorRect.new()
@@ -20,10 +20,11 @@ class_name IFButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var label:Label = Label.new()
 
-var true_branch
-var false_branch
-var cond
+var iter
+var i
+var left
 
 var dirs:Array = [MovementBlock.Directions.Right, MovementBlock.Directions.Left, MovementBlock.Directions.Top, MovementBlock.Directions.Bottom]
 var buttons:Dictionary
@@ -54,36 +55,31 @@ func _get_command_type():
 	
 func do_extras(player, targetPos):
 	var targetBlock = game_manager.get_block(targetPos)
-	
-	if !targetBlock is IfBlock:
-		return
 
-	if (cond.call(targetBlock, player)):
-		true_branch.get_node("Button").do_extras(player, targetPos)
-	else:
-		false_branch.get_node("Button").do_extras(player, targetPos)
+	var button = iter.get_node("Button")
+	for v in range(0, i):
+		self.sub_queue.push_back(button)
 	
 func _pressed():
 	if (isSideMenu):
-		if_popup.visible = true
+		for_popup.visible = true
 		#game_manager.AddCommand(_get_command_type())
 	else:
 		game_manager.RemoveCommand(index)
 
 func accept():
-	true_branch = buttons[true_drop.get_selected_id() + dir_drop.get_selected_id()]
-	false_branch = buttons[false_drop.get_selected_id() + dir_drop.get_selected_id()]
-	cond = condList[cond_drop.get_selected_id()]
+	iter = buttons[iter_drop.get_selected_id() + dir_drop.get_selected_id()]
 	dir = dirs[dir_drop.get_selected_id()]
+	i = amount_spin.value -1
+	left = i
 	
-	set_button_dir(true_branch.get_node("Button"))
-	set_button_dir(false_branch.get_node("Button"))
+	set_button_dir(iter.get_node("Button"))
 	
 	game_manager.AddCommand(_get_command_type())
-	if_popup.visible = false
+	for_popup.visible = false
 	
 func cancel():
-	if_popup.visible = false
+	for_popup.visible = false
 	
 func set_button_dir(button):
 	button.dir = dir
@@ -95,8 +91,21 @@ func get_dir():
 	return dir
 	
 func set_extra_values(original):
-	true_branch = original.true_branch
-	false_branch = original.false_branch
-	cond = original.cond
+	iter = original.iter
+	i = original.i
+	left = original.left
+	
+	label = get_node("Label")
+	label.visible = true
+	label.text = "x" + str(left)	
+	self.sub_queue = original.sub_queue
+	
+func _on_pop(val):
+	if (left > 0):
+		left -= 1
+		label.text = "x" + str(left)
+	
+	
+	
 	
 	
