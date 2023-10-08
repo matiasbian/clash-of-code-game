@@ -53,6 +53,7 @@ func _item_selected(index):
 func _resize_grid():
 	get_node("/root/GlobalVar").play_tap()
 	grid.resize(itemSelectedIndex)
+	_reset()
 	
 func _submit():
 	var structure = _level_structure()	
@@ -180,7 +181,9 @@ func _check_errors(structure):
 		
 	return error
 	
-
+func _reset():
+	steps = []
+	
 func remove_if(button):
 	var elem = -1
 	for index in range(0, steps.size()):
