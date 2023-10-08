@@ -32,7 +32,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
 
 [node name="ColorRect" type="ColorRect"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(130, 130)
 size_flags_vertical = 6
 color = Color(0.733333, 0.572549, 0.533333, 0)
 
@@ -55,13 +55,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = -8.0
-offset_bottom = -8.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(32, 32)
+pivot_offset = Vector2(58, 58)
 texture = ExtResource("2_ut8rw")
 expand_mode = 1
 stretch_mode = 5

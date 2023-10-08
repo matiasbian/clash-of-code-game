@@ -26,7 +26,7 @@ func _process(delta):
 		target = target_zoom_out
 		pos = target_pos
 	else:
-		target = Vector2.ONE
+		target = Vector2.ONE * 1.6
 		pos = initial_pos
 		
 	t = delta * 5

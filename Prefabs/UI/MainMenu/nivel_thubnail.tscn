@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="3_tnty2"]
 
 [node name="NivelThubnail" type="Button"]
-custom_minimum_size = Vector2(150, 150)
+custom_minimum_size = Vector2(220, 220)
 size_flags_stretch_ratio = 0.85
 theme = ExtResource("1_82217")
 script = ExtResource("1_0q5oo")
