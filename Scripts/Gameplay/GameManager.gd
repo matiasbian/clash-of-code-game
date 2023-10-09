@@ -81,9 +81,12 @@ func _checkNewBlock(playerPos):
 		return false
 	
 	
-func _play(pos):
-	focusCurrentAction()
-	current_command = pos
+func _play(pos, focus = true):
+	if (focus): 
+		focusCurrentAction()
+		current_command = pos
+	else:
+		movementsExecuted -= 1
 	player.movePlayerToDir(pos)
 
 
@@ -116,11 +119,17 @@ func playerReachedPos(pos):
 	if stopChecking:
 		return
 		
-	if (_get_next_queue().size() == 0):
+	if ((!current_command || current_command.sub_queue.size() == 0) && _get_next_queue().size() == 0):
 		_checkIfWon(pos)
 		return
 	
 	await get_tree().create_timer(1.0).timeout
+	
+	#first check if action has subactions, if not, pop from actions list
+	if (current_command && current_command.sub_queue.size() > 0):
+		_play(current_command.pop_from_subqueue(), false)
+		return
+	
 	if (_get_next_queue().size() > 0):
 		_play(_get_next_queue().pop_front())
 		
@@ -140,5 +149,6 @@ func get_block(pos):
 	else:
 		return null
 
+	
 
 

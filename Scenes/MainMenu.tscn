@@ -159,17 +159,6 @@ tracks/0/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimContainer/Bgs:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_3fw4p"]
 resource_name = "move"
@@ -183,18 +172,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2000, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 5)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimContainer/Bgs:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(464.784, -0.25, 0, 0.25, 0, -2959.22, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 5)
 }
 
@@ -275,14 +253,18 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 58.136
+offset_right = 3577.69
+offset_bottom = 1774.68
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.4, 1.4)
 
 [node name="ColorRect" type="ColorRect" parent="UI/MainMenu/Panel/Anim/AnimContainer/Bgs"]
 layout_mode = 0
-offset_left = 784.0
+offset_left = 791.005
 offset_top = 254.0
-offset_right = 962.0
+offset_right = 969.005
 offset_bottom = 432.0
 color = Color(0.67451, 0.380392, 0.160784, 1)
 
@@ -429,7 +411,7 @@ theme = SubResource("Theme_b28wj")
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/MainMenu/Panel/Panel/LeftSide"]
-custom_minimum_size = Vector2(300, 300)
+custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -439,7 +421,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/Panel/Panel/LeftSide"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -447,7 +429,7 @@ size_flags_stretch_ratio = 1.07
 theme_override_constants/separation = 7
 
 [node name="Button" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer" node_paths=PackedStringArray("levelEditButton")]
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("2_75pmn")
 text = "Jugar"
@@ -455,13 +437,13 @@ script = ExtResource("1_ve7o6")
 levelEditButton = NodePath("../Button2")
 
 [node name="Button2" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("2_75pmn")
 text = "Crear nivel"
 
 [node name="Button3" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
-custom_minimum_size = Vector2(0, 35)
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("2_75pmn")
 disabled = true

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvcnl52c6mb81" path="res://Prefabs/UI/LevelEditor/GridButton.tscn" id="3_ijbu0"]
 [ext_resource type="Script" path="res://Art/Sprites/UI/Loadbutton.gd" id="3_jkeep"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_1hue4"]
-[ext_resource type="PackedScene" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
+[ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
 
 [node name="LevelEditor" type="Control"]
@@ -34,8 +34,8 @@ anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -303.0
-offset_right = 303.0
+offset_left = -353.0
+offset_right = 353.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -173,7 +173,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3

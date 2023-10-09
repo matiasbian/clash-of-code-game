@@ -106,4 +106,3 @@ func is_wrong_true_branch():
 	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
 	
 	
-	

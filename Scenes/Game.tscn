@@ -262,6 +262,7 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(195, -44)
+zoom = Vector2(1.6, 1.6)
 position_smoothing_enabled = true
 script = ExtResource("24_dhqxb")
 
