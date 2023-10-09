@@ -24,6 +24,7 @@ class_name IFButton extends ActionButton
 var true_branch
 var false_branch
 var cond
+var condWrong
 
 var dirs:Array = [MovementBlock.Directions.Right, MovementBlock.Directions.Left, MovementBlock.Directions.Top, MovementBlock.Directions.Bottom]
 var buttons:Dictionary
@@ -36,7 +37,7 @@ func _ready():
 	accept_button.pressed.connect(accept)
 	cancel_button.pressed.connect(cancel)
 	
-	condList = [is_spike]
+	condList = [{"cond": is_spike, "wrongAction": DirButton}]
 	
 	buttons[0] = move_right
 	buttons[1] = move_left
@@ -73,7 +74,8 @@ func _pressed():
 func accept():
 	true_branch = buttons[true_drop.get_selected_id() + dir_drop.get_selected_id()]
 	false_branch = buttons[false_drop.get_selected_id() + dir_drop.get_selected_id()]
-	cond = condList[cond_drop.get_selected_id()]
+	cond = condList[cond_drop.get_selected_id()].cond
+	condWrong = condList[cond_drop.get_selected_id()].wrongAction
 	dir = dirs[dir_drop.get_selected_id()]
 	
 	set_button_dir(true_branch.get_node("Button"))
@@ -98,6 +100,10 @@ func set_extra_values(original):
 	true_branch = original.true_branch
 	false_branch = original.false_branch
 	cond = original.cond
+	condWrong = original.condWrong
+	
+func is_wrong_true_branch():
+	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
 	
 	
 	

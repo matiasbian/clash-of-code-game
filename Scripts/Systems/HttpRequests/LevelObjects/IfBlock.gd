@@ -11,7 +11,7 @@ func get_subinstance():
 		curr_command
 		
 		if curr_command is IFButton:
-			if randomN == 0:
+			if randomN == 0 && !curr_command.is_wrong_true_branch():
 				subinstance = MovementBlock.new(block)
 			else:
 				subinstance = JumpBlock.new(block)
