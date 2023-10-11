@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=20 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -10,13 +10,10 @@
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
 [ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="5_2un37"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
-[ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="7_g82f2"]
-[ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="8_g7bxv"]
-[ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="8_lx1mp"]
 [ext_resource type="Texture2D" uid="uid://c12ltq2inashw" path="res://Art/Sprites/UI/Icons/repeat_130896.png" id="9_manl2"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ForButton.gd" id="9_t432r"]
-[ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="10_02guc"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
+[ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -144,7 +141,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 18
 text = "Acciones"
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -301,6 +298,7 @@ theme_override_constants/margin_top = 1
 
 [node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 34
 theme_override_styles/disabled = SubResource("StyleBoxFlat_i7yfl")
 text = "PLAY"
 script = ExtResource("3_txxca")
@@ -320,7 +318,7 @@ theme = ExtResource("3_hlaxj")
 text = "Atras"
 script = ExtResource("13_rf1kr")
 
-[node name="PopUps" type="Control" parent="Panel"]
+[node name="PopUps" type="Control" parent="Panel" node_paths=PackedStringArray("victory_next_level_button", "victory_restart_level_button", "victory_main_menu_button")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -329,81 +327,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_7jtma")
+victory_next_level_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Accept")
+victory_restart_level_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Restart")
+victory_main_menu_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Menu")
 metadata/_edit_lock_ = true
 
-[node name="Victory" type="MarginContainer" parent="Panel/PopUps"]
+[node name="Victory" parent="Panel/PopUps" instance=ExtResource("14_58d8e")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Victory"]
-layout_mode = 2
-color = Color(0.223529, 0.294118, 0.486275, 1)
-
-[node name="Label" type="Label" parent="Panel/PopUps/Victory/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -64.0
-offset_right = 181.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_1v5bc")
-text = "¡Ganaste!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Panel/PopUps/Victory/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.796
-offset_left = -80.0
-offset_top = 102.0
-offset_right = 80.0
-offset_bottom = 0.191895
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-text = "Aceptar"
-
-[node name="StarsContainer" type="HBoxContainer" parent="Panel/PopUps/Victory/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.328
-anchor_top = 0.228
-anchor_right = 0.672
-anchor_bottom = 0.366
-offset_left = 0.143982
-offset_top = 0.255997
-offset_right = -0.144104
-offset_bottom = -0.168045
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-script = ExtResource("7_g82f2")
-completedTexture = ExtResource("8_lx1mp")
-emptyTexture = ExtResource("8_g7bxv")
-
-[node name="TextureRect" parent="Panel/PopUps/Victory/ColorRect/StarsContainer" instance=ExtResource("10_02guc")]
-layout_mode = 2
-
-[node name="TextureRect2" parent="Panel/PopUps/Victory/ColorRect/StarsContainer" instance=ExtResource("10_02guc")]
-layout_mode = 2
-
-[node name="TextureRect3" parent="Panel/PopUps/Victory/ColorRect/StarsContainer" instance=ExtResource("10_02guc")]
-layout_mode = 2
 
 [node name="Defeat" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
@@ -829,3 +760,4 @@ grow_vertical = 2
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For"]
+[editable path="Panel/PopUps/Victory"]
