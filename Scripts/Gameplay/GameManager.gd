@@ -23,6 +23,8 @@ var win = false
 var stopChecking = false
 var current_command
 
+@onready var time_manager = %TimeManager
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.movement_finished.connect(playerReachedPos)

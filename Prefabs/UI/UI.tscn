@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=21 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ForButton.gd" id="9_t432r"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
+[ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -318,7 +319,7 @@ theme = ExtResource("3_hlaxj")
 text = "Atras"
 script = ExtResource("13_rf1kr")
 
-[node name="PopUps" type="Control" parent="Panel" node_paths=PackedStringArray("victory_next_level_button", "victory_restart_level_button", "victory_main_menu_button")]
+[node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -327,14 +328,28 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("4_7jtma")
-victory_next_level_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Accept")
-victory_restart_level_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Restart")
-victory_main_menu_button = NodePath("Victory/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Menu")
 metadata/_edit_lock_ = true
 
-[node name="Victory" parent="Panel/PopUps" instance=ExtResource("14_58d8e")]
+[node name="Victory" parent="Panel/PopUps" node_paths=PackedStringArray("next_level_button", "restart_level_button", "main_menu_button", "title_label", "time_label", "steps_label", "pop_up_manager") instance=ExtResource("14_58d8e")]
 visible = false
 layout_mode = 1
+script = ExtResource("15_7u6v8")
+next_level_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Accept")
+restart_level_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Restart")
+main_menu_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Menu")
+title_label = NodePath("ColorRect/VBoxContainer/Panel/LevelCompleted")
+time_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Time/Label2")
+steps_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Steps/Label2")
+pop_up_manager = NodePath("..")
+
+[node name="TextureRect" parent="Panel/PopUps/Victory/ColorRect/VBoxContainer/StarsContainer" index="0"]
+expand_mode = 2
+
+[node name="TextureRect2" parent="Panel/PopUps/Victory/ColorRect/VBoxContainer/StarsContainer" index="1"]
+expand_mode = 2
+
+[node name="TextureRect3" parent="Panel/PopUps/Victory/ColorRect/VBoxContainer/StarsContainer" index="2"]
+expand_mode = 2
 
 [node name="Defeat" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
