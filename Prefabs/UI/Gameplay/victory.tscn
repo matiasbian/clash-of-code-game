@@ -169,7 +169,7 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v4bqt")
 theme_override_font_sizes/font_size = 30
-text = "STEPS"
+text = "PASOS"
 horizontal_alignment = 1
 vertical_alignment = 1
 

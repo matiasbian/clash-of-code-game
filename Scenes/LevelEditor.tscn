@@ -64,6 +64,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("5_1hue4")
 alignment = 1
@@ -106,6 +107,7 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/MinSteps"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme = ExtResource("5_1hue4")
 alignment = 1

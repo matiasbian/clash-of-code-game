@@ -18,6 +18,8 @@ var perfect_steps:float = 0
 
 #rules var
 var movementsExecuted:int = 0
+var block_index:int = 0
+
 var blocks:Dictionary
 var win = false
 var stopChecking = false
@@ -62,6 +64,7 @@ func _checkNewBlock(playerPos):
 	blockNumber = round(blockNumber)
 	
 	movementsExecuted += 1
+	block_index += 1
 	
 	var stringedPos = str(Vector2(round(playerPos.x), round(playerPos.y)))
 	
@@ -88,7 +91,7 @@ func _play(pos, focus = true):
 		focusCurrentAction()
 		current_command = pos
 	else:
-		movementsExecuted -= 1
+		block_index -= 1
 	player.movePlayerToDir(pos)
 
 
@@ -108,10 +111,10 @@ func defeat_delay():
 	emit_signal("on_defeat_delay_needed")
 	
 func focusCurrentAction():
-	if (movementsExecuted > 0): #unfocus previous node
-		_getActionsList()[movementsExecuted -1].get_node("Button")._elemUnfocused()	
+	if (block_index > 0): #unfocus previous node
+		_getActionsList()[block_index -1].get_node("Button")._elemUnfocused()	
 	#focus current node
-	_getActionsList()[movementsExecuted].get_node("Button")._elemFocused()
+	_getActionsList()[block_index].get_node("Button")._elemFocused()
 
 #event callbacks-------
 func playerReachedPos(pos):

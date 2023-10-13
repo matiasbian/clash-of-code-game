@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=23 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
+[ext_resource type="Script" path="res://Scripts/UI/PopUps/Defat.gd" id="16_itkgu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -30,6 +31,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yfl"]
 bg_color = Color(0.560784, 0.560784, 0.560784, 0.427451)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
+bg_color = Color(0.313726, 0.282353, 0.470588, 1)
 
 [sub_resource type="Theme" id="Theme_1v5bc"]
 default_font = ExtResource("4_5tr4s")
@@ -351,7 +355,41 @@ expand_mode = 2
 [node name="TextureRect3" parent="Panel/PopUps/Victory/ColorRect/VBoxContainer/StarsContainer" index="2"]
 expand_mode = 2
 
-[node name="Defeat" type="MarginContainer" parent="Panel/PopUps"]
+[node name="Defeat" parent="Panel/PopUps" node_paths=PackedStringArray("restart_level_button", "main_menu_button", "time_label", "steps_label", "pop_up_manager") instance=ExtResource("14_58d8e")]
+visible = false
+layout_mode = 1
+script = ExtResource("16_itkgu")
+restart_level_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Restart")
+main_menu_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons/Menu")
+time_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Time/Label2")
+steps_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Steps/Label2")
+pop_up_manager = NodePath("..")
+
+[node name="ColorRect" parent="Panel/PopUps/Defeat" index="0"]
+color = Color(0.34902, 0.00392157, 0.0392157, 1)
+
+[node name="StarsContainer" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer" index="0"]
+visible = false
+
+[node name="TextureRect" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/StarsContainer" index="0"]
+expand_mode = 2
+
+[node name="TextureRect2" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/StarsContainer" index="1"]
+expand_mode = 2
+
+[node name="TextureRect3" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/StarsContainer" index="2"]
+expand_mode = 2
+
+[node name="Panel" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer" index="1"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_jep4p")
+
+[node name="LevelCompleted" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel" index="0"]
+text = "PERDISTE"
+
+[node name="Accept" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="2"]
+visible = false
+
+[node name="Defeatado" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -360,11 +398,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Defeat"]
+[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Defeatado"]
 layout_mode = 2
 color = Color(0.231373, 0.0901961, 0.0941176, 1)
 
-[node name="Label" type="Label" parent="Panel/PopUps/Defeat/ColorRect"]
+[node name="Label" type="Label" parent="Panel/PopUps/Defeatado/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -382,7 +420,7 @@ text = "¡Perdiste!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel/PopUps/Defeat/ColorRect"]
+[node name="Button" type="Button" parent="Panel/PopUps/Defeatado/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -776,3 +814,4 @@ grow_vertical = 2
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For"]
 [editable path="Panel/PopUps/Victory"]
+[editable path="Panel/PopUps/Defeat"]

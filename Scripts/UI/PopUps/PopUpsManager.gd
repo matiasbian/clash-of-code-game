@@ -5,11 +5,6 @@ class_name PopUpManager extends Node
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 @onready var http_req:HTTP_REQUESTS = get_node("/root/Node2D/Systems/HttpRequests")
 
-
-
-@onready var defeat_button:Button = get_node("Defeat/ColorRect/Button")
-
-
 var there_is_next_level = false
 
 # Called when the node enters the scene tree for the first time.
@@ -18,7 +13,6 @@ func _ready():
 	game_manager.on_defeat.connect(on_defeat)
 	game_manager.on_defeat_delay_needed.connect(on_defeat_delay)
 	
-	defeat_button.button_up.connect(restart_level)
 	http_req.data_sent.connect(level_ended)
 	http_req.data_retrieved.connect(check_next_level)
 
@@ -31,6 +25,7 @@ func on_defeat_delay():
 	await get_tree().create_timer(2.0).timeout
 	get_node("/root/GlobalVar").play_lose()	
 	defeat.visible = true
+	defeat.setdata()
 	
 func on_win(percentage):
 	await get_tree().create_timer(1.0).timeout
