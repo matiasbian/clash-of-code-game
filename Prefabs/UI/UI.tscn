@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=32 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -17,6 +17,13 @@
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Defat.gd" id="16_itkgu"]
+[ext_resource type="Texture2D" uid="uid://cu6jc0t5ncukp" path="res://Art/Sprites/UI/arrows/02_157559.png" id="18_jmyrp"]
+[ext_resource type="Texture2D" uid="uid://camwaj8ca3afe" path="res://Art/Sprites/UI/arrows/01_157559.png" id="19_8jbel"]
+[ext_resource type="Texture2D" uid="uid://cju7lh6ttbx0a" path="res://Art/Sprites/UI/arrows/00_157559.png" id="20_hmwui"]
+[ext_resource type="Texture2D" uid="uid://cifbw2qtbcau2" path="res://Art/Sprites/UI/arrows/03_157559.png" id="21_4xk2j"]
+[ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="22_vpe1u"]
+[ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
+[ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -49,10 +56,6 @@ border_width_bottom = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
 bg_color = Color(0.541176, 0.160784, 0.168627, 1)
-
-[sub_resource type="Theme" id="Theme_1v5bc"]
-default_font = ExtResource("4_5tr4s")
-default_font_size = 46
 
 [node name="UI" type="CanvasLayer"]
 
@@ -461,54 +464,6 @@ text = "PERDISTE"
 [node name="Accept" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="2"]
 visible = false
 
-[node name="Defeatado" type="MarginContainer" parent="Panel/PopUps"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Panel/PopUps/Defeatado"]
-layout_mode = 2
-color = Color(0.231373, 0.0901961, 0.0941176, 1)
-
-[node name="Label" type="Label" parent="Panel/PopUps/Defeatado/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -179.0
-offset_top = -64.0
-offset_right = 181.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_1v5bc")
-text = "¡Perdiste!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button" type="Button" parent="Panel/PopUps/Defeatado/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.878
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -89.944
-offset_right = 80.0
-offset_bottom = -79.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-text = "Reintentar
-"
-
 [node name="JumpActions" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
 layout_mode = 1
@@ -576,25 +531,30 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Panel/PopUps/JumpActions/ColorRect/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("4_5tr4s")
 theme_override_font_sizes/font_size = 13
 text = "Dirección"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/JumpActions/ColorRect/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.61
+size_flags_stretch_ratio = 0.76
+icon_alignment = 1
+expand_icon = true
 item_count = 4
 selected = 3
-popup/item_0/text = "Top"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("18_jmyrp")
 popup/item_0/id = 2
-popup/item_1/text = "Down"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("19_8jbel")
 popup/item_1/id = 3
-popup/item_2/text = "Left"
+popup/item_2/text = ""
+popup/item_2/icon = ExtResource("20_hmwui")
 popup/item_2/id = 1
-popup/item_3/text = "Right"
+popup/item_3/text = ""
+popup/item_3/icon = ExtResource("21_4xk2j")
 popup/item_3/id = 0
 
 [node name="IF" type="MarginContainer" parent="Panel/PopUps"]
@@ -636,6 +596,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Dir" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -649,21 +610,28 @@ text = "Dirección"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/Dir"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 4
 selected = 0
-popup/item_0/text = "Right"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("21_4xk2j")
 popup/item_0/id = 0
-popup/item_1/text = "Left"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("20_hmwui")
 popup/item_1/id = 1
-popup/item_2/text = "Top"
+popup/item_2/text = ""
+popup/item_2/icon = ExtResource("18_jmyrp")
 popup/item_2/id = 2
-popup/item_3/text = "Down"
+popup/item_3/text = ""
+popup/item_3/icon = ExtResource("19_8jbel")
 popup/item_3/id = 3
 
 [node name="Cond" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -677,15 +645,19 @@ text = "Condición"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/Cond"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 1
 selected = 0
-popup/item_0/text = "Tiene pinches"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("22_vpe1u")
 popup/item_0/id = 0
 
 [node name="True" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -699,17 +671,22 @@ text = "Caso verdadero"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/True"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 2
 selected = 0
-popup/item_0/text = "Mov"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("23_q8g4g")
 popup/item_0/id = 0
-popup/item_1/text = "Jump"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
 [node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -723,14 +700,18 @@ text = "Caso falso"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/False"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 2
 selected = 0
-popup/item_0/text = "Mov"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("23_q8g4g")
 popup/item_0/id = 0
-popup/item_1/text = "Jump"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
@@ -786,6 +767,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="Dir" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -799,21 +781,28 @@ text = "Dirección"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/Dir"]
+custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 4
 selected = 0
-popup/item_0/text = "Right"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("21_4xk2j")
 popup/item_0/id = 0
-popup/item_1/text = "Left"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("20_hmwui")
 popup/item_1/id = 1
-popup/item_2/text = "Top"
+popup/item_2/text = ""
+popup/item_2/icon = ExtResource("18_jmyrp")
 popup/item_2/id = 2
-popup/item_3/text = "Down"
+popup/item_3/text = ""
+popup/item_3/icon = ExtResource("19_8jbel")
 popup/item_3/id = 3
 
 [node name="True" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
@@ -827,17 +816,22 @@ text = "Acción"
 vertical_alignment = 1
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/True"]
+custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.61
+icon_alignment = 1
+expand_icon = true
 item_count = 2
 selected = 0
-popup/item_0/text = "Mov"
+popup/item_0/text = ""
+popup/item_0/icon = ExtResource("23_q8g4g")
 popup/item_0/id = 0
-popup/item_1/text = "Jump"
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
 [node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
