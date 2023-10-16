@@ -8,6 +8,7 @@ signal on_defeat_delay_needed(index)
 signal startedPlay()
 signal on_block_enter(block)
 signal on_step_performed(number)
+signal jumps_updated(jumps)
 
 @export var player = CharacterBody2D.new()
 @export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
@@ -18,6 +19,7 @@ var playQueue = []
 var perfect_steps:float = 0
 
 #rules var
+var jumps_availables:int = 0
 var movementsExecuted:int = 0
 var block_index:int = 0
 
@@ -52,6 +54,9 @@ func SetBlocks(blocklist):
 	
 func AddCommand(action):
 	emit_signal("action_added", action)
+	
+	if (action is JumpButton):
+		add_jumps(-1)
 	
 func RemoveCommand(index):
 	emit_signal("action_removed", index)
@@ -157,6 +162,11 @@ func get_block(pos):
 		return blocks[stringedPos]
 	else:
 		return null
+		
+func add_jumps(jumps):
+	jumps_availables += jumps
+	print("updated")
+	emit_signal("jumps_updated", jumps_availables)
 
 	
 

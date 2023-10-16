@@ -6,7 +6,7 @@ var URL_GENERIC = "http://localhost:3000/api/levels?level="
 @export var use_exported = false
 
 signal data_retrieved(response)
-signal data_sent(response)
+signal data_sent(response, response_code)
 
 func _ready():
 	# Create an HTTP request node and connect its completion signal.
@@ -58,7 +58,7 @@ func HTTPPost(url, body):
 
 	
 func data_sent_f(result, response_code, headers, body):
-	emit_signal("data_sent", result)
+	emit_signal("data_sent", result, response_code)
 
 # Called when the HTTP request is completed.
 func _http_request_completed(result, response_code, headers, body):

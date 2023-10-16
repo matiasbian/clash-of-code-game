@@ -15,6 +15,8 @@ var game_manager:Game_Manager
 var level:LevelStructure
 var blocks:Dictionary
 
+var jumps:int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
@@ -28,6 +30,7 @@ func instantiateLevel(data):
 	for step in level.stepsList.steps:
 		_spawn_in_dir(step, step.pos)
 	
+	game_manager.add_jumps(jumps)
 	game_manager.SetBlocks(blocks)
 	httpReq.data_retrieved.disconnect(instantiateLevel)
 	return blocks
@@ -41,6 +44,7 @@ func _spawn_in_dir(step, pos):
 	elif (step is JumpBlock):
 		print("Step is JumpBlock")
 		pref = _instantiateBlock(step, jumpPrefab)
+		jumps += 1
 		gamePos = pref.position
 	elif step is StartBlock:
 		print("Step is StartBlock")

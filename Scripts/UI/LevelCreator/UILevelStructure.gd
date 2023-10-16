@@ -13,6 +13,7 @@ class_name UILevelStructure extends Node
 
 @export var success_popup:Panel = Panel.new()
 @export var failure_popup:Panel = Panel.new()
+@export var failure_label_popup:Label = Label.new()
 
 @export var http_req:HTTP_REQUESTS = HTTP_REQUESTS.new()
 
@@ -26,6 +27,9 @@ var level_number_value:int
 var steps = []
 
 const URL = "http://localhost:3000/api/levels"
+const ALREADY_EXISTS_TEXT = "Ya existe el nivel que se intenta crear"
+const ERROR_TEXT = "Error al guardar el nivel.\nRevise los campos en rojo"
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -63,13 +67,18 @@ func _submit():
 		get_node("/root/GlobalVar").play_tap()
 		http_req.HTTPPost(URL, structure)
 	else:
+		failure_label_popup.text = ERROR_TEXT
 		failure_popup.visible = true
 		
 func _cancel():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")	
 
-func _open_success_popup(data):
-	success_popup.visible = true
+func _open_success_popup(data, r_code):
+	if (r_code < 400):
+		success_popup.visible = true
+	else:
+		failure_label_popup.text = ALREADY_EXISTS_TEXT
+		failure_popup.visible = true
 
 func _level_changed(value):
 	level_number_value = value

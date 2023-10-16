@@ -42,7 +42,7 @@ func restart_level():
 func restart_game():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
-func level_ended(response):
+func level_ended(response, r_code):
 	if (there_is_next_level):
 		next_level()
 	else:
