@@ -1,6 +1,5 @@
 [gd_scene load_steps=29 format=3 uid="uid://cfgpcsq25pvlv"]
 
-[ext_resource type="Texture2D" uid="uid://bv4tsb3c7qqbq" path="res://Art/Sprites/logo/transparent.png" id="1_ij6ru"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="2_75pmn"]
 [ext_resource type="Texture2D" uid="uid://bggh5ytov6tvl" path="res://Art/Sprites/map/tileset/tile017.png" id="2_i3o6f"]
@@ -14,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://qq0008afs70s" path="res://Art/Sprites/robot/robot_walk (2).png" id="7_6jh8u"]
 [ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="8_fi1xo"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="9_mrd2j"]
+[ext_resource type="Texture2D" uid="uid://djcwo0d4gcybq" path="res://Art/Sprites/UI/transparencia.png" id="9_xbj5i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi8t"]
 
@@ -254,8 +254,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 8096.83
-offset_bottom = 3923.9
+offset_right = 10356.4
+offset_bottom = 4996.44
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -411,12 +411,13 @@ theme = SubResource("Theme_b28wj")
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="UI/MainMenu/Panel/Panel/LeftSide"]
+modulate = Color(0.652344, 0.9375, 0.4375, 1)
 custom_minimum_size = Vector2(500, 300)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.3
-texture = ExtResource("1_ij6ru")
+texture = ExtResource("9_xbj5i")
 expand_mode = 1
 stretch_mode = 5
 

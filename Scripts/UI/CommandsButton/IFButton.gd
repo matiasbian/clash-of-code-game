@@ -2,13 +2,13 @@ class_name IFButton extends ActionButton
 
 @export var if_popup:Control = Control.new()
 
-@onready var accept_button:Button = if_popup.get_node("ColorRect/Container/Buttons/Btn")
-@onready var cancel_button:Button = if_popup.get_node("ColorRect/Container/Buttons/Btn2")
+@onready var accept_button:Button = if_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn")
+@onready var cancel_button:Button = if_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn2")
 
-@onready var dir_drop:OptionButton = if_popup.get_node("ColorRect/Container/Dir/OptionButton")
-@onready var true_drop:OptionButton = if_popup.get_node("ColorRect/Container/True/OptionButton")
-@onready var false_drop:OptionButton = if_popup.get_node("ColorRect/Container/False/OptionButton")
-@onready var cond_drop:OptionButton = if_popup.get_node("ColorRect/Container/Cond/OptionButton")
+@onready var dir_drop:OptionButton = if_popup.get_node("ColorRect/MarginContainer/Container/Dir/OptionButton")
+@onready var true_drop:OptionButton = if_popup.get_node("ColorRect/MarginContainer/Container/True/OptionButton")
+@onready var false_drop:OptionButton = if_popup.get_node("ColorRect/MarginContainer/Container/False/OptionButton")
+@onready var cond_drop:OptionButton = if_popup.get_node("ColorRect/MarginContainer/Container/Cond/OptionButton")
 
 @export var move_right:ColorRect = ColorRect.new()
 @export var move_left:ColorRect = ColorRect.new()

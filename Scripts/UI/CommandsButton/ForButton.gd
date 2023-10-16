@@ -2,12 +2,12 @@ class_name ForButton extends ActionButton
 
 @export var for_popup:Control = Control.new()
 
-@onready var accept_button:Button = for_popup.get_node("ColorRect/Container/Buttons/Btn")
-@onready var cancel_button:Button = for_popup.get_node("ColorRect/Container/Buttons/Btn2")
+@onready var accept_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn")
+@onready var cancel_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn2")
 
-@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/Container/Dir/OptionButton")
-@onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/Container/True/OptionButton")
-@onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/Container/Amount/SpinBox")
+@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Dir/OptionButton")
+@onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/True/OptionButton")
+@onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/MarginContainer/Container/Amount/SpinBox")
 
 
 @export var move_right:ColorRect = ColorRect.new()

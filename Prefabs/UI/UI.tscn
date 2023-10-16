@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=33 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -17,11 +17,12 @@
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Defat.gd" id="16_itkgu"]
-[ext_resource type="Texture2D" uid="uid://cu6jc0t5ncukp" path="res://Art/Sprites/UI/arrows/02_157559.png" id="18_jmyrp"]
-[ext_resource type="Texture2D" uid="uid://camwaj8ca3afe" path="res://Art/Sprites/UI/arrows/01_157559.png" id="19_8jbel"]
-[ext_resource type="Texture2D" uid="uid://cju7lh6ttbx0a" path="res://Art/Sprites/UI/arrows/00_157559.png" id="20_hmwui"]
-[ext_resource type="Texture2D" uid="uid://cifbw2qtbcau2" path="res://Art/Sprites/UI/arrows/03_157559.png" id="21_4xk2j"]
-[ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="22_vpe1u"]
+[ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="18_0l6ds"]
+[ext_resource type="Texture2D" uid="uid://cb5mtg21cdpfg" path="res://Art/Sprites/UI/resized/02_157559.png" id="18_cjeb7"]
+[ext_resource type="Texture2D" uid="uid://cbppt0k6vquw5" path="res://Art/Sprites/UI/resized/01_157559.png" id="19_ps6rj"]
+[ext_resource type="Texture2D" uid="uid://4u64hus00uat" path="res://Art/Sprites/UI/resized/00_157559.png" id="20_7miwy"]
+[ext_resource type="Texture2D" uid="uid://dadt2puxcaoaw" path="res://Art/Sprites/UI/resized/03_157559.png" id="21_r0lnj"]
+[ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
 
@@ -40,15 +41,15 @@ bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6slhu"]
 bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjyfr"]
-bg_color = Color(0.439216, 0.533333, 0.831373, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrkj"]
+bg_color = Color(0.25098, 0.517647, 0.305882, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjeax"]
-bg_color = Color(0.231373, 0.341176, 0.843137, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjyfr"]
+bg_color = Color(0.270588, 0.345098, 0.435294, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -381,8 +382,9 @@ theme_override_constants/margin_top = 1
 layout_mode = 2
 theme = ExtResource("3_hlaxj")
 theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_0wrkj")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_mjyfr")
-theme_override_styles/focus = SubResource("StyleBoxFlat_mjeax")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0wrkj")
 text = "PLAY"
 script = ExtResource("3_txxca")
 
@@ -483,7 +485,7 @@ pivot_offset = Vector2(150, 150)
 
 [node name="ColorRect" type="ColorRect" parent="Panel/PopUps/JumpActions"]
 layout_mode = 2
-color = Color(0.317647, 0.392157, 0.647059, 1)
+color = Color(0.180392, 0.470588, 0.376471, 1)
 
 [node name="Label" type="Label" parent="Panel/PopUps/JumpActions/ColorRect"]
 layout_mode = 1
@@ -493,11 +495,11 @@ anchor_bottom = 0.264
 offset_bottom = -0.0480003
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 33
 text = "Salto"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
 [node name="Btn" type="Button" parent="Panel/PopUps/JumpActions/ColorRect"]
 layout_mode = 1
@@ -513,6 +515,7 @@ offset_bottom = 0.0537109
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
+theme = ExtResource("3_hlaxj")
 text = "Aceptar"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/JumpActions/ColorRect"]
@@ -531,8 +534,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="Panel/PopUps/JumpActions/ColorRect/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 19
 text = "Dirección"
 vertical_alignment = 1
 
@@ -545,16 +548,16 @@ expand_icon = true
 item_count = 4
 selected = 3
 popup/item_0/text = ""
-popup/item_0/icon = ExtResource("18_jmyrp")
+popup/item_0/icon = ExtResource("18_cjeb7")
 popup/item_0/id = 2
 popup/item_1/text = ""
-popup/item_1/icon = ExtResource("19_8jbel")
+popup/item_1/icon = ExtResource("19_ps6rj")
 popup/item_1/id = 3
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("20_hmwui")
+popup/item_2/icon = ExtResource("20_7miwy")
 popup/item_2/id = 1
 popup/item_3/text = ""
-popup/item_3/icon = ExtResource("21_4xk2j")
+popup/item_3/icon = ExtResource("21_r0lnj")
 popup/item_3/id = 0
 
 [node name="IF" type="MarginContainer" parent="Panel/PopUps"]
@@ -576,40 +579,45 @@ pivot_offset = Vector2(150, 150)
 
 [node name="ColorRect" type="ColorRect" parent="Panel/PopUps/IF"]
 layout_mode = 2
-color = Color(0.317647, 0.392157, 0.647059, 1)
+color = Color(0.180392, 0.470588, 0.376471, 1)
 
-[node name="Container" type="VBoxContainer" parent="Panel/PopUps/IF/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/IF/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Container" type="VBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 35
 text = "IF"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Direccion" type="Label" parent="Panel/PopUps/IF/ColorRect/Container/Dir"]
+[node name="Direccion" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Dir"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 21
 text = "Dirección"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/Dir"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Dir"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -618,33 +626,33 @@ expand_icon = true
 item_count = 4
 selected = 0
 popup/item_0/text = ""
-popup/item_0/icon = ExtResource("21_4xk2j")
+popup/item_0/icon = ExtResource("21_r0lnj")
 popup/item_0/id = 0
 popup/item_1/text = ""
-popup/item_1/icon = ExtResource("20_hmwui")
+popup/item_1/icon = ExtResource("20_7miwy")
 popup/item_1/id = 1
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("18_jmyrp")
+popup/item_2/icon = ExtResource("18_cjeb7")
 popup/item_2/id = 2
 popup/item_3/text = ""
-popup/item_3/icon = ExtResource("19_8jbel")
+popup/item_3/icon = ExtResource("19_ps6rj")
 popup/item_3/id = 3
 
-[node name="Cond" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="Cond" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/Container/Cond"]
+[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Cond"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 21
 text = "Condición"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/Cond"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Cond"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -653,24 +661,24 @@ expand_icon = true
 item_count = 1
 selected = 0
 popup/item_0/text = ""
-popup/item_0/icon = ExtResource("22_vpe1u")
+popup/item_0/icon = ExtResource("22_ofbmu")
 popup/item_0/id = 0
 
-[node name="True" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="True" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/Container/True"]
+[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/True"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 21
 text = "Caso verdadero"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/True"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/True"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -685,21 +693,21 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
-[node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/Container/False"]
+[node name="Label" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/False"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 21
 text = "Caso falso"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/Container/False"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/False"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -714,18 +722,20 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
-[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/Container"]
+[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 layout_mode = 2
 alignment = 1
 
-[node name="Btn" type="Button" parent="Panel/PopUps/IF/ColorRect/Container/Buttons"]
+[node name="Btn" type="Button" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_hlaxj")
 text = "Aceptar"
 
-[node name="Btn2" type="Button" parent="Panel/PopUps/IF/ColorRect/Container/Buttons"]
+[node name="Btn2" type="Button" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_hlaxj")
 text = "Cancelar"
 
 [node name="For" type="MarginContainer" parent="Panel/PopUps"]
@@ -747,40 +757,45 @@ pivot_offset = Vector2(150, 150)
 
 [node name="ColorRect" type="ColorRect" parent="Panel/PopUps/For"]
 layout_mode = 2
-color = Color(0.317647, 0.392157, 0.647059, 1)
+color = Color(0.180392, 0.470588, 0.376471, 1)
 
-[node name="Container" type="VBoxContainer" parent="Panel/PopUps/For/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/For/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Container" type="VBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container"]
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 21
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 31
 text = "For"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
-[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Direccion" type="Label" parent="Panel/PopUps/For/ColorRect/Container/Dir"]
+[node name="Direccion" type="Label" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Dir"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 23
 text = "Dirección"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/Dir"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Dir"]
 custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -789,33 +804,33 @@ expand_icon = true
 item_count = 4
 selected = 0
 popup/item_0/text = ""
-popup/item_0/icon = ExtResource("21_4xk2j")
+popup/item_0/icon = ExtResource("21_r0lnj")
 popup/item_0/id = 0
 popup/item_1/text = ""
-popup/item_1/icon = ExtResource("20_hmwui")
+popup/item_1/icon = ExtResource("20_7miwy")
 popup/item_1/id = 1
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("18_jmyrp")
+popup/item_2/icon = ExtResource("18_cjeb7")
 popup/item_2/id = 2
 popup/item_3/text = ""
-popup/item_3/icon = ExtResource("19_8jbel")
+popup/item_3/icon = ExtResource("19_ps6rj")
 popup/item_3/id = 3
 
-[node name="True" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+[node name="True" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container/True"]
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/True"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 23
 text = "Acción"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/Container/True"]
+[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/True"]
 custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
@@ -830,37 +845,39 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 
-[node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+[node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/Container/Amount"]
+[node name="Label" type="Label" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Amount"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("4_5tr4s")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 23
 text = "Repeticiones"
 vertical_alignment = 1
 
-[node name="SpinBox" type="SpinBox" parent="Panel/PopUps/For/ColorRect/Container/Amount"]
+[node name="SpinBox" type="SpinBox" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Amount"]
 layout_mode = 2
 min_value = 1.0
 value = 1.0
 
-[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/Container"]
+[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 layout_mode = 2
 alignment = 1
 
-[node name="Btn" type="Button" parent="Panel/PopUps/For/ColorRect/Container/Buttons"]
+[node name="Btn" type="Button" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_hlaxj")
 text = "Aceptar"
 
-[node name="Btn2" type="Button" parent="Panel/PopUps/For/ColorRect/Container/Buttons"]
+[node name="Btn2" type="Button" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("3_hlaxj")
 text = "Cancelar"
 
 [node name="Panel2" type="Control" parent="."]
