@@ -7,6 +7,7 @@ signal on_defeat(index)
 signal on_defeat_delay_needed(index)
 signal startedPlay()
 signal on_block_enter(block)
+signal on_step_performed(number)
 
 @export var player = CharacterBody2D.new()
 @export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
@@ -25,7 +26,7 @@ var win = false
 var stopChecking = false
 var current_command
 
-@onready var time_manager = %TimeManager
+@onready var time_manager:TimeManager = %TimeManager
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -65,6 +66,7 @@ func _checkNewBlock(playerPos):
 	
 	movementsExecuted += 1
 	block_index += 1
+	emit_signal("on_step_performed", movementsExecuted, perfect_steps)
 	
 	var stringedPos = str(Vector2(round(playerPos.x), round(playerPos.y)))
 	
@@ -143,6 +145,8 @@ func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
 	httpReq.data_retrieved.disconnect(set_perfect_steps)
+	emit_signal("on_step_performed", 0, perfect_steps)	
+	
 
 func _get_next_queue():
 	return playQueue

@@ -71,6 +71,7 @@ expand_mode = 1
 libraries = {
 "": SubResource("AnimationLibrary_2gw7i")
 }
+next/PopUp = &"Idle"
 
 [node name="star" type="TextureRect" parent="."]
 layout_mode = 1

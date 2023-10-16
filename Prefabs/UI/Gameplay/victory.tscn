@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvs7sb61sikad"]
+[gd_scene load_steps=17 format=3 uid="uid://dvs7sb61sikad"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="2_8txhb"]
@@ -9,11 +9,113 @@
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="7_nlv6p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvm2i"]
-bg_color = Color(0.321569, 0.180392, 0.0705882, 1)
+bg_color = Color(0.109804, 0.247059, 0.231373, 1)
 
 [sub_resource type="Theme" id="Theme_1v5bc"]
 default_font = ExtResource("1_6exj0")
 default_font_size = 46
+
+[sub_resource type="Animation" id="Animation_s2v04"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0.972549, -0.25, 0, 0.25, 0, 0.972549, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_colors/font_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_colors/font_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:theme_override_colors/font_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_vgrje"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_colors/font_color:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_colors/font_color:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_colors/font_color:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:theme_override_colors/font_color:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jubeu"]
+_data = {
+"Idle": SubResource("Animation_s2v04"),
+"RESET": SubResource("Animation_vgrje")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tnhc"]
 bg_color = Color(0.215686, 0.141176, 0.396078, 1)
@@ -127,11 +229,18 @@ offset_right = -0.108032
 grow_horizontal = 2
 size_flags_vertical = 6
 theme = SubResource("Theme_1v5bc")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_fonts/font = ExtResource("6_v4bqt")
 theme_override_font_sizes/font_size = 46
-text = "NIVEL 00 COMPLETADO"
+text = "NIVEL 1 COMPLETADO"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect/VBoxContainer/Panel/LevelCompleted"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_jubeu")
+}
 
 [node name="Panel" type="Panel" parent="ColorRect/VBoxContainer/Panel"]
 layout_mode = 1
@@ -152,6 +261,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="Info" type="VBoxContainer" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer"]
@@ -163,12 +273,14 @@ alignment = 1
 
 [node name="Steps" type="VBoxContainer" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info"]
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Steps"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("6_v4bqt")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 45
 text = "PASOS"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -177,8 +289,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("6_v4bqt")
-theme_override_font_sizes/font_size = 29
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_7tnhc")
 text = "5 / 5
 "
@@ -187,12 +300,14 @@ vertical_alignment = 1
 
 [node name="Time" type="VBoxContainer" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info"]
 layout_mode = 2
+size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Time"]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("6_v4bqt")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 45
 text = "TIEMPO"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -201,8 +316,9 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("6_v4bqt")
-theme_override_font_sizes/font_size = 29
+theme_override_font_sizes/font_size = 45
 theme_override_styles/normal = SubResource("StyleBoxFlat_7tnhc")
 text = "02:05"
 horizontal_alignment = 1

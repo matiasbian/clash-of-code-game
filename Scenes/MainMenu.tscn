@@ -202,7 +202,7 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="UI/MainMenu"]
 visible = false
 layout_mode = 2
-color = Color(0.286275, 0.572549, 0.74902, 1)
+color = Color(0.141176, 0.345098, 0.254902, 1)
 
 [node name="TextureRect" type="TextureRect" parent="UI/MainMenu"]
 visible = false
@@ -254,8 +254,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 5837.26
-offset_bottom = 2850.17
+offset_right = 8096.83
+offset_bottom = 3923.31
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=26 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/UIPlayCommands.gd" id="3_txxca"]
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_5tr4s"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
+[ext_resource type="Script" path="res://Scripts/UI/InGameUI/InfoPanel.gd" id="4_tbie8"]
 [ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="5_2un37"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
 [ext_resource type="Texture2D" uid="uid://c12ltq2inashw" path="res://Art/Sprites/UI/Icons/repeat_130896.png" id="9_manl2"]
@@ -23,17 +24,31 @@ border_width_left = 2
 border_width_top = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o8k5"]
+bg_color = Color(0.47451, 0.47451, 0.47451, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8rfb"]
 bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6slhu"]
 bg_color = Color(0.6, 0.6, 0.6, 0.352941)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7yfl"]
-bg_color = Color(0.560784, 0.560784, 0.560784, 0.427451)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjyfr"]
+bg_color = Color(0.439216, 0.533333, 0.831373, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjeax"]
+bg_color = Color(0.231373, 0.341176, 0.843137, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
-bg_color = Color(0.313726, 0.282353, 0.470588, 1)
+bg_color = Color(0.541176, 0.160784, 0.168627, 1)
 
 [sub_resource type="Theme" id="Theme_1v5bc"]
 default_font = ExtResource("4_5tr4s")
@@ -113,6 +128,68 @@ layout_mode = 2
 [node name="ColorRect4" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
+
+[node name="InfoPanel" type="Panel" parent="Panel" node_paths=PackedStringArray("level", "time", "steps")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.147
+anchor_right = 0.301
+anchor_bottom = 0.237
+offset_top = -2.75999
+offset_right = 0.0799561
+offset_bottom = 0.039978
+theme_override_styles/panel = SubResource("StyleBoxFlat_2o8k5")
+script = ExtResource("4_tbie8")
+level = NodePath("MarginContainer/VBoxContainer/Level")
+time = NodePath("MarginContainer/VBoxContainer/Time")
+steps = NodePath("MarginContainer/VBoxContainer/Steps")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/InfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.03
+anchor_right = 1.073
+anchor_bottom = 1.0
+offset_top = -3.0
+offset_right = -0.194031
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/InfoPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Level" type="Label" parent="Panel/InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+theme = ExtResource("3_hlaxj")
+theme_override_colors/font_outline_color = Color(0.141176, 0.345098, 0.254902, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Nivel"
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="Panel/InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+theme = ExtResource("3_hlaxj")
+theme_override_colors/font_outline_color = Color(0.141176, 0.345098, 0.254902, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Tiempo de juego:"
+vertical_alignment = 1
+
+[node name="Steps" type="Label" parent="Panel/InfoPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+theme = ExtResource("3_hlaxj")
+theme_override_colors/font_outline_color = Color(0.141176, 0.345098, 0.254902, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 30
+text = "Pasos:"
+vertical_alignment = 1
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -303,8 +380,10 @@ theme_override_constants/margin_top = 1
 
 [node name="Button" type="Button" parent="Panel/PlayButtonContainer"]
 layout_mode = 2
+theme = ExtResource("3_hlaxj")
 theme_override_font_sizes/font_size = 34
-theme_override_styles/disabled = SubResource("StyleBoxFlat_i7yfl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mjyfr")
+theme_override_styles/focus = SubResource("StyleBoxFlat_mjeax")
 text = "PLAY"
 script = ExtResource("3_txxca")
 
@@ -364,9 +443,6 @@ main_menu_button = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/B
 time_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Time/Label2")
 steps_label = NodePath("ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Steps/Label2")
 pop_up_manager = NodePath("..")
-
-[node name="ColorRect" parent="Panel/PopUps/Defeat" index="0"]
-color = Color(0.34902, 0.00392157, 0.0392157, 1)
 
 [node name="StarsContainer" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer" index="0"]
 visible = false

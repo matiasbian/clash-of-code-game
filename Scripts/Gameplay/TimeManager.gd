@@ -1,4 +1,4 @@
-extends Node
+class_name TimeManager extends Node
 
 var time_lapsed:float
 

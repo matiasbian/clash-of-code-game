@@ -67,4 +67,5 @@ func _there_is_next_level():
 	
 func check_next_level(data):
 	there_is_next_level = data != null
+	victory.check_next_level(there_is_next_level)
 	

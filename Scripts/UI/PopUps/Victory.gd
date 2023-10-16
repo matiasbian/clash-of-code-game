@@ -26,4 +26,6 @@ func setdata(percentage):
 	
 	time_label.text = pop_up_manager.game_manager.time_manager.get_time_formatted()
 	steps_label.text = str(pop_up_manager.game_manager.movementsExecuted) + " / " + str(pop_up_manager.game_manager.perfect_steps)
-	
+
+func check_next_level(there_is):
+	next_level_button.visible = there_is
