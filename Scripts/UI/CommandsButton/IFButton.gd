@@ -20,6 +20,7 @@ class_name IFButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var error_pop_up:Panel = Panel.new()
 
 var true_branch
 var false_branch
@@ -74,6 +75,15 @@ func _pressed():
 func accept():
 	true_branch = buttons[true_drop.get_selected_id() + dir_drop.get_selected_id()]
 	false_branch = buttons[false_drop.get_selected_id() + dir_drop.get_selected_id()]
+	
+	if (!true_branch.get_node("Button").can_perform(1)):
+		error_pop_up.show_pop_up(true_branch.get_node("Button").get_perform_error(1))
+		return
+	
+	if (!false_branch.get_node("Button").can_perform(1)):
+		error_pop_up.show_pop_up(false_branch.get_node("Button").get_perform_error(1))
+		return
+	
 	cond = condList[cond_drop.get_selected_id()].cond
 	condWrong = condList[cond_drop.get_selected_id()].wrongAction
 	dir = dirs[dir_drop.get_selected_id()]

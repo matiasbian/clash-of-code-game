@@ -332,7 +332,7 @@ texture = ExtResource("3_kf2g7")
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "error_pop_up")]
 script = ExtResource("6_od6bj")
 if_popup = NodePath("../../../../../PopUps/IF")
 move_right = NodePath("../../Right")
@@ -343,6 +343,7 @@ jump_right = NodePath("../../Jump")
 jump_left = NodePath("../../Jump")
 jump_up = NodePath("../../Jump")
 jump_down = NodePath("../../Jump")
+error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="0"]
