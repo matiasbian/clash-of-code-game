@@ -301,5 +301,5 @@ audio = NodePath("Music")
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("28_i5pml")
-volume_db = -25.766
+volume_db = -17.197
 autoplay = true

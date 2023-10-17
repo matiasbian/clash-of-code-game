@@ -68,3 +68,9 @@ func pop_from_subqueue():
 	var val = sub_queue.pop_front()
 	_on_pop(val)
 	return val
+	
+func can_perform(data):
+	return true
+	
+func get_perform_error(data):
+	return ""

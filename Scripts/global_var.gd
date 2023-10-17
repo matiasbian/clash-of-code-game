@@ -14,37 +14,42 @@ var level:int = 1
 @onready var audio_player:AudioStreamPlayer = AudioStreamPlayer.new()
 
 func _ready():
-	add_child(audio_player)
+	add_child(audio_player)	
 	audio_player.volume_db = -11
 
 func play_audio_add_button():
 	audio_player.stream = sfx_button_add
-	audio_player.play()
+	_play()
 	
 func play_audio_remove_button():
 	audio_player.stream = sfx_remove_add
-	audio_player.play()
+	_play()
 	
 func play_step():
 	audio_player.stream = sfx_walk
-	audio_player.play()
+	_play(0)
 	
 func play_explosion():
 	audio_player.stream = sfx_explosion
-	audio_player.play()
+	_play()
 
 func play_jump():
 	audio_player.stream = sfx_jump
-	audio_player.play()
+	_play()
 	
 func play_tap():
 	audio_player.stream = sfx_tap
-	audio_player.play()
+	_play()
 	
 func play_win():
 	audio_player.stream = sfx_win
-	audio_player.play()
+	_play()
 	
 func play_lose():
 	audio_player.stream = sfx_lose
+	_play()
+	
+func _play(volume = -11):
+	audio_player.volume_db = volume
 	audio_player.play()
+	

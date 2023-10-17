@@ -5,9 +5,9 @@ class_name ForButton extends ActionButton
 @onready var accept_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn")
 @onready var cancel_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn2")
 
-@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Dir/OptionButton")
-@onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/True/OptionButton")
-@onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/MarginContainer/Container/Amount/SpinBox")
+@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Form/Dir/OptionButton")
+@onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Form/True/OptionButton")
+@onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/MarginContainer/Container/Form/Amount/SpinBox")
 
 
 @export var move_right:ColorRect = ColorRect.new()
@@ -21,6 +21,7 @@ class_name ForButton extends ActionButton
 @export var jump_down:ColorRect = ColorRect.new()
 
 @export var label:Label = Label.new()
+@export var error_pop_up:Panel = Panel.new()
 
 var iter
 var i
@@ -72,10 +73,16 @@ func _pressed():
 
 func accept():
 	iter = buttons[iter_drop.get_selected_id() + dir_drop.get_selected_id()]
+	
 	dir = dirs[dir_drop.get_selected_id()]
 	i = amount_spin.value -1
 	left = i
 	
+	if (!iter.get_node("Button").can_perform(amount_spin.value)):
+		error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
+		print("ER OR")
+		return
+		
 	set_button_dir(iter.get_node("Button"))
 	
 	game_manager.AddCommand(_get_command_type())

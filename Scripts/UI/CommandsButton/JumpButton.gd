@@ -64,4 +64,10 @@ func _get_label(dir):
 		return "▲"
 	elif dir == 4:
 		return "▼"
+		
+func can_perform(jumps = 1):
+	return game_manager.jumps_availables >= jumps
+	
+func get_perform_error(data):
+	return "Quedan %d saltos disponibles.\nSe intento agregar %d saltos" % [game_manager.jumps_availables, data]
 	
