@@ -13,7 +13,15 @@ func _ready():
 	levelEditButton.pressed.connect(_edit_level_pressed)
 	
 func _edit_level_pressed():
-	get_node("/root/GlobalVar").play_tap()
+	get_node("/root/GlobalVar").play_start_game()
+	
+	get_node("/root/MainMenu/Music").stop()
+	
+	var par = get_parent()
+	for elem in par.get_children():
+		elem.disabled = true
+	
+	await get_tree().create_timer(1.7).timeout
 	get_tree().change_scene_to_file("res://Scenes/LevelEditor.tscn")
 
 

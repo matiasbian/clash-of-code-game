@@ -8,10 +8,13 @@ var t = 0.0
 var zoom_in = false
 var move = false
 
+@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	target_pos = position + Vector2(0,-150)
 	initial_pos = position
+	game_manager.startedPlay.connect(_on_play)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,4 +43,8 @@ func _input(event):
 	if event.is_action_pressed("map"):
 		zoom_in = !zoom_in
 		move = true
+		
+func _on_play():
+	move = true
+	zoom_in = false
 	

@@ -6,8 +6,16 @@ class_name UILevelTh extends Button
 var levelToLoad = 1
 
 func _pressed():
-	get_node("/root/GlobalVar").play_tap()
+	get_node("/root/GlobalVar").play_start_game()
 	get_node("/root/GlobalVar").level = levelToLoad
+	
+	get_node("/root/MainMenu/Music").stop()
+	
+	var par = get_parent()
+	for elem in par.get_children():
+		elem.disabled = true
+	
+	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func setData(progress):

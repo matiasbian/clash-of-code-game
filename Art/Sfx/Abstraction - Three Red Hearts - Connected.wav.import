@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bsohfjxsao3bn"
+path="res://.godot/imported/Abstraction - Three Red Hearts - Connected.wav-0ae99da128bb04ac529dc751a116c557.sample"
+
+[deps]
+
+source_file="res://Art/Sfx/Abstraction - Three Red Hearts - Connected.wav"
+dest_files=["res://.godot/imported/Abstraction - Three Red Hearts - Connected.wav-0ae99da128bb04ac529dc751a116c557.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

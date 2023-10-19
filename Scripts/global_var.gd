@@ -10,6 +10,8 @@ var level:int = 1
 @onready var sfx_tap =  load("res://Art/Sfx/tap.wav")
 @onready var sfx_win =  load("res://Art/Sfx/win.wav")
 @onready var sfx_lose =  load("res://Art/Sfx/lose.wav")
+@onready var sfx_start_game =  load("res://Art/Sfx/start_game.wav")
+@onready var sfx_play_comnmand =  load("res://Art/Sfx/play_commands.mp3")
 
 @onready var audio_player:AudioStreamPlayer = AudioStreamPlayer.new()
 
@@ -48,6 +50,14 @@ func play_win():
 func play_lose():
 	audio_player.stream = sfx_lose
 	_play()
+	
+func play_commands():
+	audio_player.stream = sfx_play_comnmand
+	_play(-5)
+	
+func play_start_game():
+	audio_player.stream = sfx_start_game
+	_play(-5)
 	
 func _play(volume = -11):
 	audio_player.volume_db = volume
