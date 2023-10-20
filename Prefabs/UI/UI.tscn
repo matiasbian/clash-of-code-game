@@ -477,6 +477,15 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_jep4p")
 [node name="LevelCompleted" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel" index="0"]
 text = "PERDISTE"
 
+[node name="Buttons" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer" index="1"]
+theme_override_constants/separation = 30
+
+[node name="Menu" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="0"]
+size_flags_horizontal = 4
+
+[node name="Restart" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="1"]
+size_flags_horizontal = 4
+
 [node name="Accept" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="2"]
 visible = false
 

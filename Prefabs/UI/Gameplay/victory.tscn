@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvs7sb61sikad"]
+[gd_scene load_steps=18 format=3 uid="uid://dvs7sb61sikad"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="2_8txhb"]
@@ -9,7 +9,11 @@
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="7_nlv6p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvm2i"]
-bg_color = Color(0.109804, 0.247059, 0.231373, 1)
+bg_color = Color(0.235294, 0.556863, 0.690196, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 
 [sub_resource type="Theme" id="Theme_1v5bc"]
 default_font = ExtResource("1_6exj0")
@@ -117,6 +121,13 @@ _data = {
 "RESET": SubResource("Animation_vgrje")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnqtr"]
+bg_color = Color(0.0862745, 0.0862745, 0.0862745, 0.494118)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tnhc"]
 bg_color = Color(0.215686, 0.141176, 0.396078, 1)
 
@@ -135,7 +146,7 @@ border_width_right = 2
 border_width_bottom = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60hc3"]
-bg_color = Color(0.223529, 0.627451, 0.435294, 1)
+bg_color = Color(0.207843, 0.717647, 0.407843, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -253,6 +264,7 @@ offset_right = -35.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lnqtr")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/VBoxContainer/Panel/Panel"]
 layout_mode = 1
@@ -328,28 +340,31 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 15
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Menu" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 2
 size_flags_vertical = 3
 theme = ExtResource("7_nlv6p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5qi6s")
 text = "Menu principal"
 
 [node name="Restart" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("7_nlv6p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_7hltk")
 text = "Reiniciar nivel"
 
 [node name="Accept" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 10
 size_flags_vertical = 3
 theme = ExtResource("7_nlv6p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_60hc3")
