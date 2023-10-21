@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=41 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/ErrorPopUp.gd" id="27_35iv5"]
+[ext_resource type="Script" path="res://Scripts/UI/PopUps/DialogPopUp.gd" id="28_0bv7a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -69,6 +70,20 @@ bg_color = Color(0.466667, 0.0509804, 0.137255, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmm1"]
+bg_color = Color(0.231373, 0.478431, 0.780392, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1mgd3"]
+bg_color = Color(0.368627, 0.603922, 0.894118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 
 [node name="UI" type="CanvasLayer"]
 
@@ -971,6 +986,84 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_hlaxj")
 text = "Aceptar"
+
+[node name="Dialog" type="Panel" parent="Panel/PopUps"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.259
+anchor_right = 0.77
+anchor_bottom = 0.856
+offset_left = 133.84
+offset_top = 75.28
+offset_right = -134.4
+offset_bottom = -75.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqmm1")
+script = ExtResource("28_0bv7a")
+
+[node name="TextPanel" type="Panel" parent="Panel/PopUps/Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.14
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.160004
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1mgd3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/Dialog/TextPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PopUps/Dialog/TextPanel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("18_qtj20")
+text = "orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus venenatis enim sit amet semper finibus. In ornare tortor ut lectus consequat aliquet. Ut non lectus sed arcu facilisis interdum."
+
+[node name="Label" type="Label" parent="Panel/PopUps/Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_right = 0.79
+anchor_bottom = 0.14
+offset_left = -4.03001
+offset_right = -0.550049
+offset_bottom = -0.160004
+grow_horizontal = 2
+theme = ExtResource("3_hlaxj")
+theme_override_font_sizes/font_size = 55
+text = "DIALOG TITLE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/PopUps/Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.851
+anchor_right = 0.576
+anchor_bottom = 0.97
+offset_left = -4.76001
+offset_top = -0.394012
+offset_right = 0.271973
+offset_bottom = -0.180023
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_hlaxj")
+text = "ACEPTAR"
 
 [node name="Panel2" type="Control" parent="."]
 visible = false

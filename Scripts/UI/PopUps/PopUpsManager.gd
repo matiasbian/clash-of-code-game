@@ -4,6 +4,7 @@ class_name PopUpManager extends Node
 @onready var defeat = get_node("Defeat")
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 @onready var http_req:HTTP_REQUESTS = get_node("/root/Node2D/Systems/HttpRequests")
+@onready var dialog:DialogPopUp = get_node("Dialog")
 
 var there_is_next_level = false
 
