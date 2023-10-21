@@ -49,7 +49,7 @@ func _handlePlayerMovement():
 func movePlayerToPos(pos, animate):
 	anim.stop()	
 	if (animate): 
-		get_node("/root/GlobalVar").play_step()
+		GlobalVar.play_step()
 		anim.play("Moving")
 	reachedPos = false
 	target = pos

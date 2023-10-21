@@ -207,9 +207,6 @@ func update_or_add(button):
 	var elem = -1
 	
 	for index in range(0, steps.size()):
-		print("comparing: new b X " + str(button.grid_pos.x) + "/" + str(steps[index].positionX) )
-		print("comparing: new b X " + str(button.grid_pos.y) + "/" + str(steps[index].positionY) )
-		print("is equal: " + str(button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY))
 		if button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY:
 			print("replace then")
 			elem = index
@@ -222,7 +219,5 @@ func update_or_add(button):
 		steps[elem] = toAdd
 	else:
 		steps.push_back(toAdd)
-	print("added " + str(toAdd))
-	print("Final " + str(steps))
 		
 	

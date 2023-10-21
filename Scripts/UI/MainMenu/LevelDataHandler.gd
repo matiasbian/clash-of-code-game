@@ -27,7 +27,6 @@ func _add_levels(result, response_code, headers, body):
 	
 
 func saveData(data):
-	print("temp data " + str(data))
 	tempData = data
 		
 func _fillLevelInfo(data):

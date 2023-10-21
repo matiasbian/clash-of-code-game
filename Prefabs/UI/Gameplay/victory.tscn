@@ -346,7 +346,7 @@ alignment = 1
 [node name="Menu" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 2
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("7_nlv6p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5qi6s")
@@ -364,7 +364,7 @@ text = "Reiniciar nivel"
 [node name="Accept" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 6
 size_flags_vertical = 3
 theme = ExtResource("7_nlv6p")
 theme_override_styles/normal = SubResource("StyleBoxFlat_60hc3")

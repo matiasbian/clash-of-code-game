@@ -42,24 +42,19 @@ func _spawn_in_dir(step, pos):
 		pref = _instantiateBlock(step, jumpPrefab)		
 		gamePos = _instantiateBlock(step, dirPrefab).position
 	elif (step is JumpBlock):
-		print("Step is JumpBlock")
 		pref = _instantiateBlock(step, jumpPrefab)
 		jumps += 1
 		gamePos = pref.position
 	elif step is StartBlock:
-		print("Step is StartBlock")
 		pref = _instantiateBlock(step, startPrefab)
 		gamePos = pref.position
 	elif step is FinishBlock:
-		print("Step is FinishBlock")
 		pref =_instantiateBlock(step, finishPrefab)
 		gamePos = pref.position
 	elif step is IfBlock:
-		print("Step is IF")
 		pref = _instantiateBlock(step, ifPrefab)
 		gamePos = pref.position
 		
-	print("--------- pref " + str(pref))
 	step._inst = pref
 	blocks[str(gamePos)] = step	
 	

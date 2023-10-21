@@ -29,3 +29,6 @@ func setdata(percentage):
 
 func check_next_level(there_is):
 	next_level_button.visible = there_is
+	
+	if (!there_is):
+		pop_up_manager.send_score(true)

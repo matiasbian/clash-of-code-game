@@ -7,6 +7,7 @@ class_name PopUpManager extends Node
 @onready var dialog:DialogPopUp = get_node("Dialog")
 
 var there_is_next_level = false
+var _no_reset_level = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -44,18 +45,22 @@ func restart_game():
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 	
 func level_ended(response, r_code):
+	if (_no_reset_level):
+		return
+	
 	if (there_is_next_level):
 		next_level()
 	else:
 		restart_game()
 	
-func send_score():
+func send_score(no_reset_level = false):
 	get_node("/root/GlobalVar").play_tap()	
 	var body = {
 		"userID": 5,
 		"levelNumber": get_node("/root/GlobalVar").level,
 		"movements": game_manager.movementsExecuted
 	}
+	_no_reset_level = no_reset_level
 	http_req.HTTPPost(http_req.URL_POST, body)
 	
 func next_level():

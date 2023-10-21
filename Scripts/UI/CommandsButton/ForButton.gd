@@ -80,7 +80,6 @@ func accept():
 	
 	if (!iter.get_node("Button").can_perform(amount_spin.value)):
 		error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
-		print("ER OR")
 		return
 		
 	set_button_dir(iter.get_node("Button"))

@@ -20,13 +20,19 @@ func _pressed():
 	
 func setData(progress):
 	var data = progress
-	movements.text = "Movimientos: " + str(data.movements)
-	levelNumber.text = "Nivel\n " + str(data.levelNumber)
+	if (movements):
+		movements.text = "Movimientos: " + str(data.movements)
+	if (levelNumber):
+		levelNumber.text = "Nivel\n " + str(data.levelNumber)
 		
-	completed.visible = true
-	movements.visible = true
+	if (completed):
+		completed.visible = true
+	if (movements):
+		movements.visible = true
 	
 func setLevel(data):
 	levelToLoad = data.level
-	levelNumber.text = "Nivel\n " + str(data.level)
+	
+	if (levelNumber):
+		levelNumber.text = "Nivel\n " + str(data.level)
 		

@@ -85,7 +85,6 @@ func _checkNewBlock(playerPos):
 		#Check if this block losing logic
 		block.do_extras_when_landed(player)	
 		if (block.shouldLose(player)):
-			print("Lose by block")
 			defeat_delay()
 			return true
 		
@@ -165,7 +164,6 @@ func get_block(pos):
 		
 func add_jumps(jumps):
 	jumps_availables += jumps
-	print("updated")
 	emit_signal("jumps_updated", jumps_availables)
 
 	
