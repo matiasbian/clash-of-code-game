@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=44 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
 [ext_resource type="Texture2D" uid="uid://c12ltq2inashw" path="res://Art/Sprites/UI/Icons/repeat_130896.png" id="9_manl2"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ForButton.gd" id="9_t432r"]
+[ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="13_6m05p"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
@@ -57,6 +58,11 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+
+[sub_resource type="FontVariation" id="FontVariation_syrqp"]
+base_font = ExtResource("18_0l6ds")
+spacing_glyph = 1
+spacing_bottom = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
 bg_color = Color(0.541176, 0.160784, 0.168627, 1)
@@ -421,7 +427,7 @@ text = "PLAY"
 script = ExtResource("3_txxca")
 
 [node name="Button" type="Button" parent="Panel"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -431,7 +437,8 @@ offset_right = 100.0
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme = ExtResource("3_hlaxj")
+theme = ExtResource("13_6m05p")
+theme_override_fonts/font = SubResource("FontVariation_syrqp")
 text = "Atras"
 script = ExtResource("13_rf1kr")
 

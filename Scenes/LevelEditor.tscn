@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bcikunr3u0s7h"]
+[gd_scene load_steps=13 format=3 uid="uid://bcikunr3u0s7h"]
 
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="1_p8ucm"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
@@ -9,6 +9,17 @@
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_1hue4"]
 [ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
+[ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="6_svrxl"]
+
+[sub_resource type="FontVariation" id="FontVariation_ov1by"]
+base_font = ExtResource("1_p8ucm")
+spacing_glyph = 7
+spacing_top = -16
+
+[sub_resource type="FontVariation" id="FontVariation_554l8"]
+base_font = ExtResource("1_p8ucm")
+spacing_glyph = 5
+spacing_top = -16
 
 [node name="LevelEditor" type="Control"]
 layout_mode = 3
@@ -41,7 +52,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer"]
 layout_mode = 2
@@ -116,7 +127,7 @@ update_on_text_changed = true
 [node name="Structure" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 5.73
+size_flags_stretch_ratio = 6.59
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure" node_paths=PackedStringArray("levelNumber", "level_label", "min_steps", "dropdown", "add_button", "submit_button", "cancel_button", "grid", "success_popup", "failure_popup", "failure_label_popup", "http_req")]
 layout_mode = 2
@@ -202,20 +213,24 @@ button_prefab = ExtResource("3_ijbu0")
 [node name="Buttons" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="Button" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 5
-theme = ExtResource("5_1hue4")
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_ov1by")
 text = "Guardar"
 
 [node name="Button2" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("level", "min_steps", "label", "structure")]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
 size_flags_horizontal = 5
-theme = ExtResource("5_1hue4")
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_554l8")
 text = "Cancelar"
 script = ExtResource("3_jkeep")
 level = NodePath("../../LevelN/SpinBox")

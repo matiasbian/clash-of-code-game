@@ -23,5 +23,4 @@ func test_assert_eq_mov_pos():
 	add_child_autofree(player)
 	player.movePlayerToPos(Vector2(5,0), false)
 	gut.simulate(player, 20, .1)
-	print(player.position)
 	assert_eq(player.position.x > 4.5, true , 'Player position should be Vector2(5,0)')

@@ -1,7 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://cfgpcsq25pvlv"]
+[gd_scene load_steps=36 format=3 uid="uid://cfgpcsq25pvlv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
-[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="2_75pmn"]
 [ext_resource type="Texture2D" uid="uid://bggh5ytov6tvl" path="res://Art/Sprites/map/tileset/tile017.png" id="2_i3o6f"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
 [ext_resource type="Texture2D" uid="uid://dax2ua0veci1n" path="res://Art/Sprites/robot2/enemies x3.png" id="3_nvuuy"]
@@ -14,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="8_fi1xo"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="9_mrd2j"]
 [ext_resource type="Texture2D" uid="uid://djcwo0d4gcybq" path="res://Art/Sprites/UI/transparencia.png" id="9_xbj5i"]
+[ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="10_aobcd"]
+[ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="13_77om8"]
 [ext_resource type="AudioStream" uid="uid://bsohfjxsao3bn" path="res://Art/Sfx/Abstraction - Three Red Hearts - Connected.wav" id="15_r2mp7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi8t"]
@@ -226,6 +227,16 @@ _data = {
 "RESET": SubResource("Animation_2bi1d")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_05pk1"]
+base_font = ExtResource("13_77om8")
+spacing_glyph = 5
+spacing_top = -16
+
+[sub_resource type="FontVariation" id="FontVariation_eodhh"]
+base_font = ExtResource("13_77om8")
+spacing_glyph = 1
+spacing_bottom = 12
+
 [node name="MainMenu" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -293,8 +304,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 14875.6
-offset_bottom = 7145.07
+offset_right = 19394.7
+offset_bottom = 9290.16
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -467,31 +478,32 @@ libraries = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/Panel/Panel/LeftSide"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.07
-theme_override_constants/separation = 7
+theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer" node_paths=PackedStringArray("levelEditButton")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
-text = "Jugar"
+theme = ExtResource("10_aobcd")
+text = " JUGAr "
 script = ExtResource("1_ve7o6")
 levelEditButton = NodePath("../Button2")
 
 [node name="Button2" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
+theme = ExtResource("10_aobcd")
+theme_override_fonts/font = SubResource("FontVariation_05pk1")
 text = "Crear nivel"
 
 [node name="Button3" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
+theme = ExtResource("10_aobcd")
 disabled = true
 text = "Créditos"
 
@@ -518,11 +530,13 @@ back = NodePath("../Button")
 main_menu = NodePath("../../MainMenu")
 
 [node name="Button" type="Button" parent="UI/Levels"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = ExtResource("2_75pmn")
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("10_aobcd")
+theme_override_fonts/font = SubResource("FontVariation_eodhh")
+theme_override_font_sizes/font_size = 25
 text = "Atras"
 
 [node name="HtppNode" type="Node2D" parent="."]
