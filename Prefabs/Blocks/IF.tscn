@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0ogqv2y5haxu"]
+[gd_scene load_steps=10 format=3 uid="uid://0ogqv2y5haxu"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/IfGameBlock.gd" id="1_intvk"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="2_bvjsc"]
@@ -6,11 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="3_5svvd"]
 [ext_resource type="PackedScene" uid="uid://25smnr0v40i3" path="res://Prefabs/Blocks/Jump.tscn" id="3_hqpkt"]
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_xcaqp"]
+[ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="7_xucne"]
+[ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="8_2agc0"]
 
-[node name="Directional" type="Node2D"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7da8q"]
+
+[node name="Directional" type="Node2D" node_paths=PackedStringArray("spikes_icon", "balls_icon")]
 script = ExtResource("1_intvk")
 movement_prefab = ExtResource("2_bvjsc")
 spike_prefab = ExtResource("3_hqpkt")
+spikes_icon = NodePath("Label/Spikes")
+balls_icon = NodePath("Label/Balls")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)
@@ -32,3 +38,24 @@ theme_override_font_sizes/font_size = 38
 text = "?"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Spikes" type="Sprite2D" parent="Label"]
+position = Vector2(94.5, -6.5)
+scale = Vector2(53, 51)
+texture = SubResource("PlaceholderTexture2D_7da8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Label/Spikes"]
+position = Vector2(0.00943375, 0.0049019)
+scale = Vector2(0.057783, 0.0569853)
+texture = ExtResource("7_xucne")
+
+[node name="Balls" type="Sprite2D" parent="Label"]
+visible = false
+position = Vector2(94.5, -6.5)
+scale = Vector2(53, 51)
+texture = SubResource("PlaceholderTexture2D_7da8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Label/Balls"]
+position = Vector2(0.00943375, 0.0049019)
+scale = Vector2(0.00235237, 0.00231989)
+texture = ExtResource("8_2agc0")

@@ -7,6 +7,7 @@ signal before_check()
 var _inst
 var from_if
 
+
 func _init(block):
 	init(block)
 	
