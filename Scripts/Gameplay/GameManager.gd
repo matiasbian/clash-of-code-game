@@ -149,6 +149,10 @@ func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
 	httpReq.data_retrieved.disconnect(set_perfect_steps)
+	
+	var ui = get_parent().get_parent().get_node("UI/Panel/PopUps")
+	if ui:
+		ui._show_dialog(level.dialogs, level.levelNumber)
 	emit_signal("on_step_performed", 0, perfect_steps)	
 	
 

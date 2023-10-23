@@ -987,7 +987,7 @@ grow_vertical = 0
 theme = ExtResource("3_hlaxj")
 text = "Aceptar"
 
-[node name="Dialog" type="Panel" parent="Panel/PopUps"]
+[node name="Dialog" type="Panel" parent="Panel/PopUps" node_paths=PackedStringArray("title", "message", "button")]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -1003,6 +1003,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_gqmm1")
 script = ExtResource("28_0bv7a")
+title = NodePath("Label")
+message = NodePath("TextPanel/MarginContainer/RichTextLabel")
+button = NodePath("Button")
 
 [node name="TextPanel" type="Panel" parent="Panel/PopUps/Dialog"]
 layout_mode = 1

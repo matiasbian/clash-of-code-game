@@ -18,6 +18,8 @@ func _ready():
 	http_req.data_sent.connect(level_ended)
 	http_req.data_retrieved.connect(check_next_level)
 
+func _show_dialog(message, level):
+	dialog._show(message, level)
 
 func on_defeat():
 	get_node("/root/GlobalVar").play_lose()
