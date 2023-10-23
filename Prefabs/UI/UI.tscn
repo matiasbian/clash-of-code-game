@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=42 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -72,6 +72,9 @@ border_width_top = 2
 border_width_right = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqmm1"]
+bg_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rd77"]
 bg_color = Color(0.231373, 0.478431, 0.780392, 1)
 border_width_left = 4
 border_width_top = 4
@@ -990,6 +993,19 @@ text = "Aceptar"
 [node name="Dialog" type="Panel" parent="Panel/PopUps" node_paths=PackedStringArray("title", "message", "button")]
 visible = false
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gqmm1")
+script = ExtResource("28_0bv7a")
+title = NodePath("Panel/Label")
+message = NodePath("Panel/TextPanel/MarginContainer/RichTextLabel")
+button = NodePath("Panel/Button")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Dialog"]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.173
 anchor_top = 0.259
@@ -1001,13 +1017,9 @@ offset_right = -134.4
 offset_bottom = -75.48
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_gqmm1")
-script = ExtResource("28_0bv7a")
-title = NodePath("Label")
-message = NodePath("TextPanel/MarginContainer/RichTextLabel")
-button = NodePath("Button")
+theme_override_styles/panel = SubResource("StyleBoxFlat_7rd77")
 
-[node name="TextPanel" type="Panel" parent="Panel/PopUps/Dialog"]
+[node name="TextPanel" type="Panel" parent="Panel/PopUps/Dialog/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.14
@@ -1019,7 +1031,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1mgd3")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/Dialog/TextPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/Dialog/Panel/TextPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1031,12 +1043,12 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PopUps/Dialog/TextPanel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PopUps/Dialog/Panel/TextPanel/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("18_qtj20")
 text = "orem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus venenatis enim sit amet semper finibus. In ornare tortor ut lectus consequat aliquet. Ut non lectus sed arcu facilisis interdum."
 
-[node name="Label" type="Label" parent="Panel/PopUps/Dialog"]
+[node name="Label" type="Label" parent="Panel/PopUps/Dialog/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.214
@@ -1052,7 +1064,7 @@ text = "DIALOG TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="Panel/PopUps/Dialog"]
+[node name="Button" type="Button" parent="Panel/PopUps/Dialog/Panel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.42
