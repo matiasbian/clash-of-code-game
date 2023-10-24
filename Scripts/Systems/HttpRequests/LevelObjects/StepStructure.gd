@@ -20,4 +20,6 @@ func get_element(elem):
 		return FinishBlock.new(elem)
 	elif key == "if":
 		return IfBlock.new(elem)
+	elif key == "ball":
+		return BallBlock.new(elem)
 	
