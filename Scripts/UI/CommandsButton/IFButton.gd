@@ -38,7 +38,7 @@ func _ready():
 	accept_button.pressed.connect(accept)
 	cancel_button.pressed.connect(cancel)
 	
-	condList = [{"cond": is_spike, "wrongAction": DirButton}]
+	condList = [{"cond": is_spike, "wrongAction": DirButton}, {"cond": is_take, "wrongAction": DirButton}]
 	
 	buttons[0] = move_right
 	buttons[1] = move_left
@@ -94,6 +94,9 @@ func set_button_dir(button):
 	
 func is_spike(button, player):		
 	return button.get_subinstance() is JumpBlock
+	
+func is_take(button, player):		
+	return button.get_subinstance() is JumpBlock #TODO
 	
 func get_dir():
 	return dir

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=45 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
+[ext_resource type="Texture2D" uid="uid://cxixatynxhgy" path="res://Art/Sprites/UI/Icons/take.png" id="26_lvuoh"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/ErrorPopUp.gd" id="27_35iv5"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/DialogPopUp.gd" id="28_0bv7a"]
 
@@ -707,11 +708,14 @@ layout_mode = 2
 size_flags_stretch_ratio = 2.61
 icon_alignment = 1
 expand_icon = true
-item_count = 1
+item_count = 2
 selected = 0
 popup/item_0/text = ""
 popup/item_0/icon = ExtResource("22_ofbmu")
 popup/item_0/id = 0
+popup/item_1/text = ""
+popup/item_1/icon = ExtResource("26_lvuoh")
+popup/item_1/id = 1
 
 [node name="True" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
