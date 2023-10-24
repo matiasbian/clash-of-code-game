@@ -19,7 +19,6 @@ func _pressed():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func setData(progress):
-	focus_mode =Control.FOCUS_NONE
 	var data = progress
 	if (movements):
 		movements.text = "Movimientos: " + str(data.movements)
@@ -36,4 +35,7 @@ func setLevel(data):
 	
 	if (levelNumber):
 		levelNumber.text = "Nivel\n " + str(data.level)
+		
+func _ready():
+	focus_mode = Control.FOCUS_NONE
 		

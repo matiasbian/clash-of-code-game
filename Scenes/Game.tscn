@@ -34,6 +34,7 @@
 [ext_resource type="Script" path="res://Scripts/Gameplay/TimeManager.gd" id="30_p677d"]
 
 [sub_resource type="Gradient" id="Gradient_c8dtc"]
+colors = PackedColorArray(0.0509804, 0, 0.0470588, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_nc8ou"]
 gradient = SubResource("Gradient_c8dtc")

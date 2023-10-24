@@ -2,6 +2,7 @@ class_name UILevelStructure extends Node
 
 @export var levelNumber:SpinBox = SpinBox.new()
 @export var level_label:TextEdit = TextEdit.new()
+@export var dialog:TextEdit = TextEdit.new()
 @export var min_steps:SpinBox = SpinBox.new()
 
 @export var dropdown:OptionButton = OptionButton.new()
@@ -100,6 +101,7 @@ func _level_structure():
 	return {
 		"levelNumber": level_number_value,
 		"label": level_label.get_line(0),
+		"dialogs": dialog.get_line(0),
 		"perfect_steps": min_steps_value,
 		"structure": {
 			"elements": steps
