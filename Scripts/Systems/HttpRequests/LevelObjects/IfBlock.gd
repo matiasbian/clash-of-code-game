@@ -11,9 +11,9 @@ func _init(block):
 	
 func get_subinstance():
 	if (subtype == "spikes"):
-		_get_spikes_sub_instance()
+		return _get_spikes_sub_instance()
 	elif subinstance == "balls":
-		_get_balls_sub_instance()
+		return _get_balls_sub_instance()
 		
 
 func do_extras_when_landed(player):
