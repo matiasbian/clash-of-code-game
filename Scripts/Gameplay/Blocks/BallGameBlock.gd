@@ -1,7 +1,5 @@
 class_name BallGameBlock extends GameBlock
 
-@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
-
 @export var balls_container:Node2D = Node2D.new()
 
 var balls = 0
@@ -13,8 +11,7 @@ func before_land_actions(player, gameblock):
 func set_extra_data(step):
 	balls = step.balls
 	
-	for i in range(0, balls):
-		balls_container.get_child(i).visible = true
+	_init_balls(balls)
 			
 	super.set_extra_data(step)
 	
@@ -42,4 +39,6 @@ func _get_next_visible_ball():
 			return ball
 	return null
 		
-	
+func _init_balls(amount):
+	for i in range(0, amount):
+		balls_container.get_child(i).visible = true

@@ -1,9 +1,9 @@
 class_name IfGameBlock extends GameBlock
 
-@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 
 @export var movement_prefab:Resource = Resource.new()
 @export var spike_prefab:Resource = Resource.new()
+@export var ball_prefab:Resource = Resource.new()
 
 @export var spikes_icon:Sprite2D = Sprite2D.new()
 @export var balls_icon:Sprite2D = Sprite2D.new()
@@ -19,8 +19,11 @@ func before_land_actions(player, gameblock):
 	
 	if v is MovementBlock:
 		inst = movement_prefab.instantiate()
-	else:
-		inst = spike_prefab.instantiate()		
+	elif v is JumpBlock:
+		inst = spike_prefab.instantiate()
+	elif v is BallBlock:
+		inst = ball_prefab.instantiate()
+		inst._init_balls(gameblock.get_subinstance().balls)
 		
 	inst.init(inst)
 

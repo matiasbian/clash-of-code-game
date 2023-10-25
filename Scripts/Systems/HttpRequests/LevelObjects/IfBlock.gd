@@ -12,7 +12,7 @@ func _init(block):
 func get_subinstance():
 	if (subtype == "spikes"):
 		return _get_spikes_sub_instance()
-	elif subinstance == "balls":
+	elif subtype == "balls":
 		return _get_balls_sub_instance()
 		
 
@@ -48,4 +48,25 @@ func _get_spikes_sub_instance():
 	return subinstance
 	
 func _get_balls_sub_instance():
-	pass
+	if !subinstance:
+		var randomN = randi() % 2
+		var block = _block 
+		var curr_command = _inst.game_manager.current_command
+		
+		curr_command
+		
+		block["amount"] = block.value
+		if curr_command is IFButton:
+			if randomN == 0 && !curr_command.is_wrong_true_branch():
+				subinstance = MovementBlock.new(block)
+			else:
+				subinstance = BallBlock.new(block)
+		else:
+			print("Here?")
+			if curr_command is TakeButton:
+				subinstance = MovementBlock.new(block)
+				print("Here?1")
+			else:
+				subinstance = BallBlock.new(block)
+				print("Here?2")	
+	return subinstance

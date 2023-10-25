@@ -96,7 +96,7 @@ func is_spike(button, player):
 	return button.get_subinstance() is JumpBlock
 	
 func is_take(button, player):		
-	return button.get_subinstance() is JumpBlock #TODO
+	return button.get_subinstance() is BallBlock #TODO
 	
 func get_dir():
 	return dir
