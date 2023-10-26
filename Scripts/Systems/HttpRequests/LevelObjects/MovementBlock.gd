@@ -8,4 +8,4 @@ func shouldLose(player):
 	#if (from_if):
 	#	return true
 	
-	return super.shouldLose(player) || curr_command is TakeButton
+	return super.shouldLose(player) || curr_command is TakeButton || (curr_command is ForButton && curr_command.iter.get_node("Button") is TakeButton)

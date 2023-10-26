@@ -9,10 +9,12 @@ signal right_click
 @export var end_icon:Texture = Texture.new()
 @export var jump_icon:Texture = Texture.new()
 @export var if_icon:Texture = Texture.new()
+@export var if_icon_ball:Texture = Texture.new()
+@export var ball_icon:Texture = Texture.new()
 
-var types = ["", "Sta", "Fin", "Mov", "Ju", "IF"]
-@onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon]
-var colors = [Color.GRAY, Color.YELLOW, Color.YELLOW, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD]
+var types = ["", "Sta", "Fin", "Mov", "Ju", "IF", "IFB", "Ball"]
+@onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon, if_icon_ball, ball_icon]
+var colors = [Color.GRAY, Color.YELLOW, Color.YELLOW, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD, Color.DARK_GOLDENROD, Color.CORNFLOWER_BLUE]
 var i = 0
 
 var grid_pos
