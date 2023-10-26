@@ -359,7 +359,7 @@ texture = ExtResource("3_kf2g7")
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "error_pop_up")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "take", "error_pop_up")]
 script = ExtResource("6_od6bj")
 if_popup = NodePath("../../../../../PopUps/IF")
 move_right = NodePath("../../Right")
@@ -370,6 +370,7 @@ jump_right = NodePath("../../Jump")
 jump_left = NodePath("../../Jump")
 jump_up = NodePath("../../Jump")
 jump_down = NodePath("../../Jump")
+take = NodePath("../../Take")
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
 
@@ -383,7 +384,7 @@ text = "IF"
 [node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For" index="0" node_paths=PackedStringArray("for_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "label", "error_pop_up")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For" index="0" node_paths=PackedStringArray("for_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "take", "label", "error_pop_up")]
 script = ExtResource("9_t432r")
 for_popup = NodePath("../../../../../PopUps/For")
 move_right = NodePath("../../Right")
@@ -394,6 +395,7 @@ jump_right = NodePath("../../Jump")
 jump_left = NodePath("../../Jump")
 jump_up = NodePath("../../Jump")
 jump_down = NodePath("../../Jump")
+take = NodePath("../../Take")
 label = NodePath("Label")
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
@@ -409,10 +411,9 @@ text = ""
 [node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take" index="0" node_paths=PackedStringArray("take_pop_up", "spin_box")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take" index="0" node_paths=PackedStringArray("take_pop_up")]
 script = ExtResource("6_57hbx")
 take_pop_up = NodePath("../../../../../PopUps/Take")
-spin_box = NodePath("../../../../../PopUps/Take/ColorRect/VBoxContainer/HBoxContainer2/SpinBox")
 isSideMenu = true
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="0"]
@@ -686,8 +687,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -48.0
-offset_bottom = 34.0
+offset_top = -31.0
+offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -726,6 +727,7 @@ popup/item_3/icon = ExtResource("21_r0lnj")
 popup/item_3/id = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/PopUps/Take/ColorRect/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
@@ -880,7 +882,7 @@ popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 popup/item_2/text = ""
 popup/item_2/icon = ExtResource("26_lvuoh")
-popup/item_2/id = 2
+popup/item_2/id = 20
 
 [node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
@@ -912,7 +914,7 @@ popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 popup/item_2/text = ""
 popup/item_2/icon = ExtResource("26_lvuoh")
-popup/item_2/id = 2
+popup/item_2/id = 20
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 layout_mode = 2
@@ -1034,7 +1036,7 @@ layout_mode = 2
 size_flags_stretch_ratio = 2.61
 icon_alignment = 1
 expand_icon = true
-item_count = 2
+item_count = 3
 selected = 0
 popup/item_0/text = ""
 popup/item_0/icon = ExtResource("23_q8g4g")
@@ -1042,6 +1044,9 @@ popup/item_0/id = 0
 popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
+popup/item_2/text = ""
+popup/item_2/icon = ExtResource("26_lvuoh")
+popup/item_2/id = 20
 
 [node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form"]
 custom_minimum_size = Vector2(0, 30)

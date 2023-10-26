@@ -20,6 +20,8 @@ class_name ForButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var take:ColorRect = ColorRect.new()
+
 @export var label:Label = Label.new()
 @export var error_pop_up:Panel = Panel.new()
 
@@ -49,6 +51,11 @@ func _ready():
 	buttons[11] = jump_left
 	buttons[12] = jump_up
 	buttons[13] = jump_down
+	
+	buttons[20] = take
+	buttons[21] = take
+	buttons[22] = take
+	buttons[23] = take
 	
 
 func _get_command_type():

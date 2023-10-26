@@ -21,6 +21,14 @@ func do_extras_when_landed(player):
 	subinstance.do_extras_when_landed(player)
 	
 func shouldLose(player):
+	var curr_command = _inst.game_manager.current_command
+	
+	if (subtype == "balls" && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
+		print("Por aca")
+		return true
+	elif (subtype == "spikes" && curr_command is IFButton && curr_command.cond != curr_command.condList[0].cond):
+		print("Por aca 2")
+		return true
 	subinstance.come_from_if()
 	return subinstance.shouldLose(player)
 	
@@ -31,8 +39,6 @@ func _get_spikes_sub_instance():
 		var randomN = randi() % 2
 		var block = _block 
 		var curr_command = _inst.game_manager.current_command
-		
-		curr_command
 		
 		if curr_command is IFButton:
 			if randomN == 0 && !curr_command.is_wrong_true_branch():
@@ -53,20 +59,20 @@ func _get_balls_sub_instance():
 		var block = _block 
 		var curr_command = _inst.game_manager.current_command
 		
-		curr_command
-		
 		block["amount"] = block.value
+		
 		if curr_command is IFButton:
-			if randomN == 0 && !curr_command.is_wrong_true_branch():
-				subinstance = MovementBlock.new(block)
-			else:
+			if !curr_command.is_right_true_branch():
 				subinstance = BallBlock.new(block)
+			else:
+				if randomN == 0:
+					subinstance = BallBlock.new(block)
+				else:
+					subinstance = MovementBlock.new(block)
 		else:
-			print("Here?")
 			if curr_command is TakeButton:
 				subinstance = MovementBlock.new(block)
-				print("Here?1")
 			else:
 				subinstance = BallBlock.new(block)
-				print("Here?2")	
+
 	return subinstance

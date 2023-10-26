@@ -1,10 +1,8 @@
 class_name TakeButton extends ActionButton
 
 @export var take_pop_up:Control = Control.new()
-@export var spin_box:SpinBox = SpinBox.new()
 var button:Button
 var optionButton:OptionButton
-var amount
 
 func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
@@ -37,9 +35,7 @@ func _pressed():
 func _on_accept():
 	take_pop_up.visible = false
 	dir = _get_dir(optionButton.get_selected_id())
-	amount = spin_box.value
 	game_manager.AddCommand(_get_command_type())
-	print("Valuardo " + str(amount))
 	
 func _get_dir(dir):
 	if dir == 0:
@@ -62,6 +58,5 @@ func _get_label(dir):
 		return "▼"
 		
 func set_extra_values(original):
-	amount = original.amount
-	print("Desired amount " + str(amount) + " - " +  str(original.amount))
+	pass
 	

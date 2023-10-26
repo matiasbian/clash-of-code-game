@@ -23,8 +23,11 @@ func _init(block):
 func shouldLose(player):
 	super.shouldLose(player)
 	var curr_command = _inst.game_manager.current_command
-	print("Should lose")
-	return _inst._visible_balls() > 0
+	
+	if (from_if && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
+		return true
+		
+	return _inst._visible_balls() > 0 || super.shouldLose(player)
 	
 func do_extras_when_landed(player):
 	super(player)
@@ -32,8 +35,13 @@ func do_extras_when_landed(player):
 	var curr_command = _inst.game_manager.current_command
 	
 	if (!curr_command is TakeButton):
-		return
+		if (curr_command is IFButton && curr_command.true_branch.get_node("Button") is TakeButton):
+			_inst.takeN(balls)
+			_inst.landed_actions(player, self)
+			return
+		else:
+			return
 	
-	_inst.takeN(curr_command.amount)
+	_inst.takeN(balls)
 	_inst.landed_actions(player, self)
 	

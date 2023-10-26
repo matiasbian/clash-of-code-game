@@ -20,6 +20,8 @@ class_name IFButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var take:ColorRect = ColorRect.new()
+
 @export var error_pop_up:Panel = Panel.new()
 
 var true_branch
@@ -38,7 +40,7 @@ func _ready():
 	accept_button.pressed.connect(accept)
 	cancel_button.pressed.connect(cancel)
 	
-	condList = [{"cond": is_spike, "wrongAction": DirButton}, {"cond": is_take, "wrongAction": DirButton}]
+	condList = [{"cond": is_spike, "wrongAction": DirButton}, {"cond": is_take, "wrongAction": TakeButton}]
 	
 	buttons[0] = move_right
 	buttons[1] = move_left
@@ -49,6 +51,11 @@ func _ready():
 	buttons[11] = jump_left
 	buttons[12] = jump_up
 	buttons[13] = jump_down
+	
+	buttons[20] = take
+	buttons[21] = take
+	buttons[22] = take
+	buttons[23] = take
 	
 
 func _get_command_type():
@@ -73,6 +80,7 @@ func _pressed():
 		game_manager.RemoveCommand(index)
 
 func accept():
+	print("Resultado " + str(true_drop.get_selected_id() + dir_drop.get_selected_id()))
 	true_branch = buttons[true_drop.get_selected_id() + dir_drop.get_selected_id()]
 	false_branch = buttons[false_drop.get_selected_id() + dir_drop.get_selected_id()]
 	
@@ -106,8 +114,12 @@ func set_extra_values(original):
 	false_branch = original.false_branch
 	cond = original.cond
 	condWrong = original.condWrong
+	condList = original.condList
 	
 func is_wrong_true_branch():
+	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
+	
+func is_right_true_branch():
 	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
 	
 	

@@ -20,6 +20,11 @@ func _init(block):
 	
 func shouldLose(player):
 	emit_signal("before_check", null)
+	
+	var curr_command = _inst.game_manager.current_command
+	if (from_if && curr_command is IFButton && curr_command.cond != curr_command.condList[0].cond):
+		return true
+		
 	return !player.is_jumping()
 	
 func do_extras_when_landed(player):
