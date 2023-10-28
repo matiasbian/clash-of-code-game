@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvs7sb61sikad"]
+[gd_scene load_steps=17 format=3 uid="uid://dvs7sb61sikad"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="2_8txhb"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="4_8jk5c"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="5_kyjfg"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="6_v4bqt"]
-[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="7_nlv6p"]
+[ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="7_3j80k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvm2i"]
 bg_color = Color(0.235294, 0.556863, 0.690196, 1)
@@ -131,26 +131,15 @@ border_width_bottom = 4
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tnhc"]
 bg_color = Color(0.215686, 0.141176, 0.396078, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qi6s"]
-bg_color = Color(0.756863, 0.462745, 0.243137, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+[sub_resource type="FontVariation" id="FontVariation_td25n"]
+base_font = ExtResource("6_v4bqt")
+spacing_glyph = 1
+spacing_bottom = 16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hltk"]
-bg_color = Color(0.717647, 0.580392, 0.0705882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_60hc3"]
-bg_color = Color(0.207843, 0.717647, 0.407843, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+[sub_resource type="FontVariation" id="FontVariation_cwe6w"]
+base_font = ExtResource("6_v4bqt")
+spacing_glyph = 1
+spacing_bottom = 16
 
 [node name="Victory" type="MarginContainer"]
 anchors_preset = 15
@@ -340,32 +329,31 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Menu" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(200, 0)
+modulate = Color(1, 1, 0.533333, 1)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_nlv6p")
-theme_override_styles/normal = SubResource("StyleBoxFlat_5qi6s")
-text = "Menu principal"
+theme = ExtResource("7_3j80k")
+text = "Menu"
 
 [node name="Restart" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(200, 0)
+modulate = Color(1, 0.572549, 0.407843, 1)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_nlv6p")
-theme_override_styles/normal = SubResource("StyleBoxFlat_7hltk")
-text = "Reiniciar nivel"
+theme = ExtResource("7_3j80k")
+theme_override_fonts/font = SubResource("FontVariation_td25n")
+text = "Reiniciar "
 
 [node name="Accept" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
-custom_minimum_size = Vector2(200, 0)
+modulate = Color(0.537255, 0.878431, 0.388235, 1)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("7_nlv6p")
-theme_override_styles/normal = SubResource("StyleBoxFlat_60hc3")
+theme = ExtResource("7_3j80k")
+theme_override_fonts/font = SubResource("FontVariation_cwe6w")
 text = "Sig. Nivel"

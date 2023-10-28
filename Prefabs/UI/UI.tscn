@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=59 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -32,6 +32,12 @@
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/ErrorPopUp.gd" id="27_35iv5"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/DialogPopUp.gd" id="28_0bv7a"]
 [ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="28_t2tmb"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/TutorialUI.gd" id="33_ox7ib"]
+[ext_resource type="Texture2D" uid="uid://dax2ua0veci1n" path="res://Art/Sprites/robot2/enemies x3.png" id="33_yd0ii"]
+[ext_resource type="Texture2D" uid="uid://baejjmsoopwgt" path="res://Art/Sprites/robot2/balloon.png" id="34_3el1n"]
+[ext_resource type="Theme" uid="uid://c4cssqc82jfx3" path="res://Art/Styles/tuto_overlay.tres" id="34_dhucm"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_01.gd" id="37_4b5gq"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="38_75ar8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -96,6 +102,71 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nf06k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28c5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieypa"]
+atlas = ExtResource("33_yd0ii")
+region = Rect2(126, 108, 39, 48)
+
+[sub_resource type="Animation" id="Animation_p7nfi"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(32, -0.25, 0, 0.2, 2, 98, -0.25, 0, 0.25, 0, 32, -0.2, 3, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_62sr8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(32, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82jfm"]
+_data = {
+"Idle": SubResource("Animation_p7nfi"),
+"RESET": SubResource("Animation_62sr8")
+}
 
 [node name="UI" type="CanvasLayer"]
 
@@ -525,12 +596,6 @@ text = "PERDISTE"
 
 [node name="Buttons" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer" index="1"]
 theme_override_constants/separation = 30
-
-[node name="Menu" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="0"]
-size_flags_horizontal = 4
-
-[node name="Restart" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="1"]
-size_flags_horizontal = 4
 
 [node name="Accept" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="2"]
 visible = false
@@ -1234,6 +1299,104 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("3_hlaxj")
 text = "ACEPTAR"
+
+[node name="Tutorial" type="Panel" parent="Panel" node_paths=PackedStringArray("scripts", "dialog_label", "overlay")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nf06k")
+script = ExtResource("33_ox7ib")
+scripts = NodePath("Scripts")
+dialog_label = NodePath("CharacterPanel/Panel/Balloon/Label")
+overlay = NodePath("Overlays/Total")
+
+[node name="Overlays" type="Panel" parent="Panel/Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Total" type="Button" parent="Panel/Tutorial/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("34_dhucm")
+
+[node name="CharacterPanel" type="MarginContainer" parent="Panel/Tutorial"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -396.0
+offset_right = 414.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="Panel/Tutorial/CharacterPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_28c5m")
+
+[node name="Character" type="TextureRect" parent="Panel/Tutorial/CharacterPanel/Panel"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 32.0
+offset_right = 285.0
+offset_bottom = 298.0
+texture = SubResource("AtlasTexture_ieypa")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Tutorial/CharacterPanel/Panel/Character"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_82jfm")
+}
+
+[node name="Balloon" type="TextureRect" parent="Panel/Tutorial/CharacterPanel/Panel"]
+layout_mode = 2
+offset_left = 79.0
+offset_top = -238.0
+offset_right = 724.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("34_3el1n")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Panel/Tutorial/CharacterPanel/Panel/Balloon"]
+modulate = Color(0.199219, 0.234375, 0.339844, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = 148.0
+offset_right = -49.0
+offset_bottom = -346.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 31
+text = "PROBANDO TEXTO 123 ASDASD ASD ADSAD SADS ASD ASD ADSADSASDADSA "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts" type="Node" parent="Panel/Tutorial"]
+
+[node name="Level01" type="Node" parent="Panel/Tutorial/Scripts"]
+script = ExtResource("37_4b5gq")
+
+[node name="Level02" type="Node" parent="Panel/Tutorial/Scripts"]
+script = ExtResource("38_75ar8")
 
 [node name="Panel2" type="Control" parent="."]
 visible = false
