@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=63 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -37,7 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://baejjmsoopwgt" path="res://Art/Sprites/robot2/balloon.png" id="34_3el1n"]
 [ext_resource type="Theme" uid="uid://c4cssqc82jfx3" path="res://Art/Styles/tuto_overlay.tres" id="34_dhucm"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_01.gd" id="37_4b5gq"]
-[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="38_75ar8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
@@ -392,6 +391,12 @@ offset_right = -5.0
 offset_bottom = -5.0
 rotation = 1.5708
 
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
+
 [node name="Left" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
@@ -404,6 +409,12 @@ offset_right = -5.0
 offset_bottom = -5.0
 rotation = 4.71239
 
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
+
 [node name="Top" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
@@ -413,6 +424,12 @@ isSideMenu = true
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top/Button" index="0"]
 offset_bottom = -5.0
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Bot" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -426,6 +443,12 @@ offset_right = -5.0
 offset_bottom = -5.0
 rotation = 3.14159
 
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
+
 [node name="Jump" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
@@ -436,6 +459,12 @@ isSideMenu = true
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button" index="0"]
 texture = ExtResource("3_kf2g7")
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -461,6 +490,12 @@ texture = ExtResource("5_2un37")
 [node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="1"]
 offset_top = 0.0
 text = "IF"
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -489,6 +524,12 @@ visible = true
 offset_top = 0.0
 text = ""
 
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
+
 [node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
@@ -504,6 +545,12 @@ texture = ExtResource("26_lvuoh")
 visible = true
 offset_top = 0.0
 text = ""
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -1375,11 +1422,13 @@ anchor_bottom = 1.0
 offset_top = -396.0
 offset_right = 414.0
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="Panel" type="Panel" parent="Panel/Tutorial/CharacterPanel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_28c5m")
 
 [node name="Character" type="TextureRect" parent="Panel/Tutorial/CharacterPanel/Panel"]
@@ -1388,6 +1437,7 @@ offset_left = 7.0
 offset_top = 32.0
 offset_right = 285.0
 offset_bottom = 298.0
+mouse_filter = 2
 texture = SubResource("AtlasTexture_ieypa")
 stretch_mode = 5
 
@@ -1399,12 +1449,13 @@ libraries = {
 
 [node name="Balloon" type="TextureRect" parent="Panel/Tutorial/CharacterPanel/Panel"]
 layout_mode = 2
-offset_left = 79.0
-offset_top = -238.0
-offset_right = 724.0
-offset_bottom = 378.0
+offset_left = 7.0
+offset_top = -329.0
+offset_right = 843.0
+offset_bottom = 469.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("34_3el1n")
 expand_mode = 1
 
@@ -1414,15 +1465,15 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 110.0
-offset_top = 148.0
-offset_right = -49.0
-offset_bottom = -346.0
+offset_left = 123.0
+offset_top = 185.0
+offset_right = -58.0
+offset_bottom = -437.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("18_0l6ds")
-theme_override_font_sizes/font_size = 31
-text = "PROBANDO TEXTO 123 ASDASD ASD ADSAD SADS ASD ASD ADSADSASDADSA "
+theme_override_font_sizes/font_size = 35
+text = "Nuestro objetivo es indicarle al robot las acciones que debe realizar para poder llegar al cofre."
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -1436,9 +1487,6 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
-
-[node name="Level02" type="Node" parent="Panel/Tutorial/Scripts"]
-script = ExtResource("38_75ar8")
 
 [node name="Panel2" type="Control" parent="."]
 visible = false

@@ -18,7 +18,6 @@ func _ready():
 	selec_parent = selected_commands.get_parent()
 	play_parent = play_button.get_parent()
 	overall_button.pressed.connect(_go_next)
-	game_manager.on_victory.connect(_on_win_extras)
 	
 func _get_dialogs():
 	return [
@@ -29,10 +28,7 @@ func _get_dialogs():
 			"dialog": "¡Bienvenido a Clash of Codes!"
 		},
 		{
-			"dialog": "Mi nombre es _____."
-		},
-		{
-			"dialog": "Y seré tu guía durante este tutorial."
+			"dialog": "Mi nombre es UNQbot, seré tu guía durante este tutorial."
 		},
 		{
 			"dialog": "En Clash of codes aprenderás fundamentos de la programación."
@@ -41,26 +37,33 @@ func _get_dialogs():
 			"dialog": "Lo mejor de todo: ¡De manera divertida!"
 		},
 		{
+			"dialog": "Comencemos con el tutorial."
+		},
+		{
+			"dialog": "Nuestro objetivo es indicarle al robot las acciones que debe realizar para poder llegar al cofre."
+		},
+		{
 			"dialog": "En este primer nivel, solo puedes moverte hacia adelante. ¡Inténtalo!",
 			"action": show_avaialable_commands
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego a la lista de comandos.",
+			"dialog": "Como puedes ver, el comando se agrego a la lista de comandos a ejecutar.",
 			"action": _reparent_selected_commands
 		},
 		{
-			"dialog": "Prueba eliminar el comando.",
+			"dialog": "Prueba eliminar el comando que agregaste.",
 			"action": _disable_aux
 		},
 		{
-			"dialog": "Muy bien! Agrega 3 movimientos hacia adelante."
+			"dialog": "¡Muy bien! Ahora agrega 3 movimientos hacia adelante."
 		},
 		{
-			"dialog": "Muy bien! Presiona el botón Play"
+			"dialog": "¡Muy bien! Presiona el botón Play para que el robot ejecute los comandos"
 		}
 	]
 
 func show_avaialable_commands():
+	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 	
 	for c in container.get_children():
@@ -98,6 +101,11 @@ func _reparent_selected_commands():
 	game_manager.action_removed.connect(action_removed)
 	overall_button.disabled = false
 	
+	#highlight selected command
+	var button = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer").get_child(4)
+	button.get_node("Button/Arrows/ArrowBR").visible = true
+	button.get_node("Button").logical_disable = true
+	
 func action_removed(action):
 	if !action_disabled:
 		emit_signal("go_next")
@@ -131,6 +139,7 @@ func add_three(action):
 		var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 		for c in container.get_children():
 			if (c.name == "Right"):
+				c.get_node("Button/Anim").stop()				
 				c.get_node("Button/Anim").play("Idle")
 		
 	
@@ -159,7 +168,10 @@ func _disable_aux():
 	
 	for c in cont.get_children():
 		if c.visible:
+			c.get_node("Button/Anim").stop()
 			c.get_node("Button/Anim").play("Highlight")
+			c.get_node("Button/Arrows/ArrowBR").visible = false
+			c.get_node("Button").logical_disable = false
 
 func _on_win_extras(val):
 	selected_commands.visible = false

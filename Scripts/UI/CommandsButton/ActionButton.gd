@@ -11,6 +11,7 @@ var sub_queue = []
 
 var game_manager:Game_Manager
 var index
+var logical_disable
 
 func _ready():
 	__ready()
@@ -22,6 +23,9 @@ func __ready():
 	
 	
 func _pressed():
+	if logical_disable:
+		return
+
 	if (isSideMenu):
 		game_manager.AddCommand(_get_command_type())
 	else:
