@@ -30,6 +30,9 @@ func go_next():
 	
 	current_step = _next_step()
 	dialog_label.text = current_step.dialog
+	
+	if current_step.has("action"):
+		current_step.action.call()
 
 func _on_Button_gui_input():
 	go_next()

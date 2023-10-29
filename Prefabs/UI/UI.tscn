@@ -1372,7 +1372,7 @@ texture = ExtResource("34_3el1n")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Panel/Tutorial/CharacterPanel/Panel/Balloon"]
-modulate = Color(0.199219, 0.234375, 0.339844, 1)
+modulate = Color(0.0313726, 0.54902, 0.0941176, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
