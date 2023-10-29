@@ -1330,6 +1330,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("34_dhucm")
 
+[node name="OverPanel" type="Panel" parent="Panel/Tutorial/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/Tutorial/Overlays/OverPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.147
+anchor_right = 1.017
+anchor_bottom = 1.0
+offset_top = 0.240005
+offset_right = -32.6401
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("34_dhucm")
+
 [node name="CharacterPanel" type="MarginContainer" parent="Panel/Tutorial"]
 layout_mode = 1
 anchors_preset = 2
@@ -1392,8 +1414,12 @@ autowrap_mode = 3
 
 [node name="Scripts" type="Node" parent="Panel/Tutorial"]
 
-[node name="Level01" type="Node" parent="Panel/Tutorial/Scripts"]
+[node name="Level01" type="Node" parent="Panel/Tutorial/Scripts" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button")]
 script = ExtResource("37_4b5gq")
+available_commands = NodePath("../../../AvailableCommands")
+temp_available_commands_container = NodePath("../../Overlays/OverPanel")
+selected_commands = NodePath("../../../SelectedCommands")
+play_button = NodePath("../../../PlayButtonContainer")
 
 [node name="Level02" type="Node" parent="Panel/Tutorial/Scripts"]
 script = ExtResource("38_75ar8")

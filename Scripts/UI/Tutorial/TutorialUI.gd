@@ -1,6 +1,7 @@
 extends Panel
 
 var dialog_list = []
+var current_script:TutoScriptBase
 
 @export var scripts:Node = Node.new()
 
@@ -13,7 +14,10 @@ var current_step
 func _ready():
 	overlay.focus_mode = Control.FOCUS_NONE
 	overlay.pressed.connect(_on_Button_gui_input)
-	dialog_list = scripts.get_child(GlobalVar.level -1)._get_dialogs()
+	current_script = scripts.get_child(GlobalVar.level -1)
+	current_script.go_next.connect(go_next)
+	
+	dialog_list = current_script._get_dialogs()
 	go_next()
 	
 func _next_step():
