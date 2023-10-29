@@ -25,7 +25,7 @@ func _ready():
 	
 		
 func instantiateLevel(data):
-	level = LevelStructure.new(data) 
+	level = LevelStructure.new(data)
 	
 	var init = Vector2(-1 ,0)
 	for step in level.stepsList.steps:

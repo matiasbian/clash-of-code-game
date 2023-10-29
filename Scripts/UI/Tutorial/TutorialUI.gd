@@ -1,4 +1,4 @@
-extends Panel
+class_name TutorialUI extends Panel
 
 var dialog_list = []
 var current_script:TutoScriptBase
@@ -6,12 +6,19 @@ var current_script:TutoScriptBase
 @export var scripts:Node = Node.new()
 
 var current_step
+var has_tuto
 
 @export var dialog_label:Label = Label.new()
 @export var overlay:Button = Button.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#if (GlobalVar.tuto_completed || GlobalVar.level >= scripts.get_child_count()):
+	#	visible = false
+	#	return
+	
+	has_tuto = true
+		
 	overlay.focus_mode = Control.FOCUS_NONE
 	overlay.pressed.connect(_on_Button_gui_input)
 	current_script = scripts.get_child(GlobalVar.level -1)
@@ -40,3 +47,4 @@ func go_next():
 
 func _on_Button_gui_input():
 	go_next()
+

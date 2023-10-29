@@ -1,6 +1,7 @@
 extends Node
 
 var level:int = 1
+var tuto_completed = false
 
 @onready var sfx_button_add =  load("res://Art/Sfx/add_button.wav")
 @onready var sfx_remove_add =  load("res://Art/Sfx/remove_button.wav")

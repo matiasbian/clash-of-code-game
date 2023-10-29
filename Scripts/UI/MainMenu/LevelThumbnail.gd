@@ -8,6 +8,7 @@ var levelToLoad = 1
 func _pressed():
 	get_node("/root/GlobalVar").play_start_game()
 	get_node("/root/GlobalVar").level = levelToLoad
+	GlobalVar.tuto_completed = completed.visible
 	
 	get_node("/root/MainMenu/Music").stop()
 	

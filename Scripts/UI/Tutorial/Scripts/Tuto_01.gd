@@ -4,16 +4,21 @@ extends TutoScriptBase
 @export var temp_available_commands_container:Panel = Panel.new()
 @export var selected_commands:Node = Node.new()
 @export var play_button:MarginContainer = MarginContainer.new()
+@export var overall_button:Button = Button.new()
 
 var avail_parent
 var selec_parent
 var play_parent
 var i = 0
 
+var action_disabled
+
 func _ready():
 	avail_parent = available_commands.get_parent()
 	selec_parent = selected_commands.get_parent()
 	play_parent = play_button.get_parent()
+	overall_button.pressed.connect(_go_next)
+	game_manager.on_victory.connect(_on_win_extras)
 	
 func _get_dialogs():
 	return [
@@ -27,18 +32,25 @@ func _get_dialogs():
 			"dialog": "Mi nombre es _____."
 		},
 		{
-			"dialog": "Y seré tu guía durante este tutorial"
+			"dialog": "Y seré tu guía durante este tutorial."
 		},
 		{
-			"dialog": "Clash of codes es un juego que te enseñará conceptos fundamentales de la programación"
+			"dialog": "En Clash of codes aprenderás fundamentos de la programación."
 		},
 		{
-			"dialog": "Para este primer nivel, solo tenemos la opción de movernos hacia adelante",
+			"dialog": "Lo mejor de todo: ¡De manera divertida!"
+		},
+		{
+			"dialog": "En este primer nivel, solo puedes moverte hacia adelante. ¡Inténtalo!",
 			"action": show_avaialable_commands
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego a la lista de comandos elegidos",
+			"dialog": "Como puedes ver, el comando se agrego a la lista de comandos.",
 			"action": _reparent_selected_commands
+		},
+		{
+			"dialog": "Prueba eliminar el comando.",
+			"action": _disable_aux
 		},
 		{
 			"dialog": "Muy bien! Agrega 3 movimientos hacia adelante."
@@ -49,21 +61,33 @@ func _get_dialogs():
 	]
 
 func show_avaialable_commands():
+	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
+	
+	for c in container.get_children():
+		if (c.name != "Right"):
+			c.get_node("Button").disabled = true
+		else:
+			c.get_node("Button/Anim").play("Highlight")
 	_reparent()
 	
 func _reparent():
 	temp_available_commands_container.visible = true
 	
-	
 	avail_parent.remove_child(available_commands)
 	temp_available_commands_container.add_child(available_commands)
 	available_commands.set_owner(temp_available_commands_container)
+	
 	game_manager.action_added.connect(_re_reparent_avaiable)
 	
 	
 func _re_reparent_avaiable(action):
 	game_manager.action_added.disconnect(_re_reparent_avaiable)	
+
+	temp_available_commands_container.remove_child(available_commands)
+	avail_parent.add_child(available_commands)
+	available_commands.set_owner(avail_parent)
 	available_commands.visible = false
+	
 	emit_signal("go_next")
 	
 	
@@ -72,8 +96,17 @@ func _reparent_selected_commands():
 	temp_available_commands_container.add_child(selected_commands)
 	selected_commands.set_owner(temp_available_commands_container)
 	game_manager.action_removed.connect(action_removed)
+	overall_button.disabled = false
 	
 func action_removed(action):
+	if !action_disabled:
+		emit_signal("go_next")
+		
+	action_disabled = true
+	temp_available_commands_container.remove_child(selected_commands)
+	avail_parent.add_child(selected_commands)
+	selected_commands.set_owner(avail_parent)
+	
 	game_manager.action_removed.disconnect(action_removed)
 	available_commands.visible = true
 	game_manager.action_added.connect(add_three)	
@@ -84,15 +117,51 @@ func add_three(action):
 	i += 1
 	
 	if i == 3:
-		available_commands.visible = false
-		selected_commands.visible = false
+		#available_commands.visible = false
+		#selected_commands.visible = false
 	
 		play_parent.remove_child(play_button)
 		temp_available_commands_container.add_child(play_button)
 		play_button.set_owner(temp_available_commands_container)
-		
+		game_manager.startedPlay.connect(_game_started)
+		available_commands.visible = false
+		selected_commands.visible = false
 		emit_signal("go_next")
+		
+		var container = available_commands.get_node("ScrollContainer/VBoxContainer")
+		for c in container.get_children():
+			if (c.name == "Right"):
+				c.get_node("Button/Anim").play("Idle")
 		
 	
 func rem_three(action):
 	i -= 1
+
+func _game_started():
+	temp_available_commands_container.remove_child(play_button)
+	play_parent.add_child(play_button)
+	play_button.set_owner(play_parent)
+	
+	temp_available_commands_container.visible = false
+	available_commands.visible = true
+	selected_commands.visible = true
+	emit_signal("go_next")	
+	
+	
+func _go_next():
+	emit_signal("go_next")
+	overall_button.pressed.disconnect(_go_next)
+	overall_button.visible = false
+	
+func _disable_aux():
+	action_disabled = true
+	var cont = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
+	
+	for c in cont.get_children():
+		if c.visible:
+			c.get_node("Button/Anim").play("Highlight")
+
+func _on_win_extras(val):
+	selected_commands.visible = false
+	play_button.visible = false
+	available_commands.visible = false
