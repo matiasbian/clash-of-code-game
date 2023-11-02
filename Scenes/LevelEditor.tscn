@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcikunr3u0s7h"]
+[gd_scene load_steps=25 format=3 uid="uid://bcikunr3u0s7h"]
 
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="1_p8ucm"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
@@ -10,6 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="6_svrxl"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/ButtonManageLevels.gd" id="9_gowye"]
+[ext_resource type="PackedScene" uid="uid://dp8ewdrvbxfpa" path="res://Prefabs/UI/Tutorial/tutorial.tscn" id="11_qlt4u"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/LevelEditor/level_editor_tuto.gd" id="12_u356d"]
+[ext_resource type="Theme" uid="uid://bi21ucjxe6ekv" path="res://Art/Styles/pop_ups_.tres" id="14_mtqog"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/LevelListInstancer.gd" id="15_2pasf"]
+[ext_resource type="Script" path="res://Scripts/UI/LevelCreator/levels_http.gd" id="15_m42p3"]
+
+[sub_resource type="Theme" id="Theme_s42al"]
 
 [sub_resource type="FontVariation" id="FontVariation_ov1by"]
 base_font = ExtResource("1_p8ucm")
@@ -20,6 +28,25 @@ spacing_top = -16
 base_font = ExtResource("1_p8ucm")
 spacing_glyph = 5
 spacing_top = -16
+
+[sub_resource type="FontVariation" id="FontVariation_b0l2h"]
+base_font = ExtResource("1_p8ucm")
+spacing_glyph = 1
+spacing_bottom = 22
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gokij"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2s2n2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3108n"]
+bg_color = Color(0.615686, 0.192157, 0.231373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_47k1a"]
+bg_color = Color(0.670588, 0.682353, 0.596078, 0.552941)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 
 [node name="LevelEditor" type="Control"]
 layout_mode = 3
@@ -62,6 +89,7 @@ alignment = 1
 [node name="LevelN" type="HBoxContainer" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_s42al")
 
 [node name="Label" type="Label" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
 custom_minimum_size = Vector2(175, 0)
@@ -263,6 +291,20 @@ structure = NodePath("../../Structure/VBoxContainer/ItemList")
 [node name="Node2D" type="Node2D" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons"]
 script = ExtResource("3_1x5em")
 
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect" node_paths=PackedStringArray("manage_levels")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -386.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_b0l2h")
+text = "Niveles Creados"
+script = ExtResource("9_gowye")
+manage_levels = NodePath("../../ManageLevels")
+
 [node name="PanelSuccess" parent="CanvasLayer" instance=ExtResource("5_adnws")]
 visible = false
 
@@ -276,4 +318,233 @@ Revise los campos en rojo"
 [node name="TextureRect" parent="CanvasLayer/PanelError/Container" index="1"]
 texture = ExtResource("6_egwgf")
 
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("11_qlt4u")]
+hardcoded_level = true
+metadata/_edit_lock_ = true
+
+[node name="Balloon" parent="CanvasLayer/Tutorial/CharacterPanel/Panel" index="1"]
+z_index = 2
+
+[node name="Level01" parent="CanvasLayer/Tutorial/Scripts" index="0" node_paths=PackedStringArray("original_container", "target_container", "remove_button")]
+script = ExtResource("12_u356d")
+original_container = NodePath("../../../ColorRect/MarginContainer/VBoxContainer")
+target_container = NodePath("../../Panel/TutorialBG/TutoContainer/VBoxContainer")
+remove_button = NodePath("../../Button")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Tutorial"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gokij")
+
+[node name="TutorialBG" type="Panel" parent="CanvasLayer/Tutorial/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2s2n2")
+
+[node name="TutoContainer" type="MarginContainer" parent="CanvasLayer/Tutorial/Panel/TutorialBG"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -353.0
+offset_right = 353.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Tutorial/Panel/TutorialBG/TutoContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Tutorial"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -386.0
+offset_bottom = 82.0
+grow_horizontal = 0
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_b0l2h")
+text = "Niveles Creados"
+
+[node name="ManageLevels" type="Panel" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/ManageLevels"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.297
+anchor_top = 0.112
+anchor_right = 0.703
+anchor_bottom = 0.888
+offset_left = -0.240051
+offset_top = 77.04
+offset_right = 0.23999
+offset_bottom = -77.0401
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_mtqog")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ManageLevels/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ManageLevels/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_1hue4")
+theme_override_font_sizes/font_size = 45
+text = "ELIMINAR NIVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("data", "accept_button", "cancel_button", "pop_up", "pop_up_error", "cancel_error")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.8
+theme_override_fonts/font = ExtResource("1_p8ucm")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("15_2pasf")
+data = NodePath("../../../../../Node/levels_http")
+accept_button = NodePath("../Buttons/Button")
+cancel_button = NodePath("../Buttons/Button2")
+pop_up = NodePath("../../../..")
+pop_up_error = NodePath("../../../../ErrorPanel")
+cancel_error = NodePath("../../../../ErrorPanel/MarginContainer/VBoxContainer/Buttons/Button")
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_ov1by")
+text = "Eliminar"
+
+[node name="Button2" type="Button" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_554l8")
+text = "Cancelar"
+
+[node name="ErrorPanel" type="Panel" parent="CanvasLayer/ManageLevels"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.297
+anchor_top = 0.112
+anchor_right = 0.703
+anchor_bottom = 0.888
+offset_left = -0.240051
+offset_top = 77.04
+offset_right = 0.23999
+offset_bottom = -77.0401
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("14_mtqog")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3108n")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ManageLevels/ErrorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ManageLevels/ErrorPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ManageLevels/ErrorPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_1hue4")
+theme_override_font_sizes/font_size = 45
+text = "ERROR"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/ManageLevels/ErrorPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.94
+theme = ExtResource("5_1hue4")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_47k1a")
+text = "Hubo un error al eliminar el nivel "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="CanvasLayer/ManageLevels/ErrorPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/ManageLevels/ErrorPanel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("6_svrxl")
+theme_override_fonts/font = SubResource("FontVariation_ov1by")
+text = "Aceptar"
+
+[node name="Node" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("3_1x5em")
+URL = "http://localhost:3000/api/alllevels"
+use_exported = true
+
+[node name="levels_http" type="Node" parent="CanvasLayer/Node"]
+script = ExtResource("15_m42p3")
+
 [editable path="CanvasLayer/PanelError"]
+[editable path="CanvasLayer/Tutorial"]

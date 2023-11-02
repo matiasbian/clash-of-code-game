@@ -1,0 +1,208 @@
+[gd_scene load_steps=18 format=3 uid="uid://dp8ewdrvbxfpa"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/TutorialUI.gd" id="1_6aetn"]
+[ext_resource type="Theme" uid="uid://c4cssqc82jfx3" path="res://Art/Styles/tuto_overlay.tres" id="2_a76hc"]
+[ext_resource type="Texture2D" uid="uid://dax2ua0veci1n" path="res://Art/Sprites/robot2/enemies x3.png" id="3_34hyg"]
+[ext_resource type="Texture2D" uid="uid://baejjmsoopwgt" path="res://Art/Sprites/robot2/balloon.png" id="4_31vtj"]
+[ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="5_dfqxn"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_01.gd" id="6_pkjbr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nf06k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_esvqx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ntntx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nkqo4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4riii"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fg4tp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_28c5m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ieypa"]
+atlas = ExtResource("3_34hyg")
+region = Rect2(126, 108, 39, 48)
+
+[sub_resource type="Animation" id="Animation_p7nfi"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0, 7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(32, -0.25, 0, 0.2, 2, 98, -0.25, 0, 0.25, 0, 32, -0.2, 3, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_62sr8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(7, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(32, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_82jfm"]
+_data = {
+"Idle": SubResource("Animation_p7nfi"),
+"RESET": SubResource("Animation_62sr8")
+}
+
+[node name="Tutorial" type="Panel" node_paths=PackedStringArray("scripts", "dialog_label", "overlay")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_nf06k")
+script = ExtResource("1_6aetn")
+scripts = NodePath("Scripts")
+dialog_label = NodePath("CharacterPanel/Panel/Balloon/Label")
+overlay = NodePath("Overlays/Total")
+
+[node name="Overlays" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Total" type="Button" parent="Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_a76hc")
+
+[node name="OverPanel" type="Panel" parent="Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Overlays/OverPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.147
+anchor_right = 1.017
+anchor_bottom = 1.0
+offset_top = 0.240005
+offset_right = -32.6401
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_a76hc")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_esvqx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ntntx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nkqo4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4riii")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fg4tp")
+disabled = true
+
+[node name="CharacterPanel" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -396.0
+offset_right = 414.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="CharacterPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_28c5m")
+
+[node name="Character" type="TextureRect" parent="CharacterPanel/Panel"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 32.0
+offset_right = 285.0
+offset_bottom = 298.0
+mouse_filter = 2
+texture = SubResource("AtlasTexture_ieypa")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterPanel/Panel/Character"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_82jfm")
+}
+
+[node name="Balloon" type="TextureRect" parent="CharacterPanel/Panel"]
+layout_mode = 2
+offset_left = 7.0
+offset_top = -329.0
+offset_right = 843.0
+offset_bottom = 469.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_31vtj")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CharacterPanel/Panel/Balloon"]
+modulate = Color(0.0313726, 0.54902, 0.0941176, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 123.0
+offset_top = 185.0
+offset_right = -58.0
+offset_bottom = -437.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_dfqxn")
+theme_override_font_sizes/font_size = 35
+text = "Nuestro objetivo es indicarle al robot las acciones que debe realizar para poder llegar al cofre."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Scripts" type="Node" parent="."]
+
+[node name="Level01" type="Node" parent="Scripts"]
+script = ExtResource("6_pkjbr")

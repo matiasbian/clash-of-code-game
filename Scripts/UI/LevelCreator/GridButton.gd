@@ -11,6 +11,7 @@ signal right_click
 @export var if_icon:Texture = Texture.new()
 @export var if_icon_ball:Texture = Texture.new()
 @export var ball_icon:Texture = Texture.new()
+@onready var tutorial:TutorialUI = get_tree().root.get_node("LevelEditor/CanvasLayer/Tutorial")
 
 var types = ["", "Sta", "Fin", "Mov", "Ju", "IF", "IFB", "Ball"]
 @onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon, if_icon_ball, ball_icon]
@@ -30,6 +31,10 @@ func set_pos(pos):
 
 func _on_Button_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
+		if tutorial.visible:
+			tutorial.go_next()
+			return
+		
 		match event.button_index:
 			1:
 				_change_type()

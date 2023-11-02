@@ -5,3 +5,6 @@ signal go_next()
 
 func _get_dialogs():
 	return []
+	
+func mine():
+	return self

@@ -35,6 +35,9 @@ func _fillLevelInfo(data):
 	
 	if (data is Array):
 		for d in data:
+			if get_child_count() < d.levelNumber:
+				return
+			
 			get_child(d.levelNumber -1).setData(d)
 	else:
 		get_child(data.levelNumber -1).setData(data)

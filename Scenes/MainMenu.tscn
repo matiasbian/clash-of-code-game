@@ -229,7 +229,7 @@ _data = {
 
 [sub_resource type="FontVariation" id="FontVariation_05pk1"]
 base_font = ExtResource("13_77om8")
-spacing_glyph = 5
+spacing_glyph = 1
 spacing_top = -16
 
 [sub_resource type="FontVariation" id="FontVariation_eodhh"]
@@ -304,8 +304,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 21654.3
-offset_bottom = 10368.7
+offset_right = 22784.1
+offset_bottom = 10906.2
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -478,7 +478,7 @@ libraries = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/Panel/Panel/LeftSide"]
-custom_minimum_size = Vector2(350, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -498,9 +498,9 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("10_aobcd")
 theme_override_fonts/font = SubResource("FontVariation_05pk1")
-text = "Crear nivel"
+text = "Editor de niveles"
 
-[node name="Button3" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
+[node name="Button4" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("10_aobcd")

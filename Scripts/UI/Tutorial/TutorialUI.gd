@@ -4,6 +4,7 @@ var dialog_list = []
 var current_script:TutoScriptBase
 
 @export var scripts:Node = Node.new()
+@export var hardcoded_level = false
 
 var current_step
 var has_tuto
@@ -13,15 +14,21 @@ var has_tuto
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#if (GlobalVar.tuto_completed || GlobalVar.level >= scripts.get_child_count()):
-	#	visible = false
-	#	return
-	
-	has_tuto = true
+	if hardcoded_level && StoredData.load("TutoLevelEditor"):
+		visible = false
+		return
+	elif (GlobalVar.tuto_completed || (!hardcoded_level && GlobalVar.level > scripts.get_child_count())):
+		visible = false
+		return
 		
+	has_tuto = true
+	
 	overlay.focus_mode = Control.FOCUS_NONE
 	overlay.pressed.connect(_on_Button_gui_input)
-	current_script = scripts.get_child(GlobalVar.level -1)
+	if hardcoded_level:
+		current_script = scripts.get_child(0)
+	else:
+		current_script = scripts.get_child(GlobalVar.level -1)
 	current_script.go_next.connect(go_next)
 	
 	dialog_list = current_script._get_dialogs()
