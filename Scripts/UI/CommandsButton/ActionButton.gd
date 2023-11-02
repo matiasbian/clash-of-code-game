@@ -6,7 +6,7 @@ const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 @export var isSideMenu:bool
 
 @onready var baseColor:Color = modulate
-var sub_queue = []
+@onready var procedure:Procedure = Procedure.new()
 
 
 var game_manager:Game_Manager
@@ -69,7 +69,7 @@ func _on_pop(val):
 	pass
 	
 func pop_from_subqueue():
-	var val = sub_queue.pop_front()
+	var val = procedure.get_next_command()
 	_on_pop(val)
 	return val
 	

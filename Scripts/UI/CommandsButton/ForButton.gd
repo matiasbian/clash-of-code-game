@@ -69,7 +69,7 @@ func do_extras(player, targetPos):
 	_on_pop(null)
 	
 	for v in range(0, i):
-		self.sub_queue.push_back(button)
+		self.procedure.add_command(button)
 	
 func _pressed():
 	if (isSideMenu):
@@ -114,7 +114,7 @@ func set_extra_values(original):
 	label = get_node("Label")
 	label.visible = true
 	label.text = "x" + str(left + 1)	
-	self.sub_queue = original.sub_queue
+	self.procedure = original.procedure
 	
 func _on_pop(val):
 	if (left >= 0):

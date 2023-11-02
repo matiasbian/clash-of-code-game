@@ -130,14 +130,14 @@ func playerReachedPos(pos):
 	if stopChecking:
 		return
 		
-	if ((!current_command || current_command.sub_queue.size() == 0) && _get_next_queue().size() == 0):
+	if ((!current_command || current_command.procedure.is_empty()) && _get_next_queue().size() == 0):
 		_checkIfWon(pos)
 		return
 	
 	await get_tree().create_timer(1.0).timeout
 	
 	#first check if action has subactions, if not, pop from actions list
-	if (current_command && current_command.sub_queue.size() > 0):
+	if (current_command && !current_command.procedure.is_empty()):
 		_play(current_command.pop_from_subqueue(), false)
 		return
 	
