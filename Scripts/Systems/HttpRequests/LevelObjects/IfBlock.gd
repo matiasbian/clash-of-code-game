@@ -6,6 +6,7 @@ var value
 
 func _init(block):
 	super._init(block)
+	print(block)
 	subtype = block.subtype
 	value = block.value
 	

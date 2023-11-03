@@ -28,6 +28,8 @@ var win = false
 var stopChecking = false
 var current_command
 
+var global_procedures:Array = []
+
 @onready var time_manager:TimeManager = %TimeManager
 
 # Called when the node enters the scene tree for the first time.
