@@ -140,7 +140,8 @@ func playerReachedPos(pos):
 	
 	#first check if action has subactions, if not, pop from actions list
 	if (current_command && !current_command.procedure.is_empty()):
-		_play(current_command.pop_from_subqueue(), false)
+		var subelem = current_command.pop_from_subqueue()
+		_play(subelem, false)
 		return
 	
 	if (_get_next_queue().size() > 0):

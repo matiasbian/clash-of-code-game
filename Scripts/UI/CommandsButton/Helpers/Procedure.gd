@@ -10,6 +10,9 @@ func add_command(c):
 	
 func add_commands(cs):
 	commands.append_array(cs)
+	
+func remove_command(c):
+	commands.erase(c)
 
 func get_queue():
 	return commands

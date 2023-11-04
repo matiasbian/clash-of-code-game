@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=54 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="5_2un37"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/TakeButton.gd" id="6_57hbx"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ProcedureButton.gd" id="6_v8vaa"]
+[ext_resource type="Texture2D" uid="uid://bv4tsb3c7qqbq" path="res://Art/Sprites/logo/transparent.png" id="7_yhf35"]
 [ext_resource type="Texture2D" uid="uid://c12ltq2inashw" path="res://Art/Sprites/UI/Icons/repeat_130896.png" id="9_manl2"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ForButton.gd" id="9_t432r"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="13_6m05p"]
@@ -319,6 +321,28 @@ offset_bottom = -5.0
 rotation = 1.5708
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button/Arrows" index="0"]
+offset_left = 78.0
+offset_top = 57.0
+offset_right = 483.0
+offset_bottom = 482.0
+
+[node name="Procedure" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure" index="0" node_paths=PackedStringArray("procedure_popup", "accept_button", "selected_commands")]
+script = ExtResource("6_v8vaa")
+procedure_popup = NodePath("../../../../../PopUps/Procedure")
+accept_button = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContainer/Btn")
+selected_commands = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected/HBoxContainer")
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button" index="0"]
+offset_right = -5.0
+offset_bottom = -5.0
+rotation = 1.5708
+texture = ExtResource("7_yhf35")
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button/Arrows" index="0"]
 offset_left = 78.0
 offset_top = 57.0
 offset_right = 483.0
@@ -1542,6 +1566,7 @@ theme = ExtResource("3_hlaxj")
 text = "ACEPTAR"
 
 [node name="Tutorial" parent="Panel" instance=ExtResource("33_dt1xp")]
+visible = false
 layout_mode = 1
 
 [node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
@@ -1561,6 +1586,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot"]
