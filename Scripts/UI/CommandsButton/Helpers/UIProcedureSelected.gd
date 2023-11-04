@@ -8,10 +8,12 @@ func _ready():
 func add_command(element):
 	var clone = element.duplicate()
 	add_child(clone)
-	procedure.add_command(clone.get_node("Button").button_asocciated.get_node("Button"))
+	var asociated = clone.get_node("Button").button_asocciated.get_node("Button")
+	var index = procedure.add_command(asociated)
+	clone.get_node("Button").index = index
 	clone.get_node("Button").picked = true
 	clone.set_owner(self)
 
-func remove_command(element):
-	procedure.remove_command(element)
+func remove_command(element, index):
+	procedure.remove_command_at(index)
 	element.queue_free()

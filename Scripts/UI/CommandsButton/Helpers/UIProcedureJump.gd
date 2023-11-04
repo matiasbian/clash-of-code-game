@@ -9,10 +9,15 @@ class_name UIProcedureComplex extends UIProcedureMove
 var dir
 
 func _pressed():
-	pop_up.visible = true
-	pop_up_button_disa.visible = false
-	pop_up_button.visible = true
-	pop_up_button.pressed.connect(_save_command)
+	if !picked:
+		pop_up.visible = true
+		pop_up_button_disa.visible = false
+		pop_up_button.visible = true
+		pop_up_button.pressed.connect(_save_command)
+	else:
+		print("indice " + str(get_index(true)))
+		
+		selected_container.remove_command(get_parent(), index)
 	
 func _save_command():
 	pop_up.visible = false
@@ -27,10 +32,10 @@ func _save_command():
 	
 func _on_accept():
 	dir = _get_dir(optionButton.get_selected_id())
+	button_asocciated.get_node("Button").dir  = dir
 	
 	
 func _get_dir(dir):
-	print("LA DIR " + str(dir))
 	if dir == 0:
 		return MovementBlock.Directions.Right
 	elif dir == 1:

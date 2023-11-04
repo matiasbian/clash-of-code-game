@@ -227,7 +227,6 @@ func update_or_add(button):
 	
 	for index in range(0, steps.size()):
 		if button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY:
-			print("replace then")
 			elem = index
 			
 	var toAdd = dic[button.getType()].duplicate()

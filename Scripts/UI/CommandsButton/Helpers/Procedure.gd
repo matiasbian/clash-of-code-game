@@ -1,24 +1,31 @@
 class_name Procedure extends Node
 
 var commands:Array = []
+var active_command
 
 func _init():
 	pass
 	
 func add_command(c):
 	commands.push_back(c)
+	return commands.size() - 1
 	
 func add_commands(cs):
 	commands.append_array(cs)
 	
 func remove_command(c):
 	commands.erase(c)
+	
+func remove_command_at(index):
+	commands.remove_at(index)
+	print(commands)
 
 func get_queue():
 	return commands
 
 func get_next_command():
-	return commands.pop_front()
+	active_command = commands.pop_front()
+	return active_command
 	
 
 func is_empty():

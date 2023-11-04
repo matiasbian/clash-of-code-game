@@ -27,7 +27,6 @@ func shouldLose(player):
 	if (from_if && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
 		return true
 	
-	
 	return _inst._visible_balls() > 0 || super.shouldLose(player)
 	
 func do_extras_when_landed(player):
@@ -41,10 +40,9 @@ func do_extras_when_landed(player):
 			_inst.landed_actions(player, self)
 			return
 		else:
-			if (curr_command is ForButton && curr_command.iter.get_node("Button") is TakeButton):
+			if (curr_command is ForButton && curr_command.iter.get_node("Button") is TakeButton || curr_command is ProcedureButton && curr_command.procedure.active_command is TakeButton):
 				_inst.takeN(balls)
 				_inst.landed_actions(player, self)
-				print("Creo que hice esto")
 			return
 	
 	_inst.takeN(balls)

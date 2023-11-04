@@ -1566,7 +1566,6 @@ theme = ExtResource("3_hlaxj")
 text = "ACEPTAR"
 
 [node name="Tutorial" parent="Panel" instance=ExtResource("33_dt1xp")]
-visible = false
 layout_mode = 1
 
 [node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
