@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=55 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InfoPanel.gd" id="4_tbie8"]
 [ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="5_2un37"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProcedureTrigger.gd" id="5_ld6wi"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/TakeButton.gd" id="6_57hbx"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ProcedureButton.gd" id="6_v8vaa"]
@@ -239,6 +240,31 @@ theme_override_font_sizes/font_size = 30
 text = "Pasos:"
 vertical_alignment = 1
 
+[node name="Process" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -16.0
+offset_right = -149.0
+offset_bottom = 100.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel/Process" node_paths=PackedStringArray("trigger_button")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_hlaxj")
+script = ExtResource("5_ld6wi")
+trigger_button = NodePath("../../AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button")
+
 [node name="AccionesCont" type="MarginContainer" parent="Panel"]
 layout_mode = 2
 anchor_left = 1.0
@@ -327,6 +353,7 @@ offset_right = 483.0
 offset_bottom = 482.0
 
 [node name="Procedure" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+visible = false
 layout_mode = 2
 
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure" index="0" node_paths=PackedStringArray("procedure_popup", "accept_button", "selected_commands")]
@@ -1566,6 +1593,7 @@ theme = ExtResource("3_hlaxj")
 text = "ACEPTAR"
 
 [node name="Tutorial" parent="Panel" instance=ExtResource("33_dt1xp")]
+visible = false
 layout_mode = 1
 
 [node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
