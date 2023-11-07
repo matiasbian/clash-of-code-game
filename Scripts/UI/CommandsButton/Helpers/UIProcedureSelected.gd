@@ -26,3 +26,4 @@ func remove_all():
 	
 func close():
 	procedure.proc_name = proc_name_button.text
+	proc_name_button.text = ""

@@ -372,10 +372,11 @@ offset_bottom = 482.0
 visible = false
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure" index="0" node_paths=PackedStringArray("procedure_popup", "accept_button", "selected_commands")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure" index="0" node_paths=PackedStringArray("procedure_popup", "accept_button", "error_pop_up", "selected_commands")]
 script = ExtResource("6_v8vaa")
 procedure_popup = NodePath("../../../../../PopUps/Procedure")
 accept_button = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContainer/Btn")
+error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 selected_commands = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected/HBoxContainer")
 isSideMenu = true
 
@@ -731,7 +732,7 @@ theme = ExtResource("13_6m05p")
 theme_override_fonts/font = SubResource("FontVariation_wakxt")
 text = "-"
 
-[node name="ItemList" type="ItemList" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("add_buton", "remove_buton", "selected_commands")]
+[node name="ItemList" type="ItemList" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("add_buton", "select_button", "remove_buton", "selected_commands")]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.8
@@ -739,6 +740,7 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 30
 script = ExtResource("27_d122k")
 add_buton = NodePath("../Buttons2/Button")
+select_button = NodePath("../Buttons/Button")
 remove_buton = NodePath("../Buttons2/Button2")
 selected_commands = NodePath("../../../../../../SelectedCommands")
 

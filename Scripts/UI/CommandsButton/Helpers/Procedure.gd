@@ -36,4 +36,11 @@ func get_next_command():
 
 func is_empty():
 	return commands.is_empty()
+	
+func jumps_picked():
+	var jumps = 0
+	for c in commands:
+		if c is JumpButton:
+			jumps += 1
+	return jumps
 

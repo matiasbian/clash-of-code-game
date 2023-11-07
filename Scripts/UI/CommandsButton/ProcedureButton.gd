@@ -48,6 +48,12 @@ func accept():
 	#	return
 	selected_commands.close()
 	
+	var error = is_there_an_error()
+	
+	if (error != ""):
+		error_pop_up.show_pop_up(error)
+		return
+	
 	proc_picked = Procedure.new()
 	proc_picked.copy_from(selected_commands.procedure)
 	first_elem = proc_picked.get_next_command()
@@ -55,8 +61,7 @@ func accept():
 		
 	set_button_dir(first_elem)
 	
-	for a in proc_picked.commands:
-		print(a.get_classname())
+	
 		
 	game_manager.add_procedure(_get_command_type())
 	
@@ -89,6 +94,17 @@ func _on_pop(val):
 	
 func get_classname():
 	return "ProcedureButton class"
+	
+func is_there_an_error():
+	var jumps_used = selected_commands.procedure.jumps_picked()	
+	if (selected_commands.procedure.is_empty()):
+		return "No se puede crear procedimientos vacios"
+	elif selected_commands.procedure.proc_name == "":
+		return "Ingrese un nombre para el procedimiento"
+	elif game_manager.jumps_availables < jumps_used:
+		var text = "Se intento usar %s saltos, cuando solo hay disponible %s saltos" % [jumps_used, game_manager.jumps_availables]
+		return text
+	return ""
 	
 	
 	
