@@ -60,3 +60,5 @@ func _get_label(dir):
 func set_extra_values(original):
 	pass
 	
+func get_classname():
+	return "TakeButton class"

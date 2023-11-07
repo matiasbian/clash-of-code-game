@@ -120,6 +120,9 @@ func _on_pop(val):
 	if (left >= 0):
 		label.text = "x" + str(left)
 		left -= 1
+		
+func get_classname():
+	return "ForButton class"
 	
 	
 	

@@ -6,3 +6,6 @@ func _get_command_type():
 func do_extras(player, targetPos):
 	super(player, targetPos)	
 	player.disable_jump()
+	
+func get_classname():
+	return "DirButton class" + str(dir)

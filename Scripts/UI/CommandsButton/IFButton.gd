@@ -122,4 +122,6 @@ func is_wrong_true_branch():
 func is_right_true_branch():
 	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
 	
+func get_classname():
+	return "IfButton class"
 	

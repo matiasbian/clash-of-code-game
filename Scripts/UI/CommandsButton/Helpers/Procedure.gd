@@ -10,6 +10,10 @@ func add_command(c):
 	commands.push_back(c)
 	return commands.size() - 1
 	
+func copy_from(b):
+	self.commands.append_array(b.commands)
+	self.active_command = b.active_command
+	
 func add_commands(cs):
 	commands.append_array(cs)
 	

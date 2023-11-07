@@ -17,3 +17,8 @@ func add_command(element):
 func remove_command(element, index):
 	procedure.remove_command_at(index)
 	element.queue_free()
+	
+func remove_all():
+	for e in get_children():
+		e.queue_free()
+	procedure = Procedure.new()

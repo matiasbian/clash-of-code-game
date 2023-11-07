@@ -78,3 +78,6 @@ func can_perform(data):
 	
 func get_perform_error(data):
 	return ""
+	
+func get_classname():
+	return "ActionButton abstract class"

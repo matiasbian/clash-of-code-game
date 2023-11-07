@@ -45,14 +45,19 @@ func accept():
 	#if (!iter.get_node("Button").can_perform(amount_spin.value)):
 	#	error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
 	#	return
-	proc_picked = selected_commands.procedure
+	proc_picked = Procedure.new()
+	proc_picked.copy_from(selected_commands.procedure)
 	first_elem = proc_picked.get_next_command()
 	dir = first_elem.dir
 		
 	set_button_dir(first_elem)
 	
-	
+	for a in proc_picked.commands:
+		print(a.get_classname())
+		
 	game_manager.AddCommand(_get_command_type())
+	
+	selected_commands.remove_all()
 	procedure_popup.visible = false
 	
 func cancel():
@@ -69,7 +74,8 @@ func get_dir():
 	
 func set_extra_values(original):
 	proc_picked = original.proc_picked
-	self.procedure = original.procedure
+	self.procedure = Procedure.new()
+	self.procedure.copy_from(original.procedure)
 	self.first_elem = original.first_elem
 	
 func _on_pop(val):
@@ -78,6 +84,8 @@ func _on_pop(val):
 	#	label.text = "x" + str(left)
 	#	left -= 1
 	
+func get_classname():
+	return "ProcedureButton class"
 	
 	
 	

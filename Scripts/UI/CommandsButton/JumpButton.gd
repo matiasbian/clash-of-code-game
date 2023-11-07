@@ -71,3 +71,5 @@ func can_perform(jumps = 1):
 func get_perform_error(data):
 	return "Quedan %d saltos disponibles.\nSe intento agregar %d saltos" % [game_manager.jumps_availables, data]
 	
+func get_classname():
+	return "JumpButton class"
