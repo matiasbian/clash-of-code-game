@@ -2,6 +2,7 @@ class_name ProcedureButton extends ActionButton
 		
 @export var procedure_popup:Control = Control.new()
 @export var accept_button:Button = Button.new()
+
 @export var error_pop_up:Panel = Panel.new()
 
 @export var selected_commands:UIProcedureSelected = UIProcedureSelected.new()
@@ -45,6 +46,8 @@ func accept():
 	#if (!iter.get_node("Button").can_perform(amount_spin.value)):
 	#	error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
 	#	return
+	selected_commands.close()
+	
 	proc_picked = Procedure.new()
 	proc_picked.copy_from(selected_commands.procedure)
 	first_elem = proc_picked.get_next_command()
@@ -55,7 +58,7 @@ func accept():
 	for a in proc_picked.commands:
 		print(a.get_classname())
 		
-	game_manager.AddCommand(_get_command_type())
+	game_manager.add_procedure(_get_command_type())
 	
 	selected_commands.remove_all()
 	procedure_popup.visible = false

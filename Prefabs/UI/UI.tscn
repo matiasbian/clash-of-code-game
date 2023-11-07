@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=59 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -31,8 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresPopUp.gd" id="25_f3p8j"]
 [ext_resource type="Texture2D" uid="uid://cxixatynxhgy" path="res://Art/Sprites/UI/Icons/take.png" id="26_lvuoh"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/ErrorPopUp.gd" id="27_35iv5"]
+[ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresItemList.gd" id="27_d122k"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/DialogPopUp.gd" id="28_0bv7a"]
 [ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="28_t2tmb"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/UIProcedureMove.gd" id="31_nkyo7"]
@@ -77,6 +79,15 @@ spacing_bottom = 12
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
 bg_color = Color(0.541176, 0.160784, 0.168627, 1)
 
+[sub_resource type="FontVariation" id="FontVariation_7viqn"]
+base_font = ExtResource("18_0l6ds")
+spacing_top = -16
+
+[sub_resource type="FontVariation" id="FontVariation_wakxt"]
+base_font = ExtResource("18_0l6ds")
+spacing_glyph = 5
+spacing_top = -16
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s05fd"]
 bg_color = Color(0.52549, 0.639216, 0.490196, 1)
 
@@ -117,7 +128,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectedCommands" type="MarginContainer" parent="Panel" node_paths=PackedStringArray("container")]
+[node name="SelectedCommands" type="MarginContainer" parent="Panel" node_paths=PackedStringArray("container", "container_procedures")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.9
@@ -130,6 +141,7 @@ theme_override_constants/margin_top = 1
 script = ExtResource("1_db8n0")
 commandPrefab = ExtResource("1_esfrg")
 container = NodePath("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
+container_procedures = NodePath("Panel/ColorRect/MarginContainer/ContainerProc")
 
 [node name="Panel" type="Panel" parent="Panel/SelectedCommands"]
 layout_mode = 2
@@ -181,6 +193,12 @@ layout_mode = 2
 [node name="ColorRect4" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
 layout_mode = 2
+
+[node name="ContainerProc" type="HBoxContainer" parent="Panel/SelectedCommands/Panel/ColorRect/MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="InfoPanel" type="Panel" parent="Panel" node_paths=PackedStringArray("level", "time", "steps")]
 layout_mode = 1
@@ -254,7 +272,7 @@ offset_bottom = 100.0
 grow_horizontal = 0
 grow_vertical = 2
 
-[node name="Button" type="Button" parent="Panel/Process" node_paths=PackedStringArray("trigger_button")]
+[node name="Button" type="Button" parent="Panel/Process"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -262,8 +280,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_hlaxj")
-script = ExtResource("5_ld6wi")
-trigger_button = NodePath("../../AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button")
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel"]
 layout_mode = 2
@@ -635,6 +651,120 @@ theme_override_constants/separation = 30
 [node name="Accept" parent="Panel/PopUps/Defeat/ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons" index="2"]
 visible = false
 
+[node name="Procedures" type="Panel" parent="Panel/PopUps" node_paths=PackedStringArray("item_list", "confirm_button", "cancel_button", "open_popup_button")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("25_f3p8j")
+item_list = NodePath("Panel/MarginContainer/VBoxContainer/ItemList")
+confirm_button = NodePath("Panel/MarginContainer/VBoxContainer/Buttons/Button")
+cancel_button = NodePath("Panel/MarginContainer/VBoxContainer/Buttons/Button2")
+open_popup_button = NodePath("../../Process/Button")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedures"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.297
+anchor_top = 0.112
+anchor_right = 0.703
+anchor_bottom = 0.888
+offset_left = -0.240051
+offset_top = 77.04
+offset_right = 0.23999
+offset_bottom = -77.0401
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("18_qtj20")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/PopUps/Procedures/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/PopUps/Procedures/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_hlaxj")
+theme_override_font_sizes/font_size = 45
+text = "Procedimientos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons2" type="HBoxContainer" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.51
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons2" node_paths=PackedStringArray("trigger_button")]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("13_6m05p")
+theme_override_fonts/font = SubResource("FontVariation_7viqn")
+text = "+"
+script = ExtResource("5_ld6wi")
+trigger_button = NodePath("../../../../../../../AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button")
+
+[node name="Button2" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons2"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("13_6m05p")
+theme_override_fonts/font = SubResource("FontVariation_wakxt")
+text = "-"
+
+[node name="ItemList" type="ItemList" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("add_buton", "remove_buton", "selected_commands")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.8
+theme_override_fonts/font = ExtResource("18_0l6ds")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("27_d122k")
+add_buton = NodePath("../Buttons2/Button")
+remove_buton = NodePath("../Buttons2/Button2")
+selected_commands = NodePath("../../../../../../SelectedCommands")
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.8
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("13_6m05p")
+theme_override_fonts/font = SubResource("FontVariation_7viqn")
+text = "Seleccionar"
+
+[node name="Button2" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 5
+theme = ExtResource("13_6m05p")
+theme_override_fonts/font = SubResource("FontVariation_wakxt")
+text = "Cancelar"
+
 [node name="Procedure" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
 layout_mode = 1
@@ -843,12 +973,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected" node_paths=PackedStringArray("proc_name_button")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 script = ExtResource("32_av67g")
+proc_name_button = NodePath("../../../HBoxContainer/LineEdit")
 
 [node name="Btn" type="Button" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2

@@ -1,6 +1,7 @@
 class_name UIProcedureSelected extends Node
 
 var procedure:Procedure = Procedure.new()
+@export var proc_name_button:LineEdit = LineEdit.new()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -22,3 +23,6 @@ func remove_all():
 	for e in get_children():
 		e.queue_free()
 	procedure = Procedure.new()
+	
+func close():
+	procedure.proc_name = proc_name_button.text

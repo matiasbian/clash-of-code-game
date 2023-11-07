@@ -2,6 +2,7 @@ class_name Procedure extends Node
 
 var commands:Array = []
 var active_command
+var proc_name
 
 func _init():
 	pass
@@ -13,6 +14,7 @@ func add_command(c):
 func copy_from(b):
 	self.commands.append_array(b.commands)
 	self.active_command = b.active_command
+	self.proc_name = b.proc_name
 	
 func add_commands(cs):
 	commands.append_array(cs)

@@ -40,7 +40,10 @@ func do_extras_when_landed(player):
 			_inst.landed_actions(player, self)
 			return
 		else:
-			if (curr_command is ForButton && curr_command.iter.get_node("Button") is TakeButton || curr_command is ProcedureButton && curr_command.procedure.active_command is TakeButton):
+			var condA = curr_command is ForButton && curr_command.iter.get_node("Button") is TakeButton
+			var condB = curr_command is ProcedureButton && curr_command.procedure.active_command is TakeButton
+			var condC = curr_command is ProcedureButton && curr_command.proc_picked.active_command is TakeButton
+			if ( condA || condB || condC):
 				_inst.takeN(balls)
 				_inst.landed_actions(player, self)
 			return

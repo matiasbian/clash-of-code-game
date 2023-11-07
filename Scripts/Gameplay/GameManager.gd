@@ -1,6 +1,7 @@
 class_name Game_Manager extends Node
 
 signal action_added(action)
+signal procedure_added(procedure)
 signal action_removed(index)
 signal on_victory(perfectPercentage)
 signal on_defeat(index)
@@ -59,6 +60,9 @@ func AddCommand(action):
 	
 	if (action is JumpButton):
 		add_jumps(-1)
+		
+func add_procedure(procedure):
+	emit_signal("procedure_added", procedure)
 	
 func RemoveCommand(index):
 	emit_signal("action_removed", index)
