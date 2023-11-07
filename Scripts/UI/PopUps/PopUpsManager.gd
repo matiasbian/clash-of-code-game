@@ -37,6 +37,13 @@ func on_win(percentage):
 	victory.setdata(percentage)
 	
 	_there_is_next_level()
+
+func is_a_pop_up_open():
+	var i = 0
+	for p in get_children():
+		if p.visible == true:
+			i += 1
+	return i > 1
 	
 	
 func restart_level():

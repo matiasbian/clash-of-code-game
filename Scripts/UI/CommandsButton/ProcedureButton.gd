@@ -54,6 +54,7 @@ func accept():
 		error_pop_up.show_pop_up(error)
 		return
 	
+	_show_label(selected_commands.procedure.proc_name)
 	proc_picked = Procedure.new()
 	proc_picked.copy_from(selected_commands.procedure)
 	first_elem = proc_picked.get_next_command()
@@ -106,6 +107,10 @@ func is_there_an_error():
 		return text
 	return ""
 	
+#Copied from base class - Due a godot BUG it was needed
+func _show_label(text):
+	get_parent().get_node("Button/Label").visible = true
+	get_parent().get_node("Button/Label").text = text
 	
 	
 	

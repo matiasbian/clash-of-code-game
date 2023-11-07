@@ -2,9 +2,11 @@ class_name UIProcedureSelected extends Node
 
 var procedure:Procedure = Procedure.new()
 @export var proc_name_button:LineEdit = LineEdit.new()
+@export var cancel_button:Button = Button.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	cancel_button.pressed.connect(_cancel)
 
 func add_command(element):
 	var clone = element.duplicate()
@@ -27,3 +29,8 @@ func remove_all():
 func close():
 	procedure.proc_name = proc_name_button.text
 	proc_name_button.text = ""
+	
+func _cancel():
+	cancel_button.close()
+	close()
+	remove_all()

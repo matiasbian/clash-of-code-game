@@ -81,3 +81,7 @@ func get_perform_error(data):
 	
 func get_classname():
 	return "ActionButton abstract class"
+	
+func _show_label(text):
+	get_parent().get_node("Button/Label").visible = true
+	get_parent().get_node("Button/Label").text = text
