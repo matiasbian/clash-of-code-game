@@ -1,8 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpmw24xdmg47p"]
+[gd_scene load_steps=8 format=3 uid="uid://cpmw24xdmg47p"]
 
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="1_7na08"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/GameBlock.gd" id="1_upwkg"]
 [ext_resource type="Texture2D" uid="uid://bbxckrjea7med" path="res://Art/Sprites/map/tileset/tile069.png" id="2_23ijg"]
+[ext_resource type="Texture2D" uid="uid://b6ywcoi7b1kca" path="res://Art/Sprites/gameplay/flag animation.png" id="4_jclnd"]
+
+[sub_resource type="Animation" id="Animation_wosrn"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(5, 8, 32, 50), Rect2(65, 8, 30, 50), Rect2(125, 8, 31, 50), Rect2(185, 8, 32, 50), Rect2(245, 8, 30, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2(12.755, -23.06), Vector2(11.365, -23.06), Vector2(12.085, -23.06), Vector2(12.715, -23.06), Vector2(11.565, -23.06)]
+}
+
+[sub_resource type="Animation" id="Animation_efh4f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 8, 32, 50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(12.755, -23.06)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8q4xp"]
+_data = {
+"Idle": SubResource("Animation_wosrn"),
+"RESET": SubResource("Animation_efh4f")
+}
 
 [node name="Directional" type="Node2D"]
 script = ExtResource("1_upwkg")
@@ -16,3 +79,17 @@ texture = ExtResource("1_7na08")
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
 texture = ExtResource("2_23ijg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-48, -43)
+scale = Vector2(2.13333, 2.13333)
+texture = ExtResource("4_jclnd")
+offset = Vector2(12.755, -23.06)
+region_enabled = true
+region_rect = Rect2(5, 8, 32, 50)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_8q4xp")
+}

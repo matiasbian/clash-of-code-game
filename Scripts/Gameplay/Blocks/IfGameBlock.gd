@@ -36,7 +36,6 @@ func before_land_actions(player, gameblock):
 func set_extra_data(step):
 	super.set_extra_data(step)
 	
-	print(step.subtype)
 	spikes_icon.visible = false	
 	if step.subtype == "spikes":
 		spikes_icon.visible = true

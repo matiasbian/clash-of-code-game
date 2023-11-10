@@ -16,29 +16,27 @@ func set_extra_data(step):
 	super.set_extra_data(step)
 	
 func takeN(balls):
-	print("bolas " + str(balls))
-	
 	if balls > _visible_balls():
 		return false
 	while balls > 0:
-		_get_next_visible_ball().visible = false
+		_get_next_visible_ball().hide_ball(balls)
 		balls -= 1
 	
 		
 func _visible_balls():
 	var i = 0
 	for ball in balls_container.get_children():
-		if ball.visible:
+		if ball.is_active():
 			i += 1
 	
 	return i
 	
 func _get_next_visible_ball():
 	for ball in balls_container.get_children():
-		if ball.visible:
+		if ball.is_active():
 			return ball
 	return null
 		
 func _init_balls(amount):
 	for i in range(0, amount):
-		balls_container.get_child(i).visible = true
+		balls_container.get_child(i).show_ball(i)

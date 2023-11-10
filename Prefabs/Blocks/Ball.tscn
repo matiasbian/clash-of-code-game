@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/BallGameBlock.gd" id="1_w0llq"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="2_ipc3d"]
-[ext_resource type="Texture2D" uid="uid://b3uf6kjjk8h8w" path="res://Art/Sprites/map/tileset/tile070.png" id="3_2ojd6"]
-[ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="4_crw6j"]
+[ext_resource type="Texture2D" uid="uid://d06q5y1wqov8f" path="res://Art/Sprites/map/tileset/tile071.png" id="3_wtfja"]
+[ext_resource type="PackedScene" uid="uid://cuy3re38ka75v" path="res://Prefabs/Blocks/Ball/Ball_obj.tscn" id="4_vi4n7"]
 
 [node name="Directional" type="Node2D" node_paths=PackedStringArray("balls_container")]
 script = ExtResource("1_w0llq")
@@ -17,33 +17,27 @@ texture = ExtResource("2_ipc3d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(8, 8)
-texture = ExtResource("3_2ojd6")
+texture = ExtResource("3_wtfja")
 
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-visible = false
+[node name="Ball" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_crw6j")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(-4.885, 0)
+[node name="Ball2" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
+modulate = Color(1, 1, 0.176471, 1)
+position = Vector2(-5, 0)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_crw6j")
 
-[node name="Sprite2D3" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(4.885, 0)
+[node name="Ball3" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
+modulate = Color(0.188235, 1, 0.243137, 1)
+position = Vector2(5, 0)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_crw6j")
 
-[node name="Sprite2D4" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(0, -4.885)
+[node name="Ball4" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
+modulate = Color(0.196078, 0.282353, 1, 1)
+position = Vector2(0, 5)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_crw6j")
 
-[node name="Sprite2D5" type="Sprite2D" parent="Sprite2D"]
-visible = false
-position = Vector2(0, 4.885)
+[node name="Ball5" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
+modulate = Color(1, 0.172549, 0.184314, 1)
+position = Vector2(0, -5)
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("4_crw6j")
