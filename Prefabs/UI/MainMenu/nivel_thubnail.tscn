@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://btcu4smhl2uyx"]
+[gd_scene load_steps=16 format=3 uid="uid://btcu4smhl2uyx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelThumbnail.gd" id="1_0q5oo"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="1_24hd7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="5_oidb0"]
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="7_hviuo"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="8_1vxhj"]
+[ext_resource type="Texture2D" uid="uid://doaxelfhe4x4w" path="res://Art/Sprites/UI/cerrar-con-llave.png" id="9_b8lo4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h16wa"]
 texture = ExtResource("2_jqg68")
@@ -142,4 +143,22 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 0)
 layout_mode = 2
 size_flags_horizontal = 7
+stretch_mode = 5
+
+[node name="LockedIcon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.451
+anchor_top = 0.682
+anchor_right = 0.451
+anchor_bottom = 0.682
+offset_left = -21.22
+offset_top = -20.04
+offset_right = 18.78
+offset_bottom = 19.96
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("9_b8lo4")
+expand_mode = 1
 stretch_mode = 5

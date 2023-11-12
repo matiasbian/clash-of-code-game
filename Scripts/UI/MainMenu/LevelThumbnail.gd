@@ -3,6 +3,7 @@ class_name UILevelTh extends Button
 @onready var completed = get_node("Completado")
 @onready var movements = get_node("Movimientos")
 @onready var levelNumber = get_node("Nivel")
+@onready var locked_icon = get_node("LockedIcon")
 
 @export var stars_container:HBoxContainer = HBoxContainer.new()
 var levelToLoad = 1
@@ -41,7 +42,7 @@ func setLevel(data):
 	levelToLoad = data.level
 	
 	if (levelNumber):
-		levelNumber.text = "Nivel\n " + str(data.level)
+		levelNumber.text = "Nivel\n" + str(data.level)
 	
 	if (data.level == 1):
 		unlock()
@@ -50,9 +51,11 @@ func setLevel(data):
 		
 func unlock():
 	disabled = false
+	locked_icon.visible = false
 	
 func lock():
 	disabled = true
+	locked_icon.visible = true
 		
 func _ready():
 	focus_mode = Control.FOCUS_NONE
