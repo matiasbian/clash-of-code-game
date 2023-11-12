@@ -19,9 +19,11 @@ func _pressed():
 		elem.disabled = true
 	
 	await get_tree().create_timer(1.5).timeout
+	GlobalVar.prev_screen = GlobalVar.Screens.Menu
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func setData(progress):
+	unlock()
 	print(progress)
 	var data = progress
 	if (stars_container):
@@ -40,6 +42,17 @@ func setLevel(data):
 	
 	if (levelNumber):
 		levelNumber.text = "Nivel\n " + str(data.level)
+	
+	if (data.level == 1):
+		unlock()
+	else:
+		lock()
+		
+func unlock():
+	disabled = false
+	
+func lock():
+	disabled = true
 		
 func _ready():
 	focus_mode = Control.FOCUS_NONE

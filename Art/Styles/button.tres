@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dfw4kgyv106"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://dfw4kgyv106"]
 
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="1_j4bpj"]
 
@@ -30,6 +30,11 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpa5y"]
+bg_color = Color(0.34902, 0.541176, 0.196078, 1)
+border_width_left = 2
+border_width_right = 2
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xhx8"]
 bg_color = Color(0.337255, 0.235294, 0.592157, 0.239216)
 
@@ -38,8 +43,10 @@ bg_color = Color(0.337255, 0.235294, 0.592157, 0.239216)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qpq3w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w4gaw"]
-bg_color = Color(0.552941, 0.662745, 0.976471, 0.619608)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3f3ko"]
+bg_color = Color(0.34902, 0.541176, 0.196078, 1)
+border_width_top = 2
+border_width_bottom = 3
 
 [resource]
 Button/font_sizes/font_size = 24
@@ -48,6 +55,7 @@ Button/styles/disabled = SubResource("StyleBoxFlat_tabfo")
 Button/styles/hover = SubResource("StyleBoxFlat_gitth")
 Button/styles/normal = SubResource("StyleBoxFlat_nigvg")
 Button/styles/pressed = SubResource("StyleBoxFlat_euolf")
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_wpa5y")
 Label/fonts/font = ExtResource("1_j4bpj")
 LineEdit/fonts/font = ExtResource("1_j4bpj")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_1xhx8")
@@ -56,4 +64,4 @@ RichTextLabel/fonts/normal_font = ExtResource("1_j4bpj")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_qpq3w")
 TextEdit/colors/background_color = Color(0.337255, 0.235294, 0.592157, 0.239216)
 TextEdit/fonts/font = ExtResource("1_j4bpj")
-VScrollBar/styles/grabber = SubResource("StyleBoxFlat_w4gaw")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_3f3ko")

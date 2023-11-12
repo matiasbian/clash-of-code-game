@@ -23,24 +23,32 @@ func _add_levels(result, response_code, headers, body):
 		var inst = levelThumbnail.instantiate()
 		add_child(inst)
 		inst.setLevel(d)
+		
 	_fillLevelInfo(tempData)
+	if (GlobalVar.prev_screen == GlobalVar.Screens.Game):
+		GlobalVar.prev_screen = GlobalVar.Screens.NULL
+		get_parent().get_parent().get_parent().visible = true
+		
 	
 
 func saveData(data):
 	tempData = data
 		
 func _fillLevelInfo(data):
-	print("La data")
-	print(data)
 	if (!data):
 		return
 	
 	if (data is Array):
+		var i = 0
 		for d in data:
 			if get_child_count() < d.levelNumber:
 				return
 			
 			get_child(d.levelNumber -1).setData(d)
+			i += 1
+			
+		if (get_child_count() < i):
+			get_child(i).unlock()
 	else:
 		get_child(data.levelNumber -1).setData(data)
 		
