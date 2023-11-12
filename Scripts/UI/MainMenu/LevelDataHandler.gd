@@ -30,6 +30,8 @@ func saveData(data):
 	tempData = data
 		
 func _fillLevelInfo(data):
+	print("La data")
+	print(data)
 	if (!data):
 		return
 	
@@ -43,5 +45,5 @@ func _fillLevelInfo(data):
 		get_child(data.levelNumber -1).setData(data)
 		
 func _back():
-	get_parent().visible = false
+	get_parent().get_parent().get_parent().visible = false
 	main_menu.visible = true

@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://btcu4smhl2uyx"]
+[gd_scene load_steps=15 format=3 uid="uid://btcu4smhl2uyx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelThumbnail.gd" id="1_0q5oo"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="1_24hd7"]
 [ext_resource type="Texture2D" uid="uid://drs2a5c1xd8l" path="res://Art/Sprites/UI/botton niveles.png" id="2_jqg68"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="3_j3j1i"]
+[ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="5_6gayf"]
+[ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="5_oidb0"]
+[ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="7_hviuo"]
+[ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="8_1vxhj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h16wa"]
 texture = ExtResource("2_jqg68")
@@ -24,7 +28,9 @@ modulate_color = Color(0.498039, 0.498039, 0.498039, 1)
 base_font = ExtResource("3_j3j1i")
 spacing_glyph = 3
 
-[node name="NivelThubnail" type="Button"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_coh4n"]
+
+[node name="NivelThubnail" type="Button" node_paths=PackedStringArray("stars_container")]
 custom_minimum_size = Vector2(220, 220)
 size_flags_stretch_ratio = 0.85
 theme = ExtResource("1_24hd7")
@@ -33,6 +39,7 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_stq55")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_rp3vt")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_6pva6")
 script = ExtResource("1_0q5oo")
+stars_container = NodePath("Stars/HBoxContainer")
 
 [node name="Nivel" type="Label" parent="."]
 layout_mode = 1
@@ -83,9 +90,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = -99.0
+offset_top = -106.0
 offset_right = -39.0
-offset_bottom = -73.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_j3j1i")
@@ -93,3 +100,46 @@ theme_override_font_sizes/font_size = 15
 text = "Completado"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Stars" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.85
+anchor_bottom = 0.173
+offset_left = 15.0
+offset_top = 142.0
+offset_right = -15.0
+offset_bottom = 135.94
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_coh4n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Stars"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("5_6gayf")
+completedTexture = ExtResource("5_oidb0")
+emptyTexture = ExtResource("7_hviuo")
+
+[node name="TextureRect" parent="Stars/HBoxContainer" instance=ExtResource("8_1vxhj")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+stretch_mode = 5
+
+[node name="TextureRect2" parent="Stars/HBoxContainer" instance=ExtResource("8_1vxhj")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+stretch_mode = 5
+
+[node name="TextureRect3" parent="Stars/HBoxContainer" instance=ExtResource("8_1vxhj")]
+custom_minimum_size = Vector2(0, 0)
+layout_mode = 2
+size_flags_horizontal = 7
+stretch_mode = 5

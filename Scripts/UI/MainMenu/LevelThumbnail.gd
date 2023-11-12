@@ -3,6 +3,8 @@ class_name UILevelTh extends Button
 @onready var completed = get_node("Completado")
 @onready var movements = get_node("Movimientos")
 @onready var levelNumber = get_node("Nivel")
+
+@export var stars_container:HBoxContainer = HBoxContainer.new()
 var levelToLoad = 1
 
 func _pressed():
@@ -20,16 +22,18 @@ func _pressed():
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 	
 func setData(progress):
+	print(progress)
 	var data = progress
-	if (movements):
-		movements.text = "Movimientos: " + str(data.movements)
+	if (stars_container):
+		stars_container.get_parent().visible = true
+		stars_container.setPerfectValues(data.movements, false)
 	if (levelNumber):
 		levelNumber.text = "Nivel\n" + str(data.levelNumber)
 		
 	if (completed):
 		completed.visible = true
 	if (movements):
-		movements.visible = true
+		stars_container.visible = true
 	
 func setLevel(data):
 	levelToLoad = data.level

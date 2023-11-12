@@ -8,6 +8,7 @@ class_name PopUpManager extends Node
 
 var there_is_next_level = false
 var _no_reset_level = false
+var _percentage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,6 +37,7 @@ func on_win(percentage):
 	victory.visible = true
 	victory.setdata(percentage)
 	
+	self._percentage = percentage
 	_there_is_next_level()
 
 func is_a_pop_up_open():
@@ -67,10 +69,14 @@ func send_score(no_reset_level = false):
 	var body = {
 		"userID": 5,
 		"levelNumber": get_node("/root/GlobalVar").level,
-		"movements": game_manager.movementsExecuted
+		"movements": _percentage
 	}
 	_no_reset_level = no_reset_level
 	http_req.HTTPPost(http_req.URL_POST, body)
+	
+func back_to_menu():
+	send_score()
+	restart_game()
 	
 func next_level():
 	get_node("/root/GlobalVar").level = get_node("/root/GlobalVar").level + 1
