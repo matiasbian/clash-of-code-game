@@ -31,18 +31,50 @@ func _get_dialogs():
 		},
 		{
 			"dialog": 'Ahora agrega el comando "AVANZAR" para alcanzar el cofre',
+			"action": show_forward
 		},
 		{
-			"dialog": "¡Muy bien! Ahora agrega el comando AVANZAR para alcanzar el cofre",
-			"action": _reparent_selected_commands
+			"dialog": "¡Muy bien! Ahora agrega el comando AVANZAR para alcanzar el cofre"
 		},
-		
+		{
+			"dialog": "[TRES]"
+		},
 	]
 	
 func _show_jump():
+	print("SHOWO")
 	show_avaialable_commands("Jump")
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
+	
+func show_forward():
+	action_disabled = true
+	disable_jump_select()
+	action_removed(null)
+	
+	var right = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(0)
+	right.get_node("Button").disabled = false
+	right.get_node("Button/Anim").play("Highlight")
+	
+	var jump = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(5)
+	jump.get_node("Button").disabled = true
+	jump.get_node("Button/Anim").stop()
+	jump.get_node("Button/Anim").play("Idle")
+	
+	limit = 2
+	game_manager.action_added.connect(add_three)	
+	game_manager.action_removed.connect(rem_three)	
+	
+func disable_jump_select():
+	var cont = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
+	
+	for c in cont.get_children():
+		if c.visible:
+			c.get_node("Button/Anim").stop()
+			c.get_node("Button/Anim").play("Idle")
+			c.get_node("Button/Arrows/ArrowBR").visible = false
+			c.get_node("Button").logical_disable = true
+	
 	
 func go():
 	emit_signal("go_next")

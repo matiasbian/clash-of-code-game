@@ -10,6 +10,7 @@ var avail_parent
 var selec_parent
 var play_parent
 var i = 0
+var limit = 3
 
 var action_disabled
 
@@ -124,7 +125,7 @@ func action_removed(action):
 func add_three(action):
 	i += 1
 	
-	if i == 3:
+	if i == limit:
 		#available_commands.visible = false
 		#selected_commands.visible = false
 	
