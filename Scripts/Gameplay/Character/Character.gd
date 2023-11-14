@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var speed = 150
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
+
 signal movement_finished(pos)
 
 #consts

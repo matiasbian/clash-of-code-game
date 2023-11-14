@@ -1,4 +1,4 @@
-extends TutoScriptBase
+class_name TutoLevelOne extends TutoScriptBase
 
 @export var available_commands:MarginContainer = MarginContainer.new()
 @export var temp_available_commands_container:Panel = Panel.new()
@@ -62,12 +62,12 @@ func _get_dialogs():
 		}
 	]
 
-func show_avaialable_commands():
+func show_avaialable_commands(button = "Right"):
 	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 	
 	for c in container.get_children():
-		if (c.name != "Right"):
+		if (c.name != button):
 			c.get_node("Button").disabled = true
 		else:
 			c.get_node("Button/Anim").play("Highlight")

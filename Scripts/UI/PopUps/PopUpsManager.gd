@@ -90,3 +90,9 @@ func check_next_level(data):
 	there_is_next_level = data != null
 	victory.check_next_level(there_is_next_level)
 	
+func is_there_any_pop_up_open():
+	for c in get_children():
+		if (c.name != "ErrorPopUp" && c.visible):
+			return true
+	return false
+	

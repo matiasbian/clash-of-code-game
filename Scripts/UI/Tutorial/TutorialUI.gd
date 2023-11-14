@@ -50,7 +50,10 @@ func go_next():
 	dialog_label.text = current_step.dialog
 	
 	if current_step.has("action"):
-		current_step.action.call()
+		if (current_step.has("param")):
+			current_step.action.call(current_step.param)
+		else:
+			current_step.action.call()
 
 func _on_Button_gui_input():
 	go_next()
