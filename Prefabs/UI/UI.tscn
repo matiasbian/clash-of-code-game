@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=73 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://cbppt0k6vquw5" path="res://Art/Sprites/UI/resized/01_157559.png" id="19_ps6rj"]
 [ext_resource type="Texture2D" uid="uid://4u64hus00uat" path="res://Art/Sprites/UI/resized/00_157559.png" id="20_7miwy"]
 [ext_resource type="Texture2D" uid="uid://dadt2puxcaoaw" path="res://Art/Sprites/UI/resized/03_157559.png" id="21_r0lnj"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03.gd" id="22_4f5f3"]
 [ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
@@ -500,6 +501,28 @@ offset_top = 57.0
 offset_right = 483.0
 offset_bottom = 482.0
 
+[node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
+layout_mode = 2
+
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take" index="0" node_paths=PackedStringArray("take_pop_up")]
+script = ExtResource("6_57hbx")
+take_pop_up = NodePath("../../../../../PopUps/Take")
+isSideMenu = true
+
+[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="0"]
+texture = ExtResource("26_lvuoh")
+
+[node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="1"]
+visible = true
+offset_top = 0.0
+text = ""
+
+[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
+offset_left = 78.0
+offset_top = 57.0
+offset_right = 483.0
+offset_bottom = 482.0
+
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
@@ -559,28 +582,6 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
-
-[node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
-layout_mode = 2
-
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take" index="0" node_paths=PackedStringArray("take_pop_up")]
-script = ExtResource("6_57hbx")
-take_pop_up = NodePath("../../../../../PopUps/Take")
-isSideMenu = true
-
-[node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="0"]
-texture = ExtResource("26_lvuoh")
-
-[node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="1"]
-visible = true
-offset_top = 0.0
-text = ""
-
-[node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
 offset_left = 78.0
 offset_top = 57.0
 offset_right = 483.0
@@ -646,6 +647,9 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+
+[node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2"]
+script = ExtResource("22_4f5f3")
 
 [node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
@@ -1386,6 +1390,81 @@ layout_mode = 2
 min_value = 1.0
 value = 1.0
 
+[node name="Overlays" type="Panel" parent="Panel/PopUps/Take/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
+
+[node name="Direction" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = 1.296
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -0.0280075
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Accept" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Go" type="Button" parent="Panel/PopUps/Take/ColorRect/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -380.0
+offset_right = 626.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_icp2d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o430a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taohh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5wqm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ef2md")
+
 [node name="IF" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
 layout_mode = 1
@@ -1892,9 +1971,9 @@ grow_vertical = 2
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump"]
+[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF"]
 [editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For"]
-[editable path="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take"]
 [editable path="Panel/Tutorial"]
 [editable path="Panel/PopUps/Victory"]
 [editable path="Panel/PopUps/Defeat"]

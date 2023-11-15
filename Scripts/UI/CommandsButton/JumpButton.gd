@@ -27,6 +27,9 @@ func do_extras(player, targetPos):
 	player._jump()
 	
 func _pressed():
+	if logical_disable:
+		return
+		
 	if (isSideMenu):
 		jump_pop_up.visible = true
 		#game_manager.AddCommand(_get_command_type())

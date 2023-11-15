@@ -1,4 +1,4 @@
-extends TutoLevelOne
+class_name TutoLevelTwo extends TutoLevelOne
 
 @export var dir_overlay:Panel = Panel.new()
 @export var accept_overlay:Panel = Panel.new()
@@ -18,26 +18,29 @@ func _get_dialogs():
 			"action": _show_jump
 		},
 		{
-			"dialog": 'DIRECCION',
+			"dialog": 'Aqui puedes elegir la direccion de salto',
 			"action": _show_dir
 		},
 		{
-			"dialog": 'ACEPTAR',
+			"dialog": 'En esta ocasión, no cambiaremos nada'
+		},
+		{
+			"dialog": 'Presiona aceptar para agregar el comando',
 			"action": _show_accept
 		},
 		{
 			"dialog": "Como puedes ver, el comando se agrego al programa a ejecutar.",
-			"action": _reparent_selected_commands
+			"action": show_arrow
 		},
 		{
-			"dialog": 'Ahora agrega el comando "AVANZAR" para alcanzar el cofre',
+			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre',
 			"action": show_forward
 		},
 		{
-			"dialog": "¡Muy bien! Ahora agrega el comando AVANZAR para alcanzar el cofre"
+			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre'
 		},
 		{
-			"dialog": "[TRES]"
+			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
 		},
 	]
 	
@@ -46,6 +49,12 @@ func _show_jump():
 	show_avaialable_commands("Jump")
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
+	
+func show_arrow():
+	var button = _reparent_selected_commands()
+	button.get_node("Button").logical_disable = true
+	game_manager.action_removed.disconnect(action_removed)
+	
 	
 func show_forward():
 	action_disabled = true

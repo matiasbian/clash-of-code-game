@@ -106,6 +106,7 @@ func _reparent_selected_commands():
 	var button = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer").get_child(4)
 	button.get_node("Button/Arrows/ArrowBR").visible = true
 	button.get_node("Button").logical_disable = true
+	return button
 	
 func action_removed(action):
 	if !action_disabled:
