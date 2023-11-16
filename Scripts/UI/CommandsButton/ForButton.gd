@@ -72,6 +72,9 @@ func do_extras(player, targetPos):
 		self.procedure.add_command(button)
 	
 func _pressed():
+	if logical_disable:
+		return
+	
 	if (isSideMenu):
 		for_popup.visible = true
 		#game_manager.AddCommand(_get_command_type())

@@ -26,6 +26,9 @@ func do_extras(player, targetPos):
 	#player._jump()
 	
 func _pressed():
+	if logical_disable:
+		return
+		
 	if (isSideMenu):
 		take_pop_up.visible = true
 	else:

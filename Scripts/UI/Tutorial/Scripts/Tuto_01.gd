@@ -66,12 +66,14 @@ func _get_dialogs():
 func show_avaialable_commands(button = "Right"):
 	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
+	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")
 	
 	for c in container.get_children():
 		if (c.name != button):
 			c.get_node("Button").disabled = true
 		else:
 			c.get_node("Button/Anim").play("Highlight")
+			scroll.ensure_control_visible(c)
 	_reparent()
 	
 func _reparent():
@@ -167,11 +169,14 @@ func _go_next():
 func _disable_aux():
 	action_disabled = true
 	var cont = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
+	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")
 	
 	for c in cont.get_children():
 		if c.visible:
 			c.get_node("Button/Anim").stop()
 			c.get_node("Button/Anim").play("Highlight")
+			
+			scroll.ensure_control_visible(c)
 			c.get_node("Button/Arrows/ArrowBR").visible = false
 			c.get_node("Button").logical_disable = false
 

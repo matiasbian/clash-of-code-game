@@ -17,7 +17,7 @@ func _ready():
 	if hardcoded_level && StoredData.load("TutoLevelEditor"):
 		visible = false
 		return
-	elif (GlobalVar.tuto_completed || (!hardcoded_level && GlobalVar.level > scripts.get_child_count())):
+	elif (GlobalVar.tuto_completed || (!hardcoded_level && !_tuto_exists())):
 		visible = false
 		return
 		
@@ -28,11 +28,23 @@ func _ready():
 	if hardcoded_level:
 		current_script = scripts.get_child(0)
 	else:
-		current_script = scripts.get_child(GlobalVar.level -1)
+		current_script = get_level_script()
 	current_script.go_next.connect(go_next)
 	
 	dialog_list = current_script._get_dialogs()
 	go_next()
+	
+func _tuto_exists():
+	print(get_level_script())
+	return get_level_script() != null
+	
+func get_level_script():
+	var lvl = GlobalVar.level
+	for s in scripts.get_children():
+		if s.level == lvl:
+			return s 
+	
+	return null
 	
 func _next_step():
 	if dialog_list.is_empty():

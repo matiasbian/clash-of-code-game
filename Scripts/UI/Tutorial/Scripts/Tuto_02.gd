@@ -5,6 +5,8 @@ class_name TutoLevelTwo extends TutoLevelOne
 @export var jump_button:Button = Button.new()
 @export var go_button_ov:Button = Button.new()
 
+var jump_child = 5
+
 func _get_dialogs():
 	return [
 		{
@@ -45,7 +47,6 @@ func _get_dialogs():
 	]
 	
 func _show_jump():
-	print("SHOWO")
 	show_avaialable_commands("Jump")
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
@@ -56,19 +57,22 @@ func show_arrow():
 	game_manager.action_removed.disconnect(action_removed)
 	
 	
-func show_forward():
+func show_forward(index = 0):
 	action_disabled = true
 	disable_jump_select()
 	action_removed(null)
 	
-	var right = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(0)
+	var right = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(index)
 	right.get_node("Button").disabled = false
 	right.get_node("Button/Anim").play("Highlight")
 	
-	var jump = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(5)
+	var jump = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(jump_child)
 	jump.get_node("Button").disabled = true
 	jump.get_node("Button/Anim").stop()
 	jump.get_node("Button/Anim").play("Idle")
+	
+	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")
+	scroll.ensure_control_visible(right)
 	
 	limit = 2
 	game_manager.action_added.connect(add_three)	
@@ -91,9 +95,22 @@ func go():
 func _show_dir():
 	dir_overlay.get_parent().visible = true
 	dir_overlay.visible = true
+	
+func show_overlay_generic(overlay):
+	for elem in overlay.get_parent().get_children():
+		if elem.name != "Go":
+			elem.visible = false
+	
+	overlay.get_parent().visible = true
+	overlay.visible = true
+	
 
-func _show_accept():
+
+func _show_accept(extra_hide = null):
 	go_button_ov.visible = false
 	dir_overlay.visible = false
 	accept_overlay.visible = true
+	
+	if (extra_hide):
+		extra_hide.visible = false
 	

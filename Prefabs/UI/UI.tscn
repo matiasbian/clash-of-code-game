@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=76 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -31,8 +31,11 @@
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03.gd" id="22_4f5f3"]
 [ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_04.gd" id="23_vyqvu"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_05.gd" id="24_kkwpn"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresPopUp.gd" id="25_f3p8j"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_06.gd" id="25_k7b8d"]
 [ext_resource type="Texture2D" uid="uid://cxixatynxhgy" path="res://Art/Sprites/UI/Icons/take.png" id="26_lvuoh"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/ErrorPopUp.gd" id="27_35iv5"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresItemList.gd" id="27_d122k"]
@@ -100,9 +103,6 @@ base_font = ExtResource("18_0l6ds")
 spacing_glyph = 5
 spacing_top = -16
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s05fd"]
-bg_color = Color(0.52549, 0.639216, 0.490196, 1)
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_egu6s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iqkkt"]
@@ -122,6 +122,9 @@ bg_color = Color(0, 0, 0, 0.631373)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wqm2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ef2md"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s05fd"]
+bg_color = Color(0.52549, 0.639216, 0.490196, 1)
 
 [sub_resource type="Theme" id="Theme_jrtbc"]
 
@@ -635,6 +638,7 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 1
 
 [node name="Level02" type="Node" parent="Panel/Tutorial/Scripts" index="1" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("43_b3lh5")
@@ -647,9 +651,66 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 2
 
-[node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2"]
+[node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("22_4f5f3")
+dir_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Direction")
+accept_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Accept")
+jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/Take/Button")
+go_button_ov = NodePath("../../../PopUps/Take/ColorRect/Overlays/Go")
+available_commands = NodePath("../../../AvailableCommands")
+temp_available_commands_container = NodePath("../../Overlays/OverPanel")
+selected_commands = NodePath("../../../SelectedCommands")
+play_button = NodePath("../../../PlayButtonContainer")
+overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 3
+
+[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="3" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+script = ExtResource("23_vyqvu")
+cond_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Condition")
+true_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/True")
+false_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/False")
+op_true = NodePath("../../../PopUps/IF/ColorRect/MarginContainer/Container/True/OptionButton")
+dir_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Direction")
+accept_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Accept")
+jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/IF/Button")
+go_button_ov = NodePath("../../../PopUps/IF/ColorRect/Overlays/Go")
+available_commands = NodePath("../../../AvailableCommands")
+temp_available_commands_container = NodePath("../../Overlays/OverPanel")
+selected_commands = NodePath("../../../SelectedCommands")
+play_button = NodePath("../../../PlayButtonContainer")
+overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 4
+
+[node name="Level05" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("act_overlay", "amount_overlay", "am_spinbox", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+script = ExtResource("24_kkwpn")
+act_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Action")
+amount_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Repeats")
+am_spinbox = NodePath("../../../PopUps/For/ColorRect/MarginContainer/Container/Form/Amount/SpinBox")
+dir_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Direction")
+accept_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Accept")
+jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/For/Button")
+go_button_ov = NodePath("../../../PopUps/For/ColorRect/Overlays/Go")
+available_commands = NodePath("../../../AvailableCommands")
+temp_available_commands_container = NodePath("../../Overlays/OverPanel")
+selected_commands = NodePath("../../../SelectedCommands")
+play_button = NodePath("../../../PlayButtonContainer")
+overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 5
+
+[node name="Level06" type="Node" parent="Panel/Tutorial/Scripts" index="5" node_paths=PackedStringArray("process", "cancel_button", "add_button", "name_panel", "dir_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container")]
+script = ExtResource("25_k7b8d")
+process = NodePath("../../../Process")
+cancel_button = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons/Button2")
+add_button = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons2/Add")
+name_panel = NodePath("../../../PopUps/Procedure/ColorRect/Overlays/Name")
+dir_overlay = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Add")
+jump_button = NodePath("../../../Process/Button")
+go_button_ov = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Go")
+available_commands = NodePath("../../../AvailableCommands")
+temp_available_commands_container = NodePath("../../Overlays/OverPanel")
+level = 6
 
 [node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
@@ -834,6 +895,161 @@ size_flags_horizontal = 5
 theme = ExtResource("13_6m05p")
 theme_override_fonts/font = SubResource("FontVariation_wakxt")
 text = "Cancelar"
+
+[node name="Overlays" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
+
+[node name="Add" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Add"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_right = 0.190002
+offset_bottom = -131.288
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Add"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -257.716
+offset_right = 0.190002
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel3" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Add"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -315.716
+offset_right = -153.81
+offset_bottom = -484.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel4" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Add"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_left = 825.0
+offset_top = -315.716
+offset_right = 1.19
+offset_bottom = -484.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Select" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -476.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 215.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Accept" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 441.0
+offset_top = 562.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel3" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 562.0
+offset_right = -764.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Go" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -380.0
+offset_right = 626.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_icp2d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o430a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taohh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5wqm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ef2md")
 
 [node name="Procedure" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
@@ -1069,6 +1285,130 @@ text = "Cancelar"
 script = ExtResource("31_venlv")
 pop_up = NodePath("../../../..")
 trigger_auto = false
+
+[node name="Overlays" type="Panel" parent="Panel/PopUps/Procedure/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
+
+[node name="Name" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_right = 0.600037
+offset_bottom = 38.396
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -57.578
+offset_right = 0.600037
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel3" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -104.578
+offset_right = -547.4
+offset_bottom = -233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel4" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_left = 529.0
+offset_top = -104.578
+offset_right = -7.39996
+offset_bottom = -233.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Accept" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 364.0
+offset_top = 438.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel3" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 438.0
+offset_right = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Go" type="Button" parent="Panel/PopUps/Procedure/ColorRect/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -380.0
+offset_right = 626.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_icp2d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o430a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taohh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5wqm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ef2md")
 
 [node name="JumpActions" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
@@ -1415,7 +1755,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = 1.296
+offset_bottom = -19.704
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/Take/ColorRect/Overlays/Direction"]
@@ -1653,6 +1993,174 @@ size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Cancelar"
 
+[node name="Overlays" type="Panel" parent="Panel/PopUps/IF/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
+
+[node name="Direction" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = -27.024
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -67.268
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Condition" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Condition"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = -0.0240021
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Condition"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -38.268
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="True" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/True"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = 33.976
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/True"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = 3.73201
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="False" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/False"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = 67.976
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/False"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = 33.732
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Accept" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Go" type="Button" parent="Panel/PopUps/IF/ColorRect/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -380.0
+offset_right = 626.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_icp2d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o430a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taohh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5wqm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ef2md")
+
 [node name="For" type="MarginContainer" parent="Panel/PopUps"]
 visible = false
 layout_mode = 1
@@ -1803,6 +2311,148 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Cancelar"
+
+[node name="Overlays" type="Panel" parent="Panel/PopUps/For/ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
+
+[node name="Direction" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = -33.024
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Direction"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -60.268
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Action" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Action"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = 3.976
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Action"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = -27.268
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Repeats" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Repeats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.01
+anchor_bottom = 0.372
+offset_bottom = 40.976
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Repeats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.654
+anchor_right = 1.01
+anchor_bottom = 1.0
+offset_top = 6.73201
+theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
+
+[node name="Accept" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Accept"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Go" type="Button" parent="Panel/PopUps/For/ColorRect/Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -627.0
+offset_top = -380.0
+offset_right = 626.0
+offset_bottom = 381.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_icp2d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o430a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_taohh")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5wqm2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ef2md")
 
 [node name="ErrorPopUp" type="Panel" parent="Panel/PopUps" node_paths=PackedStringArray("label", "button")]
 layout_mode = 1

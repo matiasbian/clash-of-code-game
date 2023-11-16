@@ -73,6 +73,9 @@ func do_extras(player, targetPos):
 		false_branch.get_node("Button").do_extras(player, targetPos)
 	
 func _pressed():
+	if logical_disable:
+		return
+		
 	if (isSideMenu):
 		if_popup.visible = true
 		#game_manager.AddCommand(_get_command_type())
@@ -80,7 +83,6 @@ func _pressed():
 		game_manager.RemoveCommand(index)
 
 func accept():
-	print("Resultado " + str(true_drop.get_selected_id() + dir_drop.get_selected_id()))
 	true_branch = buttons[true_drop.get_selected_id() + dir_drop.get_selected_id()]
 	false_branch = buttons[false_drop.get_selected_id() + dir_drop.get_selected_id()]
 	
