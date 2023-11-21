@@ -10,7 +10,7 @@ var jump_child = 5
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Muy buen trabajo en el primer nivel!"
+			"dialog": "¡Muy buen trabajo en el nivel anterior!"
 		},
 		{
 			"dialog": "En este nivel, aprenderemos un nuevo comando: Salto"
@@ -24,10 +24,10 @@ func _get_dialogs():
 			"action": _show_dir
 		},
 		{
-			"dialog": 'En esta ocasión, no cambiaremos nada'
+			"dialog": 'En esta ocasión, no la cambiaremos'
 		},
 		{
-			"dialog": 'Presiona aceptar para agregar el comando',
+			"dialog": 'Presiona "ACEPTAR" para agregar el comando',
 			"action": _show_accept
 		},
 		{

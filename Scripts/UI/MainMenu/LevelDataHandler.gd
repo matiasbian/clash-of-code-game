@@ -48,7 +48,9 @@ func _fillLevelInfo(data):
 			i += 1
 		
 		if (get_child_count() >= i):
-			get_child(i).unlock()
+			var child = get_child(i)
+			if (child):
+				get_child(i).unlock()
 	else:
 		get_child(data.levelNumber -1).setData(data)
 		

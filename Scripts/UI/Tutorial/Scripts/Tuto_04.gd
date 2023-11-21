@@ -8,7 +8,7 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Muy buen trabajo en el tercer nivel!"
+			"dialog": "¡ROBOTO aqui nuevamente!"
 		},
 		{
 			"dialog": "En este nivel, aprenderemos un nuevo comando: IF"
@@ -20,6 +20,9 @@ func _get_dialogs():
 		{
 			"dialog": 'En esta casilla se elige la dirección a la que quieres moverte',
 			"action": _show_dir
+		},
+		{
+			"dialog": 'En este caso, la dirección por defecto está correcta'
 		},
 		{
 			"dialog": 'En esta sección se elije la condición que corresponda a la celda',

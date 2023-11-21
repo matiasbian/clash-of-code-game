@@ -7,7 +7,10 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Muy buen trabajo en el cuarto nivel!"
+			"dialog": "¡ROBOTO te saluda!"
+		},
+		{
+			"dialog": "Otra vez..."
 		},
 		{
 			"dialog": "En este nivel, aprenderemos un nuevo comando: FOR"

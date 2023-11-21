@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=77 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -111,7 +111,15 @@ spacing_top = -16
 bg_color = Color(0, 0, 0, 0.690196)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7muj"]
-bg_color = Color(0, 0, 0, 0.631373)
+bg_color = Color(0, 0, 0, 0.654902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2nbkt"]
+bg_color = Color(0.172549, 0.705882, 0.423529, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0.329412, 0.945098, 0.345098, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_icp2d"]
 
@@ -632,6 +640,9 @@ script = ExtResource("13_rf1kr")
 [node name="Tutorial" parent="Panel" instance=ExtResource("33_dt1xp")]
 layout_mode = 1
 
+[node name="Balloon" parent="Panel/Tutorial/CharacterPanel/Panel" index="1"]
+z_index = 2
+
 [node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 available_commands = NodePath("../../../AvailableCommands")
 temp_available_commands_container = NodePath("../../Overlays/OverPanel")
@@ -651,7 +662,7 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
-level = 2
+level = 4
 
 [node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("22_4f5f3")
@@ -664,7 +675,7 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
-level = 3
+level = 7
 
 [node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="3" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("23_vyqvu")
@@ -681,7 +692,7 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
-level = 4
+level = 10
 
 [node name="Level05" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("act_overlay", "amount_overlay", "am_spinbox", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("24_kkwpn")
@@ -697,20 +708,33 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
-level = 5
+level = 13
 
-[node name="Level06" type="Node" parent="Panel/Tutorial/Scripts" index="5" node_paths=PackedStringArray("process", "cancel_button", "add_button", "name_panel", "dir_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container")]
+[node name="Level06" type="Node" parent="Panel/Tutorial/Scripts" index="5" node_paths=PackedStringArray("process", "cancel_button", "add_button", "commands_Panel", "name_panel", "name_line_edit", "go_button_ov2", "subcommand_added", "subcommand_available", "accept_overlay2", "accept_btn_2", "select_ovr", "item_list", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
 script = ExtResource("25_k7b8d")
 process = NodePath("../../../Process")
 cancel_button = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons/Button2")
 add_button = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons2/Add")
+commands_Panel = NodePath("../../../PopUps/Procedure/ColorRect/Overlays/Commands")
 name_panel = NodePath("../../../PopUps/Procedure/ColorRect/Overlays/Name")
+name_line_edit = NodePath("../../../PopUps/Procedure/ColorRect/VBoxContainer/HBoxContainer/LineEdit")
+go_button_ov2 = NodePath("../../../PopUps/Procedure/ColorRect/Overlays/Go")
+subcommand_added = NodePath("../../../PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected/HBoxContainer")
+subcommand_available = NodePath("../../../PopUps/Procedure/ColorRect/VBoxContainer/Availables")
+accept_overlay2 = NodePath("../../../PopUps/Procedure/ColorRect/Overlays/Accept")
+accept_btn_2 = NodePath("../../../PopUps/Procedure/ColorRect/VBoxContainer/HBoxContainer2/Aceptar")
+select_ovr = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Select")
+item_list = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/ItemList")
 dir_overlay = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Add")
+accept_overlay = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Accept")
 jump_button = NodePath("../../../Process/Button")
 go_button_ov = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/Overlays/Go")
 available_commands = NodePath("../../../AvailableCommands")
 temp_available_commands_container = NodePath("../../Overlays/OverPanel")
-level = 6
+selected_commands = NodePath("../../../SelectedCommands")
+play_button = NodePath("../../../PlayButtonContainer")
+overall_button = NodePath("../../Overlays/OverPanel/Button")
+level = 15
 
 [node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
@@ -867,6 +891,8 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.8
 theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 30
+item_count = 1
+item_0/text = "aceptar"
 script = ExtResource("27_d122k")
 add_buton = NodePath("../Buttons2/Add")
 select_button = NodePath("../Buttons/Button")
@@ -975,6 +1001,18 @@ offset_bottom = -476.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel3" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Select"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 175.0
+offset_bottom = -440.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2nbkt")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer/Overlays/Select"]
 layout_mode = 1
@@ -1305,6 +1343,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
 
 [node name="Panel" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Name"]
@@ -1389,6 +1428,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 438.0
 offset_right = -498.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Commands" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
+
+[node name="Panel" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Commands"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -422.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
+
+[node name="Panel2" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/Overlays/Commands"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 211.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
@@ -1994,6 +2065,7 @@ theme = ExtResource("3_hlaxj")
 text = "Cancelar"
 
 [node name="Overlays" type="Panel" parent="Panel/PopUps/IF/ColorRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
