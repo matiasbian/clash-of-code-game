@@ -2,6 +2,7 @@ extends Node
 
 var level:int = 1
 var tuto_completed = false
+var tuto_skipped = false
 
 enum Screens {NULL, Game, LevelEditor, Menu}
 var prev_screen = Screens.NULL

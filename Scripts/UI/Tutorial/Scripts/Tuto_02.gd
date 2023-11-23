@@ -58,6 +58,7 @@ func show_arrow():
 	
 	
 func show_forward(index = 0):
+	_handle_next_panel(false)
 	action_disabled = true
 	disable_jump_select()
 	action_removed(null)
@@ -93,6 +94,7 @@ func go():
 	emit_signal("go_next")
 	
 func _show_dir():
+	_handle_next_panel(true)
 	dir_overlay.get_parent().visible = true
 	dir_overlay.visible = true
 	
@@ -107,6 +109,7 @@ func show_overlay_generic(overlay):
 
 
 func _show_accept(extra_hide = null):
+	_handle_next_panel(false)
 	go_button_ov.visible = false
 	dir_overlay.visible = false
 	accept_overlay.visible = true

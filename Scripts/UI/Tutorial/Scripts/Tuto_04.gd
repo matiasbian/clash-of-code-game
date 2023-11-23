@@ -77,6 +77,11 @@ func _show_jump():
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
 	jump_child = 7
+	
+func _show_dir():
+	super._show_dir()
+	jump_button.get_node("Anim").stop()
+	
 
 func show_true():
 	for elem in true_overlay.get_parent().get_children():
@@ -88,10 +93,12 @@ func show_true():
 	
 
 func enable_true():
+	_handle_next_panel(false)
 	go_button_ov.visible = false
 	op_true.item_selected.connect(_on_selected)
 	
 func _on_selected(index):
 	if index == 1:
+		_handle_next_panel(true)
 		go_button_ov.visible = true
 		go()

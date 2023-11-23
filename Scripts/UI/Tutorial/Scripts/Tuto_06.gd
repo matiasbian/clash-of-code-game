@@ -81,8 +81,9 @@ func _get_dialogs():
 	]
 	
 func _show_procedure():
+	_handle_next_panel(false)
 	game_manager.on_victory.connect(_on_win_extras)
-	jump_button.pressed.connect(go)
+	jump_button.pressed.connect(_go_and_show_next)
 	go_button_ov.pressed.connect(go)
 	add_button.pressed.connect(go)
 	
@@ -98,6 +99,10 @@ func _show_procedure():
 	go_button_ov.get_parent().visible = true
 	go_button_ov.visible = true
 	
+func _go_and_show_next():
+	_handle_next_panel(true)
+	go()
+	
 	
 func _reparent2():
 	temp_available_commands_container.visible = true
@@ -111,6 +116,7 @@ func _reparent2():
 func _show_add():
 	go_button_ov.visible = false
 	_show_dir()
+	_handle_next_panel(false)
 	
 func show_name():
 	go_button_ov2.visible = false
@@ -188,6 +194,14 @@ func show_play():
 	game_manager.startedPlay.connect(_game_started)
 	available_commands.visible = false
 	selected_commands.visible = false
+	_handle_next_panel(false)
+	
+func _game_started():
+	temp_available_commands_container.remove_child(selected_commands)
+	avail_parent.add_child(selected_commands)
+	selected_commands.set_owner(avail_parent)
+	
+	super._game_started()
 
 
 	

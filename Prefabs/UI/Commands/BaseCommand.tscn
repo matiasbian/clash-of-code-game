@@ -1,9 +1,11 @@
-[gd_scene load_steps=22 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=26 format=3 uid="uid://ca051sex452gn"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
 [ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
 [ext_resource type="Texture2D" uid="uid://dgfy6ocywlde5" path="res://Art/Sprites/UI/arrows/07_157559.png" id="4_jmkgn"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_7j2r2"]
+[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="6_d1440"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
 bg_color = Color(0.733333, 0.572549, 0.533333, 1)
@@ -262,6 +264,10 @@ _data = {
 "RESET": SubResource("Animation_lawek")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05oy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glgro"]
+
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(130, 130)
 size_flags_vertical = 6
@@ -358,10 +364,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 207.0
-offset_bottom = 189.0
+offset_left = 78.0
+offset_top = 57.0
+offset_right = 142.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -2.71399
@@ -375,3 +381,80 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_4x1l4")
 }
+
+[node name="ExtraInfo" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_05oy1")
+
+[node name="Bot" type="Panel" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.746
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0199966
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_glgro")
+
+[node name="Cont" type="HBoxContainer" parent="Button/ExtraInfo/Bot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -3.00001
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Button/ExtraInfo/Bot/Cont"]
+modulate = Color(0.152941, 1, 0.243137, 1)
+layout_mode = 2
+theme = ExtResource("5_7j2r2")
+theme_override_font_sizes/font_size = 26
+text = "V"
+
+[node name="Icon1" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("6_d1440")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="Button/ExtraInfo/Bot/Cont"]
+modulate = Color(1, 0.160784, 0.172549, 1)
+layout_mode = 2
+theme = ExtResource("5_7j2r2")
+theme_override_font_sizes/font_size = 26
+text = "F"
+
+[node name="Icon2" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("6_d1440")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.692
+anchor_top = 0.031
+anchor_right = 0.969
+anchor_bottom = 0.308
+offset_left = 0.0399933
+offset_top = -0.0300002
+offset_right = 0.0299911
+offset_bottom = -0.0400047
+grow_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("6_d1440")
+expand_mode = 1

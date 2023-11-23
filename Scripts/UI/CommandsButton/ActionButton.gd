@@ -1,13 +1,18 @@
 class_name ActionButton extends Button
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
+
 @export var dir = MovementBlock.Directions.NULL
 
 @export var isSideMenu:bool
 
+@export var min_level_required:int = 1
+@onready var unlocker:UnlockAtLevel = UnlockAtLevel.new(min_level_required, self)
+
 @onready var baseColor:Color = modulate
 @onready var procedure:Procedure = Procedure.new()
 
+@onready var extra_info:Panel = get_node("ExtraInfo")
 
 var game_manager:Game_Manager
 var index

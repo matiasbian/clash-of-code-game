@@ -5,6 +5,7 @@ class_name TutoLevelOne extends TutoScriptBase
 @export var selected_commands:Node = Node.new()
 @export var play_button:MarginContainer = MarginContainer.new()
 @export var overall_button:Button = Button.new()
+@export var next_panel:Panel = Panel.new()
 
 var avail_parent
 var selec_parent
@@ -15,10 +16,14 @@ var limit = 3
 var action_disabled
 
 func _ready():
+	next_panel.visible = true
 	avail_parent = available_commands.get_parent()
 	selec_parent = selected_commands.get_parent()
 	play_parent = play_button.get_parent()
 	overall_button.pressed.connect(_go_next)
+	
+func _handle_next_panel(state):
+	next_panel.visible = state
 	
 func _get_dialogs():
 	return [
@@ -64,6 +69,7 @@ func _get_dialogs():
 	]
 
 func show_avaialable_commands(button = "Right"):
+	_handle_next_panel(false)
 	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")
@@ -98,6 +104,7 @@ func _re_reparent_avaiable(action):
 	
 	
 func _reparent_selected_commands():
+	_handle_next_panel(true)
 	selec_parent.remove_child(selected_commands)
 	temp_available_commands_container.add_child(selected_commands)
 	selected_commands.set_owner(temp_available_commands_container)
@@ -167,6 +174,7 @@ func _go_next():
 	overall_button.visible = false
 	
 func _disable_aux():
+	_handle_next_panel(false)
 	action_disabled = true
 	var cont = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
 	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")

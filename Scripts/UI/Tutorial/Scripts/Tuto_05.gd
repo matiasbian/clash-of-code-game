@@ -69,6 +69,10 @@ func _show_jump():
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
 	jump_child = 8
+	
+func _show_dir():
+	super._show_dir()
+	jump_button.get_node("Anim").stop()
 
 func show_spin():
 	for elem in amount_overlay.get_parent().get_children():
@@ -80,6 +84,7 @@ func show_spin():
 	
 
 func enable_repeat():
+	_handle_next_panel(false)
 	go_button_ov.visible = false
 	am_spinbox.value_changed.connect(_on_selected)
 	

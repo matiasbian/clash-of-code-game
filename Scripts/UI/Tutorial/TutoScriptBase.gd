@@ -9,3 +9,8 @@ func _get_dialogs():
 	
 func mine():
 	return self
+	
+func skip():
+	get_node("/root/GlobalVar").play_tap()
+	GlobalVar.tuto_skipped = true
+	get_tree().change_scene_to_file("res://Scenes/Game.tscn")

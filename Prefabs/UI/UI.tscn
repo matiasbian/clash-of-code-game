@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=82 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Theme" uid="uid://bi21ucjxe6ekv" path="res://Art/Styles/pop_ups_.tres" id="18_qtj20"]
 [ext_resource type="Texture2D" uid="uid://cbppt0k6vquw5" path="res://Art/Sprites/UI/resized/01_157559.png" id="19_ps6rj"]
 [ext_resource type="Texture2D" uid="uid://4u64hus00uat" path="res://Art/Sprites/UI/resized/00_157559.png" id="20_7miwy"]
+[ext_resource type="Texture2D" uid="uid://crnvjb110oy2u" path="res://Art/Sprites/UI/arrows/ff.png" id="21_3qlw4"]
 [ext_resource type="Texture2D" uid="uid://dadt2puxcaoaw" path="res://Art/Sprites/UI/resized/03_157559.png" id="21_r0lnj"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03.gd" id="22_4f5f3"]
 [ext_resource type="Texture2D" uid="uid://ddiyh1fohwpfu" path="res://Art/Sprites/UI/resized/peaks_1.png" id="22_ofbmu"]
@@ -87,6 +88,43 @@ border_width_bottom = 2
 base_font = ExtResource("18_0l6ds")
 spacing_glyph = 1
 spacing_bottom = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_18jtr"]
+
+[sub_resource type="Animation" id="Animation_lv8xc"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_cr5eh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(44, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_128eb"]
+_data = {
+"Idle": SubResource("Animation_lv8xc"),
+"RESET": SubResource("Animation_cr5eh")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jep4p"]
 bg_color = Color(0.541176, 0.160784, 0.168627, 1)
@@ -409,10 +447,10 @@ offset_bottom = -5.0
 rotation = 1.5708
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Procedure" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
@@ -438,10 +476,10 @@ text = ""
 label_settings = SubResource("LabelSettings_v2gt4")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Left" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -449,6 +487,7 @@ layout_mode = 2
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left" index="0"]
 dir = 2
 isSideMenu = true
+min_level_required = 2
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button" index="0"]
 offset_right = -5.0
@@ -456,10 +495,10 @@ offset_bottom = -5.0
 rotation = 4.71239
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Top" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -472,10 +511,10 @@ isSideMenu = true
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Bot" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -490,10 +529,10 @@ offset_bottom = -5.0
 rotation = 3.14159
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Jump" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -502,15 +541,16 @@ layout_mode = 2
 script = ExtResource("3_kxmu6")
 jump_pop_up = NodePath("../../../../../PopUps/JumpActions")
 isSideMenu = true
+min_level_required = 5
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button" index="0"]
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -519,6 +559,7 @@ layout_mode = 2
 script = ExtResource("6_57hbx")
 take_pop_up = NodePath("../../../../../PopUps/Take")
 isSideMenu = true
+min_level_required = 7
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button" index="0"]
 texture = ExtResource("26_lvuoh")
@@ -529,10 +570,10 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -551,6 +592,7 @@ jump_down = NodePath("../../Jump")
 take = NodePath("../../Take")
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
+min_level_required = 10
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="0"]
 texture = ExtResource("5_2un37")
@@ -560,10 +602,10 @@ offset_top = 0.0
 text = "IF"
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -583,6 +625,7 @@ take = NodePath("../../Take")
 label = NodePath("Label")
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
+min_level_required = 13
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button" index="0"]
 texture = ExtResource("9_manl2")
@@ -593,10 +636,10 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 483.0
-offset_bottom = 482.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -637,21 +680,23 @@ theme_override_fonts/font = SubResource("FontVariation_syrqp")
 text = "Atras"
 script = ExtResource("13_rf1kr")
 
-[node name="Tutorial" parent="Panel" instance=ExtResource("33_dt1xp")]
+[node name="Tutorial" parent="Panel" node_paths=PackedStringArray("skip_button") instance=ExtResource("33_dt1xp")]
 layout_mode = 1
+skip_button = NodePath("Skip")
 
 [node name="Balloon" parent="Panel/Tutorial/CharacterPanel/Panel" index="1"]
 z_index = 2
 
-[node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level01" parent="Panel/Tutorial/Scripts" index="0" node_paths=PackedStringArray("available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 available_commands = NodePath("../../../AvailableCommands")
 temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 1
 
-[node name="Level02" type="Node" parent="Panel/Tutorial/Scripts" index="1" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level02" type="Node" parent="Panel/Tutorial/Scripts" index="1" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("43_b3lh5")
 dir_overlay = NodePath("../../../PopUps/JumpActions/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/JumpActions/ColorRect/Overlays/Accept")
@@ -662,9 +707,10 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 4
 
-[node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("22_4f5f3")
 dir_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Accept")
@@ -675,9 +721,10 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 7
 
-[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="3" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="3" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("23_vyqvu")
 cond_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Condition")
 true_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/True")
@@ -692,9 +739,10 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 10
 
-[node name="Level05" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("act_overlay", "amount_overlay", "am_spinbox", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level05" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("act_overlay", "amount_overlay", "am_spinbox", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("24_kkwpn")
 act_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Action")
 amount_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Repeats")
@@ -708,9 +756,10 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 13
 
-[node name="Level06" type="Node" parent="Panel/Tutorial/Scripts" index="5" node_paths=PackedStringArray("process", "cancel_button", "add_button", "commands_Panel", "name_panel", "name_line_edit", "go_button_ov2", "subcommand_added", "subcommand_available", "accept_overlay2", "accept_btn_2", "select_ovr", "item_list", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button")]
+[node name="Level06" type="Node" parent="Panel/Tutorial/Scripts" index="5" node_paths=PackedStringArray("process", "cancel_button", "add_button", "commands_Panel", "name_panel", "name_line_edit", "go_button_ov2", "subcommand_added", "subcommand_available", "accept_overlay2", "accept_btn_2", "select_ovr", "item_list", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("25_k7b8d")
 process = NodePath("../../../Process")
 cancel_button = NodePath("../../../PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons/Button2")
@@ -734,7 +783,55 @@ temp_available_commands_container = NodePath("../../Overlays/OverPanel")
 selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
+next_panel = NodePath("../../NextPanel")
 level = 15
+
+[node name="NextPanel" type="Panel" parent="Panel/Tutorial"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.927
+anchor_top = 0.854
+anchor_right = 0.97
+anchor_bottom = 0.946
+offset_left = -4.84009
+offset_top = 4.67999
+offset_right = 2.59998
+offset_bottom = 0.319946
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_18jtr")
+
+[node name="NextBtn" type="TextureRect" parent="Panel/Tutorial/NextPanel"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 44.0
+offset_right = 224.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("21_3qlw4")
+expand_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Tutorial/NextPanel/NextBtn"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_128eb")
+}
+
+[node name="Skip" type="Button" parent="Panel/Tutorial"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -66.0
+offset_right = 191.0
+grow_vertical = 0
+theme = ExtResource("13_6m05p")
+text = "Omitir"
 
 [node name="PopUps" type="Control" parent="Panel"]
 layout_mode = 1
@@ -815,6 +912,7 @@ item_list = NodePath("Panel/MarginContainer/VBoxContainer/ItemList")
 confirm_button = NodePath("Panel/MarginContainer/VBoxContainer/Buttons/Button")
 cancel_button = NodePath("Panel/MarginContainer/VBoxContainer/Buttons/Button2")
 open_popup_button = NodePath("../../Process/Button")
+min_level_required = 15
 
 [node name="Panel" type="Panel" parent="Panel/PopUps/Procedures"]
 layout_mode = 1
@@ -1149,10 +1247,10 @@ rotation = 1.5708
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Right/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="Left" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1170,10 +1268,10 @@ rotation = 4.71239
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Left/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="Top" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1188,10 +1286,10 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Top/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="Bot" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1209,10 +1307,10 @@ rotation = 3.14159
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Bot/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="Jump" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1232,10 +1330,10 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Jump/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="Take" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1260,10 +1358,10 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Take/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 678.0
+offset_bottom = 677.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2

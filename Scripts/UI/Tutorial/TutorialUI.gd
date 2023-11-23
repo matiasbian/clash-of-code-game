@@ -5,6 +5,7 @@ var current_script:TutoScriptBase
 
 @export var scripts:Node = Node.new()
 @export var hardcoded_level = false
+@export var skip_button:Button = Button.new()
 
 var current_step
 var has_tuto
@@ -14,10 +15,15 @@ var has_tuto
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	skip_button.pressed.connect(_skip_tuto)
 	if hardcoded_level && StoredData.load("TutoLevelEditor"):
 		visible = false
 		return
 	elif (GlobalVar.tuto_completed || (!hardcoded_level && !_tuto_exists())):
+		visible = false
+		return
+	elif (GlobalVar.tuto_skipped):
+		GlobalVar.tuto_skipped = false
 		visible = false
 		return
 		
@@ -69,4 +75,7 @@ func go_next():
 
 func _on_Button_gui_input():
 	go_next()
+	
+func _skip_tuto():
+	current_script.skip()
 
