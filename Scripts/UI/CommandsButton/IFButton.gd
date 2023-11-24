@@ -94,9 +94,9 @@ func accept():
 	set_button_dir(false_branch.get_node("Button"))
 	
 	var extra_info = get_node("ExtraInfo")
-	extra_info.get_node("Icon").texture = cond_drop.icon
-	extra_info.get_node("Bot/Cont/Icon1").texture = true_drop.icon
-	extra_info.get_node("Bot/Cont/Icon2").texture = false_drop.icon
+	extra_info.get_node("Panel/Icon").texture = cond_drop.icon
+	extra_info.get_node("Bot/Cont/Panel/Cont1/Icon1").texture = true_drop.icon
+	extra_info.get_node("Bot/Cont/Panel2/Cont2/Icon2").texture = false_drop.icon
 	
 	game_manager.AddCommand(_get_command_type())
 	if_popup.visible = false
@@ -125,12 +125,12 @@ func set_extra_values(original):
 	condList = original.condList
 	
 	var extra_info = get_node("ExtraInfo")
-	extra_info.get_node("Icon").visible = true
+	extra_info.get_node("Panel").visible = true
 	extra_info.get_node("Bot").visible = true
 	
-	extra_info.get_node("Icon").texture = original.get_node("ExtraInfo").get_node("Icon").texture
-	extra_info.get_node("Bot/Cont/Icon1").texture = original.true_drop.icon
-	extra_info.get_node("Bot/Cont/Icon2").texture = original.false_drop.icon
+	extra_info.get_node("Panel/Icon").texture = original.get_node("ExtraInfo").get_node("Panel/Icon").texture
+	extra_info.get_node("Bot/Cont/Panel/Cont1/Icon1").texture = original.true_drop.icon
+	extra_info.get_node("Bot/Cont/Panel2/Cont2/Icon2").texture = original.false_drop.icon
 	
 func is_wrong_true_branch():
 	return str(true_branch.get_node("Button").get_script()) == str(condWrong)

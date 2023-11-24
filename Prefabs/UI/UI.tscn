@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=89 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -9,7 +9,6 @@
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_5tr4s"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InfoPanel.gd" id="4_tbie8"]
-[ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="5_2un37"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProcedureTrigger.gd" id="5_ld6wi"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/TakeButton.gd" id="6_57hbx"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
@@ -20,10 +19,12 @@
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="13_6m05p"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InGameBack.gd" id="13_rf1kr"]
 [ext_resource type="PackedScene" uid="uid://dvs7sb61sikad" path="res://Prefabs/UI/Gameplay/victory.tscn" id="14_58d8e"]
+[ext_resource type="Texture2D" uid="uid://dvaci1lje7ru" path="res://Art/Sprites/UI/Icons/Conditional_form.png" id="14_kx5po"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Victory.gd" id="15_7u6v8"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/Defat.gd" id="16_itkgu"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="18_0l6ds"]
 [ext_resource type="Texture2D" uid="uid://cb5mtg21cdpfg" path="res://Art/Sprites/UI/resized/02_157559.png" id="18_cjeb7"]
+[ext_resource type="Texture2D" uid="uid://bsiss7yg3ifp1" path="res://Art/Sprites/UI/play_button.png" id="18_nrt0r"]
 [ext_resource type="Theme" uid="uid://bi21ucjxe6ekv" path="res://Art/Styles/pop_ups_.tres" id="18_qtj20"]
 [ext_resource type="Texture2D" uid="uid://cbppt0k6vquw5" path="res://Art/Sprites/UI/resized/01_157559.png" id="19_ps6rj"]
 [ext_resource type="Texture2D" uid="uid://4u64hus00uat" path="res://Art/Sprites/UI/resized/00_157559.png" id="20_7miwy"]
@@ -48,18 +49,20 @@
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/UIProcedureJump.gd" id="32_hnyyh"]
 [ext_resource type="PackedScene" uid="uid://dp8ewdrvbxfpa" path="res://Prefabs/UI/Tutorial/tutorial.tscn" id="33_dt1xp"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="43_b3lh5"]
+[ext_resource type="Texture2D" uid="uid://c82r1eacfgcpj" path="res://Art/Sprites/UI/resized/take.png" id="48_gqjk2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
-bg_color = Color(0.447059, 0.572549, 0.964706, 0.615686)
-border_width_left = 2
-border_width_top = 2
-border_width_bottom = 2
+bg_color = Color(0.447059, 0.572549, 0.964706, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2o8k5"]
 bg_color = Color(0.47451, 0.47451, 0.47451, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8rfb"]
-bg_color = Color(0.6, 0.6, 0.6, 0.352941)
+bg_color = Color(0.6, 0.6, 0.6, 0.894118)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6slhu"]
 bg_color = Color(0.6, 0.6, 0.6, 0.352941)
@@ -71,18 +74,111 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wrkj"]
-bg_color = Color(0.25098, 0.517647, 0.305882, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+bg_color = Color(0.435294, 0.819608, 0.509804, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55kte"]
+bg_color = Color(0.621094, 0.945313, 0.671875, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjyfr"]
 bg_color = Color(0.270588, 0.345098, 0.435294, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_qiiyp"]
+resource_name = "Idle"
+length = 0.6
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.184314, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.572549, -0.25, 0, 0.25, 0, 0.180392, -0.25, 0, 0.25, 0, 0.623529, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.745098, -0.25, 0, 0.25, 0, 0.176471, -0.25, 0, 0.25, 0, 0.333333, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_kym3q"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_rewom"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.572549, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.745098, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pw4v0"]
+_data = {
+"Go": SubResource("Animation_qiiyp"),
+"Idle": SubResource("Animation_kym3q"),
+"RESET": SubResource("Animation_rewom")
+}
 
 [sub_resource type="FontVariation" id="FontVariation_syrqp"]
 base_font = ExtResource("18_0l6ds")
@@ -94,31 +190,9 @@ spacing_bottom = 12
 [sub_resource type="Animation" id="Animation_lv8xc"]
 resource_name = "Idle"
 loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -44, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
 
 [sub_resource type="Animation" id="Animation_cr5eh"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(44, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_128eb"]
 _data = {
@@ -209,13 +283,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SelectedCommands" type="MarginContainer" parent="Panel" node_paths=PackedStringArray("container", "container_procedures")]
+[node name="SelectedCommands" type="MarginContainer" parent="Panel" node_paths=PackedStringArray("container", "container_procedures", "play_button")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.9
 anchor_bottom = 0.136
-offset_right = 0.200073
-offset_bottom = 9.87199
+offset_right = 24.0
+offset_bottom = 10.12
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 1
@@ -223,6 +297,7 @@ script = ExtResource("1_db8n0")
 commandPrefab = ExtResource("1_esfrg")
 container = NodePath("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer")
 container_procedures = NodePath("Panel/ColorRect/MarginContainer/ContainerProc")
+play_button = NodePath("../PlayButtonContainer/Button")
 
 [node name="Panel" type="Panel" parent="Panel/SelectedCommands"]
 layout_mode = 2
@@ -447,10 +522,8 @@ offset_bottom = -5.0
 rotation = 1.5708
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Procedure" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
@@ -476,10 +549,8 @@ text = ""
 label_settings = SubResource("LabelSettings_v2gt4")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Left" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -495,10 +566,8 @@ offset_bottom = -5.0
 rotation = 4.71239
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Top" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -511,10 +580,8 @@ isSideMenu = true
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Bot" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -529,10 +596,8 @@ offset_bottom = -5.0
 rotation = 3.14159
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Jump" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -547,10 +612,8 @@ min_level_required = 5
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -570,10 +633,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -595,17 +656,15 @@ isSideMenu = true
 min_level_required = 10
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="0"]
-texture = ExtResource("5_2un37")
+texture = ExtResource("14_kx5po")
 
 [node name="Label" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button" index="1"]
 offset_top = 0.0
 text = "IF"
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -636,10 +695,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 613.0
-offset_bottom = 612.0
+offset_right = 548.0
+offset_bottom = 547.0
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -647,8 +704,8 @@ anchors_preset = -1
 anchor_left = 0.9
 anchor_right = 1.0
 anchor_bottom = 0.136
-offset_left = 0.200073
-offset_bottom = 9.87199
+offset_left = 24.0
+offset_bottom = 10.12
 grow_horizontal = 0
 grow_vertical = 2
 theme = ExtResource("3_hlaxj")
@@ -659,10 +716,32 @@ layout_mode = 2
 theme = ExtResource("3_hlaxj")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_0wrkj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_55kte")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_mjyfr")
 theme_override_styles/focus = SubResource("StyleBoxFlat_0wrkj")
-text = "PLAY"
 script = ExtResource("3_txxca")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PlayButtonContainer/Button"]
+modulate = Color(0, 0.572549, 0.745098, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("18_nrt0r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/PlayButtonContainer/Button/TextureRect"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_pw4v0")
+}
 
 [node name="Button" type="Button" parent="Panel"]
 custom_minimum_size = Vector2(150, 70)
@@ -802,25 +881,23 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_18jtr")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Tutorial/NextPanel"]
+root_node = NodePath("../NextBtn")
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_128eb")
+}
+
 [node name="NextBtn" type="TextureRect" parent="Panel/Tutorial/NextPanel"]
 z_index = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 44.0
-offset_right = 224.0
-offset_bottom = 190.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("21_3qlw4")
 expand_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/Tutorial/NextPanel/NextBtn"]
-autoplay = "Idle"
-libraries = {
-"": SubResource("AnimationLibrary_128eb")
-}
 
 [node name="Skip" type="Button" parent="Panel/Tutorial"]
 layout_mode = 1
@@ -1247,10 +1324,10 @@ rotation = 1.5708
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Right/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="Left" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1268,10 +1345,10 @@ rotation = 4.71239
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Left/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="Top" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1286,10 +1363,10 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Top/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="Bot" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1307,10 +1384,10 @@ rotation = 3.14159
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Bot/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="Jump" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1330,10 +1407,10 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Jump/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="Take" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1358,10 +1435,10 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Take/Button/Arrows" index="0"]
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 678.0
-offset_bottom = 677.0
+offset_left = 103.0
+offset_top = 82.0
+offset_right = 833.0
+offset_bottom = 832.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -2036,6 +2113,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
 icon_alignment = 1
 expand_icon = true
 item_count = 4
@@ -2071,6 +2149,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
 icon_alignment = 1
 expand_icon = true
 item_count = 2
@@ -2100,6 +2179,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
 icon_alignment = 1
 expand_icon = true
 item_count = 3
@@ -2111,7 +2191,7 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("26_lvuoh")
+popup/item_2/icon = ExtResource("48_gqjk2")
 popup/item_2/id = 20
 
 [node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
@@ -2132,6 +2212,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
 icon_alignment = 1
 expand_icon = true
 item_count = 3
@@ -2143,7 +2224,7 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("26_lvuoh")
+popup/item_2/icon = ExtResource("48_gqjk2")
 popup/item_2/id = 20
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
@@ -2389,6 +2470,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.08
+theme = ExtResource("3_hlaxj")
 theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 23
 text = "Dirección"
@@ -2398,6 +2480,8 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
+theme_type_variation = &"v1"
 icon_alignment = 1
 expand_icon = true
 item_count = 4
@@ -2433,6 +2517,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
 size_flags_stretch_ratio = 2.61
+theme = ExtResource("3_hlaxj")
 icon_alignment = 1
 expand_icon = true
 item_count = 3
@@ -2444,7 +2529,7 @@ popup/item_1/text = ""
 popup/item_1/icon = ExtResource("24_fbt4l")
 popup/item_1/id = 10
 popup/item_2/text = ""
-popup/item_2/icon = ExtResource("26_lvuoh")
+popup/item_2/icon = ExtResource("48_gqjk2")
 popup/item_2/id = 20
 
 [node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form"]
@@ -2462,9 +2547,12 @@ text = "Repeticiones"
 vertical_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/Amount"]
+custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
+theme = ExtResource("3_hlaxj")
 min_value = 1.0
 value = 1.0
+alignment = 1
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container"]
 layout_mode = 2

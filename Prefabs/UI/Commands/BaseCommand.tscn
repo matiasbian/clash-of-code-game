@@ -1,31 +1,37 @@
-[gd_scene load_steps=26 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=29 format=3 uid="uid://ca051sex452gn"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
 [ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
 [ext_resource type="Texture2D" uid="uid://dgfy6ocywlde5" path="res://Art/Sprites/UI/arrows/07_157559.png" id="4_jmkgn"]
-[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="5_7j2r2"]
-[ext_resource type="Texture2D" uid="uid://dsp8a00cuuxeh" path="res://icon.svg" id="6_d1440"]
+[ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="6_lgapb"]
+[ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="7_sujau"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
-bg_color = Color(0.733333, 0.572549, 0.533333, 1)
+bg_color = Color(0.556863, 0.658824, 0.509804, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhdnj"]
-bg_color = Color(0.815686, 0.682353, 0.65098, 1)
+bg_color = Color(0.556863, 0.658824, 0.509804, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cqlb"]
 bg_color = Color(0.333333, 0.231373, 0.203922, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ror"]
-bg_color = Color(0.388235, 0.337255, 0.376471, 1)
+bg_color = Color(0.295867, 0.295866, 0.295866, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
@@ -268,6 +274,27 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glgro"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjrb"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbdff"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yux4v"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(130, 130)
 size_flags_vertical = 6
@@ -288,6 +315,7 @@ script = ExtResource("3_h25lq")
 dir = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
+modulate = Color(0, 0.541176, 0.701961, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -364,10 +392,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 142.0
-offset_bottom = 124.0
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 207.0
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -2.71399
@@ -399,7 +427,10 @@ anchors_preset = -1
 anchor_top = 0.746
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 0.0199966
+offset_left = 3.0
+offset_top = 0.0200043
+offset_right = -3.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
@@ -410,51 +441,84 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -3.00001
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Button/ExtraInfo/Bot/Cont"]
-modulate = Color(0.152941, 1, 0.243137, 1)
+[node name="Panel" type="Panel" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme = ExtResource("5_7j2r2")
-theme_override_font_sizes/font_size = 26
-text = "V"
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_evjrb")
 
-[node name="Icon1" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont"]
-custom_minimum_size = Vector2(40, 0)
+[node name="Cont1" type="HBoxContainer" parent="Button/ExtraInfo/Bot/Cont/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.033
+anchor_right = 0.98
+anchor_bottom = 0.967
+offset_top = 0.00999999
+offset_bottom = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon1" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont/Panel/Cont1"]
+modulate = Color(0.243137, 0.701961, 0.34902, 1)
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-texture = ExtResource("6_d1440")
+texture = ExtResource("6_lgapb")
 expand_mode = 1
 
-[node name="Label2" type="Label" parent="Button/ExtraInfo/Bot/Cont"]
-modulate = Color(1, 0.160784, 0.172549, 1)
+[node name="Panel2" type="Panel" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-theme = ExtResource("5_7j2r2")
-theme_override_font_sizes/font_size = 26
-text = "F"
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_mbdff")
 
-[node name="Icon2" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont"]
-custom_minimum_size = Vector2(40, 0)
+[node name="Cont2" type="HBoxContainer" parent="Button/ExtraInfo/Bot/Cont/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.033
+anchor_right = 0.98
+anchor_bottom = 0.967
+offset_top = 0.00999999
+offset_bottom = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon2" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont/Panel2/Cont2"]
+modulate = Color(0.866667, 0.164706, 0.360784, 1)
+custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-texture = ExtResource("6_d1440")
+texture = ExtResource("7_sujau")
 expand_mode = 1
 
-[node name="Icon" type="TextureRect" parent="Button/ExtraInfo"]
+[node name="Panel" type="Panel" parent="Button/ExtraInfo"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.692
-anchor_top = 0.031
-anchor_right = 0.969
+anchor_right = 1.0
 anchor_bottom = 0.308
 offset_left = 0.0399933
-offset_top = -0.0300002
-offset_right = 0.0299911
+offset_top = 3.0
+offset_right = -3.0
 offset_bottom = -0.0400047
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yux4v")
+
+[node name="Icon" type="TextureRect" parent="Button/ExtraInfo/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("6_d1440")
+texture = ExtResource("6_lgapb")
 expand_mode = 1

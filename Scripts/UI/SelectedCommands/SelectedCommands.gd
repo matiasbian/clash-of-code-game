@@ -9,6 +9,8 @@ const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 @export var container = HBoxContainer.new()
 @export var container_procedures = HBoxContainer.new()
 
+@export var play_button:Button = Button.new()
+
 var game_manager
 var currentIndex = 0
 
@@ -37,6 +39,11 @@ func _procedure_removed(index):
 	
 func _action_added(action):
 	_instance_and_add(action, false)
+	
+	play_button.get_node("TextureRect/AnimationPlayer").stop()
+	play_button.get_node("TextureRect/AnimationPlayer").play("Go")
+	
+	
 
 func _instance_and_add(action, is_procedure):
 	var actLabel = action.get_parent().get_node("Button/Label")
@@ -78,6 +85,10 @@ func _action_removed(index):
 		a.get_node("Button").index = i
 		i+=1
 	popped.queue_free()
+	
+	if list.size() == 0:
+		play_button.get_node("TextureRect/AnimationPlayer").stop()
+		play_button.get_node("TextureRect/AnimationPlayer").play("Idle")
 	
 	
 	

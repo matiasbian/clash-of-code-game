@@ -95,7 +95,7 @@ func accept():
 	set_button_dir(iter.get_node("Button"))
 	
 	var extra_info = get_node("ExtraInfo")
-	extra_info.get_node("Icon").texture = iter_drop.icon
+	extra_info.get_node("Panel/Icon").texture = iter_drop.icon
 	
 	game_manager.AddCommand(_get_command_type())
 	for_popup.visible = false
@@ -123,8 +123,8 @@ func set_extra_values(original):
 	self.procedure = original.procedure
 	
 	var extra_info = get_node("ExtraInfo")
-	extra_info.get_node("Icon").texture = original.iter_drop.icon
-	extra_info.get_node("Icon").visible = true
+	extra_info.get_node("Panel/Icon").texture = original.iter_drop.icon
+	extra_info.get_node("Panel").visible = true
 	
 func _on_pop(val):
 	if (left >= 0):
