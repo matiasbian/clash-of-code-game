@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://co8efgnhfveft"]
 
-[ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="1_bxooi"]
+[ext_resource type="Texture2D" uid="uid://ni6fsyqnhr4t" path="res://Art/Sprites/UI/star-empty.png" id="1_ywej2"]
 
 [sub_resource type="Animation" id="Animation_7gc13"]
 resource_name = "Idle"
@@ -82,6 +82,6 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(100, 100)
-texture = ExtResource("1_bxooi")
+texture = ExtResource("1_ywej2")
 expand_mode = 1
 stretch_mode = 5

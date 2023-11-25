@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://drs2a5c1xd8l" path="res://Art/Sprites/UI/botton niveles.png" id="2_jqg68"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="3_j3j1i"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="5_6gayf"]
-[ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="5_oidb0"]
+[ext_resource type="Texture2D" uid="uid://ce2oetobh4hwp" path="res://Art/Sprites/UI/star-filled.png" id="6_b6n0a"]
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="7_hviuo"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="8_1vxhj"]
 [ext_resource type="Texture2D" uid="uid://doaxelfhe4x4w" path="res://Art/Sprites/UI/cerrar-con-llave.png" id="9_b8lo4"]
@@ -124,7 +124,7 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 script = ExtResource("5_6gayf")
-completedTexture = ExtResource("5_oidb0")
+completedTexture = ExtResource("6_b6n0a")
 emptyTexture = ExtResource("7_hviuo")
 
 [node name="TextureRect" parent="Stars/HBoxContainer" instance=ExtResource("8_1vxhj")]

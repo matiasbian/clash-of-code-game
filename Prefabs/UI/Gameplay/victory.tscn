@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="2_8txhb"]
-[ext_resource type="Texture2D" uid="uid://djvvkjdywqoxj" path="res://Art/Sprites/UI/0.png" id="3_ay012"]
-[ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="4_8jk5c"]
+[ext_resource type="Texture2D" uid="uid://ce2oetobh4hwp" path="res://Art/Sprites/UI/star-filled.png" id="2_gt2p3"]
+[ext_resource type="Texture2D" uid="uid://ni6fsyqnhr4t" path="res://Art/Sprites/UI/star-empty.png" id="3_tq4ji"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="5_kyjfg"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="6_v4bqt"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="7_3j80k"]
@@ -193,8 +193,8 @@ size_flags_stretch_ratio = 0.35
 theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("2_8txhb")
-completedTexture = ExtResource("3_ay012")
-emptyTexture = ExtResource("4_8jk5c")
+completedTexture = ExtResource("2_gt2p3")
+emptyTexture = ExtResource("3_tq4ji")
 
 [node name="TextureRect" parent="ColorRect/VBoxContainer/StarsContainer" instance=ExtResource("5_kyjfg")]
 custom_minimum_size = Vector2(200, 100)
