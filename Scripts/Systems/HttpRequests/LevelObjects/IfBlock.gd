@@ -6,7 +6,6 @@ var value
 
 func _init(block):
 	super._init(block)
-	print(block)
 	subtype = block.subtype
 	value = block.value
 	
@@ -25,10 +24,8 @@ func shouldLose(player):
 	var curr_command = _inst.game_manager.current_command
 	
 	if (subtype == "balls" && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
-		print("Por aca")
 		return true
 	elif (subtype == "spikes" && curr_command is IFButton && curr_command.cond != curr_command.condList[0].cond):
-		print("Por aca 2")
 		return true
 	subinstance.come_from_if()
 	return subinstance.shouldLose(player)

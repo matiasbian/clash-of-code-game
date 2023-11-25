@@ -27,7 +27,6 @@ func _delete_level():
 	
 	var item:String = get_item_text(get_selected_items()[0])
 	item = item.trim_prefix("Nivel ")
-	print(item)
 	data.remove_http(item)
 	
 func _cancel():
@@ -38,7 +37,7 @@ func _cancel_error():
 	
 func _on_post(result, response_code):
 	if response_code >= 400:
-		print("There was an error: " + str(result))
+		print("There is an error: " + str(result))
 		pop_up_error.visible = true
 		return
 	remove_item(get_selected_items()[0])	

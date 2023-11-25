@@ -169,7 +169,6 @@ func _check_errors(structure):
 	var error = false
 	#check label
 	if structure["label"] == "":
-		print("label is empty")
 		level_label.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -177,7 +176,6 @@ func _check_errors(structure):
 		
 	#check lvl number
 	if structure["levelNumber"] == 0:
-		print("level number cannot be 0")
 		levelNumber.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -185,7 +183,6 @@ func _check_errors(structure):
 		
 	#check steps amount
 	if structure["perfect_steps"] == 0:
-		print("perfect steps cannot be 0")
 		min_steps.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -220,7 +217,6 @@ func remove_if(button):
 	
 	if elem > 0:
 		steps.remove_at(elem)
-		print("removing at " + str(elem))
 		
 func update_or_add(button):
 	var elem = -1

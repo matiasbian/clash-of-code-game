@@ -24,7 +24,6 @@ func remove_command(c):
 	
 func remove_command_at(index):
 	commands.remove_at(index)
-	print(commands)
 
 func get_queue():
 	return commands

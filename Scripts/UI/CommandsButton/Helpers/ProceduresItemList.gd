@@ -24,7 +24,6 @@ func refresh_list():
 func add_elem(elem):
 	procedures.push_back(elem)
 	add_item(elem.proc_picked.proc_name)
-	print(procedures.size())
 	
 func _remove_elem():
 	var index = get_selected_items()[0]

@@ -4,7 +4,7 @@ class_name UIProcedureComplex extends UIProcedureMove
 @export var pop_up_button_disa = Button.new()
 @export var pop_up_button = Button.new()
 @export var optionButton = OptionButton.new()
-@export var label = Label.new()
+@export var arrow = TextureRect.new()
 
 var dir
 
@@ -15,8 +15,6 @@ func _pressed():
 		pop_up_button.visible = true
 		pop_up_button.pressed.connect(_save_command)
 	else:
-		print("indice " + str(get_index(true)))
-		
 		selected_container.remove_command(get_parent(), index)
 	
 func _save_command():
@@ -25,8 +23,8 @@ func _save_command():
 	pop_up_button.visible = false
 	
 	_on_accept()
-	label.text = _get_label(dir)
-	label.visible = true
+	arrow.texture = _get_label(dir)
+	arrow.visible = true
 	selected_container.add_command(get_parent())
 	
 	
@@ -47,11 +45,11 @@ func _get_dir(dir):
 		
 func _get_label(dir):
 	if dir == 1:
-		return "->"
+		return load("res://Art/Sprites/UI/resized/03_157559.png")
 	elif dir == 2:
-		return "<-"
+		return load("res://Art/Sprites/UI/resized/00_157559.png")
 	elif dir == 3:
-		return "▲"
+		return load("res://Art/Sprites/UI/resized/02_157559.png")
 	elif dir == 4:
-		return "▼"
+		return load("res://Art/Sprites/UI/resized/01_157559.png")
 	

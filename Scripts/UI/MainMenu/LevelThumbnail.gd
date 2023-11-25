@@ -25,7 +25,6 @@ func _pressed():
 	
 func setData(progress):
 	unlock()
-	print(progress)
 	var data = progress
 	if (stars_container):
 		stars_container.get_parent().visible = true

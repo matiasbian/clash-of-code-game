@@ -13,6 +13,8 @@ var play_parent
 var i = 0
 var limit = 3
 
+var to_deanim_elem = "Right"
+
 var action_disabled
 
 func _ready():
@@ -149,7 +151,7 @@ func add_three(action):
 		
 		var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 		for c in container.get_children():
-			if (c.name == "Right"):
+			if (c.name == to_deanim_elem):
 				c.get_node("Button/Anim").stop()				
 				c.get_node("Button/Anim").play("Idle")
 		

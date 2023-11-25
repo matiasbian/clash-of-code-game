@@ -69,6 +69,10 @@ func _show_jump():
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
 	jump_child = 8
+
+func show_forward(index = 0):
+	to_deanim_elem = "Top"
+	super.show_forward(index)
 	
 func _show_dir():
 	super._show_dir()

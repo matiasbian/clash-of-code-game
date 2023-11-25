@@ -41,7 +41,6 @@ func _ready():
 	go_next()
 	
 func _tuto_exists():
-	print(get_level_script())
 	return get_level_script() != null
 	
 func get_level_script():

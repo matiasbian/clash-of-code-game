@@ -181,7 +181,6 @@ func _disable_elem(name_to):
 			c.get_node("Button/Anim").play("Highlight")
 			
 func suscribe_select():
-	print("Suscribing...")
 	item_list.item_selected.connect(_go_accept)
 	
 func _go_accept(i):
