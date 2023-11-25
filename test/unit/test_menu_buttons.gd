@@ -28,7 +28,7 @@ func test_play_button():
 	play_btn.LevelsMenu = test_scene.get_node("UI/Levels")
 	play_btn._pressed()
 	
-	var grid_container = test_scene.get_node("UI/Levels/GridContainer")
+	var grid_container = test_scene.get_node("UI/Levels/Panel/GridPanel/GridContainer")
 	await get_tree().create_timer(1).timeout	
 	var grid_container_child_n = grid_container.get_child_count()
 	assert_eq(true  ,grid_container_child_n >= 1, "Failed")

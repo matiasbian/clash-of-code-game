@@ -90,3 +90,13 @@ func get_classname():
 func _show_label(text):
 	get_parent().get_node("Button/Label").visible = true
 	get_parent().get_node("Button/Label").text = text
+	
+func _get_label(dir):
+	if dir == 1:
+		return load("res://Art/Sprites/UI/resized/03_157559.png")
+	elif dir == 2:
+		return load("res://Art/Sprites/UI/resized/00_157559.png")
+	elif dir == 3:
+		return load("res://Art/Sprites/UI/resized/02_157559.png")
+	elif dir == 4:
+		return load("res://Art/Sprites/UI/resized/01_157559.png")

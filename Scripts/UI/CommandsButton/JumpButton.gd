@@ -10,11 +10,10 @@ func _ready():
 	game_manager.jumps_updated.connect(jumps_updated)
 	
 	if !isSideMenu:
-		get_parent().get_node("Button/Label").visible = true
-		get_parent().get_node("Button/Label").text = _get_label(dir)
+		get_parent().get_node("Button/ExtraInfo/Direction").visible = true
+		get_parent().get_node("Button/ExtraInfo/Direction").texture = _get_label(dir)
 		return
 		
-	get_parent().get_node("Button/Label").visible = true
 	button = jump_pop_up.get_node("ColorRect/Btn")
 	button.pressed.connect(_on_accept)
 	optionButton = jump_pop_up.get_node("ColorRect/HBoxContainer/OptionButton")
@@ -57,16 +56,6 @@ func _get_dir(dir):
 		return MovementBlock.Directions.Top
 	elif dir == 3:
 		return MovementBlock.Directions.Bottom
-		
-func _get_label(dir):
-	if dir == 1:
-		return "->"
-	elif dir == 2:
-		return "<-"
-	elif dir == 3:
-		return "▲"
-	elif dir == 4:
-		return "▼"
 		
 func can_perform(jumps = 1):
 	return game_manager.jumps_availables >= jumps

@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=30 format=3 uid="uid://ca051sex452gn"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
 [ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
 [ext_resource type="Texture2D" uid="uid://dgfy6ocywlde5" path="res://Art/Sprites/UI/arrows/07_157559.png" id="4_jmkgn"]
 [ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="6_lgapb"]
+[ext_resource type="Texture2D" uid="uid://cb5mtg21cdpfg" path="res://Art/Sprites/UI/resized/02_157559.png" id="7_a3jy8"]
 [ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="7_sujau"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
@@ -392,10 +393,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 143.0
-offset_top = 122.0
-offset_right = 207.0
-offset_bottom = 189.0
+offset_left = 78.0
+offset_top = 57.0
+offset_right = 142.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -2.71399
@@ -522,3 +523,20 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_lgapb")
 expand_mode = 1
+
+[node name="Direction" type="TextureRect" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.5
+offset_top = -32.0
+offset_right = 15.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_a3jy8")
+expand_mode = 1
+stretch_mode = 5

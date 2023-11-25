@@ -9,8 +9,8 @@ func _ready():
 	game_manager.startedPlay.connect(_on_play)
 	
 	if !isSideMenu:
-		get_parent().get_node("Button/Label").visible = true
-		get_parent().get_node("Button/Label").text = _get_label(dir)
+		get_parent().get_node("Button/ExtraInfo/Direction").visible = true
+		get_parent().get_node("Button/ExtraInfo/Direction").texture = _get_label(dir)
 		return
 		
 	get_parent().get_node("Button/Label").visible = true
@@ -50,15 +50,6 @@ func _get_dir(dir):
 	elif dir == 3:
 		return MovementBlock.Directions.Bottom
 		
-func _get_label(dir):
-	if dir == 1:
-		return "->"
-	elif dir == 2:
-		return "<-"
-	elif dir == 3:
-		return "▲"
-	elif dir == 4:
-		return "▼"
 		
 func set_extra_values(original):
 	pass
