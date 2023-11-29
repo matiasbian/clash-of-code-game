@@ -98,7 +98,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_p8ucm")
 theme_override_font_sizes/font_size = 24
-text = "Level n°"
+text = "Nivel"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -120,7 +120,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_p8ucm")
 theme_override_font_sizes/font_size = 24
-text = "Label"
+text = "Nombre"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -141,7 +141,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_p8ucm")
 theme_override_font_sizes/font_size = 24
-text = "Dialog"
+text = "Diálogo"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -162,7 +162,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_p8ucm")
 theme_override_font_sizes/font_size = 24
-text = "Min steps"
+text = "Min. pasos"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -207,7 +207,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.35
 theme_override_fonts/font = ExtResource("1_p8ucm")
 theme_override_font_sizes/font_size = 24
-text = "Structure"
+text = "Estructura"
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -319,6 +319,7 @@ Revise los campos en rojo"
 texture = ExtResource("6_egwgf")
 
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("11_qlt4u")]
+visible = false
 hardcoded_level = true
 metadata/_edit_lock_ = true
 
