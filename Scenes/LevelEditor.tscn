@@ -319,7 +319,6 @@ Revise los campos en rojo"
 texture = ExtResource("6_egwgf")
 
 [node name="Tutorial" parent="CanvasLayer" instance=ExtResource("11_qlt4u")]
-visible = false
 hardcoded_level = true
 metadata/_edit_lock_ = true
 
