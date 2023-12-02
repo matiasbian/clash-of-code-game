@@ -20,6 +20,8 @@ class_name ForButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var take:ColorRect = ColorRect.new()
+
 @export var label:Label = Label.new()
 @export var error_pop_up:Panel = Panel.new()
 
@@ -50,6 +52,11 @@ func _ready():
 	buttons[12] = jump_up
 	buttons[13] = jump_down
 	
+	buttons[20] = take
+	buttons[21] = take
+	buttons[22] = take
+	buttons[23] = take
+	
 
 func _get_command_type():
 	return self
@@ -62,9 +69,12 @@ func do_extras(player, targetPos):
 	_on_pop(null)
 	
 	for v in range(0, i):
-		self.sub_queue.push_back(button)
+		self.procedure.add_command(button)
 	
 func _pressed():
+	if logical_disable:
+		return
+	
 	if (isSideMenu):
 		for_popup.visible = true
 		#game_manager.AddCommand(_get_command_type())
@@ -80,10 +90,12 @@ func accept():
 	
 	if (!iter.get_node("Button").can_perform(amount_spin.value)):
 		error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
-		print("ER OR")
 		return
 		
 	set_button_dir(iter.get_node("Button"))
+	
+	var extra_info = get_node("ExtraInfo")
+	extra_info.get_node("Panel/Icon").texture = iter_drop.icon
 	
 	game_manager.AddCommand(_get_command_type())
 	for_popup.visible = false
@@ -108,12 +120,19 @@ func set_extra_values(original):
 	label = get_node("Label")
 	label.visible = true
 	label.text = "x" + str(left + 1)	
-	self.sub_queue = original.sub_queue
+	self.procedure = original.procedure
+	
+	var extra_info = get_node("ExtraInfo")
+	extra_info.get_node("Panel/Icon").texture = original.iter_drop.icon
+	extra_info.get_node("Panel").visible = true
 	
 func _on_pop(val):
 	if (left >= 0):
 		label.text = "x" + str(left)
 		left -= 1
+		
+func get_classname():
+	return "ForButton class"
 	
 	
 	

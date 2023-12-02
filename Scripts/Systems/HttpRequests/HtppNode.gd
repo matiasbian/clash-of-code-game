@@ -65,7 +65,6 @@ func _http_request_completed(result, response_code, headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
-
 	emit_signal("data_retrieved", response)
 	# Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
 	

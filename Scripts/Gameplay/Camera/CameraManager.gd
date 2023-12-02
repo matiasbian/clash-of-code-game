@@ -7,8 +7,10 @@ var initial_pos
 var t = 0.0
 var zoom_in = false
 var move = false
+var can_zoom = true
 
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
+@onready var pop_ups:PopUpManager = get_node("/root/Node2D/UI/Panel/PopUps")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,11 +42,12 @@ func _process(delta):
 		move = false
 	
 func _input(event):
-	if event.is_action_pressed("map"):
+	if event.is_action_pressed("map") && can_zoom && !pop_ups.is_there_any_pop_up_open():
 		zoom_in = !zoom_in
 		move = true
 		
 func _on_play():
+	can_zoom = false
 	move = true
 	zoom_in = false
 	

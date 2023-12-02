@@ -2,6 +2,7 @@ class_name UILevelStructure extends Node
 
 @export var levelNumber:SpinBox = SpinBox.new()
 @export var level_label:TextEdit = TextEdit.new()
+@export var dialog:TextEdit = TextEdit.new()
 @export var min_steps:SpinBox = SpinBox.new()
 
 @export var dropdown:OptionButton = OptionButton.new()
@@ -100,6 +101,7 @@ func _level_structure():
 	return {
 		"levelNumber": level_number_value,
 		"label": level_label.get_line(0),
+		"dialogs": dialog.get_line(0),
 		"perfect_steps": min_steps_value,
 		"structure": {
 			"elements": steps
@@ -137,6 +139,23 @@ func _fill_dic():
 		"positionX": 0,
 		"positionY": 0,
 		"type": "if",
+		"subtype": "spikes",
+		"value": 0
+	}
+	
+	dic["IFB"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "if",
+		"subtype": "balls",
+		"value": 5
+	}
+	
+	dic["Ball"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "ball",
+		"amount":5
 	}
 	
 func add_step(type, pos):
@@ -150,7 +169,6 @@ func _check_errors(structure):
 	var error = false
 	#check label
 	if structure["label"] == "":
-		print("label is empty")
 		level_label.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -158,7 +176,6 @@ func _check_errors(structure):
 		
 	#check lvl number
 	if structure["levelNumber"] == 0:
-		print("level number cannot be 0")
 		levelNumber.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -166,7 +183,6 @@ func _check_errors(structure):
 		
 	#check steps amount
 	if structure["perfect_steps"] == 0:
-		print("perfect steps cannot be 0")
 		min_steps.get_parent().get_node("Label").add_theme_color_override("font_color", error_color)
 		error = true
 	else:
@@ -201,17 +217,12 @@ func remove_if(button):
 	
 	if elem > 0:
 		steps.remove_at(elem)
-		print("removing at " + str(elem))
 		
 func update_or_add(button):
 	var elem = -1
 	
 	for index in range(0, steps.size()):
-		print("comparing: new b X " + str(button.grid_pos.x) + "/" + str(steps[index].positionX) )
-		print("comparing: new b X " + str(button.grid_pos.y) + "/" + str(steps[index].positionY) )
-		print("is equal: " + str(button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY))
 		if button.grid_pos.x == steps[index].positionX && button.grid_pos.y == steps[index].positionY:
-			print("replace then")
 			elem = index
 			
 	var toAdd = dic[button.getType()].duplicate()
@@ -222,7 +233,5 @@ func update_or_add(button):
 		steps[elem] = toAdd
 	else:
 		steps.push_back(toAdd)
-	print("added " + str(toAdd))
-	print("Final " + str(steps))
 		
 	

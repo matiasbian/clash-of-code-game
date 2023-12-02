@@ -1,16 +1,22 @@
 class_name ActionButton extends Button
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
+
 @export var dir = MovementBlock.Directions.NULL
 
 @export var isSideMenu:bool
 
-@onready var baseColor:Color = modulate
-var sub_queue = []
+@export var min_level_required:int = 1
+@onready var unlocker:UnlockAtLevel = UnlockAtLevel.new(min_level_required, self)
 
+@onready var baseColor:Color = modulate
+@onready var procedure:Procedure = Procedure.new()
+
+@onready var extra_info:Panel = get_node("ExtraInfo")
 
 var game_manager:Game_Manager
 var index
+var logical_disable
 
 func _ready():
 	__ready()
@@ -22,6 +28,9 @@ func __ready():
 	
 	
 func _pressed():
+	if logical_disable:
+		return
+
 	if (isSideMenu):
 		game_manager.AddCommand(_get_command_type())
 	else:
@@ -65,7 +74,7 @@ func _on_pop(val):
 	pass
 	
 func pop_from_subqueue():
-	var val = sub_queue.pop_front()
+	var val = procedure.get_next_command()
 	_on_pop(val)
 	return val
 	
@@ -74,3 +83,20 @@ func can_perform(data):
 	
 func get_perform_error(data):
 	return ""
+	
+func get_classname():
+	return "ActionButton abstract class"
+	
+func _show_label(text):
+	get_parent().get_node("Button/Label").visible = true
+	get_parent().get_node("Button/Label").text = text
+	
+func _get_label(dir):
+	if dir == 1:
+		return load("res://Art/Sprites/UI/resized/03_157559.png")
+	elif dir == 2:
+		return load("res://Art/Sprites/UI/resized/00_157559.png")
+	elif dir == 3:
+		return load("res://Art/Sprites/UI/resized/02_157559.png")
+	elif dir == 4:
+		return load("res://Art/Sprites/UI/resized/01_157559.png")

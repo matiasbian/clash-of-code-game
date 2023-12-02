@@ -6,6 +6,7 @@ class_name Spawner extends Node2D
 @export var startPrefab = Resource.new()
 @export var finishPrefab = Resource.new()
 @export var ifPrefab = Resource.new()
+@export var ballPrefab = Resource.new()
 @export var httpReq = HTTP_REQUESTS.new()
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
@@ -24,7 +25,7 @@ func _ready():
 	
 		
 func instantiateLevel(data):
-	level = LevelStructure.new(data) 
+	level = LevelStructure.new(data)
 	
 	var init = Vector2(-1 ,0)
 	for step in level.stepsList.steps:
@@ -42,24 +43,22 @@ func _spawn_in_dir(step, pos):
 		pref = _instantiateBlock(step, jumpPrefab)		
 		gamePos = _instantiateBlock(step, dirPrefab).position
 	elif (step is JumpBlock):
-		print("Step is JumpBlock")
 		pref = _instantiateBlock(step, jumpPrefab)
 		jumps += 1
 		gamePos = pref.position
 	elif step is StartBlock:
-		print("Step is StartBlock")
 		pref = _instantiateBlock(step, startPrefab)
 		gamePos = pref.position
 	elif step is FinishBlock:
-		print("Step is FinishBlock")
 		pref =_instantiateBlock(step, finishPrefab)
 		gamePos = pref.position
 	elif step is IfBlock:
-		print("Step is IF")
 		pref = _instantiateBlock(step, ifPrefab)
 		gamePos = pref.position
+	elif step is BallBlock:
+		pref = _instantiateBlock(step, ballPrefab)
+		gamePos = pref.position
 		
-	print("--------- pref " + str(pref))
 	step._inst = pref
 	blocks[str(gamePos)] = step	
 	

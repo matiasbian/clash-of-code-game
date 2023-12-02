@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvcnl52c6mb81"]
+[gd_scene load_steps=11 format=3 uid="uid://dvcnl52c6mb81"]
 
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="1_cytje"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/GridButton.gd" id="1_ktjk7"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bvcnvjmhihse8" path="res://Art/Sprites/UI/LevelEditor/start-icon.png" id="4_tmj4i"]
 [ext_resource type="Texture2D" uid="uid://du5qf5isnv2wr" path="res://Art/Sprites/UI/LevelEditor/race-icon.png" id="5_pmpfd"]
 [ext_resource type="Texture2D" uid="uid://ueqls7hva53h" path="res://Art/Sprites/UI/LevelEditor/running-walk-icon.png" id="6_l8o8v"]
-[ext_resource type="Texture2D" uid="uid://b7orjrlkwxuen" path="res://Art/Sprites/UI/Icons/Conditional_form.svg" id="7_8gbw5"]
+[ext_resource type="Texture2D" uid="uid://ckfq278tpns8m" path="res://Art/Sprites/UI/Icons/Conditional_form_spike.png" id="7_4byt1"]
+[ext_resource type="Texture2D" uid="uid://dovv3qrtpgv7e" path="res://Art/Sprites/UI/Icons/Conditional_form_ball.png" id="8_1qixw"]
+[ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="9_ovxav"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdhd7"]
 bg_color = Color(0.576471, 0.576471, 0.576471, 1)
@@ -28,7 +30,9 @@ mov_icon = ExtResource("3_wnhnb")
 start_icon = ExtResource("4_tmj4i")
 end_icon = ExtResource("5_pmpfd")
 jump_icon = ExtResource("6_l8o8v")
-if_icon = ExtResource("7_8gbw5")
+if_icon = ExtResource("7_4byt1")
+if_icon_ball = ExtResource("8_1qixw")
+ball_icon = ExtResource("9_ovxav")
 
 [node name="icon" type="TextureRect" parent="."]
 layout_mode = 1

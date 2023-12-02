@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @export var speed = 150
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
+
 signal movement_finished(pos)
 
 #consts
@@ -49,7 +50,7 @@ func _handlePlayerMovement():
 func movePlayerToPos(pos, animate):
 	anim.stop()	
 	if (animate): 
-		get_node("/root/GlobalVar").play_step()
+		GlobalVar.play_step()
 		anim.play("Moving")
 	reachedPos = false
 	target = pos

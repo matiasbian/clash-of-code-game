@@ -1,5 +1,6 @@
 class_name GameBlock extends Node
 
+@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 var step_class
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,16 +1,219 @@
-[gd_scene load_steps=7 format=3 uid="uid://0ogqv2y5haxu"]
+[gd_scene load_steps=15 format=3 uid="uid://0ogqv2y5haxu"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/IfGameBlock.gd" id="1_intvk"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="2_bvjsc"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="2_jw2vo"]
 [ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="3_5svvd"]
 [ext_resource type="PackedScene" uid="uid://25smnr0v40i3" path="res://Prefabs/Blocks/Jump.tscn" id="3_hqpkt"]
-[ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_xcaqp"]
+[ext_resource type="PackedScene" uid="uid://chxv517u5b8tp" path="res://Prefabs/Blocks/Ball.tscn" id="4_vxvbl"]
+[ext_resource type="Texture2D" uid="uid://ca2ucsrume1rc" path="res://Art/Sprites/gameplay/boton sorpresa.png" id="7_n7is8"]
+[ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="7_xucne"]
+[ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="8_2agc0"]
 
-[node name="Directional" type="Node2D"]
+[sub_resource type="Animation" id="Animation_t1w05"]
+resource_name = "Idle"
+length = 1.50001
+loop_mode = 1
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.556863, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.556863, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.556863, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_tktto"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.075, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.075, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_gcbb3"]
+resource_name = "fade_out"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.075, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.075, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:r")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.99352, -0.25, 0, 0.25, 0, 0.992157, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:g")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.99352, -0.25, 0, 0.25, 0, 0.992157, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:modulate:b")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.99352, -0.25, 0, 0.25, 0, 0.992157, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:modulate:a")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1483n"]
+_data = {
+"Idle": SubResource("Animation_t1w05"),
+"RESET": SubResource("Animation_tktto"),
+"fade_out": SubResource("Animation_gcbb3")
+}
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7da8q"]
+
+[node name="Directional" type="Node2D" node_paths=PackedStringArray("spikes_icon", "balls_icon")]
 script = ExtResource("1_intvk")
 movement_prefab = ExtResource("2_bvjsc")
 spike_prefab = ExtResource("3_hqpkt")
+ball_prefab = ExtResource("4_vxvbl")
+spikes_icon = NodePath("Spikes")
+balls_icon = NodePath("Ball")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)
@@ -22,13 +225,33 @@ texture = ExtResource("2_jw2vo")
 scale = Vector2(8, 8)
 texture = ExtResource("3_5svvd")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -57.0
-offset_top = -32.0
-offset_right = 59.0
-offset_bottom = 40.0
-theme_override_fonts/font = ExtResource("4_xcaqp")
-theme_override_font_sizes/font_size = 38
-text = "?"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.075, 0.075)
+texture = ExtResource("7_n7is8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Icon"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_1483n")
+}
+
+[node name="Spikes" type="Sprite2D" parent="."]
+position = Vector2(42, -43)
+scale = Vector2(42.4, 40.8)
+texture = SubResource("PlaceholderTexture2D_7da8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Spikes"]
+position = Vector2(0.00943375, 0.0049019)
+scale = Vector2(0.057783, 0.0569853)
+texture = ExtResource("7_xucne")
+
+[node name="Ball" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(42, -43)
+scale = Vector2(42.4, 40.8)
+texture = SubResource("PlaceholderTexture2D_7da8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ball"]
+position = Vector2(0.00943375, 0.0049019)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("8_2agc0")

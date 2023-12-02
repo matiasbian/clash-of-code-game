@@ -20,6 +20,8 @@ class_name IFButton extends ActionButton
 @export var jump_up:ColorRect = ColorRect.new()
 @export var jump_down:ColorRect = ColorRect.new()
 
+@export var take:ColorRect = ColorRect.new()
+
 @export var error_pop_up:Panel = Panel.new()
 
 var true_branch
@@ -38,7 +40,7 @@ func _ready():
 	accept_button.pressed.connect(accept)
 	cancel_button.pressed.connect(cancel)
 	
-	condList = [{"cond": is_spike, "wrongAction": DirButton}]
+	condList = [{"cond": is_spike, "wrongAction": DirButton}, {"cond": is_take, "wrongAction": TakeButton}]
 	
 	buttons[0] = move_right
 	buttons[1] = move_left
@@ -49,6 +51,11 @@ func _ready():
 	buttons[11] = jump_left
 	buttons[12] = jump_up
 	buttons[13] = jump_down
+	
+	buttons[20] = take
+	buttons[21] = take
+	buttons[22] = take
+	buttons[23] = take
 	
 
 func _get_command_type():
@@ -66,6 +73,9 @@ func do_extras(player, targetPos):
 		false_branch.get_node("Button").do_extras(player, targetPos)
 	
 func _pressed():
+	if logical_disable:
+		return
+		
 	if (isSideMenu):
 		if_popup.visible = true
 		#game_manager.AddCommand(_get_command_type())
@@ -83,8 +93,14 @@ func accept():
 	set_button_dir(true_branch.get_node("Button"))
 	set_button_dir(false_branch.get_node("Button"))
 	
+	var extra_info = get_node("ExtraInfo")
+	extra_info.get_node("Panel/Icon").texture = cond_drop.icon
+	extra_info.get_node("Bot/Cont/Panel/Cont1/Icon1").texture = true_drop.icon
+	extra_info.get_node("Bot/Cont/Panel2/Cont2/Icon2").texture = false_drop.icon
+	
 	game_manager.AddCommand(_get_command_type())
 	if_popup.visible = false
+	
 	
 func cancel():
 	if_popup.visible = false
@@ -95,6 +111,9 @@ func set_button_dir(button):
 func is_spike(button, player):		
 	return button.get_subinstance() is JumpBlock
 	
+func is_take(button, player):		
+	return button.get_subinstance() is BallBlock #TODO
+	
 func get_dir():
 	return dir
 	
@@ -103,8 +122,22 @@ func set_extra_values(original):
 	false_branch = original.false_branch
 	cond = original.cond
 	condWrong = original.condWrong
+	condList = original.condList
+	
+	var extra_info = get_node("ExtraInfo")
+	extra_info.get_node("Panel").visible = true
+	extra_info.get_node("Bot").visible = true
+	
+	extra_info.get_node("Panel/Icon").texture = original.get_node("ExtraInfo").get_node("Panel/Icon").texture
+	extra_info.get_node("Bot/Cont/Panel/Cont1/Icon1").texture = original.true_drop.icon
+	extra_info.get_node("Bot/Cont/Panel2/Cont2/Icon2").texture = original.false_drop.icon
 	
 func is_wrong_true_branch():
 	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
 	
+func is_right_true_branch():
+	return str(true_branch.get_node("Button").get_script()) == str(condWrong)
+	
+func get_classname():
+	return "IfButton class"
 	

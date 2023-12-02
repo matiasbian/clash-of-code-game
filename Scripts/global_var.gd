@@ -1,6 +1,11 @@
 extends Node
 
 var level:int = 1
+var tuto_completed = false
+var tuto_skipped = false
+
+enum Screens {NULL, Game, LevelEditor, Menu}
+var prev_screen = Screens.NULL
 
 @onready var sfx_button_add =  load("res://Art/Sfx/add_button.wav")
 @onready var sfx_remove_add =  load("res://Art/Sfx/remove_button.wav")

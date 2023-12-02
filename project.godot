@@ -18,6 +18,7 @@ config/icon="res://logo.png"
 [autoload]
 
 GlobalVar="*res://Scripts/global_var.gd"
+StoredData="*res://Scripts/stored_data.gd"
 
 [display]
 

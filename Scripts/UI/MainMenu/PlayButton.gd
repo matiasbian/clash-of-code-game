@@ -9,8 +9,15 @@ func _pressed():
 	MainMenu.visible = false
 	LevelsMenu.visible = true
 	
+	
+	
 func _ready():
 	levelEditButton.pressed.connect(_edit_level_pressed)
+	
+	var buttons = get_parent().get_children()
+	
+	for b in buttons:
+		b.focus_mode =Control.FOCUS_NONE
 	
 func _edit_level_pressed():
 	get_node("/root/GlobalVar").play_start_game()

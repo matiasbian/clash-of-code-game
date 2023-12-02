@@ -1,7 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://cfgpcsq25pvlv"]
+[gd_scene load_steps=46 format=3 uid="uid://cfgpcsq25pvlv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
-[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="2_75pmn"]
 [ext_resource type="Texture2D" uid="uid://bggh5ytov6tvl" path="res://Art/Sprites/map/tileset/tile017.png" id="2_i3o6f"]
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelDataHandler.gd" id="2_w5kg7"]
 [ext_resource type="Texture2D" uid="uid://dax2ua0veci1n" path="res://Art/Sprites/robot2/enemies x3.png" id="3_nvuuy"]
@@ -14,7 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="8_fi1xo"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="9_mrd2j"]
 [ext_resource type="Texture2D" uid="uid://djcwo0d4gcybq" path="res://Art/Sprites/UI/transparencia.png" id="9_xbj5i"]
+[ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="10_aobcd"]
+[ext_resource type="Theme" uid="uid://bi21ucjxe6ekv" path="res://Art/Styles/pop_ups_.tres" id="13_5cjrl"]
+[ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="13_77om8"]
+[ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="13_ttffk"]
+[ext_resource type="Script" path="res://Scripts/UI/Utils/OpenPopUp.gd" id="13_xfur1"]
 [ext_resource type="AudioStream" uid="uid://bsohfjxsao3bn" path="res://Art/Sfx/Abstraction - Three Red Hearts - Connected.wav" id="15_r2mp7"]
+[ext_resource type="Script" path="res://Scripts/UI/Utils/ClosePopUp.gd" id="15_rbxqp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi8t"]
 
@@ -226,6 +231,39 @@ _data = {
 "RESET": SubResource("Animation_2bi1d")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_05pk1"]
+base_font = ExtResource("13_77om8")
+spacing_glyph = 1
+spacing_top = -16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f46lj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vxtm"]
+bg_color = Color(0, 0, 0, 0.439216)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fect"]
+bg_color = Color(0.231373, 0.478431, 0.780392, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vw7es"]
+bg_color = Color(0.368627, 0.603922, 0.894118, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x018n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l2ghd"]
+
+[sub_resource type="FontVariation" id="FontVariation_eodhh"]
+base_font = ExtResource("13_77om8")
+spacing_glyph = 1
+spacing_bottom = 12
+
 [node name="MainMenu" type="Node2D"]
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -293,8 +331,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 12616.0
-offset_bottom = 6070.76
+offset_right = 39731.1
+offset_bottom = 18976.2
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -467,33 +505,131 @@ libraries = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/Panel/Panel/LeftSide"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 1.07
-theme_override_constants/separation = 7
+theme_override_constants/separation = 12
 
 [node name="Button" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer" node_paths=PackedStringArray("levelEditButton")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
-text = "Jugar"
+theme = ExtResource("10_aobcd")
+text = " JUGAr "
 script = ExtResource("1_ve7o6")
 levelEditButton = NodePath("../Button2")
 
 [node name="Button2" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
-text = "Crear nivel"
+theme = ExtResource("10_aobcd")
+theme_override_fonts/font = SubResource("FontVariation_05pk1")
+text = "Editor de niveles"
 
-[node name="Button3" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer"]
+[node name="Button4" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer" node_paths=PackedStringArray("pop_up")]
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-theme = ExtResource("2_75pmn")
-disabled = true
+theme = ExtResource("10_aobcd")
 text = "Créditos"
+script = ExtResource("13_xfur1")
+pop_up = NodePath("../../../../../Credits")
+
+[node name="Credits" type="PanelContainer" parent="UI/MainMenu"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_f46lj")
+
+[node name="Dialog" type="Panel" parent="UI/MainMenu/Credits"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vxtm")
+
+[node name="Panel" type="Panel" parent="UI/MainMenu/Credits/Dialog"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.173
+anchor_top = 0.259
+anchor_right = 0.77
+anchor_bottom = 0.856
+offset_left = 133.84
+offset_top = 75.28
+offset_right = -134.4
+offset_bottom = -75.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3fect")
+
+[node name="TextPanel" type="Panel" parent="UI/MainMenu/Credits/Dialog/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.14
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -0.160004
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vw7es")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu/Credits/Dialog/Panel/TextPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/MainMenu/Credits/Dialog/Panel/TextPanel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("13_5cjrl")
+bbcode_enabled = true
+text = "[center]
+Desarrollado por:
+[color=#FFCE5C]Matías bianchi[/color]
+
+
+
+
+Trabajo de inserción profesional desarrollado para la [color=#FFCE5C]universidad nacional de quilmes[/color] - 2023.
+[/center]"
+
+[node name="Label" type="Label" parent="UI/MainMenu/Credits/Dialog/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.214
+anchor_right = 0.79
+anchor_bottom = 0.14
+offset_left = -4.03001
+offset_right = -0.550049
+offset_bottom = -0.160004
+grow_horizontal = 2
+theme = ExtResource("13_ttffk")
+theme_override_font_sizes/font_size = 55
+text = "CRéditos"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="UI/MainMenu/Credits/Dialog/Panel" node_paths=PackedStringArray("pop_up")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42
+anchor_top = 0.851
+anchor_right = 0.576
+anchor_bottom = 0.97
+offset_left = -4.76001
+offset_top = -0.394012
+offset_right = 0.271973
+offset_bottom = -0.180023
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("13_ttffk")
+text = "ACEPTAR"
+script = ExtResource("15_rbxqp")
+pop_up = NodePath("../../..")
 
 [node name="Levels" type="MarginContainer" parent="UI"]
 visible = false
@@ -507,22 +643,62 @@ grow_vertical = 2
 layout_mode = 2
 color = Color(0.0745098, 0.0392157, 0.160784, 1)
 
-[node name="GridContainer" type="GridContainer" parent="UI/Levels" node_paths=PackedStringArray("back", "main_menu")]
+[node name="Panel" type="Panel" parent="UI/Levels"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x018n")
+
+[node name="Label" type="Label" parent="UI/Levels/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.183
+offset_bottom = 0.359985
+grow_horizontal = 2
+theme = ExtResource("13_ttffk")
+theme_override_font_sizes/font_size = 62
+text = "Seleccionar nivel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridPanel" type="Panel" parent="UI/Levels/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.183
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.359985
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_l2ghd")
+
+[node name="GridContainer" type="GridContainer" parent="UI/Levels/Panel/GridPanel" node_paths=PackedStringArray("back", "main_menu")]
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.402
+anchor_right = 0.5
+anchor_bottom = 0.402
+offset_left = -446.0
+offset_top = -221.564
+offset_right = 446.0
+offset_bottom = 222.436
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 4
+columns = 6
 script = ExtResource("2_w5kg7")
 levelThumbnail = ExtResource("5_c2pht")
-back = NodePath("../Button")
-main_menu = NodePath("../../MainMenu")
+back = NodePath("../../../Button")
+main_menu = NodePath("../../../../MainMenu")
 
 [node name="Button" type="Button" parent="UI/Levels"]
-custom_minimum_size = Vector2(100, 50)
+custom_minimum_size = Vector2(150, 70)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = ExtResource("2_75pmn")
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("10_aobcd")
+theme_override_fonts/font = SubResource("FontVariation_eodhh")
+theme_override_font_sizes/font_size = 25
 text = "Atras"
 
 [node name="HtppNode" type="Node2D" parent="."]

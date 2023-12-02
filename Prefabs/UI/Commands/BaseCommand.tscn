@@ -1,28 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://ca051sex452gn"]
+[gd_scene load_steps=30 format=3 uid="uid://ca051sex452gn"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="2_32fnx"]
 [ext_resource type="Texture2D" uid="uid://cq5lc3ygs2x3f" path="res://Art/Sprites/UI/Icons/toparrow.png" id="2_ut8rw"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/DirButton.gd" id="3_h25lq"]
+[ext_resource type="Texture2D" uid="uid://dgfy6ocywlde5" path="res://Art/Sprites/UI/arrows/07_157559.png" id="4_jmkgn"]
+[ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="6_lgapb"]
+[ext_resource type="Texture2D" uid="uid://cb5mtg21cdpfg" path="res://Art/Sprites/UI/resized/02_157559.png" id="7_a3jy8"]
+[ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="7_sujau"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_86sv2"]
-bg_color = Color(0.733333, 0.572549, 0.533333, 1)
+bg_color = Color(0.556863, 0.658824, 0.509804, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mhdnj"]
-bg_color = Color(0.815686, 0.682353, 0.65098, 1)
+bg_color = Color(0.556863, 0.658824, 0.509804, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cqlb"]
 bg_color = Color(0.333333, 0.231373, 0.203922, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ror"]
-bg_color = Color(0.388235, 0.337255, 0.376471, 1)
+bg_color = Color(0.295867, 0.295866, 0.295866, 1)
 border_width_left = 3
 border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2biro"]
 font = ExtResource("2_32fnx")
@@ -30,6 +40,261 @@ font_size = 14
 outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 0
+
+[sub_resource type="Animation" id="Animation_vdn8h"]
+resource_name = "Highlight"
+length = 0.9
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9)
+}
+
+[sub_resource type="Animation" id="Animation_ohtod"]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id="Animation_ihqjh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l624u"]
+_data = {
+"Highlight": SubResource("Animation_vdn8h"),
+"Idle": SubResource("Animation_ohtod"),
+"RESET": SubResource("Animation_ihqjh")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31j7b"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.8, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_23rig"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.15, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_u7juh"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qfte0"]
+_data = {
+"Idle": SubResource("Animation_23rig"),
+"RESET": SubResource("Animation_u7juh")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_goufa"]
+
+[sub_resource type="Animation" id="Animation_fi7ar"]
+resource_name = "Idle"
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(118, -0.25, 0, 0.25, 0, 147, -0.25, 0, 0.25, 0, 118, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(40, -0.25, 0, 0.25, 0, 43, -0.25, 0, 0.25, 0, 40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_lawek"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(143, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(122, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4x1l4"]
+_data = {
+"Idle": SubResource("Animation_fi7ar"),
+"RESET": SubResource("Animation_lawek")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_05oy1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glgro"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evjrb"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mbdff"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yux4v"]
+bg_color = Color(0.0352941, 0.6, 0.6, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
 
 [node name="ColorRect" type="ColorRect"]
 custom_minimum_size = Vector2(130, 130)
@@ -51,6 +316,7 @@ script = ExtResource("3_h25lq")
 dir = 1
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
+modulate = Color(0, 0.541176, 0.701961, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,10 +335,13 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="Button"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_top = 0.438
+anchor_right = 1.002
 anchor_bottom = 1.0
-offset_top = 57.0
+offset_top = 10.06
+offset_right = -0.26001
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00185, 1.00594)
@@ -81,5 +350,193 @@ theme_override_font_sizes/font_size = 3
 text = "->"
 label_settings = SubResource("LabelSettings_2biro")
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 autowrap_mode = 2
+
+[node name="Anim" type="AnimationPlayer" parent="Button"]
+libraries = {
+"": SubResource("AnimationLibrary_l624u")
+}
+
+[node name="Highlight" type="Panel" parent="Button"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(65, 65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_31j7b")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/Highlight"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_qfte0")
+}
+
+[node name="Arrows" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_goufa")
+
+[node name="ArrowBR" type="TextureRect" parent="Button/Arrows"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 143.0
+offset_top = 122.0
+offset_right = 207.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -2.71399
+pivot_offset = Vector2(35, 40)
+texture = ExtResource("4_jmkgn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Button/Arrows/ArrowBR"]
+autoplay = "Idle"
+libraries = {
+"": SubResource("AnimationLibrary_4x1l4")
+}
+
+[node name="ExtraInfo" type="Panel" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_05oy1")
+
+[node name="Bot" type="Panel" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.746
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 0.0200043
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_glgro")
+
+[node name="Cont" type="HBoxContainer" parent="Button/ExtraInfo/Bot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Panel" type="Panel" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_evjrb")
+
+[node name="Cont1" type="HBoxContainer" parent="Button/ExtraInfo/Bot/Cont/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.033
+anchor_right = 0.98
+anchor_bottom = 0.967
+offset_top = 0.00999999
+offset_bottom = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon1" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont/Panel/Cont1"]
+modulate = Color(0.243137, 0.701961, 0.34902, 1)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+texture = ExtResource("6_lgapb")
+expand_mode = 1
+
+[node name="Panel2" type="Panel" parent="Button/ExtraInfo/Bot/Cont"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxFlat_mbdff")
+
+[node name="Cont2" type="HBoxContainer" parent="Button/ExtraInfo/Bot/Cont/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.033
+anchor_right = 0.98
+anchor_bottom = 0.967
+offset_top = 0.00999999
+offset_bottom = -0.0100021
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Icon2" type="TextureRect" parent="Button/ExtraInfo/Bot/Cont/Panel2/Cont2"]
+modulate = Color(0.866667, 0.164706, 0.360784, 1)
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+texture = ExtResource("7_sujau")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.692
+anchor_right = 1.0
+anchor_bottom = 0.308
+offset_left = 0.0399933
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -0.0400047
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yux4v")
+
+[node name="Icon" type="TextureRect" parent="Button/ExtraInfo/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_lgapb")
+expand_mode = 1
+
+[node name="Direction" type="TextureRect" parent="Button/ExtraInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -15.5
+offset_top = -32.0
+offset_right = 15.5
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("7_a3jy8")
+expand_mode = 1
+stretch_mode = 5

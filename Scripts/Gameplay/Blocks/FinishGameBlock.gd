@@ -1,6 +1,5 @@
 class_name FinishGameBlock extends GameBlock
 
-@onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 @onready var treasure = get_node("Prize/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.

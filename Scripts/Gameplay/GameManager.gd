@@ -1,6 +1,7 @@
 class_name Game_Manager extends Node
 
 signal action_added(action)
+signal procedure_added(procedure)
 signal action_removed(index)
 signal on_victory(perfectPercentage)
 signal on_defeat(index)
@@ -27,6 +28,8 @@ var blocks:Dictionary
 var win = false
 var stopChecking = false
 var current_command
+
+var global_procedures:Array = []
 
 @onready var time_manager:TimeManager = %TimeManager
 
@@ -57,6 +60,9 @@ func AddCommand(action):
 	
 	if (action is JumpButton):
 		add_jumps(-1)
+		
+func add_procedure(procedure):
+	emit_signal("procedure_added", procedure)
 	
 func RemoveCommand(index):
 	emit_signal("action_removed", index)
@@ -85,7 +91,6 @@ func _checkNewBlock(playerPos):
 		#Check if this block losing logic
 		block.do_extras_when_landed(player)	
 		if (block.shouldLose(player)):
-			print("Lose by block")
 			defeat_delay()
 			return true
 		
@@ -131,15 +136,16 @@ func playerReachedPos(pos):
 	if stopChecking:
 		return
 		
-	if ((!current_command || current_command.sub_queue.size() == 0) && _get_next_queue().size() == 0):
+	if ((!current_command || current_command.procedure.is_empty()) && _get_next_queue().size() == 0):
 		_checkIfWon(pos)
 		return
 	
 	await get_tree().create_timer(1.0).timeout
 	
 	#first check if action has subactions, if not, pop from actions list
-	if (current_command && current_command.sub_queue.size() > 0):
-		_play(current_command.pop_from_subqueue(), false)
+	if (current_command && !current_command.procedure.is_empty()):
+		var subelem = current_command.pop_from_subqueue()
+		_play(subelem, false)
 		return
 	
 	if (_get_next_queue().size() > 0):
@@ -150,6 +156,10 @@ func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
 	httpReq.data_retrieved.disconnect(set_perfect_steps)
+	
+	var ui = get_parent().get_parent().get_node("UI/Panel/PopUps")
+	if ui:
+		ui._show_dialog(level.dialogs, level.levelNumber)
 	emit_signal("on_step_performed", 0, perfect_steps)	
 	
 
@@ -165,7 +175,6 @@ func get_block(pos):
 		
 func add_jumps(jumps):
 	jumps_availables += jumps
-	print("updated")
 	emit_signal("jumps_updated", jumps_availables)
 
 	

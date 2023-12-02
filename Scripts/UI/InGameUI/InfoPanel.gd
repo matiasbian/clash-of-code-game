@@ -4,6 +4,8 @@ extends Control
 @export var time:Label = Label.new()
 @export var steps:Label = Label.new()
 
+@export var tuto_script:TutorialUI = TutorialUI.new()
+
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 var _timer
 
@@ -28,3 +30,4 @@ func set_step(step_n, total):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_timer_timeout():
 	time.text = "Tiempo de juego:  " + game_manager.time_manager.get_time_formatted()
+

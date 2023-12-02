@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=45 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
@@ -11,8 +11,11 @@
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="5_lc7op"]
 [ext_resource type="PackedScene" uid="uid://0ogqv2y5haxu" path="res://Prefabs/Blocks/IF.tscn" id="7_ocjq0"]
 [ext_resource type="Texture2D" uid="uid://c54il3pa21q8v" path="res://Art/Sprites/robot/robot_idle (3).png" id="7_t418s"]
+[ext_resource type="PackedScene" uid="uid://chxv517u5b8tp" path="res://Prefabs/Blocks/Ball.tscn" id="8_jhwtg"]
 [ext_resource type="Texture2D" uid="uid://dt1dtq6ainecn" path="res://Art/Sprites/robot/robot_idle (2).png" id="8_md5tp"]
 [ext_resource type="Texture2D" uid="uid://gixkpm0defp7" path="res://Art/Sprites/robot/robot_idle (1).png" id="9_478tv"]
+[ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="10_2jkll"]
+[ext_resource type="Texture2D" uid="uid://bfkjrftgu0ksj" path="res://Art/Sprites/map/bg/output-onlinegiftools.png" id="10_7let2"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="10_akmb6"]
 [ext_resource type="Texture2D" uid="uid://cnoqko143icja" path="res://Art/Sprites/robot/robot_walk (3).png" id="11_06wxl"]
 [ext_resource type="Texture2D" uid="uid://qq0008afs70s" path="res://Art/Sprites/robot/robot_walk (2).png" id="12_fbmuf"]
@@ -32,13 +35,6 @@
 [ext_resource type="Script" path="res://Scripts/Gameplay/Audio/AudioManager.gd" id="28_fwism"]
 [ext_resource type="AudioStream" uid="uid://birsu0de43cuw" path="res://Art/Sfx/game_music.mp3" id="28_i5pml"]
 [ext_resource type="Script" path="res://Scripts/Gameplay/TimeManager.gd" id="30_p677d"]
-
-[sub_resource type="Gradient" id="Gradient_c8dtc"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nc8ou"]
-gradient = SubResource("Gradient_c8dtc")
-fill_from = Vector2(0.978659, 0.109756)
-fill_to = Vector2(1, 0.0304878)
 
 [sub_resource type="Animation" id="Animation_e5w07"]
 resource_name = "Die"
@@ -219,6 +215,7 @@ spikePrefab = ExtResource("3_cta0h")
 startPrefab = ExtResource("3_mgr7x")
 finishPrefab = ExtResource("4_kvv7v")
 ifPrefab = ExtResource("7_ocjq0")
+ballPrefab = ExtResource("8_jhwtg")
 httpReq = NodePath("../Systems/HttpRequests")
 
 [node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]
@@ -241,11 +238,19 @@ z_index = -2
 metadata/_edit_lock_ = true
 
 [node name="Black" type="Sprite2D" parent="Background"]
+visible = false
+modulate = Color(0, 0, 0, 0.792157)
 z_index = 1
 position = Vector2(32.875, 42.875)
 scale = Vector2(1266.25, 802.25)
-texture = SubResource("GradientTexture2D_nc8ou")
+texture = ExtResource("10_2jkll")
 metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+modulate = Color(0.376471, 0.376471, 0.376471, 1)
+position = Vector2(159, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("10_7let2")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 visibility_layer = 2

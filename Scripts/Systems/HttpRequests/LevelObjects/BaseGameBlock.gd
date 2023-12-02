@@ -7,6 +7,7 @@ signal before_check()
 var _inst
 var from_if
 
+
 func _init(block):
 	init(block)
 	
@@ -24,11 +25,10 @@ func come_from_if():
 	from_if = true
 
 func do_extras_when_landed(player):
-	print("do extras when landed")
 	pass
 	
 func do_extras(player):
-	print("do extras")
+	pass
 	
 func going_to_this_block(player):
 	_inst.before_land_actions(player, self)

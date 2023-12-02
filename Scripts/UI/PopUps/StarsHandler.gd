@@ -4,7 +4,7 @@ extends Control
 @export var emptyTexture:Texture = Texture.new()
 
 
-func setPerfectValues(percentage):
+func setPerfectValues(percentage, anim = true):
 	var val = 0
 	if percentage >= 100:
 		val = 3
@@ -12,9 +12,9 @@ func setPerfectValues(percentage):
 		val = 2
 	else:
 		val = 1
-	set_stars(val)
+	set_stars(val, anim)
 		
-func set_stars(val):
+func set_stars(val, anim):
 	var childN = get_child_count()
 	for j in range(0, childN):
 		if (j < val):
@@ -26,7 +26,10 @@ func set_stars(val):
 				
 	for i in range(0,val):
 		get_child(i).get_node("star").texture = completedTexture
-		get_child(i).get_node("AnimationPlayer").play("PopUp")
+		if (anim):
+			get_child(i).get_node("AnimationPlayer").play("PopUp")
+		else:
+			get_child(i).get_node("AnimationPlayer").play("Idle")
 		await get_tree().create_timer(0.3).timeout
 
 	
