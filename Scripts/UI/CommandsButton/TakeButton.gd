@@ -9,8 +9,6 @@ func _ready():
 	game_manager.startedPlay.connect(_on_play)
 	
 	if !isSideMenu:
-		get_parent().get_node("Button/ExtraInfo/Direction").visible = true
-		get_parent().get_node("Button/ExtraInfo/Direction").texture = _get_label(dir)
 		return
 		
 	get_parent().get_node("Button/Label").visible = true
@@ -37,7 +35,6 @@ func _pressed():
 		
 func _on_accept():
 	take_pop_up.visible = false
-	dir = _get_dir(optionButton.get_selected_id())
 	game_manager.AddCommand(_get_command_type())
 	
 func _get_dir(dir):

@@ -2,8 +2,6 @@ class_name ActionButton extends Button
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
 
-@export var dir = MovementBlock.Directions.NULL
-
 @export var isSideMenu:bool
 
 @export var min_level_required:int = 1
@@ -63,9 +61,6 @@ func do_extras(player, targetPos):
 	if game_manager.get_block(targetPos):
 		game_manager.get_block(targetPos).going_to_this_block(player)
 	pass
-	
-func get_dir():
-	return dir
 	
 func set_extra_values(original):
 	pass

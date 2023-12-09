@@ -573,6 +573,7 @@ layout_mode = 2
 
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right" index="0"]
 isSideMenu = true
+min_level_required = null
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button" index="0"]
 offset_right = -5.0
@@ -616,6 +617,7 @@ layout_mode = 2
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left" index="0"]
 dir = 2
 isSideMenu = true
+min_level_required = null
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button" index="0"]
 offset_right = -5.0

@@ -88,11 +88,7 @@ func accept():
 	
 	cond = condList[cond_drop.get_selected_id()].cond
 	condWrong = condList[cond_drop.get_selected_id()].wrongAction
-	dir = dirs[dir_drop.get_selected_id()]
-	
-	set_button_dir(true_branch.get_node("Button"))
-	set_button_dir(false_branch.get_node("Button"))
-	
+
 	var extra_info = get_node("ExtraInfo")
 	extra_info.get_node("Panel/Icon").texture = cond_drop.icon
 	extra_info.get_node("Bot/Cont/Panel/Cont1/Icon1").texture = true_drop.icon
@@ -105,17 +101,11 @@ func accept():
 func cancel():
 	if_popup.visible = false
 	
-func set_button_dir(button):
-	button.dir = dir
-	
 func is_spike(button, player):		
 	return button.get_subinstance() is JumpBlock
 	
 func is_take(button, player):		
 	return button.get_subinstance() is BallBlock #TODO
-	
-func get_dir():
-	return dir
 	
 func set_extra_values(original):
 	true_branch = original.true_branch

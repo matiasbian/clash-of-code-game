@@ -61,9 +61,6 @@ func accept():
 	proc_picked = Procedure.new()
 	proc_picked.copy_from(selected_commands.procedure)
 	first_elem = proc_picked.get_next_command()
-	dir = first_elem.dir
-		
-	set_button_dir(first_elem)
 	
 	
 		
@@ -75,14 +72,8 @@ func accept():
 func cancel():
 	procedure_popup.visible = false
 	
-func set_button_dir(button):
-	button.dir = dir
-	
 func is_spike(button, player):		
 	return button.get_subinstance() is JumpBlock
-	
-func get_dir():
-	return dir
 	
 func set_extra_values(original):
 	proc_picked = original.proc_picked

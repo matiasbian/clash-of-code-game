@@ -10,8 +10,6 @@ func _ready():
 	game_manager.jumps_updated.connect(jumps_updated)
 	
 	if !isSideMenu:
-		get_parent().get_node("Button/ExtraInfo/Direction").visible = true
-		get_parent().get_node("Button/ExtraInfo/Direction").texture = _get_label(dir)
 		return
 		
 	button = jump_pop_up.get_node("ColorRect/Btn")
@@ -39,7 +37,6 @@ func _pressed():
 		
 func _on_accept():
 	jump_pop_up.visible = false
-	dir = _get_dir(optionButton.get_selected_id())
 	game_manager.AddCommand(_get_command_type())
 	
 func jumps_updated(jumps):

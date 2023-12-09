@@ -84,15 +84,12 @@ func _pressed():
 func accept():
 	iter = buttons[iter_drop.get_selected_id() + dir_drop.get_selected_id()]
 	
-	dir = dirs[dir_drop.get_selected_id()]
 	i = amount_spin.value -1
 	left = i
 	
 	if (!iter.get_node("Button").can_perform(amount_spin.value)):
 		error_pop_up.show_pop_up(iter.get_node("Button").get_perform_error(amount_spin.value))
 		return
-		
-	set_button_dir(iter.get_node("Button"))
 	
 	var extra_info = get_node("ExtraInfo")
 	extra_info.get_node("Panel/Icon").texture = iter_drop.icon
@@ -103,14 +100,8 @@ func accept():
 func cancel():
 	for_popup.visible = false
 	
-func set_button_dir(button):
-	button.dir = dir
-	
 func is_spike(button, player):		
 	return button.get_subinstance() is JumpBlock
-	
-func get_dir():
-	return dir
 	
 func set_extra_values(original):
 	iter = original.iter

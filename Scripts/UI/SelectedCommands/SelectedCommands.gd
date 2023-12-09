@@ -59,7 +59,8 @@ func _instance_and_add(action, is_procedure):
 	
 	instanceButton.index = currentIndex
 	instanceButton.set_script(action.get_script())
-	instanceButton.dir = action.dir
+	if (instanceButton is DirButton):
+		instanceButton.dir = action.dir
 	instanceButton.set_extra_values(action)
 	
 	instanceTexture.texture = actTex.texture
