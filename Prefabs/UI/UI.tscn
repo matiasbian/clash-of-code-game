@@ -573,7 +573,7 @@ layout_mode = 2
 
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right" index="0"]
 isSideMenu = true
-min_level_required = null
+min_level_required = 1
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button" index="0"]
 offset_right = -5.0
@@ -595,6 +595,7 @@ accept_button = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContaine
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 selected_commands = NodePath("../../../../../PopUps/Procedure/ColorRect/VBoxContainer/Selected/Selected/HBoxContainer")
 isSideMenu = true
+min_level_required = 1
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button" index="0"]
 offset_right = -5.0
@@ -617,7 +618,7 @@ layout_mode = 2
 [node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left" index="0"]
 dir = 2
 isSideMenu = true
-min_level_required = null
+min_level_required = 1
 
 [node name="TextureRect" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button" index="0"]
 offset_right = -5.0

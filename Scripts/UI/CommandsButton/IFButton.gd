@@ -61,16 +61,16 @@ func _ready():
 func _get_command_type():
 	return self
 	
-func do_extras(player, targetPos):
-	var targetBlock = game_manager.get_block(targetPos)
+func do_extras(player):
+	var targetBlock = game_manager.get_block(player.position)
 	
 	if !targetBlock is IfBlock:
 		return
 
 	if (cond.call(targetBlock, player)):
-		true_branch.get_node("Button").do_extras(player, targetPos)
+		true_branch.get_node("Button").do_extras(player)
 	else:
-		false_branch.get_node("Button").do_extras(player, targetPos)
+		false_branch.get_node("Button").do_extras(player)
 	
 func _pressed():
 	if logical_disable:

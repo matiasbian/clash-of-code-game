@@ -22,11 +22,11 @@ func _ready():
 func _get_command_type():
 	return self
 	
-func do_extras(player, targetPos):
+func do_extras(player):
 
 	
 	
-	first_elem.do_extras(player, targetPos)
+	first_elem.do_extras(player)
 	
 	#_on_pop(null)
 	

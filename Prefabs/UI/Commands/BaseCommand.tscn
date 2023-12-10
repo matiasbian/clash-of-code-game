@@ -314,8 +314,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_1cqlb")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_o7ror")
 script = ExtResource("3_h25lq")
 dir = 1
-isSideMenu = null
-min_level_required = null
 
 [node name="TextureRect" type="TextureRect" parent="Button"]
 modulate = Color(0, 0.541176, 0.701961, 1)

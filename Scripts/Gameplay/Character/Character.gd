@@ -55,18 +55,22 @@ func movePlayerToPos(pos, animate):
 	reachedPos = false
 	target = pos
 	
-func movePlayerToDir(button):
-	var offset = _get_movement_vector(button)
+func execute_command(button):
+	button.do_extras(self)
+	
+func move_player(dir):
+	var offset = _get_movement_vector(dir)
 	var targetPos = position + offset
-	var animate = !button is JumpButton
-	movePlayerToPos(targetPos, animate)
-	button.do_extras(self, targetPos)
+	
+	movePlayerToPos(targetPos, true)
+	
+	if game_manager.get_block(targetPos):
+		game_manager.get_block(targetPos).going_to_this_block(self)
 	
 func triggerMovementFinished():
 	emit_signal("movement_finished", target)
 	
-func _get_movement_vector(button):
-	var dir = button.get_dir()
+func _get_movement_vector(dir):
 	if (dir == MovementBlock.Directions.Right):
 		return Vector2(MOVEMENT_OFFSET_X,0)
 	elif (dir == MovementBlock.Directions.Left):

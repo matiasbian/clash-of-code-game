@@ -57,9 +57,7 @@ func _on_play():
 
 	get_parent().color = Color.GRAY
 
-func do_extras(player, targetPos):
-	if game_manager.get_block(targetPos):
-		game_manager.get_block(targetPos).going_to_this_block(player)
+func do_extras(player):
 	pass
 	
 func set_extra_values(original):

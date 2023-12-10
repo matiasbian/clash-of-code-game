@@ -11,7 +11,7 @@ signal on_block_enter(block)
 signal on_step_performed(number)
 signal jumps_updated(jumps)
 
-@export var player = CharacterBody2D.new()
+@export var player:Player = Player.new()
 @export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
 
 var selectedActions
@@ -98,13 +98,13 @@ func _checkNewBlock(playerPos):
 		return false
 	
 	
-func _play(pos, focus = true):
-	if (focus): 
+func _play(action, focus_in_selected_commands = true):
+	if (focus_in_selected_commands): 
 		focusCurrentAction()
-		current_command = pos
+		current_command = action
 	else:
 		block_index -= 1
-	player.movePlayerToDir(pos)
+	player.execute_command(action)
 
 
 func _getActionsList():

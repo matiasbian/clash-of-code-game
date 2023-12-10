@@ -61,11 +61,9 @@ func _ready():
 func _get_command_type():
 	return self
 	
-func do_extras(player, targetPos):
-	var targetBlock = game_manager.get_block(targetPos)
-
+func do_extras(player):
 	var button = iter.get_node("Button")
-	button.do_extras(player, targetPos)
+	button.do_extras(player)
 	_on_pop(null)
 	
 	for v in range(0, i):
