@@ -56,13 +56,14 @@ func movePlayerToPos(pos, animate):
 	target = pos
 	
 func execute_command(button):
+	print("Executing command")
 	button.do_extras(self)
 	
 func move_player(dir):
 	var offset = _get_movement_vector(dir)
 	var targetPos = position + offset
 	
-	movePlayerToPos(targetPos, true)
+	movePlayerToPos(targetPos, dir != MovementBlock.Directions.NULL)
 	
 	if game_manager.get_block(targetPos):
 		game_manager.get_block(targetPos).going_to_this_block(self)
@@ -79,6 +80,8 @@ func _get_movement_vector(dir):
 		return Vector2(0, -MOVEMENT_OFFSET_X)
 	elif (dir == MovementBlock.Directions.Bottom):
 		return Vector2(0, MOVEMENT_OFFSET_X)
+	elif (dir == MovementBlock.Directions.NULL):
+		return Vector2(0, 0)
 		
 func _jump():
 	anim.stop()

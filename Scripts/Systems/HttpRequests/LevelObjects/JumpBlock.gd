@@ -18,7 +18,7 @@ func _init(block):
 				dir = MovementBlock.Directions.Left
 	pos = Vector2(block["positionX"], block["positionY"])
 	
-func shouldLose(player):
+func should_lose_on_enter(player):
 	emit_signal("before_check", null)
 	
 	var curr_command = _inst.game_manager.current_command

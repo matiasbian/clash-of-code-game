@@ -20,7 +20,7 @@ func do_extras_when_landed(player):
 	super(player)
 	subinstance.do_extras_when_landed(player)
 	
-func shouldLose(player):
+func should_lose_on_enter(player):
 	var curr_command = _inst.game_manager.current_command
 	
 	if (subtype == "balls" && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
@@ -28,7 +28,7 @@ func shouldLose(player):
 	elif (subtype == "spikes" && curr_command is IFButton && curr_command.cond != curr_command.condList[0].cond):
 		return true
 	subinstance.come_from_if()
-	return subinstance.shouldLose(player)
+	return subinstance.should_lose_on_enter(player)
 	
 	
 #AUX

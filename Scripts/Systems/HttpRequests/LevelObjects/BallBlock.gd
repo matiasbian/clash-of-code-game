@@ -20,14 +20,17 @@ func _init(block):
 	pos = Vector2(block["positionX"], block["positionY"])
 	balls = block.amount
 	
-func shouldLose(player):
-	super.shouldLose(player)
-	var curr_command = _inst.game_manager.current_command
+func should_lose_on_enter(player):
+	#var curr_command = _inst.game_manager.current_command
 	
-	if (from_if && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
-		return true
+	#if (from_if && curr_command is IFButton && curr_command.cond != curr_command.condList[1].cond):
+	#	return true
 	
-	return _inst._visible_balls() > 0 || super.shouldLose(player)
+	#return _inst._visible_balls() > 0 || super.should_lose_on_enter(player)
+	return false
+	
+func should_lose_on_leave(player):
+	return _inst._visible_balls() > 0
 	
 func do_extras_when_landed(player):
 	super(player)

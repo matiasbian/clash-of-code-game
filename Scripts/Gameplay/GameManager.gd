@@ -90,7 +90,7 @@ func _checkNewBlock(playerPos):
 		emit_signal("on_block_enter", block)
 		#Check if this block losing logic
 		block.do_extras_when_landed(player)	
-		if (block.shouldLose(player)):
+		if (block.should_lose_on_enter(player)):
 			defeat_delay()
 			return true
 		
@@ -149,7 +149,16 @@ func playerReachedPos(pos):
 		return
 	
 	if (_get_next_queue().size() > 0):
-		_play(_get_next_queue().pop_front())
+		var stringedPos = str(Vector2(round(pos.x), round(pos.y)))
+		var block = blocks[stringedPos]
+		
+		var newBlock = _get_next_queue().pop_front()
+		
+		if (newBlock is DirButton && current_command && block.should_lose_on_leave(player)):
+			defeat_delay()
+			return
+			
+		_play(newBlock)
 		
 		
 func set_perfect_steps(data):

@@ -58,7 +58,7 @@ func _on_play():
 	get_parent().color = Color.GRAY
 
 func do_extras(player):
-	pass
+	player.move_player(MovementBlock.Directions.NULL)
 	
 func set_extra_values(original):
 	pass
