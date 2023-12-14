@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cfgpcsq25pvlv"]
+[gd_scene load_steps=49 format=3 uid="uid://cfgpcsq25pvlv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
 [ext_resource type="Texture2D" uid="uid://bggh5ytov6tvl" path="res://Art/Sprites/map/tileset/tile017.png" id="2_i3o6f"]
@@ -16,10 +16,13 @@
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="10_aobcd"]
 [ext_resource type="Theme" uid="uid://bi21ucjxe6ekv" path="res://Art/Styles/pop_ups_.tres" id="13_5cjrl"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="13_77om8"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/ButtonTextToI18n.gd" id="13_toa74"]
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="13_ttffk"]
 [ext_resource type="Script" path="res://Scripts/UI/Utils/OpenPopUp.gd" id="13_xfur1"]
 [ext_resource type="AudioStream" uid="uid://bsohfjxsao3bn" path="res://Art/Sfx/Abstraction - Three Red Hearts - Connected.wav" id="15_r2mp7"]
 [ext_resource type="Script" path="res://Scripts/UI/Utils/ClosePopUp.gd" id="15_rbxqp"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/RichLabelTo18n.gd" id="16_bpny6"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="16_yty1t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi8t"]
 
@@ -331,8 +334,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 41990.7
-offset_bottom = 20050.6
+offset_right = 44250.3
+offset_bottom = 21123.1
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -516,7 +519,7 @@ theme_override_constants/separation = 12
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme = ExtResource("10_aobcd")
-text = " JUGAr "
+text = " JUGAr"
 script = ExtResource("1_ve7o6")
 levelEditButton = NodePath("../Button2")
 
@@ -526,6 +529,8 @@ layout_mode = 2
 theme = ExtResource("10_aobcd")
 theme_override_fonts/font = SubResource("FontVariation_05pk1")
 text = "Editor de niveles"
+script = ExtResource("13_toa74")
+key = "LEVEL_EDITOR"
 
 [node name="Button4" type="Button" parent="UI/MainMenu/Panel/Panel/LeftSide/VBoxContainer" node_paths=PackedStringArray("pop_up")]
 custom_minimum_size = Vector2(0, 60)
@@ -596,6 +601,8 @@ Desarrollado por:
 
 Trabajo de inserción profesional desarrollado para la [color=#FFCE5C]universidad nacional de quilmes[/color] - 2023.
 [/center]"
+script = ExtResource("16_bpny6")
+key = "CREDITS_CONTENT"
 
 [node name="Label" type="Label" parent="UI/MainMenu/Credits/Dialog/Panel"]
 layout_mode = 1
@@ -612,6 +619,8 @@ theme_override_font_sizes/font_size = 55
 text = "CRéditos"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("16_yty1t")
+key = "CREDITS"
 
 [node name="Button" type="Button" parent="UI/MainMenu/Credits/Dialog/Panel" node_paths=PackedStringArray("pop_up")]
 layout_mode = 1
@@ -659,6 +668,8 @@ theme_override_font_sizes/font_size = 62
 text = "Seleccionar nivel"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("16_yty1t")
+key = "SELECT_LEVEL"
 
 [node name="GridPanel" type="Panel" parent="UI/Levels/Panel"]
 layout_mode = 1
@@ -700,6 +711,8 @@ theme = ExtResource("10_aobcd")
 theme_override_fonts/font = SubResource("FontVariation_eodhh")
 theme_override_font_sizes/font_size = 25
 text = "Atras"
+script = ExtResource("13_toa74")
+key = "BACK"
 
 [node name="HtppNode" type="Node2D" parent="."]
 script = ExtResource("5_wcmn7")

@@ -1,0 +1,35 @@
+id,en,es
+LEVEL_EDITOR,Level Editor,Editor De Niveles
+PLAY,Play,JUGAr 
+CREDITS,Credits,Creditos
+LEVEL,Level,Nivel
+NAME,Name,Nombre
+DIALOG,Dialog,Dialogo
+MIN_STEPS,Min Steps,Min. Pasos
+STRUCTURE,Structure,Estructura
+SAVE,Save,Guardar
+CANCEL,Cancel,Cancelar
+LEVELS_CREATED,Levels Created,Niveles creados
+REMOVE_LEVELS,Remove Levels,Eliminar Niveles
+REMOVE,Remove,Eliminar
+CREDITS_CONTENT,"[center]
+Developed by:
+[color=#FFCE5C]Matías bianchi[/color]
+
+
+
+
+Final graduation project for  [color=#FFCE5C]Quilmes national University, Argentina[/color] - 2023.
+[/center]","[center]
+Desarrollado por:
+[color=#FFCE5C]Matías bianchi[/color]
+
+
+
+
+Trabajo de inserción profesional desarrollado para la [color=#FFCE5C]universidad nacional de quilmes[/color] - 2023.
+[/center]"
+ACCEPT,Accept,Aceptar
+COMPLETED,Completed,Completado
+SELECT_LEVEL,Select Level,Seleccionar Nivel
+BACK,Back,Atras

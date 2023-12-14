@@ -6,6 +6,8 @@ extends Button
 @export var dialog:TextEdit = TextEdit.new()
 @export var structure:ItemList = ItemList.new()
 
+var i18n = TextTo18n.new("CANCEL", self)
+
 	
 func _pressed():
 	level.value = 0

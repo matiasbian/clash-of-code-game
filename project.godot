@@ -44,6 +44,11 @@ map={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Scripts/Systems/i18n/translations/i18n.en.translation", "res://Scripts/Systems/i18n/translations/i18n.es.translation")
+locale/test="en"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

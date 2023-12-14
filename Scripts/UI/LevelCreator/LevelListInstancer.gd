@@ -19,14 +19,14 @@ func _ready():
 	
 func _data_loaded(data):
 	for d in data:
-		add_item("Nivel  " + str(d.level))
+		add_item(tr("LEVEL") + " " + str(d.level))
 		
 func _delete_level():
 	if (get_selected_items().size() == 0):
 		return
 	
 	var item:String = get_item_text(get_selected_items()[0])
-	item = item.trim_prefix("Nivel ")
+	item = item.trim_prefix(tr("LEVEL") + " ")
 	data.remove_http(item)
 	
 func _cancel():

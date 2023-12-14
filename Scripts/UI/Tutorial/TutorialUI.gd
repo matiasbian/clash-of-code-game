@@ -64,7 +64,7 @@ func go_next():
 		return
 	
 	current_step = _next_step()
-	dialog_label.text = current_step.dialog
+	dialog_label.text = tr(current_step.dialog)
 	
 	if current_step.has("action"):
 		if (current_step.has("param")):

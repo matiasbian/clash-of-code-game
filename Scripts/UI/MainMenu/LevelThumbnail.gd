@@ -30,7 +30,7 @@ func setData(progress):
 		stars_container.get_parent().visible = true
 		stars_container.setPerfectValues(data.movements, false)
 	if (levelNumber):
-		levelNumber.text = "Nivel\n" + str(data.levelNumber)
+		levelNumber.text = tr("LEVEL")  + "\n" + str(data.levelNumber)
 		
 	if (completed):
 		completed.visible = true

@@ -4,6 +4,9 @@ extends Button
 @onready var LevelsMenu = get_node("/root/MainMenu/UI/Levels")
 
 @export var levelEditButton:Button = Button.new()
+
+var i18n = TextTo18n.new("PLAY", self)
+
 func _pressed():
 	get_node("/root/GlobalVar").play_tap()
 	MainMenu.visible = false

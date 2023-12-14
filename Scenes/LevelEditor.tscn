@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcikunr3u0s7h"]
+[gd_scene load_steps=27 format=3 uid="uid://bcikunr3u0s7h"]
 
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="1_p8ucm"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="2_am7w7"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/UILevelStructure.gd" id="2_ct3of"]
 [ext_resource type="Script" path="res://Scripts/Systems/HttpRequests/HtppNode.gd" id="3_1x5em"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/GridButtonsSpawner.gd" id="3_4wqkr"]
@@ -10,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://inbgdm4ss6s6" path="res://Prefabs/UI/PopUps/panel_success.tscn" id="5_adnws"]
 [ext_resource type="Texture2D" uid="uid://ctkos4ti4ird6" path="res://Art/Sprites/UI/failure.png" id="6_egwgf"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="6_svrxl"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/ButtonTextToI18n.gd" id="8_7f77q"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/ButtonManageLevels.gd" id="9_gowye"]
 [ext_resource type="PackedScene" uid="uid://dp8ewdrvbxfpa" path="res://Prefabs/UI/Tutorial/tutorial.tscn" id="11_qlt4u"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/LevelEditor/level_editor_tuto.gd" id="12_u356d"]
@@ -101,6 +103,8 @@ theme_override_font_sizes/font_size = 24
 text = "Nivel"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "LEVEL"
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/LevelN"]
 custom_minimum_size = Vector2(100, 0)
@@ -123,6 +127,8 @@ theme_override_font_sizes/font_size = 24
 text = "Nombre"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "NAME"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Label"]
 custom_minimum_size = Vector2(300, 50)
@@ -144,6 +150,8 @@ theme_override_font_sizes/font_size = 24
 text = "Diálogo"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "DIALOG"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Dialog"]
 custom_minimum_size = Vector2(300, 50)
@@ -165,6 +173,8 @@ theme_override_font_sizes/font_size = 24
 text = "Min. pasos"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "MIN_STEPS"
 
 [node name="SpinBox" type="SpinBox" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/MinSteps"]
 custom_minimum_size = Vector2(100, 0)
@@ -210,6 +220,8 @@ theme_override_font_sizes/font_size = 24
 text = "Estructura"
 horizontal_alignment = 2
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "STRUCTURE"
 
 [node name="OptionButton" type="OptionButton" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Structure/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
@@ -274,6 +286,8 @@ size_flags_horizontal = 5
 theme = ExtResource("6_svrxl")
 theme_override_fonts/font = SubResource("FontVariation_ov1by")
 text = "Guardar"
+script = ExtResource("8_7f77q")
+key = "SAVE"
 
 [node name="Button2" type="Button" parent="CanvasLayer/ColorRect/MarginContainer/VBoxContainer/Buttons" node_paths=PackedStringArray("level", "min_steps", "label", "structure")]
 custom_minimum_size = Vector2(280, 0)
@@ -432,6 +446,8 @@ theme_override_font_sizes/font_size = 45
 text = "ELIMINAR NIVEL"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_am7w7")
+key = "REMOVE_LEVELS"
 
 [node name="ItemList" type="ItemList" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("data", "accept_button", "cancel_button", "pop_up", "pop_up_error", "cancel_error")]
 layout_mode = 2
@@ -461,6 +477,8 @@ size_flags_horizontal = 5
 theme = ExtResource("6_svrxl")
 theme_override_fonts/font = SubResource("FontVariation_ov1by")
 text = "Eliminar"
+script = ExtResource("8_7f77q")
+key = "REMOVE"
 
 [node name="Button2" type="Button" parent="CanvasLayer/ManageLevels/Panel/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(280, 0)
@@ -469,6 +487,8 @@ size_flags_horizontal = 5
 theme = ExtResource("6_svrxl")
 theme_override_fonts/font = SubResource("FontVariation_554l8")
 text = "Cancelar"
+script = ExtResource("8_7f77q")
+key = "CANCEL"
 
 [node name="ErrorPanel" type="Panel" parent="CanvasLayer/ManageLevels"]
 visible = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://btcu4smhl2uyx"]
+[gd_scene load_steps=17 format=3 uid="uid://btcu4smhl2uyx"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/LevelThumbnail.gd" id="1_0q5oo"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="1_24hd7"]
 [ext_resource type="Texture2D" uid="uid://drs2a5c1xd8l" path="res://Art/Sprites/UI/botton niveles.png" id="2_jqg68"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="3_j3j1i"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="5_6gayf"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="5_x6sgl"]
 [ext_resource type="Texture2D" uid="uid://ce2oetobh4hwp" path="res://Art/Sprites/UI/star-filled.png" id="6_b6n0a"]
 [ext_resource type="Texture2D" uid="uid://mehy0sx0nk60" path="res://Art/Sprites/UI/2.png" id="7_hviuo"]
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="8_1vxhj"]
@@ -101,6 +102,8 @@ theme_override_font_sizes/font_size = 15
 text = "Completado"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_x6sgl")
+key = "COMPLETED"
 
 [node name="Stars" type="Panel" parent="."]
 visible = false
