@@ -33,3 +33,18 @@ ACCEPT,Accept,Aceptar
 COMPLETED,Completed,Completado
 SELECT_LEVEL,Select Level,Seleccionar Nivel
 BACK,Back,Atras
+,,
+,,
+,,
+TUTORIAL_01_00,Hi!,¡Hola!
+TUTORIAL_01_01,Welcome to Clash of Codes!,¡Bienvenido a Clash of Codes!
+TUTORIAL_01_02,"My name is UNQBot, I'll be your guide during this tutorial.","Mi nombre es UNQbot, seré tu guía durante este tutorial."
+TUTORIAL_01_03,In Clash of Codes you're going to learn programming fundamentals,En Clash of codes aprenderás fundamentos de la programación.
+TUTORIAL_01_04,In a fun way!,Lo mejor de todo: ¡De manera divertida!
+TUTORIAL_01_05,Let's begin,Comencemos con el tutorial.
+TUTORIAL_01_06,The goal is to tell the robot the actions that it need to reach the treasure.,Nuestro objetivo es indicarle al robot las acciones que debe realizar para poder llegar al cofre.
+TUTORIAL_01_07,"In this first level, you can only move forward. Let's try it!","En este primer nivel, solo puedes moverte hacia adelante. ¡Inténtalo!"
+TUTORIAL_01_08,"As you can see, the command was added to the program","Como puedes ver, el comando se agrego a la lista de comandos a ejecutar."
+TUTORIAL_01_09,Try to eliminate the recently added command.,Prueba eliminar el comando que agregaste.
+TUTORIAL_01_10,Nice! Let's add 3 move forward commands,¡Muy bien! Ahora agrega 3 movimientos hacia adelante.
+TUTORIAL_01_11,Well done! Press play to execute your program,¡Muy bien! Presiona el botón Play para que el robot ejecute los comandos

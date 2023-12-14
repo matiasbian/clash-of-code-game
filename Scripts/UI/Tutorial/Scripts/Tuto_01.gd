@@ -30,43 +30,43 @@ func _handle_next_panel(state):
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Hola!"
+			"dialog": "TUTORIAL_01_00"
 		},
 		{
-			"dialog": "¡Bienvenido a Clash of Codes!"
+			"dialog": "TUTORIAL_01_01"
 		},
 		{
-			"dialog": "Mi nombre es UNQbot, seré tu guía durante este tutorial."
+			"dialog": "TUTORIAL_01_02"
 		},
 		{
-			"dialog": "En Clash of codes aprenderás fundamentos de la programación."
+			"dialog": "TUTORIAL_01_03"
 		},
 		{
-			"dialog": "Lo mejor de todo: ¡De manera divertida!"
+			"dialog": "TUTORIAL_01_04"
 		},
 		{
-			"dialog": "Comencemos con el tutorial."
+			"dialog": "TUTORIAL_01_05"
 		},
 		{
-			"dialog": "Nuestro objetivo es indicarle al robot las acciones que debe realizar para poder llegar al cofre."
+			"dialog": "TUTORIAL_01_06"
 		},
 		{
-			"dialog": "En este primer nivel, solo puedes moverte hacia adelante. ¡Inténtalo!",
+			"dialog": "TUTORIAL_01_07",
 			"action": show_avaialable_commands
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego a la lista de comandos a ejecutar.",
+			"dialog": "TUTORIAL_01_08",
 			"action": _reparent_selected_commands
 		},
 		{
-			"dialog": "Prueba eliminar el comando que agregaste.",
+			"dialog": "TUTORIAL_01_09",
 			"action": _disable_aux
 		},
 		{
-			"dialog": "¡Muy bien! Ahora agrega 3 movimientos hacia adelante."
+			"dialog": "TUTORIAL_01_10"
 		},
 		{
-			"dialog": "¡Muy bien! Presiona el botón Play para que el robot ejecute los comandos"
+			"dialog": "TUTORIAL_01_11"
 		}
 	]
 

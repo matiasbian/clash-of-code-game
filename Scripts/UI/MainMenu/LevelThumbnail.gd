@@ -41,7 +41,7 @@ func setLevel(data):
 	levelToLoad = data.level
 	
 	if (levelNumber):
-		levelNumber.text = "Nivel\n" + str(data.level)
+		levelNumber.text = tr("LEVEL")  + "\n" + str(data.level)
 	
 	if (data.level == 1):
 		unlock()
