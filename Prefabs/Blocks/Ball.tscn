@@ -1,13 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://chxv517u5b8tp"]
+[gd_scene load_steps=4 format=3 uid="uid://chxv517u5b8tp"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/BallGameBlock.gd" id="1_w0llq"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="2_ipc3d"]
-[ext_resource type="Texture2D" uid="uid://d06q5y1wqov8f" path="res://Art/Sprites/map/tileset/tile071.png" id="3_wtfja"]
-[ext_resource type="PackedScene" uid="uid://cuy3re38ka75v" path="res://Prefabs/Blocks/Ball/Ball_obj.tscn" id="4_vi4n7"]
+[ext_resource type="PackedScene" uid="uid://ghmaqmrnrf6u" path="res://Prefabs/Blocks/Ball/balls_container.tscn" id="3_ouac8"]
 
 [node name="Directional" type="Node2D" node_paths=PackedStringArray("balls_container")]
 script = ExtResource("1_w0llq")
-balls_container = NodePath("Sprite2D")
+balls_container = NodePath("BallsContainer")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)
@@ -15,29 +14,4 @@ visibility_layer = 3
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("2_ipc3d")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8, 8)
-texture = ExtResource("3_wtfja")
-
-[node name="Ball" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
-scale = Vector2(0.05, 0.05)
-
-[node name="Ball2" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
-modulate = Color(1, 1, 0.176471, 1)
-position = Vector2(-5, 0)
-scale = Vector2(0.05, 0.05)
-
-[node name="Ball3" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
-modulate = Color(0.188235, 1, 0.243137, 1)
-position = Vector2(5, 0)
-scale = Vector2(0.05, 0.05)
-
-[node name="Ball4" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
-modulate = Color(0.196078, 0.282353, 1, 1)
-position = Vector2(0, 5)
-scale = Vector2(0.05, 0.05)
-
-[node name="Ball5" parent="Sprite2D" instance=ExtResource("4_vi4n7")]
-modulate = Color(1, 0.172549, 0.184314, 1)
-position = Vector2(0, -5)
-scale = Vector2(0.05, 0.05)
+[node name="BallsContainer" parent="." instance=ExtResource("3_ouac8")]

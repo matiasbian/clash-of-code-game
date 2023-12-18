@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvcnl52c6mb81"]
+[gd_scene load_steps=12 format=3 uid="uid://dvcnl52c6mb81"]
 
 [ext_resource type="Theme" uid="uid://dfw4kgyv106" path="res://Art/Styles/button.tres" id="1_cytje"]
 [ext_resource type="Script" path="res://Scripts/UI/LevelCreator/GridButton.gd" id="1_ktjk7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://ckfq278tpns8m" path="res://Art/Sprites/UI/Icons/Conditional_form_spike.png" id="7_4byt1"]
 [ext_resource type="Texture2D" uid="uid://dovv3qrtpgv7e" path="res://Art/Sprites/UI/Icons/Conditional_form_ball.png" id="8_1qixw"]
 [ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="9_ovxav"]
+[ext_resource type="Texture2D" uid="uid://dbpry7akqcvpj" path="res://Art/Sprites/map/ball_put.png" id="10_pmhhj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jdhd7"]
 bg_color = Color(0.576471, 0.576471, 0.576471, 1)
@@ -33,6 +34,7 @@ jump_icon = ExtResource("6_l8o8v")
 if_icon = ExtResource("7_4byt1")
 if_icon_ball = ExtResource("8_1qixw")
 ball_icon = ExtResource("9_ovxav")
+put_ball_icon = ExtResource("10_pmhhj")
 
 [node name="icon" type="TextureRect" parent="."]
 layout_mode = 1

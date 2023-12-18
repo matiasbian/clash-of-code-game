@@ -22,4 +22,6 @@ func get_element(elem):
 		return IfBlock.new(elem)
 	elif key == "ball":
 		return BallBlock.new(elem)
+	elif key == "putball":
+		return PutBallBlock.new(elem)
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d42e7kapykg3"]
+[gd_scene load_steps=46 format=3 uid="uid://d42e7kapykg3"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Spawner.gd" id="1_oadcw"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="1_ockic"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://chxv517u5b8tp" path="res://Prefabs/Blocks/Ball.tscn" id="8_jhwtg"]
 [ext_resource type="Texture2D" uid="uid://dt1dtq6ainecn" path="res://Art/Sprites/robot/robot_idle (2).png" id="8_md5tp"]
 [ext_resource type="Texture2D" uid="uid://gixkpm0defp7" path="res://Art/Sprites/robot/robot_idle (1).png" id="9_478tv"]
+[ext_resource type="PackedScene" uid="uid://pxpn18xi7yri" path="res://Prefabs/Blocks/PutBall.tscn" id="9_giuea"]
 [ext_resource type="Texture2D" uid="uid://diddnubobl2h6" path="res://Art/Sprites/white.png" id="10_2jkll"]
 [ext_resource type="Texture2D" uid="uid://bfkjrftgu0ksj" path="res://Art/Sprites/map/bg/output-onlinegiftools.png" id="10_7let2"]
 [ext_resource type="Texture2D" uid="uid://bhms4f7ul4pib" path="res://Art/Sprites/robot/robot_walk (4).png" id="10_akmb6"]
@@ -216,6 +217,7 @@ startPrefab = ExtResource("3_mgr7x")
 finishPrefab = ExtResource("4_kvv7v")
 ifPrefab = ExtResource("7_ocjq0")
 ballPrefab = ExtResource("8_jhwtg")
+ballPutPrefab = ExtResource("9_giuea")
 httpReq = NodePath("../Systems/HttpRequests")
 
 [node name="Directional" parent="Blocks" instance=ExtResource("1_ockic")]

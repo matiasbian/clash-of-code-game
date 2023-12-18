@@ -7,6 +7,7 @@ class_name Spawner extends Node2D
 @export var finishPrefab = Resource.new()
 @export var ifPrefab = Resource.new()
 @export var ballPrefab = Resource.new()
+@export var ballPutPrefab = Resource.new()
 @export var httpReq = HTTP_REQUESTS.new()
 
 const GAME_MANAGER_PATH = "/root/Node2D/Systems/GameManager"
@@ -57,6 +58,9 @@ func _spawn_in_dir(step, pos):
 		gamePos = pref.position
 	elif step is BallBlock:
 		pref = _instantiateBlock(step, ballPrefab)
+		gamePos = pref.position
+	elif step is PutBallBlock:
+		pref = _instantiateBlock(step, ballPutPrefab)
 		gamePos = pref.position
 		
 	step._inst = pref

@@ -11,11 +11,12 @@ signal right_click
 @export var if_icon:Texture = Texture.new()
 @export var if_icon_ball:Texture = Texture.new()
 @export var ball_icon:Texture = Texture.new()
+@export var put_ball_icon:Texture = Texture.new()
 @onready var tutorial:TutorialUI = get_tree().root.get_node("LevelEditor/CanvasLayer/Tutorial")
 
-var types = ["", "Sta", "Fin", "Mov", "Ju", "IF", "IFB", "Ball"]
-@onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon, if_icon_ball, ball_icon]
-var colors = [Color.GRAY, Color.YELLOW, Color.YELLOW, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD, Color.DARK_GOLDENROD, Color.CORNFLOWER_BLUE]
+var types = ["", "Sta", "Fin", "Mov", "Ju", "IF", "IFB", "Ball", "PutBall"]
+@onready var types_icon = [null, start_icon, end_icon, mov_icon, jump_icon, if_icon, if_icon_ball, ball_icon, put_ball_icon]
+var colors = [Color.GRAY, Color.YELLOW, Color.YELLOW, Color.YELLOW_GREEN, Color.TOMATO, Color.DARK_GOLDENROD, Color.DARK_GOLDENROD, Color.CORNFLOWER_BLUE, Color.CORNFLOWER_BLUE]
 var i = 0
 
 var grid_pos

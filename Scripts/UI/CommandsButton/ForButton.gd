@@ -5,7 +5,6 @@ class_name ForButton extends ActionButton
 @onready var accept_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn")
 @onready var cancel_button:Button = for_popup.get_node("ColorRect/MarginContainer/Container/Buttons/Btn2")
 
-@onready var dir_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Form/Dir/OptionButton")
 @onready var iter_drop:OptionButton = for_popup.get_node("ColorRect/MarginContainer/Container/Form/True/OptionButton")
 @onready var amount_spin:SpinBox = for_popup.get_node("ColorRect/MarginContainer/Container/Form/Amount/SpinBox")
 
@@ -47,15 +46,7 @@ func _ready():
 	buttons[2] = move_up
 	buttons[3] = move_down
 	
-	buttons[10] = jump_right
-	buttons[11] = jump_left
-	buttons[12] = jump_up
-	buttons[13] = jump_down
-	
 	buttons[20] = take
-	buttons[21] = take
-	buttons[22] = take
-	buttons[23] = take
 	
 
 func _get_command_type():
@@ -80,7 +71,7 @@ func _pressed():
 		game_manager.RemoveCommand(index)
 
 func accept():
-	iter = buttons[iter_drop.get_selected_id() + dir_drop.get_selected_id()]
+	iter = buttons[iter_drop.get_selected_id()]
 	
 	i = amount_spin.value -1
 	left = i

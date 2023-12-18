@@ -36,6 +36,12 @@ func _get_next_visible_ball():
 		if ball.is_active():
 			return ball
 	return null
+	
+func _get_next_hidden_ball():
+	for ball in balls_container.get_children():
+		if !ball.is_active():
+			return ball
+	return null
 		
 func _init_balls(amount):
 	for i in range(0, amount):

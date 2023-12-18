@@ -158,6 +158,13 @@ func _fill_dic():
 		"amount":5
 	}
 	
+	dic["PutBall"] = {
+		"positionX": 0,
+		"positionY": 0,
+		"type": "putball",
+		"amount":5
+	}
+	
 func add_step(type, pos):
 	var step = dic[type]
 	step.positionX = pos.x

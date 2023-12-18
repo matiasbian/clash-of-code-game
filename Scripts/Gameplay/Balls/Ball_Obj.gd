@@ -15,12 +15,22 @@ func show_ball(wait):
 	sprite_ball.visible = true
 	init_wait = wait
 
-	
+func hide_ball_init(wait):
+	visible_state = false
+	sprite_ball.visible = false
+	init_wait = wait
 	
 func hide_ball(wait):
 	visible_state = false
 	await get_tree().create_timer(wait * 0.1).timeout
 	get_node("TakeBalls").play("Take")
+	GlobalVar.play_commands()
+	
+func show_balls(wait):
+	visible_state = true
+	await get_tree().create_timer(wait * 0.1).timeout
+	get_node("TakeBalls").play("Put")
+	#sprite_ball.visible = true
 	GlobalVar.play_commands()
 
 func is_active():
