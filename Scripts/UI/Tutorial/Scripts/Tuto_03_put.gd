@@ -7,22 +7,22 @@ func _get_dialogs():
 			"dialog": "¡Hola de nuevo!"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: PONER BOLITAS"
+			"dialog": "En este nivel, aprenderemos un nuevo comando: SACAR BOLITAS"
 		},
 		{
-			"dialog": "Este comando permite PONER bolitas en un casillero"
+			"dialog": "Este comando permite extraer todas las bolitas de un casillero"
 		},
 		{
 			"dialog": 'En primer lugar, presiona el botón DERECHA para avanzar al primer casillero',
 			"action": _show_sel_com_and_show
 		},
 		{
-			"dialog": 'Ahora presiona el comando "PONER BOLITAS" para agregar bolitas',
+			"dialog": 'Ahora presiona el comando "SACAR BOLITAS" para recogerlas todas',
 			"action": show_avaialable_commands,
-			"param": "Put"
+			"param": "Take"
 		},
 		{
-			"dialog": "Con estos comandos ya agregariamos las bolitas al casillero",
+			"dialog": "Con estos comandos ya extraeriamos las bolitas del casillero",
 			"action": _reparent_selected_commands,
 			"param" : false
 		},
@@ -38,7 +38,7 @@ func _get_dialogs():
 		}
 	]
 func _show_sel_com_and_show():
-	jump_child = 7
+	jump_child = 6
 	show_specific_command()
 	
 	temp_available_commands_container.visible = true
