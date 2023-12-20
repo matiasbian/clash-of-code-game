@@ -71,6 +71,10 @@ func _get_dialogs():
 	]
 
 func show_avaialable_commands(button = "Right"):
+	show_specific_command(button)
+	_reparent()
+	
+func show_specific_command(button = "Right"):
 	_handle_next_panel(false)
 	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
@@ -79,10 +83,12 @@ func show_avaialable_commands(button = "Right"):
 	for c in container.get_children():
 		if (c.name != button):
 			c.get_node("Button").disabled = true
+			c.get_node("Button/Anim").stop()
+			c.get_node("Button/Anim").play("Idle")
 		else:
+			c.get_node("Button").disabled = false
 			c.get_node("Button/Anim").play("Highlight")
 			scroll.ensure_control_visible(c)
-	_reparent()
 	
 func _reparent():
 	temp_available_commands_container.visible = true
@@ -105,7 +111,7 @@ func _re_reparent_avaiable(action):
 	emit_signal("go_next")
 	
 	
-func _reparent_selected_commands():
+func _reparent_selected_commands(show_arrow = true):
 	_handle_next_panel(true)
 	selec_parent.remove_child(selected_commands)
 	temp_available_commands_container.add_child(selected_commands)
@@ -115,7 +121,7 @@ func _reparent_selected_commands():
 	
 	#highlight selected command
 	var button = selected_commands.get_node("Panel/ColorRect/MarginContainer/ScrollContainer/HBoxContainer").get_child(4)
-	button.get_node("Button/Arrows/ArrowBR").visible = true
+	button.get_node("Button/Arrows/ArrowBR").visible = show_arrow
 	button.get_node("Button").logical_disable = true
 	return button
 	

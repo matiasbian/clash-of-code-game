@@ -902,7 +902,7 @@ selected_commands = NodePath("../../../SelectedCommands")
 play_button = NodePath("../../../PlayButtonContainer")
 overall_button = NodePath("../../Overlays/OverPanel/Button")
 next_panel = NodePath("../../NextPanel")
-level = 7
+level = 4
 
 [node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="3" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("23_vyqvu")
