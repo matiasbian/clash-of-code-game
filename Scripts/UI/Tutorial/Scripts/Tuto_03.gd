@@ -37,22 +37,9 @@ func _get_dialogs():
 			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
 		}
 	]
-func _show_sel_com_and_show():
-	jump_child = 7
-	show_specific_command()
+
 	
-	temp_available_commands_container.visible = true
-	
-	avail_parent.remove_child(available_commands)
-	temp_available_commands_container.add_child(available_commands)
-	available_commands.set_owner(temp_available_commands_container)
-	
-	game_manager.action_added.connect(self.go_and_remove)
-	
-func go_and_remove(btn):
-	game_manager.action_added.disconnect(go_and_remove)
-	go()
-	
+
 
 func _show_button(button = "Right"):
 	show_specific_command(button)

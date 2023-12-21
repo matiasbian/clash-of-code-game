@@ -14,15 +14,12 @@ func _get_dialogs():
 			"dialog": "En este nivel, aprenderemos un nuevo comando: IF"
 		},
 		{
+			"dialog": 'En primer lugar, presiona el botón DERECHA para avanzar al primer casillero',
+			"action": _show_sel_com_and_show
+		},
+		{
 			"dialog": 'Presiona el comando "IF" para crear una condicion',
 			"action": _show_jump
-		},
-		{
-			"dialog": 'En esta casilla se elige la dirección a la que quieres moverte',
-			"action": _show_dir
-		},
-		{
-			"dialog": 'En este caso, la dirección por defecto está correcta'
 		},
 		{
 			"dialog": 'En esta sección se elije la condición que corresponda a la celda',
@@ -37,10 +34,10 @@ func _get_dialogs():
 			"action": show_true
 		},
 		{
-			"dialog": 'En nuestro, caso si hay pinches, Roboto debe saltar.'
+			"dialog": 'En nuestro, caso si hay Bolitas, Roboto debe extraerlas todas.'
 		},
 		{
-			"dialog": 'Elije la opcion "SALTO" dentro de este menu',
+			"dialog": 'Elije la opcion "SACAR BOLITAS" dentro de este menu',
 			"action": enable_true
 		},
 		{
@@ -58,7 +55,8 @@ func _get_dialogs():
 		},
 		{
 			"dialog": "Como puedes ver, el comando se agrego al programa a ejecutar.",
-			"action": show_arrow
+			"action": show_arrow,
+			"params": false
 		},
 		{
 			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre',
@@ -98,7 +96,7 @@ func enable_true():
 	op_true.item_selected.connect(_on_selected)
 	
 func _on_selected(index):
-	if index == 1:
+	if index == 4:
 		_handle_next_panel(true)
 		go_button_ov.visible = true
 		go()

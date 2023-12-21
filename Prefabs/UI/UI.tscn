@@ -914,11 +914,12 @@ overall_button = NodePath("../../Overlays/OverPanel/Button")
 next_panel = NodePath("../../NextPanel")
 level = 7
 
-[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
+[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("23_vyqvu")
 cond_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Condition")
 true_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/True")
 false_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/False")
+op_true = NodePath("../../../PopUps/IF/ColorRect/MarginContainer/Container/True/OptionButton")
 dir_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Accept")
 jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/IF/Button")
@@ -2347,7 +2348,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = -0.0240021
+offset_bottom = -17.024
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/Condition"]
@@ -2356,7 +2357,7 @@ anchors_preset = -1
 anchor_top = 0.654
 anchor_right = 1.01
 anchor_bottom = 1.0
-offset_top = -38.268
+offset_top = -47.268
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="True" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
@@ -2375,7 +2376,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = 33.976
+offset_bottom = 20.976
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/True"]
@@ -2384,7 +2385,7 @@ anchors_preset = -1
 anchor_top = 0.654
 anchor_right = 1.01
 anchor_bottom = 1.0
-offset_top = 3.73201
+offset_top = -17.268
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="False" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
@@ -2402,7 +2403,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = 67.976
+offset_bottom = 54.976
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/False"]
@@ -2411,7 +2412,7 @@ anchors_preset = -1
 anchor_top = 0.654
 anchor_right = 1.01
 anchor_bottom = 1.0
-offset_top = 33.732
+offset_top = 16.732
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Accept" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays"]
@@ -2430,7 +2431,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -54.0
+offset_bottom = -71.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
@@ -2441,7 +2442,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 142.0
-offset_top = 188.0
+offset_top = 172.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_f7muj")
