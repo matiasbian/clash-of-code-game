@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=93 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -33,9 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://crnvjb110oy2u" path="res://Art/Sprites/UI/arrows/ff.png" id="21_3qlw4"]
 [ext_resource type="Texture2D" uid="uid://dadt2puxcaoaw" path="res://Art/Sprites/UI/resized/03_157559.png" id="21_r0lnj"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03.gd" id="22_4f5f3"]
-[ext_resource type="Texture2D" uid="uid://df0rttp3tgk5l" path="res://Art/Sprites/UI/resized/move-arrows-icon.png" id="23_q8g4g"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_04.gd" id="23_vyqvu"]
-[ext_resource type="Texture2D" uid="uid://cp7pi6n3ob4g1" path="res://Art/Sprites/UI/resized/running-walk-icon.png" id="24_fbt4l"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_05.gd" id="24_kkwpn"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresPopUp.gd" id="25_f3p8j"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_06.gd" id="25_k7b8d"]
@@ -50,6 +48,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/UIProcedureJump.gd" id="32_hnyyh"]
 [ext_resource type="PackedScene" uid="uid://dp8ewdrvbxfpa" path="res://Prefabs/UI/Tutorial/tutorial.tscn" id="33_dt1xp"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="43_b3lh5"]
+[ext_resource type="PackedScene" uid="uid://b2tvxmrayuy7n" path="res://Prefabs/UI/Gameplay/commands_option_button.tscn" id="46_e1wfx"]
 [ext_resource type="Texture2D" uid="uid://dbpry7akqcvpj" path="res://Art/Sprites/map/ball_put.png" id="47_kdm5p"]
 [ext_resource type="Texture2D" uid="uid://c82r1eacfgcpj" path="res://Art/Sprites/UI/resized/take.png" id="48_gqjk2"]
 
@@ -736,18 +735,15 @@ offset_bottom = 547.0
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
 
-[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "jump_right", "jump_left", "jump_up", "jump_down", "take", "error_pop_up")]
+[node name="Button" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF" index="0" node_paths=PackedStringArray("if_popup", "move_right", "move_left", "move_up", "move_down", "take", "put", "error_pop_up")]
 script = ExtResource("6_od6bj")
 if_popup = NodePath("../../../../../PopUps/IF")
 move_right = NodePath("../../Right")
 move_left = NodePath("../../Left")
 move_up = NodePath("../../Top")
 move_down = NodePath("../../Bot")
-jump_right = NodePath("../../Jump")
-jump_left = NodePath("../../Jump")
-jump_up = NodePath("../../Jump")
-jump_down = NodePath("../../Jump")
 take = NodePath("../../Take")
+put = NodePath("../../Put")
 error_pop_up = NodePath("../../../../../PopUps/ErrorPopUp")
 isSideMenu = true
 min_level_required = 10
@@ -918,12 +914,11 @@ overall_button = NodePath("../../Overlays/OverPanel/Button")
 next_panel = NodePath("../../NextPanel")
 level = 7
 
-[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
+[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("23_vyqvu")
 cond_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Condition")
 true_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/True")
 false_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/False")
-op_true = NodePath("../../../PopUps/IF/ColorRect/MarginContainer/Container/True/OptionButton")
 dir_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Accept")
 jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/IF/Button")
@@ -2219,42 +2214,6 @@ text = "IF"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-alignment = 1
-
-[node name="Direccion" type="Label" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Dir"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.08
-theme_override_fonts/font = ExtResource("18_0l6ds")
-theme_override_font_sizes/font_size = 21
-text = "Dirección"
-vertical_alignment = 1
-
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Dir"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 2.61
-theme = ExtResource("3_hlaxj")
-icon_alignment = 1
-expand_icon = true
-item_count = 4
-selected = 0
-popup/item_0/text = ""
-popup/item_0/icon = ExtResource("21_r0lnj")
-popup/item_0/id = 0
-popup/item_1/text = ""
-popup/item_1/icon = ExtResource("20_7miwy")
-popup/item_1/id = 1
-popup/item_2/text = ""
-popup/item_2/icon = ExtResource("18_cjeb7")
-popup/item_2/id = 2
-popup/item_3/text = ""
-popup/item_3/icon = ExtResource("19_ps6rj")
-popup/item_3/id = 3
-
 [node name="Cond" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -2280,10 +2239,10 @@ item_count = 2
 selected = 0
 popup/item_0/text = ""
 popup/item_0/icon = ExtResource("28_t2tmb")
-popup/item_0/id = 1
+popup/item_0/id = 0
 popup/item_1/text = ""
 popup/item_1/icon = ExtResource("47_kdm5p")
-popup/item_1/id = 0
+popup/item_1/id = 1
 
 [node name="True" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
@@ -2299,24 +2258,8 @@ theme_override_font_sizes/font_size = 21
 text = "Caso verdadero"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/True"]
-custom_minimum_size = Vector2(80, 0)
+[node name="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/True" instance=ExtResource("46_e1wfx")]
 layout_mode = 2
-size_flags_stretch_ratio = 2.61
-theme = ExtResource("3_hlaxj")
-icon_alignment = 1
-expand_icon = true
-item_count = 3
-selected = 0
-popup/item_0/text = ""
-popup/item_0/icon = ExtResource("23_q8g4g")
-popup/item_0/id = 0
-popup/item_1/text = ""
-popup/item_1/icon = ExtResource("24_fbt4l")
-popup/item_1/id = 10
-popup/item_2/text = ""
-popup/item_2/icon = ExtResource("48_gqjk2")
-popup/item_2/id = 20
 
 [node name="False" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 custom_minimum_size = Vector2(0, 30)
@@ -2332,24 +2275,8 @@ theme_override_font_sizes/font_size = 21
 text = "Caso falso"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/False"]
-custom_minimum_size = Vector2(80, 0)
+[node name="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/False" instance=ExtResource("46_e1wfx")]
 layout_mode = 2
-size_flags_stretch_ratio = 2.61
-theme = ExtResource("3_hlaxj")
-icon_alignment = 1
-expand_icon = true
-item_count = 3
-selected = 0
-popup/item_0/text = ""
-popup/item_0/icon = ExtResource("23_q8g4g")
-popup/item_0/id = 0
-popup/item_1/text = ""
-popup/item_1/icon = ExtResource("24_fbt4l")
-popup/item_1/id = 10
-popup/item_2/text = ""
-popup/item_2/icon = ExtResource("48_gqjk2")
-popup/item_2/id = 20
 
 [node name="Buttons" type="HBoxContainer" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container"]
 layout_mode = 2

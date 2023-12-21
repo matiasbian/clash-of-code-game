@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0ogqv2y5haxu"]
+[gd_scene load_steps=17 format=3 uid="uid://0ogqv2y5haxu"]
 
 [ext_resource type="Script" path="res://Scripts/Gameplay/Blocks/IfGameBlock.gd" id="1_intvk"]
 [ext_resource type="PackedScene" uid="uid://cyxcy3y3y1m24" path="res://Prefabs/Blocks/Directional.tscn" id="2_bvjsc"]
@@ -6,9 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bqmgy3qa42ut8" path="res://Art/Sprites/map/tileset/tile008.png" id="3_5svvd"]
 [ext_resource type="PackedScene" uid="uid://25smnr0v40i3" path="res://Prefabs/Blocks/Jump.tscn" id="3_hqpkt"]
 [ext_resource type="PackedScene" uid="uid://chxv517u5b8tp" path="res://Prefabs/Blocks/Ball.tscn" id="4_vxvbl"]
+[ext_resource type="PackedScene" uid="uid://pxpn18xi7yri" path="res://Prefabs/Blocks/PutBall.tscn" id="5_b5ly6"]
 [ext_resource type="Texture2D" uid="uid://ca2ucsrume1rc" path="res://Art/Sprites/gameplay/boton sorpresa.png" id="7_n7is8"]
 [ext_resource type="Texture2D" uid="uid://bigbstcwvm44m" path="res://Art/Sprites/map/peaks/peaks_1.png" id="7_xucne"]
 [ext_resource type="Texture2D" uid="uid://u5mw8yqovipb" path="res://Art/Sprites/map/ball.png" id="8_2agc0"]
+[ext_resource type="Texture2D" uid="uid://dbpry7akqcvpj" path="res://Art/Sprites/map/ball_put.png" id="11_rlj1o"]
 
 [sub_resource type="Animation" id="Animation_t1w05"]
 resource_name = "Idle"
@@ -207,13 +209,15 @@ _data = {
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7da8q"]
 
-[node name="Directional" type="Node2D" node_paths=PackedStringArray("spikes_icon", "balls_icon")]
+[node name="Directional" type="Node2D" node_paths=PackedStringArray("spikes_icon", "balls_icon", "put_balls_icon")]
 script = ExtResource("1_intvk")
 movement_prefab = ExtResource("2_bvjsc")
 spike_prefab = ExtResource("3_hqpkt")
 ball_prefab = ExtResource("4_vxvbl")
+put_ball_prefab = ExtResource("5_b5ly6")
 spikes_icon = NodePath("Spikes")
 balls_icon = NodePath("Ball")
+put_balls_icon = NodePath("PutBall")
 
 [node name="border" type="Sprite2D" parent="."]
 modulate = Color(1, 0.756863, 0.639216, 1)
@@ -255,3 +259,14 @@ texture = SubResource("PlaceholderTexture2D_7da8q")
 position = Vector2(0.00943375, 0.0049019)
 scale = Vector2(0.015, 0.015)
 texture = ExtResource("8_2agc0")
+
+[node name="PutBall" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(42, -43)
+scale = Vector2(42.4, 40.8)
+texture = SubResource("PlaceholderTexture2D_7da8q")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PutBall"]
+position = Vector2(0.00943375, 0.0049019)
+scale = Vector2(0.015, 0.015)
+texture = ExtResource("11_rlj1o")

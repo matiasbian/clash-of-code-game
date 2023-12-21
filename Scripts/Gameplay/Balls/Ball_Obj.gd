@@ -1,7 +1,9 @@
 extends Sprite2D
 
 var visible_state = false
-var init_wait
+var init_wait = .2
+
+const SAMPLE_VALUE = 5
 
 @export var sprite_ball = Sprite2D.new()
 # Called when the node enters the scene tree for the first time.

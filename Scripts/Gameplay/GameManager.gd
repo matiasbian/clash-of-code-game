@@ -160,7 +160,11 @@ func playerReachedPos(pos):
 			
 		_play(newBlock)
 		
-		
+func get_next_command():
+	if _get_next_queue().size() > 0:
+		return _get_next_queue()[0]
+	
+	return null	
 func set_perfect_steps(data):
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
