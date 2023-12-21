@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=94 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03.gd" id="22_4f5f3"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_04.gd" id="23_vyqvu"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_05.gd" id="24_kkwpn"]
+[ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_03_take.gd" id="25_3337n"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProceduresPopUp.gd" id="25_f3p8j"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_06.gd" id="25_k7b8d"]
 [ext_resource type="Texture2D" uid="uid://cxixatynxhgy" path="res://Art/Sprites/UI/Icons/take.png" id="26_lvuoh"]
@@ -860,6 +861,9 @@ script = ExtResource("13_rf1kr")
 layout_mode = 1
 skip_button = NodePath("Skip")
 
+[node name="Button" parent="Panel/Tutorial/Overlays/OverPanel" index="0"]
+disabled = false
+
 [node name="Balloon" parent="Panel/Tutorial/CharacterPanel/Panel" index="1"]
 z_index = 2
 
@@ -887,7 +891,7 @@ next_panel = NodePath("../../NextPanel")
 level = 100
 
 [node name="Level03" type="Node" parent="Panel/Tutorial/Scripts" index="2" node_paths=PackedStringArray("dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
-script = ExtResource("22_4f5f3")
+script = ExtResource("25_3337n")
 dir_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/Take/ColorRect/Overlays/Accept")
 jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/Take/Button")

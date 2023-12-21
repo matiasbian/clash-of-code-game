@@ -14,6 +14,8 @@ func get_subinstance():
 		return _get_spikes_sub_instance()
 	elif subtype == "balls":
 		return _get_balls_sub_instance()
+	elif subtype == "putballs":
+		return _get_put_balls_sub_instance()
 		
 
 func do_extras_when_landed(player):
@@ -68,5 +70,29 @@ func _get_balls_sub_instance():
 				subinstance = MovementBlock.new(block)
 			else:
 				subinstance = BallBlock.new(block)
+
+	return subinstance
+	
+func _get_put_balls_sub_instance():
+	if !subinstance:
+		var randomN = randi() % 2
+		var block = _block 
+		var curr_command = _inst.game_manager.current_command
+		
+		block["amount"] = block.value
+		
+		if curr_command is IFButton:
+			if !curr_command.is_right_true_branch():
+				subinstance = MovementBlock.new(block)
+			else:
+				if randomN == 0:
+					subinstance = PutBallBlock.new(block)
+				else:
+					subinstance = MovementBlock.new(block)
+		else:
+			if curr_command is PutBallBlock:
+				subinstance = MovementBlock.new(block)
+			else:
+				subinstance = PutBallBlock.new(block)
 
 	return subinstance

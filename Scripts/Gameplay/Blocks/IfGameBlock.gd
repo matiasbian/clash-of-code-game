@@ -32,7 +32,6 @@ func before_land_actions(player, gameblock):
 	elif v is PutBallBlock:
 		inst = put_ball_prefab.instantiate()
 		inst._init_balls(gameblock.get_subinstance().balls)
-		
 	inst.init(inst)
 
 	gameblock.get_subinstance()._inst = inst
@@ -49,7 +48,7 @@ func set_extra_data(step):
 	if step.subtype == "spikes":
 		spikes_icon.visible = true
 	elif step.subtype == "putballs":
-		balls_icon.visible = true
+		put_balls_icon.visible = true
 	elif step.subtype == "balls":
 		balls_icon.visible = true
 		
