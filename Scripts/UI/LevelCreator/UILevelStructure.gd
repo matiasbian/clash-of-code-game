@@ -139,8 +139,8 @@ func _fill_dic():
 		"positionX": 0,
 		"positionY": 0,
 		"type": "if",
-		"subtype": "spikes",
-		"value": 0
+		"subtype": "putballs",
+		"value": 5
 	}
 	
 	dic["IFB"] = {

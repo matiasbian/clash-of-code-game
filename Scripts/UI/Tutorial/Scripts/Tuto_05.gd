@@ -64,7 +64,7 @@ func _show_jump():
 	show_avaialable_commands("For")
 	jump_button.pressed.connect(go)
 	go_button_ov.pressed.connect(go)
-	jump_child = 8
+	jump_child = 9
 
 func show_forward(index = 0):
 	to_deanim_elem = "Top"
