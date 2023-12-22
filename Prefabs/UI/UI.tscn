@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=93 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -51,7 +51,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="43_b3lh5"]
 [ext_resource type="PackedScene" uid="uid://b2tvxmrayuy7n" path="res://Prefabs/UI/Gameplay/commands_option_button.tscn" id="46_e1wfx"]
 [ext_resource type="Texture2D" uid="uid://dbpry7akqcvpj" path="res://Art/Sprites/map/ball_put.png" id="47_kdm5p"]
-[ext_resource type="Texture2D" uid="uid://c82r1eacfgcpj" path="res://Art/Sprites/UI/resized/take.png" id="48_gqjk2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gdtg"]
 bg_color = Color(0.447059, 0.572549, 0.964706, 1)
@@ -918,12 +917,13 @@ overall_button = NodePath("../../Overlays/OverPanel/Button")
 next_panel = NodePath("../../NextPanel")
 level = 7
 
-[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
+[node name="Level04" type="Node" parent="Panel/Tutorial/Scripts" index="4" node_paths=PackedStringArray("cond_overlay", "true_overlay", "false_overlay", "op_true", "op_false", "dir_overlay", "accept_overlay", "jump_button", "go_button_ov", "available_commands", "temp_available_commands_container", "selected_commands", "play_button", "overall_button", "next_panel")]
 script = ExtResource("23_vyqvu")
 cond_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Condition")
 true_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/True")
 false_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/False")
 op_true = NodePath("../../../PopUps/IF/ColorRect/MarginContainer/Container/True/OptionButton")
+op_false = NodePath("../../../PopUps/IF/ColorRect/MarginContainer/Container/False/OptionButton")
 dir_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Direction")
 accept_overlay = NodePath("../../../PopUps/IF/ColorRect/Overlays/Accept")
 jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/IF/Button")
@@ -941,7 +941,7 @@ script = ExtResource("24_kkwpn")
 act_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Action")
 amount_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Repeats")
 am_spinbox = NodePath("../../../PopUps/For/ColorRect/MarginContainer/Container/Form/Amount/SpinBox")
-dir_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Direction")
+dir_overlay = NodePath("")
 accept_overlay = NodePath("../../../PopUps/For/ColorRect/Overlays/Accept")
 jump_button = NodePath("../../../AvailableCommands/ScrollContainer/VBoxContainer/For/Button")
 go_button_ov = NodePath("../../../PopUps/For/ColorRect/Overlays/Go")
@@ -2372,7 +2372,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
 
 [node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/True"]
@@ -2400,6 +2399,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
 
 [node name="Panel" type="Panel" parent="Panel/PopUps/IF/ColorRect/Overlays/False"]
@@ -2517,44 +2517,6 @@ text = "For"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Dir" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form"]
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-alignment = 1
-
-[node name="Direccion" type="Label" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/Dir"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.08
-theme = ExtResource("3_hlaxj")
-theme_override_fonts/font = ExtResource("18_0l6ds")
-theme_override_font_sizes/font_size = 23
-text = "Dirección"
-vertical_alignment = 1
-
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/Dir"]
-custom_minimum_size = Vector2(83, 0)
-layout_mode = 2
-size_flags_stretch_ratio = 2.61
-theme = ExtResource("3_hlaxj")
-theme_type_variation = &"v1"
-icon_alignment = 1
-expand_icon = true
-item_count = 4
-selected = 0
-popup/item_0/text = ""
-popup/item_0/icon = ExtResource("21_r0lnj")
-popup/item_0/id = 0
-popup/item_1/text = ""
-popup/item_1/icon = ExtResource("20_7miwy")
-popup/item_1/id = 1
-popup/item_2/text = ""
-popup/item_2/icon = ExtResource("18_cjeb7")
-popup/item_2/id = 2
-popup/item_3/text = ""
-popup/item_3/icon = ExtResource("19_ps6rj")
-popup/item_3/id = 3
-
 [node name="True" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
@@ -2569,30 +2531,9 @@ theme_override_font_sizes/font_size = 23
 text = "Acción"
 vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/True"]
+[node name="OptionButton2" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/True" instance=ExtResource("46_e1wfx")]
 custom_minimum_size = Vector2(83, 0)
 layout_mode = 2
-size_flags_stretch_ratio = 2.61
-theme = ExtResource("3_hlaxj")
-icon_alignment = 1
-expand_icon = true
-item_count = 5
-selected = 0
-popup/item_0/text = ""
-popup/item_0/icon = ExtResource("21_r0lnj")
-popup/item_0/id = 0
-popup/item_1/text = ""
-popup/item_1/icon = ExtResource("20_7miwy")
-popup/item_1/id = 1
-popup/item_2/text = ""
-popup/item_2/icon = ExtResource("18_cjeb7")
-popup/item_2/id = 2
-popup/item_3/text = ""
-popup/item_3/icon = ExtResource("19_ps6rj")
-popup/item_3/id = 3
-popup/item_4/text = ""
-popup/item_4/icon = ExtResource("48_gqjk2")
-popup/item_4/id = 20
 
 [node name="Amount" type="HBoxContainer" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form"]
 custom_minimum_size = Vector2(0, 30)
@@ -2643,33 +2584,6 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_egu6s")
 
-[node name="Direction" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_iqkkt")
-
-[node name="Panel" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Direction"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.01
-anchor_bottom = 0.372
-offset_bottom = -33.024
-theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
-
-[node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Direction"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.654
-anchor_right = 1.01
-anchor_bottom = 1.0
-offset_top = -60.268
-theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
-
 [node name="Action" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
 visible = false
 layout_mode = 1
@@ -2685,7 +2599,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = 3.976
+offset_bottom = -12.024
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Action"]
@@ -2694,7 +2608,7 @@ anchors_preset = -1
 anchor_top = 0.654
 anchor_right = 1.01
 anchor_bottom = 1.0
-offset_top = -27.268
+offset_top = -43.268
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Repeats" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]
@@ -2713,7 +2627,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.01
 anchor_bottom = 0.372
-offset_bottom = 40.976
+offset_bottom = 20.976
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Panel2" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays/Repeats"]
@@ -2722,7 +2636,7 @@ anchors_preset = -1
 anchor_top = 0.654
 anchor_right = 1.01
 anchor_bottom = 1.0
-offset_top = 6.73201
+offset_top = -9.26799
 theme_override_styles/panel = SubResource("StyleBoxFlat_n70c1")
 
 [node name="Accept" type="Panel" parent="Panel/PopUps/For/ColorRect/Overlays"]

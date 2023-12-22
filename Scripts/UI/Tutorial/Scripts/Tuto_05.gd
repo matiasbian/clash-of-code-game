@@ -20,10 +20,6 @@ func _get_dialogs():
 			"action": _show_jump
 		},
 		{
-			"dialog": 'En esta casilla se elige la dirección a la que quieres moverte',
-			"action": _show_dir
-		},
-		{
 			"dialog": 'En esta sección se elije la accion que se desea repetir',
 			"action": show_overlay_generic,
 			"param": act_overlay

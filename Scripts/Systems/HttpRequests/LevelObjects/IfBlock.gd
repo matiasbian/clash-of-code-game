@@ -64,7 +64,7 @@ func _get_balls_sub_instance():
 				if randomN == 0:
 					subinstance = BallBlock.new(block)
 				else:
-					subinstance = MovementBlock.new(block)
+					subinstance = PutBallBlock.new(block)
 		else:
 			if curr_command is TakeButton:
 				subinstance = MovementBlock.new(block)
@@ -83,12 +83,12 @@ func _get_put_balls_sub_instance():
 		
 		if curr_command is IFButton:
 			if !curr_command.is_right_true_branch():
-				subinstance = MovementBlock.new(block)
+				subinstance = BallBlock.new(block)
 			else:
 				if randomN == 0:
 					subinstance = PutBallBlock.new(block)
 				else:
-					subinstance = MovementBlock.new(block)
+					subinstance = BallBlock.new(block)
 		else:
 			if curr_command is PutBallBlock:
 				subinstance = MovementBlock.new(block)

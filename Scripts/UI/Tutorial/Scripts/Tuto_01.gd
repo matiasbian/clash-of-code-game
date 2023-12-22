@@ -76,6 +76,7 @@ func show_avaialable_commands(button = "Right"):
 	
 func show_specific_command(button = "Right"):
 	_handle_next_panel(false)
+	overall_button.disabled = true
 	game_manager.on_victory.connect(_on_win_extras)
 	var container = available_commands.get_node("ScrollContainer/VBoxContainer")
 	var scroll:ScrollContainer = available_commands.get_node("ScrollContainer")

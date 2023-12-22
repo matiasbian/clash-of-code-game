@@ -4,6 +4,7 @@ extends TutoLevelTwo
 @export var true_overlay:Panel = Panel.new()
 @export var false_overlay:Panel = Panel.new()
 @export var op_true:OptionButton = OptionButton.new()
+@export var op_false:OptionButton = OptionButton.new()
 
 func _get_dialogs():
 	return [
@@ -37,8 +38,7 @@ func _get_dialogs():
 			"dialog": 'En nuestro, caso si hay Bolitas, Roboto debe extraerlas todas.'
 		},
 		{
-			"dialog": 'Elije la opcion "SACAR BOLITAS" dentro de este menu',
-			"action": enable_true
+			"dialog": 'En este caso, la condición por defecto está correcta'
 		},
 		{
 			"dialog": 'En esta sección, se debe seleccionar que acción tomar en caso de que la condición sea falsa',
@@ -46,7 +46,8 @@ func _get_dialogs():
 			"param": false_overlay
 		},
 		{
-			"dialog": 'En este caso, la condición por defecto está correcta'
+			"dialog": 'Elije la opcion "PONER BOLITAS" dentro de este menu',
+			"action": enable_true
 		},
 		{
 			"dialog": 'Presiona aceptar para agregar el comando',
@@ -93,10 +94,10 @@ func show_true():
 func enable_true():
 	_handle_next_panel(false)
 	go_button_ov.visible = false
-	op_true.item_selected.connect(_on_selected)
+	op_false.item_selected.connect(_on_selected)
 	
 func _on_selected(index):
-	if index == 4:
+	if index == 1:
 		_handle_next_panel(true)
 		go_button_ov.visible = true
 		go()
