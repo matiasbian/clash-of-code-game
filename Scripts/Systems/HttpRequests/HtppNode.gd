@@ -16,7 +16,11 @@ func _ready():
 		url = URL
 	else:
 		url = URL_GENERIC + str(lvl)
+		
+	#_log_in('un_email1@gmail.com', "Rqasd3313saaa##")
+	#_log_in('matiasezequielbian@gmail.com', "123456")
 	HTTPget(url)
+	
 	
 func HTTPget(url):
 	var http_request = HTTPRequest.new()
@@ -40,20 +44,24 @@ func HTTPgetWithCallback(url, callback):
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")
 		
-func HTTPPost(url, body):
+func HTTPPost(url, body, callback = null):
 	# Convert data to json string:
 	var query = JSON.stringify(body)
 
 	# Add 'Content-Type' header:
-	var headers = ["Content-Type: application/json", "Access-Control-Allow-Origin: *"]
-	
+	var headers
+	headers = ["Content-Type: application/json", "Access-Control-Allow-Origin: *"]
 	
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
 
 	http_request.request(url, headers, HTTPClient.METHOD_POST, query)
 
-	http_request.request_completed.connect(data_sent_f)
+	if (callback):
+		http_request.request_completed.connect(callback)
+	else:
+		http_request.request_completed.connect(data_sent_f)
+		
 	
 
 	
@@ -68,3 +76,43 @@ func _http_request_completed(result, response_code, headers, body):
 	emit_signal("data_retrieved", response)
 	# Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
 	
+func _supabase_call(path, body, callback):
+	HTTPPost("http://localhost:3000/api/" + path,  body, callback)
+
+func _sign_up(_email, _password):
+	var body = {
+		'email': _email, 
+		'password': _password
+	}
+	_supabase_call('/signUp', body, _on_sign_up_completed)
+	
+func _log_in(_email, _password):
+	var body = {
+		'email': _email, 
+		'password': _password,
+	}
+	_supabase_call('/login', body, _on_log_in_completed)	
+
+
+func _on_sign_up_completed(result, response_code, headers, body):
+	print("on sign_up completed")
+	print(result)
+	print(response_code)
+	print(headers)
+	
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var response = json.get_data()
+	print(response)
+	
+	
+func _on_log_in_completed(result, response_code, headers, body):
+	print("on login completed")
+	print(result)
+	print(response_code)
+	print(headers)
+	
+	var json = JSON.new()
+	json.parse(body.get_string_from_utf8())
+	var response = json.get_data()
+	print(response)
