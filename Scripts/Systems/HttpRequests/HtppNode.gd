@@ -76,7 +76,7 @@ func HTTPPost(url, body, callback = null):
 	
 	var http_request = HTTPRequest.new()
 	add_child(http_request)
-
+	print("POST URL: " + url)
 	http_request.request(url, headers, HTTPClient.METHOD_POST, query)
 
 	if (callback):
@@ -99,7 +99,7 @@ func _http_request_completed(result, response_code, headers, body):
 	# Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
 	
 func _supabase_call(path, body, callback):
-	HTTPPost(EnvVars.HOST + "/" + path,  body, callback)
+	HTTPPost(EnvVars.HOST + path,  body, callback)
 
 func _sign_up(_email, _password):
 	var body = {

@@ -1,3 +1,3 @@
 extends Node
 
-var HOST = 'http://localhost:3000/api'
+var HOST = 'https://clash-of-code-backend.onrender.com/api'
