@@ -8,6 +8,9 @@ var URL_GENERIC = "http://localhost:3000/api/levels?level="
 signal data_retrieved(response)
 signal data_sent(response, response_code)
 
+signal on_login()
+signal on_sign_up()
+
 func _ready():
 	# Create an HTTP request node and connect its completion signal.
 	var lvl = get_node("/root/GlobalVar").level
@@ -104,6 +107,7 @@ func _on_sign_up_completed(result, response_code, headers, body):
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
 	print(response)
+	emit_signal("on_sign_up")
 	
 	
 func _on_log_in_completed(result, response_code, headers, body):
@@ -116,3 +120,4 @@ func _on_log_in_completed(result, response_code, headers, body):
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
 	print(response)
+	emit_signal("on_login")

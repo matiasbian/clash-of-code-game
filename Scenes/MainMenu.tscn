@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cfgpcsq25pvlv"]
+[gd_scene load_steps=52 format=3 uid="uid://cfgpcsq25pvlv"]
 
 [ext_resource type="Script" path="res://Scripts/UI/MainMenu/PlayButton.gd" id="1_ve7o6"]
 [ext_resource type="Texture2D" uid="uid://bggh5ytov6tvl" path="res://Art/Sprites/map/tileset/tile017.png" id="2_i3o6f"]
@@ -23,6 +23,8 @@
 [ext_resource type="Script" path="res://Scripts/UI/Utils/ClosePopUp.gd" id="15_rbxqp"]
 [ext_resource type="Script" path="res://Scripts/Systems/i18n/RichLabelTo18n.gd" id="16_bpny6"]
 [ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="16_yty1t"]
+[ext_resource type="Script" path="res://Scripts/Systems/Login/Login.gd" id="22_s7gua"]
+[ext_resource type="Script" path="res://Scripts/Systems/Login/Register.gd" id="23_lp8nj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bxi8t"]
 
@@ -266,6 +268,9 @@ border_width_bottom = 4
 base_font = ExtResource("13_77om8")
 spacing_glyph = 1
 spacing_bottom = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djh54"]
+bg_color = Color(0.34902, 0.329412, 0.666667, 1)
 
 [node name="MainMenu" type="Node2D"]
 
@@ -713,6 +718,243 @@ theme_override_font_sizes/font_size = 25
 text = "Atras"
 script = ExtResource("13_toa74")
 key = "BACK"
+
+[node name="LoginSignUp" type="Panel" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Login" type="Panel" parent="UI/LoginSignUp" node_paths=PackedStringArray("register_pop_up", "HTTP", "register_button", "accept_button", "username", "password", "parent_container")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -218.0
+offset_right = 357.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_5cjrl")
+script = ExtResource("22_s7gua")
+register_pop_up = NodePath("../Register")
+HTTP = NodePath("../../../HtppNode")
+register_button = NodePath("VBoxContainer/register2")
+accept_button = NodePath("VBoxContainer/accept")
+username = NodePath("VBoxContainer/username/LineEdit")
+password = NodePath("VBoxContainer/register/LineEdit")
+parent_container = NodePath("..")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LoginSignUp/Login"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_right = -142.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Login/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.61
+theme = ExtResource("13_ttffk")
+theme_override_font_sizes/font_size = 40
+text = "Login"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="username" type="VBoxContainer" parent="UI/LoginSignUp/Login/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Login/VBoxContainer/username"]
+layout_mode = 2
+text = "Username"
+
+[node name="LineEdit" type="LineEdit" parent="UI/LoginSignUp/Login/VBoxContainer/username"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme = ExtResource("13_ttffk")
+
+[node name="register" type="VBoxContainer" parent="UI/LoginSignUp/Login/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Login/VBoxContainer/register"]
+layout_mode = 2
+text = "Password"
+
+[node name="LineEdit" type="LineEdit" parent="UI/LoginSignUp/Login/VBoxContainer/register"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme = ExtResource("13_ttffk")
+
+[node name="accept" type="Button" parent="UI/LoginSignUp/Login/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.42
+theme = ExtResource("13_ttffk")
+text = "Aceptar"
+
+[node name="register2" type="Button" parent="UI/LoginSignUp/Login/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.14
+theme = ExtResource("13_ttffk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_djh54")
+text = "Registrarse"
+
+[node name="Register" type="Panel" parent="UI/LoginSignUp" node_paths=PackedStringArray("login_pop_up", "verif", "signup", "HTTP", "cancel_button", "accept_button", "accept2_button", "username", "password")]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -218.0
+offset_right = 357.0
+offset_bottom = 218.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("13_5cjrl")
+script = ExtResource("23_lp8nj")
+login_pop_up = NodePath("../Login")
+verif = NodePath("VBoxContainer2")
+signup = NodePath("VBoxContainer")
+HTTP = NodePath("../../../HtppNode")
+cancel_button = NodePath("VBoxContainer/buttons/accept2")
+accept_button = NodePath("VBoxContainer/buttons/accept")
+accept2_button = NodePath("VBoxContainer2/buttons/accept")
+username = NodePath("VBoxContainer/user/LineEdit")
+password = NodePath("VBoxContainer/password/LineEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/LoginSignUp/Register"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_right = -142.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Register/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.07
+theme = ExtResource("13_ttffk")
+theme_override_font_sizes/font_size = 40
+text = "Registrarse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="user" type="VBoxContainer" parent="UI/LoginSignUp/Register/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Register/VBoxContainer/user"]
+layout_mode = 2
+text = "Username"
+
+[node name="LineEdit" type="LineEdit" parent="UI/LoginSignUp/Register/VBoxContainer/user"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme = ExtResource("13_ttffk")
+
+[node name="password" type="VBoxContainer" parent="UI/LoginSignUp/Register/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/LoginSignUp/Register/VBoxContainer/password"]
+layout_mode = 2
+text = "Password"
+
+[node name="LineEdit" type="LineEdit" parent="UI/LoginSignUp/Register/VBoxContainer/password"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 6
+theme = ExtResource("13_ttffk")
+
+[node name="buttons" type="HBoxContainer" parent="UI/LoginSignUp/Register/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.05
+alignment = 1
+
+[node name="accept" type="Button" parent="UI/LoginSignUp/Register/VBoxContainer/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.42
+theme = ExtResource("13_ttffk")
+text = "Aceptar"
+
+[node name="accept2" type="Button" parent="UI/LoginSignUp/Register/VBoxContainer/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 7
+size_flags_stretch_ratio = 0.42
+theme = ExtResource("13_ttffk")
+text = "Cancelar"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/LoginSignUp/Register"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 142.0
+offset_top = 91.0
+offset_right = -142.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label2" type="Label" parent="UI/LoginSignUp/Register/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("13_ttffk")
+theme_override_font_sizes/font_size = 26
+text = "Se envió un email de verificación a tu cuenta. "
+horizontal_alignment = 1
+
+[node name="buttons" type="HBoxContainer" parent="UI/LoginSignUp/Register/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.05
+alignment = 1
+
+[node name="accept" type="Button" parent="UI/LoginSignUp/Register/VBoxContainer2/buttons"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 5
+size_flags_stretch_ratio = 0.42
+theme = ExtResource("13_ttffk")
+text = "Aceptar"
 
 [node name="HtppNode" type="Node2D" parent="."]
 script = ExtResource("5_wcmn7")
