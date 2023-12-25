@@ -8,7 +8,7 @@ var URL_GENERIC = "http://localhost:3000/api/levels?level="
 signal data_retrieved(response)
 signal data_sent(response, response_code)
 
-signal on_login()
+signal on_login(body)
 signal on_sign_up()
 
 func _ready():
@@ -120,4 +120,4 @@ func _on_log_in_completed(result, response_code, headers, body):
 	json.parse(body.get_string_from_utf8())
 	var response = json.get_data()
 	print(response)
-	emit_signal("on_login")
+	emit_signal("on_login", response)

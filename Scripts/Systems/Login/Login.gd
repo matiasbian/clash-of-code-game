@@ -22,6 +22,11 @@ func _on_register_clicked():
 	visible = false
 	register_pop_up.visible = true
 	
-func on_login():
+func on_login(response):
+	if (!response.user):
+		return
+		
+	GlobalVar.user_email = response.user.email
+	
 	parent_container.visible = false
 
