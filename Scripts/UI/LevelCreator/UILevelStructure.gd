@@ -27,7 +27,7 @@ var min_steps_value:int
 var level_number_value:int
 var steps = []
 
-const URL = "http://localhost:3000/api/levels"
+var URL = EnvVars.HOST + "/levels"
 const ALREADY_EXISTS_TEXT = "Ya existe el nivel que se intenta crear"
 const ERROR_TEXT = "Error al guardar el nivel.\nRevise los campos en rojo"
 

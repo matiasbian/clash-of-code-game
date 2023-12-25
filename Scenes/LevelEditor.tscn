@@ -560,8 +560,11 @@ text = "Aceptar"
 
 [node name="Node" type="Node2D" parent="CanvasLayer"]
 script = ExtResource("3_1x5em")
-URL = "http://localhost:3000/api/alllevels"
+URL = "/alllevels"
+URL_POST = "/progress"
 use_exported = true
+call_on_init = true
+cancel_init_login = true
 
 [node name="levels_http" type="Node" parent="CanvasLayer/Node"]
 script = ExtResource("15_m42p3")

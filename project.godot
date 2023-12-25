@@ -19,6 +19,7 @@ config/icon="res://logo.png"
 
 GlobalVar="*res://Scripts/global_var.gd"
 StoredData="*res://Scripts/stored_data.gd"
+EnvVars="*res://Scripts/Utils/EnvVars.gd"
 
 [display]
 
