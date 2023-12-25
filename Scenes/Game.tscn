@@ -291,6 +291,8 @@ libraries = {
 
 [node name="HttpRequests" type="Node2D" parent="Systems"]
 script = ExtResource("5_lc7op")
+URL = "/levels?level=1"
+URL_POST = "/progress"
 on_ready_call = false
 
 [node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player", "httpReq")]

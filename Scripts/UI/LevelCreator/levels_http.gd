@@ -11,7 +11,6 @@ func _ready():
 	http_requests.data_retrieved.connect(_store_levels_data)
 	http_requests.data_sent.connect(_emit_post_signal)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _store_levels_data(data):
 	levels = data
@@ -19,7 +18,7 @@ func _store_levels_data(data):
 	
 func remove_http(data):
 
-	http_requests.HTTPPost("http://localhost:3000/api/remove-level", {"level": data})
+	http_requests.HTTPPost(EnvVars.HOST + "/remove-level", {"level": data})
 	
 func _emit_post_signal(response, response_code):
 	emit_signal("post_signal", response, response_code)

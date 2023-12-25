@@ -10,7 +10,7 @@ func before_each():
 	get_node("/root/").add_child(node2d)
 	
 	var node2d2 = HTTP_REQUESTS.new()
-	node2d2.URL = "http://localhost:3000/api/progress?userID=5"
+	node2d2.URL = EnvVars.HOST + "/progress?userID=5"
 	node2d2.use_exported = true
 	node2d2.name = "HtppNode"
 	node2d.add_child(node2d2)

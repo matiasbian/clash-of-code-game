@@ -72,7 +72,7 @@ func send_score(no_reset_level = false):
 		"movements": _percentage
 	}
 	_no_reset_level = no_reset_level
-	http_req.HTTPPost(http_req.URL_POST, body)
+	http_req.HTTPPost(EnvVars.HOST + http_req.URL_POST, body)
 	
 func back_to_menu():
 	send_score()

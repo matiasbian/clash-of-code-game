@@ -36,7 +36,7 @@ func _add_levels(result, response_code, headers, body):
 func saveData(data):
 	
 	tempData = data
-	httpNode.HTTPgetWithCallback("http://localhost:3000/api/alllevels", _add_levels)	
+	httpNode.HTTPgetWithCallback(EnvVars.HOST + "/alllevels", _add_levels)	
 	
 		
 func _fillLevelInfo(data):

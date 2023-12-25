@@ -1,11 +1,14 @@
 class_name HTTP_REQUESTS extends Node2D
 
 @export var URL = "http://localhost:3000/api/levels?level=1"
-var URL_GET_PROGRESS = "http://localhost:3000/api/progress?userID="
-var URL_GENERIC = "http://localhost:3000/api/levels?level="
+var URL_GET_PROGRESS = EnvVars.HOST + "/progress?userID="
+var URL_GENERIC = EnvVars.HOST + "/levels?level="
 @export var URL_POST = "http://localhost:3000/api/progress"
 @export var use_exported = false
 @export var on_ready_call = true
+@export var call_on_init = false
+
+@export var cancel_init_login = false
 
 signal data_retrieved(response)
 signal data_sent(response, response_code)
@@ -20,14 +23,17 @@ func _ready():
 	
 	if (on_ready_call):
 		if use_exported:
-			url = URL
+			url = EnvVars.HOST + URL
 		else:
-			url = URL_GENERIC + str(lvl)
+			url = EnvVars.HOST + URL_GENERIC + str(lvl)
 		
 	on_login.connect(on_login_successful)
 	
-	if (GlobalVar.user_email != ""):
+	if (GlobalVar.user_email != "" && !cancel_init_login):
 		on_login_successful(null)
+		
+	if (call_on_init):
+		HTTPget(url)
 	#_log_in('un_email1@gmail.com', "Rqasd3313saaa##")
 	#_log_in('matiasezequielbian@gmail.com', "123456")
 
@@ -93,7 +99,7 @@ func _http_request_completed(result, response_code, headers, body):
 	# Will print the user agent string used by the HTTPRequest node (as recognized by httpbin.org).
 	
 func _supabase_call(path, body, callback):
-	HTTPPost("http://localhost:3000/api/" + path,  body, callback)
+	HTTPPost(EnvVars.HOST + "/" + path,  body, callback)
 
 func _sign_up(_email, _password):
 	var body = {
