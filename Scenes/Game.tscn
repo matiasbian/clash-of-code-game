@@ -291,6 +291,7 @@ libraries = {
 
 [node name="HttpRequests" type="Node2D" parent="Systems"]
 script = ExtResource("5_lc7op")
+on_ready_call = false
 
 [node name="GameManager" type="Node2D" parent="Systems" node_paths=PackedStringArray("player", "httpReq")]
 unique_name_in_owner = true

@@ -84,7 +84,6 @@ func show_forward(index = 0):
 	right.get_node("Button/Anim").play("Highlight")
 	
 	var jump = available_commands.get_node("ScrollContainer/VBoxContainer").get_child(jump_child)
-	print(jump.name)
 	jump.get_node("Button").disabled = true
 	jump.get_node("Button/Anim").stop()
 	jump.get_node("Button/Anim").play("Idle")

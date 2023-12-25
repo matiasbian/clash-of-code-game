@@ -11,7 +11,6 @@ func should_lose_on_enter(player):
 	return false
 	
 func should_lose_on_leave(player):
-	print(_inst._visible_balls())
 	return _inst._visible_balls() > 0
 	
 func do_extras_when_landed(player):

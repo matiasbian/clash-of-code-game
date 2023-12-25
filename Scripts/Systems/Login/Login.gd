@@ -11,9 +11,13 @@ extends Panel
 @export var parent_container:Panel = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (GlobalVar.user_email != ""):
+		parent_container.visible = false
+		
 	accept_button.pressed.connect(_on_accept_clicked)
 	register_button.pressed.connect(_on_register_clicked)
 	HTTP.on_login.connect(on_login)
+	
 	
 func _on_accept_clicked():
 	HTTP._log_in(username.text, password.text)
@@ -25,8 +29,5 @@ func _on_register_clicked():
 func on_login(response):
 	if (!response.user):
 		return
-		
-	GlobalVar.user_email = response.user.email
-	
 	parent_container.visible = false
 

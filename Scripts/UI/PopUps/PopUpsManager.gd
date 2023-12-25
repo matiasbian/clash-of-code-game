@@ -67,7 +67,7 @@ func level_ended(response, r_code):
 func send_score(no_reset_level = false):
 	get_node("/root/GlobalVar").play_tap()	
 	var body = {
-		"userID": 5,
+		"userID": GlobalVar.user_email,
 		"levelNumber": get_node("/root/GlobalVar").level,
 		"movements": _percentage
 	}

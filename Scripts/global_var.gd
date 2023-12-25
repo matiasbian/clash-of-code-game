@@ -1,6 +1,6 @@
 extends Node
 
-var user_email
+var user_email = ""
 var level:int = 1
 var tuto_completed = false
 var tuto_skipped = false

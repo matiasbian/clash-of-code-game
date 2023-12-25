@@ -5,17 +5,19 @@ extends Control
 
 @export var main_menu:Container = Container.new()
 
-var httpNode:HTTP_REQUESTS 
+var httpNode:HTTP_REQUESTS
 var tempData
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	httpNode = get_tree().root.get_node("MainMenu/HtppNode")
-	httpNode.HTTPgetWithCallback("http://localhost:3000/api/alllevels", _add_levels)	
-	
 	httpNode.data_retrieved.connect(saveData)
 	back.pressed.connect(_back)
 	
 func _add_levels(result, response_code, headers, body):
+	if (GlobalVar.user_email == ""):
+		return
+		
+	print("add level")
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
 	var res = json.get_data()
@@ -32,7 +34,10 @@ func _add_levels(result, response_code, headers, body):
 	
 
 func saveData(data):
+	
 	tempData = data
+	httpNode.HTTPgetWithCallback("http://localhost:3000/api/alllevels", _add_levels)	
+	
 		
 func _fillLevelInfo(data):
 	if (!data):

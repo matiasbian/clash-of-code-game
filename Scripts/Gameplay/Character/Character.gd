@@ -56,7 +56,6 @@ func movePlayerToPos(pos, animate):
 	target = pos
 	
 func execute_command(button):
-	print("Executing command")
 	button.do_extras(self)
 	
 func move_player(dir):

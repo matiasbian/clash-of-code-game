@@ -339,8 +339,8 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 58.136
-offset_right = 48769.5
-offset_bottom = 23276.1
+offset_right = 47639.7
+offset_bottom = 22739.8
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.4, 1.4)
@@ -959,6 +959,7 @@ text = "Aceptar"
 [node name="HtppNode" type="Node2D" parent="."]
 script = ExtResource("5_wcmn7")
 URL = "http://localhost:3000/api/progress?userID="
+URL_POST = null
 use_exported = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]

@@ -23,6 +23,7 @@ var jumps:int = 0
 func _ready():
 	game_manager = get_node(GAME_MANAGER_PATH)
 	httpReq.data_retrieved.connect(instantiateLevel)
+	httpReq.get_current_level()
 	
 		
 func instantiateLevel(data):
