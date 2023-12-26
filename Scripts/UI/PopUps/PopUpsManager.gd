@@ -5,6 +5,8 @@ class_name PopUpManager extends Node
 @onready var game_manager:Game_Manager = get_node("/root/Node2D/Systems/GameManager")
 @onready var http_req:HTTP_REQUESTS = get_node("/root/Node2D/Systems/HttpRequests")
 @onready var dialog:DialogPopUp = get_node("Dialog")
+@onready var loading:Panel = get_node("Loading")
+@onready var mini_loading:Panel = get_node("MiniLoading")
 
 var there_is_next_level = false
 var _no_reset_level = false
@@ -15,6 +17,7 @@ func _ready():
 	game_manager.on_victory.connect(on_win)
 	game_manager.on_defeat.connect(on_defeat)
 	game_manager.on_defeat_delay_needed.connect(on_defeat_delay)
+	game_manager.on_level_loaded.connect(_on_level_spawned)
 	
 	http_req.data_sent.connect(level_ended)
 	http_req.data_retrieved.connect(check_next_level)
@@ -46,7 +49,9 @@ func is_a_pop_up_open():
 		if p.visible == true:
 			i += 1
 	return i > 1
-	
+
+func _on_level_spawned():
+	loading.visible = false
 	
 func restart_level():
 	get_node("/root/GlobalVar").play_tap()	
@@ -65,6 +70,7 @@ func level_ended(response, r_code):
 		restart_game()
 	
 func send_score(no_reset_level = false):
+	mini_loading.visible = true
 	get_node("/root/GlobalVar").play_tap()	
 	var body = {
 		"userID": GlobalVar.user_email,

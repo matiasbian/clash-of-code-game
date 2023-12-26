@@ -10,6 +10,7 @@ signal startedPlay()
 signal on_block_enter(block)
 signal on_step_performed(number)
 signal jumps_updated(jumps)
+signal on_level_loaded()
 
 @export var player:Player = Player.new()
 @export var httpReq:HTTP_REQUESTS = HTTP_REQUESTS.new()
@@ -54,6 +55,7 @@ func PlayCommands():
 
 func SetBlocks(blocklist):
 	blocks = blocklist
+	emit_signal("on_level_loaded")
 	
 func AddCommand(action):
 	emit_signal("action_added", action)

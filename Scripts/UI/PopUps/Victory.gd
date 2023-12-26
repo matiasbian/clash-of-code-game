@@ -10,6 +10,7 @@ extends Node
 
 @export var pop_up_manager:PopUpManager = PopUpManager.new()
 
+
 const title = "NIVEL %s completado"
 
 # Called when the node enters the scene tree for the first time.

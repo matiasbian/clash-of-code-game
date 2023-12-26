@@ -4,6 +4,7 @@ extends Control
 @export var back:Button = Button.new()
 
 @export var main_menu:Container = Container.new()
+@export var loading:TextureRect = TextureRect.new()
 
 var httpNode:HTTP_REQUESTS
 var tempData
@@ -16,7 +17,8 @@ func _ready():
 func _add_levels(result, response_code, headers, body):
 	if (GlobalVar.user_email == ""):
 		return
-		
+	
+	loading.visible = false
 	print("add level")
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
@@ -42,6 +44,7 @@ func saveData(data):
 func _fillLevelInfo(data):
 	if (!data):
 		return
+		
 	
 	if (data is Array):
 		var i = 0

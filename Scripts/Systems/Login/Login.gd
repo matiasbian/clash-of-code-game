@@ -7,8 +7,12 @@ extends Panel
 @export var accept_button:Button = null
 @export var username:LineEdit = null
 @export var password:LineEdit = null
+@export var error:Label = null
+@export var loading:TextureRect = null
 
 @export var parent_container:Panel = null
+
+var ERROR_MSG = "Usuario o contraseña incorrecta"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if (GlobalVar.user_email != ""):
@@ -20,6 +24,7 @@ func _ready():
 	
 	
 func _on_accept_clicked():
+	_toggle_buttons(false)
 	HTTP._log_in(username.text, password.text)
 	
 func _on_register_clicked():
@@ -27,7 +32,19 @@ func _on_register_clicked():
 	register_pop_up.visible = true
 	
 func on_login(response):
+	_toggle_buttons(true)
+	
 	if (!response.user):
+		error.visible = true
+		error.text = ERROR_MSG
 		return
+		
 	parent_container.visible = false
+	
+func _toggle_buttons(state):
+	accept_button.disabled = !state
+	register_button.disabled = !state
+	loading.visible = !state
+	
+	
 

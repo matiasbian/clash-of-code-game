@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvs7sb61sikad"]
+[gd_scene load_steps=18 format=3 uid="uid://dvs7sb61sikad"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
+[ext_resource type="PackedScene" uid="uid://lnmc5yu7hfld" path="res://Prefabs/UI/Juice/loading.tscn" id="1_ivdrs"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/StarsHandler.gd" id="2_8txhb"]
 [ext_resource type="Texture2D" uid="uid://ce2oetobh4hwp" path="res://Art/Sprites/UI/star-filled.png" id="2_gt2p3"]
 [ext_resource type="Texture2D" uid="uid://ni6fsyqnhr4t" path="res://Art/Sprites/UI/star-empty.png" id="3_tq4ji"]
@@ -151,6 +152,22 @@ grow_vertical = 2
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
 color = Color(0.0745098, 0.0392157, 0.160784, 1)
+
+[node name="Loading" parent="ColorRect" instance=ExtResource("1_ivdrs")]
+visible = false
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -121.0
+offset_top = -119.0
+offset_right = -21.0
+offset_bottom = -19.0
+grow_horizontal = 0
+grow_vertical = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
 visible = false
