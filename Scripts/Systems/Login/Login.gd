@@ -12,7 +12,7 @@ extends Panel
 
 @export var parent_container:Panel = null
 
-var ERROR_MSG = "Usuario o contraseña incorrecta"
+var ERROR_MSG = "USER_OR_PASS"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if (GlobalVar.user_email != ""):
@@ -35,8 +35,7 @@ func on_login(response):
 	_toggle_buttons(true)
 	
 	if (!response.user):
-		error.visible = true
-		error.text = ERROR_MSG
+		error.text = tr(ERROR_MSG)
 		return
 		
 	parent_container.visible = false

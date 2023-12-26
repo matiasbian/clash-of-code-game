@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=98 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -9,7 +9,9 @@
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="4_5tr4s"]
 [ext_resource type="Script" path="res://Scripts/UI/PopUps/PopUpsManager.gd" id="4_7jtma"]
 [ext_resource type="Script" path="res://Scripts/UI/InGameUI/InfoPanel.gd" id="4_tbie8"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="5_iorgl"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/ProcedureTrigger.gd" id="5_ld6wi"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/ButtonTextToI18n.gd" id="6_44ddb"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/TakeButton.gd" id="6_57hbx"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/IFButton.gd" id="6_od6bj"]
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/ProcedureButton.gd" id="6_v8vaa"]
@@ -456,6 +458,8 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Nivel"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "LEVEL"
 
 [node name="Time" type="Label" parent="Panel/InfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -466,6 +470,8 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Tiempo de juego:"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "TIME"
 
 [node name="Steps" type="Label" parent="Panel/InfoPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -476,6 +482,8 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 30
 text = "Pasos:"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "Steps"
 
 [node name="Process" type="Panel" parent="Panel"]
 layout_mode = 1
@@ -500,6 +508,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_hlaxj")
 text = "PROCEDIMIENTOS"
+script = ExtResource("6_44ddb")
+key = "PROCEDURES"
 metadata/_edit_lock_ = true
 
 [node name="AccionesCont" type="MarginContainer" parent="Panel"]
@@ -538,6 +548,8 @@ theme_override_font_sizes/font_size = 18
 text = "Acciones"
 horizontal_alignment = 1
 vertical_alignment = 2
+script = ExtResource("5_iorgl")
+key = "ACTIONS"
 
 [node name="AvailableCommands" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -584,10 +596,8 @@ offset_bottom = -5.0
 rotation = 1.5708
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Right/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Procedure" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
@@ -613,10 +623,8 @@ text = ""
 label_settings = SubResource("LabelSettings_v2gt4")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Procedure/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Left" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -631,10 +639,8 @@ offset_bottom = -5.0
 rotation = 4.71239
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Left/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Top" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -648,10 +654,8 @@ min_level_required = 2
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Top/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Bot" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -667,10 +671,8 @@ offset_bottom = -5.0
 rotation = 3.14159
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Bot/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Jump" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 visible = false
@@ -686,10 +688,8 @@ min_level_required = 100
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Jump/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Take" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -708,10 +708,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Take/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="Put" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -730,10 +728,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/Put/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="IF" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -759,10 +755,8 @@ offset_top = 0.0
 text = "IF"
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/IF/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="For" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer" instance=ExtResource("1_esfrg")]
 layout_mode = 2
@@ -794,10 +788,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/AvailableCommands/ScrollContainer/VBoxContainer/For/Button/Arrows" index="0"]
-offset_left = 78.0
-offset_top = 57.0
-offset_right = 548.0
-offset_bottom = 547.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="PlayButtonContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -1450,10 +1442,8 @@ rotation = 1.5708
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Right/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Left" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1471,10 +1461,8 @@ rotation = 4.71239
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Left/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Top" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1489,10 +1477,8 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 offset_bottom = -5.0
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Top/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Bot" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1510,10 +1496,8 @@ rotation = 3.14159
 pivot_offset = Vector2(34, 34)
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Bot/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Jump" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 visible = false
@@ -1534,10 +1518,8 @@ selected_container = NodePath("../../../Selected/Selected/HBoxContainer")
 texture = ExtResource("3_kf2g7")
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Jump/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Take" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1557,10 +1539,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Take/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 898.0
-offset_bottom = 897.0
+offset_right = 938.0
+offset_bottom = 937.0
 
 [node name="Put" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables" instance=ExtResource("1_esfrg")]
 custom_minimum_size = Vector2(80, 80)
@@ -1580,10 +1560,8 @@ offset_top = 0.0
 text = ""
 
 [node name="ArrowBR" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/Availables/Put/Button/Arrows" index="0"]
-offset_left = 103.0
-offset_top = 82.0
-offset_right = 573.0
-offset_bottom = 572.0
+offset_right = 613.0
+offset_bottom = 612.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2

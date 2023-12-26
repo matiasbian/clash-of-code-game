@@ -33,6 +33,18 @@ ACCEPT,Accept,Aceptar
 COMPLETED,Completed,Completado
 SELECT_LEVEL,Select Level,Seleccionar Nivel
 BACK,Back,Atras
+LOGIN,LogIn,Iniciar sesión
+USERNAME,Username,Usuario
+PASSWORD,Password,Contraseña
+SIGN_UP,Sign Up,Regístrate
+NOT_REGISTERED,Not registered?,¿No tiénes cuenta? 
+USER_OR_PASS,Wrong user or password,Usuario o contraseña incorrecta
+REGISTER,Register,Registro
+CREATE,Create,Crear
+MAIL_SENT,An activation email has been sent to your account.,Se ha enviado un email de activación a tu cuenta. 
+ONE_MORE_STEP,Just one more step,Solo un paso mas
+,,
+,,
 ,,
 ,,
 ,,

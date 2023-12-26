@@ -1,5 +1,7 @@
 extends Button
 
+var i18n = TextTo18n.new("BACK", self)
+
 func _ready():
 	focus_mode =Control.FOCUS_NONE
 

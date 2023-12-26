@@ -4,7 +4,8 @@ extends Button
 @onready var LevelsMenu = get_node("/root/MainMenu/UI/Levels")
 
 @export var levelEditButton:Button = Button.new()
-
+@export var levelEditPanel:Panel = Panel.new()
+@export var lock_level_editor = false
 var i18n = TextTo18n.new("PLAY", self)
 
 func _pressed():
@@ -23,6 +24,11 @@ func _ready():
 		b.focus_mode =Control.FOCUS_NONE
 	
 func _edit_level_pressed():
+	if (lock_level_editor):
+		levelEditPanel.visible = true
+		print("Pressed?")
+		return
+		
 	get_node("/root/GlobalVar").play_start_game()
 	
 	get_node("/root/MainMenu/Music").stop()
