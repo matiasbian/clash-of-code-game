@@ -43,8 +43,20 @@ REGISTER,Register,Registro
 CREATE,Create,Crear
 MAIL_SENT,An activation email has been sent to your account.,Se ha enviado un email de activación a tu cuenta. 
 ONE_MORE_STEP,Just one more step,Solo un paso mas
-,,
-,,
+LEVEL_EDITOR_LOCK,"The level editor feature is only available for admins.
+Send an email to [color=""orange""]matiasezequielbian@gmail.com[/color] to request one.","El editor de niveles solo esta disponible para administradores.
+Envia un email a [color=""orange""]matiasezequielbian@gmail.com[/color] para solicitar una."
+TIME,Time:,Tiempo de juego:
+STEPS,Steps:,Pasos:
+PROCEDURES,Procedures,Procedimientos
+ACTIONS,Actions,Acciones
+PLAY,Play,Ejecutar
+PROCEDURE,Procedure,Procedimiento
+ENTER_A_NAME,Enter a name,Ingrese un nombre
+TRUE_BRANCH,,
+FALSE_BRANCH,,
+CONDITION,,
+ACTION,,
 ,,
 ,,
 ,,

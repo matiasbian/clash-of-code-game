@@ -14,7 +14,7 @@ func _show(dialog, level):
 		
 	visible = true
 	title.text = "Nivel " + str(level)
-	message.text = dialog 
+	message.text = str(dialog) 
 	
 func _close():
 	visible = false

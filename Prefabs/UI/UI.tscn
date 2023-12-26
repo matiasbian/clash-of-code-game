@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://dyqjvi6wj0c75"]
+[gd_scene load_steps=99 format=3 uid="uid://dyqjvi6wj0c75"]
 
 [ext_resource type="Script" path="res://Scripts/UI/SelectedCommands/SelectedCommands.gd" id="1_db8n0"]
 [ext_resource type="PackedScene" uid="uid://ca051sex452gn" path="res://Prefabs/UI/Commands/BaseCommand.tscn" id="1_esfrg"]
@@ -51,6 +51,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/CommandsButton/Helpers/UIProcedureJump.gd" id="32_hnyyh"]
 [ext_resource type="PackedScene" uid="uid://dp8ewdrvbxfpa" path="res://Prefabs/UI/Tutorial/tutorial.tscn" id="33_dt1xp"]
 [ext_resource type="Script" path="res://Scripts/UI/Tutorial/Scripts/Tuto_02.gd" id="43_b3lh5"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/PlaceholderTo18n.gd" id="43_cr6hi"]
 [ext_resource type="PackedScene" uid="uid://b2tvxmrayuy7n" path="res://Prefabs/UI/Gameplay/commands_option_button.tscn" id="46_e1wfx"]
 [ext_resource type="Texture2D" uid="uid://dbpry7akqcvpj" path="res://Art/Sprites/map/ball_put.png" id="47_kdm5p"]
 [ext_resource type="Texture2D" uid="uid://c82r1eacfgcpj" path="res://Art/Sprites/UI/resized/take.png" id="50_5cur3"]
@@ -1150,6 +1151,8 @@ theme_override_font_sizes/font_size = 54
 text = "Procedimientos"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "PROCEDURES"
 
 [node name="Buttons2" type="HBoxContainer" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -1206,6 +1209,8 @@ size_flags_horizontal = 5
 theme = ExtResource("13_6m05p")
 theme_override_fonts/font = SubResource("FontVariation_7viqn")
 text = "Seleccionar"
+script = ExtResource("6_44ddb")
+key = "SELECT"
 
 [node name="Button2" type="Button" parent="Panel/PopUps/Procedures/Panel/MarginContainer/VBoxContainer/Buttons"]
 custom_minimum_size = Vector2(280, 0)
@@ -1214,6 +1219,8 @@ size_flags_horizontal = 5
 theme = ExtResource("13_6m05p")
 theme_override_fonts/font = SubResource("FontVariation_wakxt")
 text = "Cancelar"
+script = ExtResource("6_44ddb")
+key = "CANCEL"
 
 [node name="Overlays" type="Panel" parent="Panel/PopUps/Procedures/Panel/MarginContainer"]
 visible = false
@@ -1420,6 +1427,8 @@ theme_override_font_sizes/font_size = 33
 text = "Procedimiento"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "PROCEDURE"
 
 [node name="Availables" type="HBoxContainer" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -1573,12 +1582,16 @@ layout_mode = 2
 theme = ExtResource("3_hlaxj")
 theme_override_font_sizes/font_size = 25
 text = "Nombre"
+script = ExtResource("5_iorgl")
+key = "NAME"
 
 [node name="LineEdit" type="LineEdit" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme = ExtResource("3_hlaxj")
 placeholder_text = "ingrese_un_nombre"
+script = ExtResource("43_cr6hi")
+key = "ENTER_A_NAME"
 
 [node name="Selected" type="Panel" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer"]
 layout_mode = 2
@@ -1612,6 +1625,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Aceptar"
+script = ExtResource("6_44ddb")
+key = "ACCEPT"
 
 [node name="Btn2" type="Button" parent="Panel/PopUps/Procedure/ColorRect/VBoxContainer/HBoxContainer2" node_paths=PackedStringArray("pop_up")]
 layout_mode = 2
@@ -1621,6 +1636,7 @@ text = "Cancelar"
 script = ExtResource("31_venlv")
 pop_up = NodePath("../../../..")
 trigger_auto = false
+text_key = "CANCEL"
 
 [node name="Overlays" type="Panel" parent="Panel/PopUps/Procedure/ColorRect"]
 visible = false
@@ -2233,6 +2249,8 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 21
 text = "Condición"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "CONDITION"
 
 [node name="OptionButton" type="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Cond"]
 custom_minimum_size = Vector2(80, 0)
@@ -2263,6 +2281,8 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 21
 text = "Caso verdadero"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "TRUE_BRANCH"
 
 [node name="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/True" instance=ExtResource("46_e1wfx")]
 layout_mode = 2
@@ -2280,6 +2300,8 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 21
 text = "Caso falso"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "FALSE_BRANCH"
 
 [node name="OptionButton" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/False" instance=ExtResource("46_e1wfx")]
 layout_mode = 2
@@ -2293,12 +2315,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Aceptar"
+script = ExtResource("6_44ddb")
+key = "ACCEPT"
 
 [node name="Btn2" type="Button" parent="Panel/PopUps/IF/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Cancelar"
+script = ExtResource("6_44ddb")
+key = "CANCEL"
 
 [node name="Overlays" type="Panel" parent="Panel/PopUps/IF/ColorRect"]
 visible = false
@@ -2531,6 +2557,8 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 23
 text = "Acción"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "ACTION"
 
 [node name="OptionButton" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/True" instance=ExtResource("46_e1wfx")]
 custom_minimum_size = Vector2(83, 0)
@@ -2566,6 +2594,8 @@ theme_override_fonts/font = ExtResource("18_0l6ds")
 theme_override_font_sizes/font_size = 23
 text = "Repeticiones"
 vertical_alignment = 1
+script = ExtResource("5_iorgl")
+key = "AMOUNT"
 
 [node name="SpinBox" type="SpinBox" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Form/Amount"]
 custom_minimum_size = Vector2(83, 0)
@@ -2584,12 +2614,16 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Aceptar"
+script = ExtResource("6_44ddb")
+key = "ACCEPT"
 
 [node name="Btn2" type="Button" parent="Panel/PopUps/For/ColorRect/MarginContainer/Container/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("3_hlaxj")
 text = "Cancelar"
+script = ExtResource("6_44ddb")
+key = "CANCEL"
 
 [node name="Overlays" type="Panel" parent="Panel/PopUps/For/ColorRect"]
 visible = false

@@ -27,6 +27,7 @@ func _ready():
 	
 		
 func instantiateLevel(data):
+	print("instance")
 	level = LevelStructure.new(data)
 	
 	var init = Vector2(-1 ,0)

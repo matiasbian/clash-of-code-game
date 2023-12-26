@@ -11,7 +11,7 @@ var _timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	level.text = "Nivel: " + str(get_node("/root/GlobalVar").level)
+	level.text = tr("LEVEL") + ": " + str(get_node("/root/GlobalVar").level)
 	
 	game_manager.on_step_performed.connect(set_step)
 	
@@ -24,10 +24,10 @@ func _ready():
 	
 
 func set_step(step_n, total):
-	steps.text = "Pasos: %d/%d" % [step_n, total]
+	steps.text = tr("STEPS") + " %d/%d" % [step_n, total]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _on_timer_timeout():
-	time.text = "Tiempo de juego:  " + game_manager.time_manager.get_time_formatted()
+	time.text =  tr("TIME") + " " + game_manager.time_manager.get_time_formatted()
 
