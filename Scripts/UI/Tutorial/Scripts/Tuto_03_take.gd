@@ -4,37 +4,37 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Hola de nuevo!"
+			"dialog": "TUTORIAL_03B_00"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: SACAR BOLITAS"
+			"dialog": "TUTORIAL_03B_01"
 		},
 		{
-			"dialog": "Este comando permite extraer todas las bolitas de un casillero"
+			"dialog": "TUTORIAL_03B_02"
 		},
 		{
-			"dialog": 'En primer lugar, presiona el botón DERECHA para avanzar al primer casillero',
+			"dialog": 'TUTORIAL_03B_03',
 			"action": _show_sel_com_and_show
 		},
 		{
-			"dialog": 'Ahora presiona el comando "SACAR BOLITAS" para recogerlas todas',
+			"dialog": 'TUTORIAL_03B_04',
 			"action": show_avaialable_commands,
 			"param": "Take"
 		},
 		{
-			"dialog": "Con estos comandos ya extraeriamos las bolitas del casillero",
+			"dialog": "TUTORIAL_03B_05",
 			"action": _reparent_selected_commands,
 			"param" : false
 		},
 		{
-			"dialog": '',
+			"dialog": 'TUTORIAL_03B_06',
 			"action": show_forward
 		},
 		{
-			"dialog": 'Ahora agrega DOS movimientos hacia ADELANTE para alcanzar el cofre'
+			"dialog": 'TUTORIAL_03B_07'
 		},
 		{
-			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
+			"dialog": "TUTORIAL_03B_08"
 		}
 	]
 func _show_sel_com_and_show():

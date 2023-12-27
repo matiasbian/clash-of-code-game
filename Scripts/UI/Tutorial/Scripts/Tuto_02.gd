@@ -10,39 +10,39 @@ var jump_child = 5
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Muy buen trabajo en el nivel anterior!"
+			"dialog": "TUTORIAL_02_00"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: Salto"
+			"dialog": "TUTORIAL_02_01"
 		},
 		{
-			"dialog": 'Presiona el comando "SALTO" para evitar ser alcanzado por los pinches',
+			"dialog": 'TUTORIAL_02_03',
 			"action": _show_jump
 		},
 		{
-			"dialog": 'Aqui puedes elegir la direccion de salto',
+			"dialog": 'TUTORIAL_02_04',
 			"action": _show_dir
 		},
 		{
-			"dialog": 'En esta ocasión, no la cambiaremos'
+			"dialog": 'TUTORIAL_02_05'
 		},
 		{
-			"dialog": 'Presiona "ACEPTAR" para agregar el comando',
+			"dialog": 'TUTORIAL_02_06',
 			"action": _show_accept
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego al programa a ejecutar.",
+			"dialog": "TUTORIAL_02_07",
 			"action": show_arrow
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre',
+			"dialog": 'TUTORIAL_02_08',
 			"action": show_forward
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre'
+			"dialog": 'TUTORIAL_02_09'
 		},
 		{
-			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
+			"dialog": "TUTORIAL_02_09"
 		},
 	]
 	

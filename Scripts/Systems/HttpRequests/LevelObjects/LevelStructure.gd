@@ -6,7 +6,7 @@ var dialogs:String
 var stepsList:StepStructure
 var perfect_steps:int
 
-func _init(dataToParse):
+func _init(dataToParse):	
 	self.levelNumber = dataToParse["levelNumber"]
 	self.label = dataToParse["label"]
 	self.stepsList = StepStructure.new(dataToParse["structure"].elements)

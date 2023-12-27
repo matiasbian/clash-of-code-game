@@ -7,56 +7,56 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡ROBOTO te saluda!"
+			"dialog": "TUTORIAL_05_00"
 		},
 		{
-			"dialog": "Otra vez..."
+			"dialog": "TUTORIAL_05_01"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: FOR"
+			"dialog": "TUTORIAL_05_02"
 		},
 		{
-			"dialog": 'Presiona el comando "FOR" para crear una condicion',
+			"dialog": 'TUTORIAL_05_03',
 			"action": _show_jump
 		},
 		{
-			"dialog": 'En esta sección se elije la accion que se desea repetir',
+			"dialog": 'TUTORIAL_05_04',
 			"action": show_overlay_generic,
 			"param": act_overlay
 		},
 		{
-			"dialog": 'En este caso, la condición por defecto está correcta'
+			"dialog": 'TUTORIAL_05_05'
 		},
 		{
-			"dialog": 'Aqui se elije cuantas veces se desea ejecutar esa accion',
+			"dialog": 'TUTORIAL_05_06',
 			"action": show_spin
 		},
 		{
-			"dialog": 'En nuestro, caso deberíamos repetirla 3 veces'
+			"dialog": 'TUTORIAL_05_07'
 		},
 		{
-			"dialog": 'Elije 3 repeticiones',
+			"dialog": 'TUTORIAL_05_08',
 			"action": enable_repeat
 		},
 		{
-			"dialog": 'Presiona aceptar para agregar el comando',
+			"dialog": 'TUTORIAL_05_09',
 			"action": _show_accept,
 			"param": amount_overlay
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego al programa a ejecutar.",
+			"dialog": "TUTORIAL_05_10",
 			"action": show_arrow
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "ARRIBA" para alcanzar el cofre',
+			"dialog": 'TUTORIAL_05_11',
 			"action": show_forward,
 			"param": 3
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre'
+			"dialog": 'TUTORIAL_05_12'
 		},
 		{
-			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
+			"dialog": "TUTORIAL_05_13"
 		},
 	]
 

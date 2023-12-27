@@ -9,65 +9,65 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡ROBOTO aqui nuevamente!"
+			"dialog": "TUTORIAL_04_00"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: IF"
+			"dialog": "TUTORIAL_04_01"
 		},
 		{
-			"dialog": 'En primer lugar, presiona el botón DERECHA para avanzar al primer casillero',
+			"dialog": 'TUTORIAL_04_02',
 			"action": _show_sel_com_and_show
 		},
 		{
-			"dialog": 'Presiona el comando "IF" para crear una condicion',
+			"dialog": 'TUTORIAL_04_03',
 			"action": _show_jump
 		},
 		{
-			"dialog": 'En esta sección se elije la condición que corresponda a la celda',
+			"dialog": 'TUTORIAL_04_04',
 			"action": show_overlay_generic,
 			"param": cond_overlay
 		},
 		{
-			"dialog": 'En este caso, la condición por defecto está correcta'
+			"dialog": 'TUTORIAL_04_05'
 		},
 		{
-			"dialog": 'Aqui se elije que acción ejecutar en el caso de ser correcta la condición',
+			"dialog": 'TUTORIAL_04_06',
 			"action": show_true
 		},
 		{
-			"dialog": 'En nuestro, caso si hay Bolitas, Roboto debe extraerlas todas.'
+			"dialog": 'TUTORIAL_04_07'
 		},
 		{
-			"dialog": 'En este caso, la condición por defecto está correcta'
+			"dialog": 'TUTORIAL_04_08'
 		},
 		{
-			"dialog": 'En esta sección, se debe seleccionar que acción tomar en caso de que la condición sea falsa',
+			"dialog": 'TUTORIAL_04_09',
 			"action": show_overlay_generic,
 			"param": false_overlay
 		},
 		{
-			"dialog": 'Elije la opcion "PONER BOLITAS" dentro de este menu',
+			"dialog": 'TUTORIAL_04_10',
 			"action": enable_true
 		},
 		{
-			"dialog": 'Presiona aceptar para agregar el comando',
+			"dialog": 'TUTORIAL_04_11',
 			"action": _show_accept,
 			"param": false_overlay
 		},
 		{
-			"dialog": "Como puedes ver, el comando se agrego al programa a ejecutar.",
+			"dialog": "TUTORIAL_04_12",
 			"action": show_arrow,
 			"params": false
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre',
+			"dialog": 'TUTORIAL_04_13',
 			"action": show_forward
 		},
 		{
-			"dialog": 'Ahora agrega DOS VECES el comando "AVANZAR" para alcanzar el cofre'
+			"dialog": 'TUTORIAL_04_14'
 		},
 		{
-			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
+			"dialog": "TUTORIAL_04_15"
 		},
 	]
 

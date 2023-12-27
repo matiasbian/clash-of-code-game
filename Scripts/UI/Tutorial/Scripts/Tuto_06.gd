@@ -22,60 +22,60 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Muy buen trabajo en el nivel anterior!"
+			"dialog": "TUTORIAL_06_00"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: PROCEDIMIENTO"
+			"dialog": "TUTORIAL_06_01"
 		},
 		{
-			"dialog": 'Presiona el comando "PROCEDIMIENTOS" para crear uno',
+			"dialog": 'TUTORIAL_06_02',
 			"action": _show_procedure
 		},
 		{
-			"dialog": 'Esta es la ventana de procedimientos'
+			"dialog": 'TUTORIAL_06_03'
 		},
 		{
-			"dialog": 'Aquí los puedes CREAR, SELECCIONAR, o ELIMINAR'
+			"dialog": 'TUTORIAL_06_04'
 		},
 		{
-			"dialog": 'Empezaremos creando un procedimiento'
+			"dialog": 'TUTORIAL_06_05'
 		},
 		{
-			"dialog": 'Presiona la tecla "+" para crear un procedimiento',
+			"dialog": 'TUTORIAL_06_06',
 			"action": _show_add
 		},
 		{
-			"dialog": 'En esta celda puedes ingresar un nombre para el procedimiento. Ingresa el nombre "ROBOTO"',
+			"dialog": 'TUTORIAL_06_07',
 			"action": show_name
 		},
 		{
-			"dialog": '¡Muy bien! Agrega un comando "AVANZAR"',
+			"dialog": 'TUTORIAL_06_08',
 			"action": show_commands
 		},
 		{
-			"dialog": 'Ahora ingresa el comando "ARRIBA"'
+			"dialog": 'TUTORIAL_06_09'
 		},
 		{
-			"dialog": 'Nuevamente agregaremos el comando "AVANZAR"'
+			"dialog": 'TUTORIAL_06_10'
 		},
 		{
-			"dialog": '¡Excelente! Nuestro procedimiento está terminado. Presiona el botón "ACEPTAR"'
+			"dialog": 'TUTORIAL_06_11'
 		},
 		{
-			"dialog": "Ahora selecciona nuestro nuevo procedimiento",
+			"dialog": "TUTORIAL_06_12",
 			"action": suscribe_select
 		},
 		{
-			"dialog": 'Presiona "ACEPTAR" para agregar nuestro procedimiento al PROGRAMA',
+			"dialog": 'TUTORIAL_06_13',
 			"action": show_overlay_generic,
 			"param": accept_overlay
 		},
 		{
-			"dialog": "Como puedes ver, nuestro procedimiento se agrego al PROGRAMA",
+			"dialog": "TUTORIAL_06_14",
 			"action": show_arrow
 		},
 		{
-			"dialog": "Presiona PLAY para ver nuestro programa en acción",
+			"dialog": "TUTORIAL_06_15",
 			"action": show_play
 		},
 	]

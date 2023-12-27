@@ -4,37 +4,37 @@ extends TutoLevelTwo
 func _get_dialogs():
 	return [
 		{
-			"dialog": "¡Hola de nuevo!"
+			"dialog": "TUTORIAL_03_00"
 		},
 		{
-			"dialog": "En este nivel, aprenderemos un nuevo comando: PONER BOLITAS"
+			"dialog": "TUTORIAL_03_01"
 		},
 		{
-			"dialog": "Este comando permite PONER bolitas en un casillero"
+			"dialog": "TUTORIAL_03_02"
 		},
 		{
-			"dialog": 'En primer lugar, presiona el botón DERECHA para avanzar al primer casillero',
+			"dialog": 'TUTORIAL_03_03',
 			"action": _show_sel_com_and_show
 		},
 		{
-			"dialog": 'Ahora presiona el comando "PONER BOLITAS" para agregar bolitas',
+			"dialog": 'TUTORIAL_03_04',
 			"action": show_avaialable_commands,
 			"param": "Put"
 		},
 		{
-			"dialog": "Con estos comandos ya agregariamos las bolitas al casillero",
+			"dialog": "TUTORIAL_03_05",
 			"action": _reparent_selected_commands,
 			"param" : false
 		},
 		{
-			"dialog": '',
+			"dialog": 'TUTORIAL_03_06',
 			"action": show_forward
 		},
 		{
-			"dialog": 'Ahora agrega DOS movimientos hacia ADELANTE para alcanzar el cofre'
+			"dialog": 'TUTORIAL_03_07'
 		},
 		{
-			"dialog": "Presiona play para que ROBOTO ejecute el PROGRAMA"
+			"dialog": "TUTORIAL_03_08"
 		}
 	]
 
