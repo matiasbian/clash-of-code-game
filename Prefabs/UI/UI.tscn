@@ -874,7 +874,6 @@ text = "Atras"
 script = ExtResource("13_rf1kr")
 
 [node name="Tutorial" parent="Panel" node_paths=PackedStringArray("skip_button") instance=ExtResource("33_dt1xp")]
-visible = false
 layout_mode = 1
 skip_button = NodePath("Skip")
 
