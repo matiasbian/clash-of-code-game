@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dvs7sb61sikad"]
+[gd_scene load_steps=20 format=3 uid="uid://dvs7sb61sikad"]
 
 [ext_resource type="FontFile" uid="uid://c1p7mma53181w" path="res://Art/Fonts/FFFFORWA 1_NO_BORDED.TTF" id="1_6exj0"]
 [ext_resource type="PackedScene" uid="uid://lnmc5yu7hfld" path="res://Prefabs/UI/Juice/loading.tscn" id="1_ivdrs"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://co8efgnhfveft" path="res://Prefabs/UI/PopUps/Star.tscn" id="5_kyjfg"]
 [ext_resource type="FontFile" uid="uid://7je5blfvoxoy" path="res://Art/Fonts/upheavtt.ttf" id="6_v4bqt"]
 [ext_resource type="Theme" uid="uid://clafx6d80jxfr" path="res://Art/Styles/pixel_buttons.tres" id="7_3j80k"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/LabelTo18n.gd" id="8_ctgve"]
+[ext_resource type="Script" path="res://Scripts/Systems/i18n/ButtonTextToI18n.gd" id="10_mxrkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pvm2i"]
 bg_color = Color(0.235294, 0.556863, 0.690196, 1)
@@ -306,6 +308,8 @@ theme_override_font_sizes/font_size = 45
 text = "PASOS"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_ctgve")
+key = "STEPS"
 
 [node name="Label2" type="Label" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Steps"]
 custom_minimum_size = Vector2(500, 0)
@@ -333,6 +337,8 @@ theme_override_font_sizes/font_size = 45
 text = "TIEMPO"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("8_ctgve")
+key = "TIME"
 
 [node name="Label2" type="Label" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Info/Time"]
 custom_minimum_size = Vector2(500, 0)
@@ -360,6 +366,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("7_3j80k")
 text = "Menu"
+script = ExtResource("10_mxrkl")
+key = "MENU"
 
 [node name="Restart" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
 modulate = Color(1, 0.572549, 0.407843, 1)
@@ -369,6 +377,8 @@ size_flags_vertical = 3
 theme = ExtResource("7_3j80k")
 theme_override_fonts/font = SubResource("FontVariation_td25n")
 text = "Reiniciar "
+script = ExtResource("10_mxrkl")
+key = "RESTART"
 
 [node name="Accept" type="Button" parent="ColorRect/VBoxContainer/Panel/Panel/VBoxContainer/Buttons"]
 modulate = Color(0.537255, 0.878431, 0.388235, 1)
@@ -378,3 +388,5 @@ size_flags_vertical = 3
 theme = ExtResource("7_3j80k")
 theme_override_fonts/font = SubResource("FontVariation_cwe6w")
 text = "Sig. Nivel"
+script = ExtResource("10_mxrkl")
+key = "NEXT_LEVEL"

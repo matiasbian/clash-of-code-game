@@ -168,6 +168,8 @@ func get_next_command():
 	
 	return null	
 func set_perfect_steps(data):
+	if (data is Array):
+		return
 	var level:LevelStructure = LevelStructure.new(data)
 	perfect_steps = level.perfect_steps
 	httpReq.data_retrieved.disconnect(set_perfect_steps)

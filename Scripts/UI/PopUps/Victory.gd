@@ -11,7 +11,7 @@ extends Node
 @export var pop_up_manager:PopUpManager = PopUpManager.new()
 
 
-const title = "NIVEL %s completado"
+const title = "LEVEL_N_COMPLETED"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +22,7 @@ func _ready():
 
 func setdata(percentage):
 	var level = get_node("/root/GlobalVar").level
-	title_label.text = title % level
+	title_label.text = tr(title) % level
 	get_node("ColorRect/VBoxContainer/StarsContainer").setPerfectValues(percentage)
 	
 	time_label.text = pop_up_manager.game_manager.time_manager.get_time_formatted()
